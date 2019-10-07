@@ -21,15 +21,27 @@ struct Stock : Hashable {
 	var amount :Int
 	var recommendedAmount :Int
 	var vender : Vender
-	let identifier = UUID()
-	
+	var identifier = UUID()
+
 	static func ==(lhs :Stock, rhs :Stock) -> Bool{
 		return lhs.identifier == rhs.identifier
 	}
+	
+	func hash(into hasher: inout Hasher) {
+		hasher.combine(identifier)
+	}
+	
 }
 
 struct CurrentInventory {
 	var currentStocks : [Stock : Int]
+	var currentPapers : [Stock] {
+		return currentStocks.map {$0.key}
+	}
+	
+	init(_ currentStocks :[Stock : Int]) {
+		self.currentStocks = currentStocks
+	}
 }
 
 enum Weight{
