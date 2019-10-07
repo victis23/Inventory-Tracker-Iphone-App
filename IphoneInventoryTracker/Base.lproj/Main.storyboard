@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QdP-cJ-wqP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bJ8-vG-Lbu">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -64,6 +65,9 @@
                                                 <constraint firstAttribute="bottom" secondItem="Cqb-WK-07e" secondAttribute="bottom" id="du0-U6-gz5"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="GUN-nb-JOO" kind="show" id="pc4-KZ-P5H"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -90,6 +94,9 @@
                                                 <constraint firstItem="7f1-9x-SOw" firstAttribute="leading" secondItem="pY1-Ck-UJp" secondAttribute="leading" constant="20" id="Vxk-0E-R3a"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="COO-ev-0kB" kind="show" id="WBY-Dr-SaE"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -116,6 +123,9 @@
                                                 <constraint firstAttribute="bottom" secondItem="dpn-Db-GEF" secondAttribute="bottom" id="df6-Ce-K98"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="vrV-It-WfX" kind="show" id="zFs-V8-sbj"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -205,15 +215,20 @@
                         <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="save" id="XpH-a3-dj4"/>
                     </navigationItem>
                     <connections>
-                        <segue destination="GUN-nb-JOO" kind="show" identifier="parentSheet" id="UqI-D9-ofR"/>
-                        <segue destination="COO-ev-0kB" kind="show" identifier="stockWeight" id="Z6f-7q-J7m"/>
-                        <segue destination="vrV-It-WfX" kind="show" identifier="vender" id="a8x-kf-vv9"/>
+                        <outlet property="costPer1000Sheets" destination="H0l-8d-19F" id="j4k-Ht-pXF"/>
+                        <outlet property="initialAmount" destination="om8-U6-hkT" id="vCu-3E-kHV"/>
+                        <outlet property="recommendedAmount" destination="Hn0-D1-Wtz" id="aYq-uA-PAJ"/>
+                        <outlet property="saveButton" destination="XpH-a3-dj4" id="plo-gp-fAa"/>
+                        <outlet property="sheetSizeLabel" destination="Cqb-WK-07e" id="CSg-8s-AVh"/>
+                        <outlet property="stockName" destination="r36-PN-dbA" id="UCp-b3-BHh"/>
+                        <outlet property="stockWeightLabel" destination="7f1-9x-SOw" id="8IU-k4-TBW"/>
+                        <outlet property="venderLabel" destination="dpn-Db-GEF" id="k1N-jC-Wgf"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rS2-m0-F5T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="3et-SQ-I73" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1860.8695652173915" y="118.52678571428571"/>
+            <point key="canvasLocation" x="2771.0144927536235" y="118.52678571428571"/>
         </scene>
         <!--Parent Sheet Size-->
         <scene sceneID="zXt-8E-rmo">
@@ -439,7 +454,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pO9-ky-wRC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2642.0289855072465" y="-399.10714285714283"/>
+            <point key="canvasLocation" x="3552.1739130434785" y="-399.10714285714283"/>
         </scene>
         <!--Stock Weight-->
         <scene sceneID="dic-e7-kM5">
@@ -717,7 +732,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vcu-Ej-XXg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3333.3333333333335" y="-320.08928571428572"/>
+            <point key="canvasLocation" x="4243.4782608695659" y="-320.08928571428572"/>
         </scene>
         <!--Vender-->
         <scene sceneID="hB2-XU-PPM">
@@ -810,7 +825,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jbt-XJ-IEj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4039.130434782609" y="-195.53571428571428"/>
+            <point key="canvasLocation" x="4949.275362318841" y="-195.53571428571428"/>
         </scene>
         <!--Vender Contact Info Table View Controller-->
         <scene sceneID="Jd5-xz-QEa">
@@ -845,74 +860,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="feA-Ea-6xs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4847.826086956522" y="-196.20535714285714"/>
-        </scene>
-        <!--Inventory List-->
-        <scene sceneID="ZcS-Ga-Iim">
-            <objects>
-                <collectionViewController id="J4U-E3-ny0" customClass="InventoryTracker_CollectionViewController" customModule="IphoneInventoryTracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Q85-SB-zZ0">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="l20-Da-kMQ">
-                            <size key="itemSize" width="50" height="50"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="VLp-rE-sNe" customClass="InventoryDetailCell_CollectionViewCell" customModule="IphoneInventoryTracker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="6r1-bC-G2q">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </collectionViewCellContentView>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="J4U-E3-ny0" id="zBd-no-XJ3"/>
-                            <outlet property="delegate" destination="J4U-E3-ny0" id="LGF-Oe-VOj"/>
-                        </connections>
-                    </collectionView>
-                    <navigationItem key="navigationItem" title="Inventory List" leftItemsSupplementBackButton="YES" id="oRC-uL-hg3">
-                        <barButtonItem key="rightBarButtonItem" style="done" id="FjW-eh-E6L">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="91t-HI-WEn">
-                                <rect key="frame" x="302" y="7" width="92" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Add Stock"/>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="inventoryDetailCollection" destination="Q85-SB-zZ0" id="b52-WA-RW5"/>
-                        <segue destination="Mxv-hG-3zd" kind="presentation" identifier="newStock" modalPresentationStyle="fullScreen" id="YqD-Aj-eHN"/>
-                        <segue destination="07h-5b-Kyc" kind="presentation" identifier="newOrder" id="0D8-FY-cfi"/>
-                    </connections>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LaY-oD-58Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-52.173913043478265" y="114.50892857142857"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="1bo-sC-zQQ">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Mxv-hG-3zd" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="nL7-2z-P3A"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="WH8-Wc-FSI">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="xV4-q0-62g" kind="relationship" relationship="rootViewController" id="env-gf-orm"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BEx-Pz-65l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="950.72463768115949" y="118.52678571428571"/>
+            <point key="canvasLocation" x="5757.971014492754" y="-196.20535714285714"/>
         </scene>
         <!--New Order-->
         <scene sceneID="Ude-SN-WDS">
@@ -922,14 +870,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <sections>
-                            <tableViewSection id="PjQ-EZ-RR5">
+                            <tableViewSection headerTitle="Amount" id="PjQ-EZ-RR5">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="70" id="vry-aC-kTI">
-                                        <rect key="frame" x="20" y="18" width="374" height="70"/>
+                                        <rect key="frame" x="20" y="55.5" width="374" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vry-aC-kTI" id="fdv-aU-7qX">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GXZ-2U-wed">
+                                                    <rect key="frame" x="20" y="11" width="334" height="48"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="GXZ-2U-wed" firstAttribute="leading" secondItem="fdv-aU-7qX" secondAttribute="leadingMargin" id="DQc-DB-TGc"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="GXZ-2U-wed" secondAttribute="bottom" id="MsP-uh-dOe"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="GXZ-2U-wed" secondAttribute="trailing" id="nHe-2k-wc0"/>
+                                                <constraint firstItem="GXZ-2U-wed" firstAttribute="top" secondItem="fdv-aU-7qX" secondAttribute="topMargin" id="nbE-Jp-RLX"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -944,25 +905,64 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GDO-vR-wiK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="857.97101449275374" y="830.35714285714278"/>
+            <point key="canvasLocation" x="858" y="838"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Tvy-wf-LLA">
+        <!--Inventory List-->
+        <scene sceneID="fYb-Jb-l4n">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QdP-cJ-wqP" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="wTD-TL-e1X">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
+                <viewController id="bEE-wc-olj" customClass="InventoryTracker_CollectionViewController" customModule="IphoneInventoryTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lyp-iw-BkI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="VpV-U4-trj">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8ac-wG-5P5">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="CDb-dK-ibx" customClass="InventoryDetailCell_CollectionViewCell" customModule="IphoneInventoryTracker" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="j8m-AV-h8l">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                        <color key="backgroundColor" red="0.932271552" green="0.20218153920000001" blue="0.42321274489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <segue destination="07h-5b-Kyc" kind="presentation" id="b89-pX-H6W"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="VpV-U4-trj" firstAttribute="top" secondItem="hkM-Uf-Pbq" secondAttribute="top" id="eKO-I7-fJZ"/>
+                            <constraint firstItem="hkM-Uf-Pbq" firstAttribute="trailing" secondItem="VpV-U4-trj" secondAttribute="trailing" id="i3S-F1-3mB"/>
+                            <constraint firstItem="VpV-U4-trj" firstAttribute="leading" secondItem="hkM-Uf-Pbq" secondAttribute="leading" id="pWo-pP-K7k"/>
+                            <constraint firstItem="hkM-Uf-Pbq" firstAttribute="bottom" secondItem="VpV-U4-trj" secondAttribute="bottom" id="rcx-sc-MHq"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hkM-Uf-Pbq"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Inventory List" largeTitleDisplayMode="always" id="odg-yf-ETa">
+                        <barButtonItem key="rightBarButtonItem" title="Add Stock" id="R5l-st-hzf">
+                            <connections>
+                                <segue destination="xV4-q0-62g" kind="show" id="cbX-W6-HBS"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <segue destination="J4U-E3-ny0" kind="relationship" relationship="rootViewController" id="7Dd-Rl-r5m"/>
+                        <outlet property="inventoryDetailCollection" destination="VpV-U4-trj" id="EUa-eY-r1o"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wZU-P0-wjk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8zZ-dV-zxU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-962.31884057971024" y="114.50892857142857"/>
+            <point key="canvasLocation" x="858" y="115"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aDz-yE-eca">
@@ -980,7 +980,25 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PEZ-2y-aOM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-52.173913043478265" y="830.35714285714278"/>
+            <point key="canvasLocation" x="-52" y="839"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="TsS-FY-BLe">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bJ8-vG-Lbu" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="K3j-Vw-uH7">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="bEE-wc-olj" kind="relationship" relationship="rootViewController" id="emX-pw-Ytc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NtD-Ax-eUQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-52" y="115"/>
         </scene>
     </scenes>
 </document>

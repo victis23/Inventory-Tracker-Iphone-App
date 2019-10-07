@@ -9,5 +9,5 @@
 import UIKit
 
 class InventoryDetailCell_CollectionViewCell: UICollectionViewCell {
-    
+	@IBOutlet weak var backGroundViewForCell : UIView!
 }

@@ -10,7 +10,18 @@ import UIKit
 
 class NewStock_TableViewController: UITableViewController {
 
-    override func viewDidLoad() {
+	@IBOutlet weak var stockName: UITextField!
+	@IBOutlet weak var sheetSizeLabel: UILabel!
+	@IBOutlet weak var stockWeightLabel: UILabel!
+	@IBOutlet weak var venderLabel: UILabel!
+	@IBOutlet weak var costPer1000Sheets: UITextField!
+	@IBOutlet weak var initialAmount: UITextField!
+	@IBOutlet weak var recommendedAmount: UITextField!
+	@IBOutlet weak var saveButton: UIBarButtonItem!
+	
+	
+	
+	override func viewDidLoad() {
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
@@ -21,7 +32,7 @@ class NewStock_TableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
+/*
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 0
@@ -31,7 +42,7 @@ class NewStock_TableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return 0
     }
-
+*/
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)

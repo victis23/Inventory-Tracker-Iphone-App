@@ -9,7 +9,7 @@
 import UIKit
 
 
-class InventoryTracker_CollectionViewController: UICollectionViewController {
+class InventoryTracker_CollectionViewController: UIViewController {
 	
 	private struct CellIdentifiers {
 		static var collectionViewKey = "cell"
@@ -17,21 +17,27 @@ class InventoryTracker_CollectionViewController: UICollectionViewController {
 	
 	fileprivate struct SegueIdentifiers {
 		static var cancel = "cancel"
+		static var addStock = "newStock"
 	}
+
 	
 	
 	//MARK: IBOutlets
 	@IBOutlet weak var inventoryDetailCollection :UICollectionView!
-	
 	var dataSource :DataSource!
-
+	var stock : [Stock]?
+	
     override func viewDidLoad() {
         super.viewDidLoad()
+		let layOut = createLayout()
+		inventoryDetailCollection.collectionViewLayout = layOut
 		setupDataSource()
+		createSnapShot()
+		
+		
     }
 	
-
-  
+	//MARK: IBAction
     // MARK: - Navigation
 
 	@IBAction func unwindToMain(_ unwindSegue: UIStoryboardSegue) {
@@ -60,6 +66,8 @@ extension InventoryTracker_CollectionViewController {
 		dataSource = DataSource(collectionView: inventoryDetailCollection, cellProvider: { (collectionView, indexPath, items) -> UICollectionViewCell? in
 			let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifiers.collectionViewKey, for: indexPath) as! InventoryDetailCell_CollectionViewCell
 			
+			cell.selectedBackgroundView?.layer.backgroundColor = UIColor.systemBlue.cgColor
+			
 			return cell
 		})
 	}
@@ -67,33 +75,23 @@ extension InventoryTracker_CollectionViewController {
 
     // MARK: UICollectionViewDelegate
 
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
+	func createLayout()->UICollectionViewCompositionalLayout{
+		let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+		
+		let item = NSCollectionLayoutItem(layoutSize: groupSize)
+		let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
+		let section = NSCollectionLayoutSection(group: group)
+		let layout = UICollectionViewCompositionalLayout(section: section)
+		
+		return layout
+	}
+	
+	func createSnapShot(){
+		var snapShot = NSDiffableDataSourceSnapshot<Sections,Stock>()
+		guard let currentStock = stock else {return}
+		snapShot.appendSections([.main])
+		snapShot.appendItems(currentStock)
+		dataSource.apply(snapShot)
+	}
 }
 

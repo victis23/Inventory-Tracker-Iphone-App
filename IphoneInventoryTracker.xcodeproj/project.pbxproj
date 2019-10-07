@@ -59,6 +59,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7DB454EF234BEECB00CACBCC /* MainInventoryController */ = {
+			isa = PBXGroup;
+			children = (
+				7DCC5C22234ABEA100CD4776 /* InventoryTracker_CollectionViewController.swift */,
+				7DCC5C2E234AC73000CD4776 /* DataSource_InventoryTracker.swift */,
+			);
+			path = MainInventoryController;
+			sourceTree = "<group>";
+		};
+		7DB454F0234BEEF800CACBCC /* AddStockController */ = {
+			isa = PBXGroup;
+			children = (
+				7DCC5C1C234ABE3100CD4776 /* StockType_TableViewController.swift */,
+				7DCC5C18234ABDFE00CD4776 /* NewStock_TableViewController.swift */,
+				7DCC5C1A234ABE2100CD4776 /* ParentSheetSize_TableViewController.swift */,
+				7DCC5C1E234ABE4500CD4776 /* VenderList_TableViewController.swift */,
+				7DCC5C20234ABE5800CD4776 /* VenderContactInfo_TableViewController.swift */,
+			);
+			path = AddStockController;
+			sourceTree = "<group>";
+		};
+		7DB454F1234BEF8300CACBCC /* NewOrderController */ = {
+			isa = PBXGroup;
+			children = (
+				7DCC5C16234ABDBB00CD4776 /* NewOrder_TableViewController.swift */,
+			);
+			path = NewOrderController;
+			sourceTree = "<group>";
+		};
 		7DCC5BF6234AA7E400CD4776 = {
 			isa = PBXGroup;
 			children = (
@@ -94,15 +123,10 @@
 		7DCC5C26234ABEFB00CD4776 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				7DCC5C22234ABEA100CD4776 /* InventoryTracker_CollectionViewController.swift */,
-				7DCC5C2E234AC73000CD4776 /* DataSource_InventoryTracker.swift */,
 				7DCC5C30234AC7D400CD4776 /* Sections_CollectionViewController.swift */,
-				7DCC5C16234ABDBB00CD4776 /* NewOrder_TableViewController.swift */,
-				7DCC5C18234ABDFE00CD4776 /* NewStock_TableViewController.swift */,
-				7DCC5C1C234ABE3100CD4776 /* StockType_TableViewController.swift */,
-				7DCC5C1A234ABE2100CD4776 /* ParentSheetSize_TableViewController.swift */,
-				7DCC5C1E234ABE4500CD4776 /* VenderList_TableViewController.swift */,
-				7DCC5C20234ABE5800CD4776 /* VenderContactInfo_TableViewController.swift */,
+				7DB454EF234BEECB00CACBCC /* MainInventoryController */,
+				7DB454F1234BEF8300CACBCC /* NewOrderController */,
+				7DB454F0234BEEF800CACBCC /* AddStockController */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";

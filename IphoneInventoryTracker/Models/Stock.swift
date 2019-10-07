@@ -45,11 +45,11 @@ struct CurrentInventory {
 }
 
 enum Weight{
-
+	case test
 }
 
 enum ParentSize{
-	
+	case test
 }
 
 enum Vender :String{

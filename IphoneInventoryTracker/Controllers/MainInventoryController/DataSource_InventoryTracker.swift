@@ -10,7 +10,10 @@ import UIKit
 
 extension InventoryTracker_CollectionViewController {
 
-	class DataSource : UICollectionViewDiffableDataSource<Sections,Items> {
+	class DataSource : UICollectionViewDiffableDataSource<Sections,Stock> {
 		
+		override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+			return 1
+		}
 	}
 }

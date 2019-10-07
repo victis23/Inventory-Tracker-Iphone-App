@@ -15,6 +15,10 @@ extension InventoryTracker_CollectionViewController {
 	}
 	
 	struct Items :Hashable {
+		var inventory :Stock
 		
+		init(_ inventory :Stock) {
+			self.inventory = inventory
+		}
 	}
 }
