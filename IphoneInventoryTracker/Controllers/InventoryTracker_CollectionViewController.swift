@@ -11,29 +11,58 @@ import UIKit
 
 class InventoryTracker_CollectionViewController: UICollectionViewController {
 	
-	var dataSource :DataSource?
+	private struct CellIdentifiers {
+		static var collectionViewKey = "cell"
+	}
+	
+	fileprivate struct SegueIdentifiers {
+		static var cancel = "cancel"
+	}
+	
+	
+	//MARK: IBOutlets
+	@IBOutlet weak var inventoryDetailCollection :UICollectionView!
+	
+	var dataSource :DataSource!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
+		setupDataSource()
     }
+	
 
-    /*
+  
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
+	@IBAction func unwindToMain(_ unwindSegue: UIStoryboardSegue) {
+		
+		let identifier = unwindSegue.identifier
+		
+		switch identifier {
+			case SegueIdentifiers.cancel:
+			print("View was dismissed without action.")
+			default:
+			break
+		}
+		
+	}
+	
+
+}
+   
+
+
+extension InventoryTracker_CollectionViewController {
+	
+	//MARK: UICollectionViewDataSourceMethods
+	
+	func setupDataSource(){
+		dataSource = DataSource(collectionView: inventoryDetailCollection, cellProvider: { (collectionView, indexPath, items) -> UICollectionViewCell? in
+			let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifiers.collectionViewKey, for: indexPath) as! InventoryDetailCell_CollectionViewCell
+			
+			return cell
+		})
+	}
 
 
     // MARK: UICollectionViewDelegate
@@ -66,5 +95,5 @@ class InventoryTracker_CollectionViewController: UICollectionViewController {
     
     }
     */
-
 }
+

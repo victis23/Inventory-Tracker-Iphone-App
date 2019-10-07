@@ -197,7 +197,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="New Stock" largeTitleDisplayMode="always" id="sKI-HV-MN5">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="cGo-XS-wKX"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="cGo-XS-wKX">
+                            <connections>
+                                <segue destination="3et-SQ-I73" kind="unwind" identifier="cancel" unwindAction="unwindToMain:" id="dbJ-61-sTn"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="save" id="XpH-a3-dj4"/>
                     </navigationItem>
                     <connections>
@@ -207,6 +211,7 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rS2-m0-F5T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="3et-SQ-I73" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1860.8695652173915" y="118.52678571428571"/>
         </scene>
@@ -408,7 +413,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTL-zN-t4r">
-                                                    <rect key="frame" x="10" y="0.0" width="360" height="70"/>
+                                                    <rect key="frame" x="10" y="0.0" width="320" height="70"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -881,6 +886,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="inventoryDetailCollection" destination="Q85-SB-zZ0" id="b52-WA-RW5"/>
                         <segue destination="Mxv-hG-3zd" kind="presentation" identifier="newStock" modalPresentationStyle="fullScreen" id="YqD-Aj-eHN"/>
                         <segue destination="07h-5b-Kyc" kind="presentation" identifier="newOrder" id="0D8-FY-cfi"/>
                     </connections>
