@@ -72,6 +72,8 @@
 			children = (
 				7DCC5C02234AA7E400CD4776 /* AppDelegate.swift */,
 				7DCC5C04234AA7E400CD4776 /* SceneDelegate.swift */,
+				7DCC5C29234ABF6100CD4776 /* Models */,
+				7DCC5C28234ABF4800CD4776 /* Views */,
 				7DCC5C26234ABEFB00CD4776 /* Controllers */,
 				7DCC5C08234AA7E400CD4776 /* Main.storyboard */,
 				7DCC5C0B234AA7E700CD4776 /* Assets.xcassets */,
@@ -91,9 +93,23 @@
 				7DCC5C1E234ABE4500CD4776 /* VenderList_TableViewController.swift */,
 				7DCC5C20234ABE5800CD4776 /* VenderContactInfo_TableViewController.swift */,
 				7DCC5C22234ABEA100CD4776 /* InventoryTracker_CollectionViewController.swift */,
-				7DCC5C24234ABECB00CD4776 /* InventoryDetailCell_CollectionViewCell.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		7DCC5C28234ABF4800CD4776 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7DCC5C24234ABECB00CD4776 /* InventoryDetailCell_CollectionViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7DCC5C29234ABF6100CD4776 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
