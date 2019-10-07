@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct Venders {
-	var name: String
+struct VenderInfo {
+	var name: Vender
 	var address :String
 	var phone :String
 	var email :String
