@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		7DCC5C03234AA7E400CD4776 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCC5C02234AA7E400CD4776 /* AppDelegate.swift */; };
 		7DCC5C05234AA7E400CD4776 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCC5C04234AA7E400CD4776 /* SceneDelegate.swift */; };
-		7DCC5C07234AA7E400CD4776 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCC5C06234AA7E400CD4776 /* ViewController.swift */; };
 		7DCC5C0A234AA7E400CD4776 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DCC5C08234AA7E400CD4776 /* Main.storyboard */; };
 		7DCC5C0C234AA7E700CD4776 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DCC5C0B234AA7E700CD4776 /* Assets.xcassets */; };
 		7DCC5C0F234AA7E700CD4776 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DCC5C0D234AA7E700CD4776 /* LaunchScreen.storyboard */; };
@@ -27,7 +26,6 @@
 		7DCC5BFF234AA7E400CD4776 /* IphoneInventoryTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IphoneInventoryTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DCC5C02234AA7E400CD4776 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7DCC5C04234AA7E400CD4776 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7DCC5C06234AA7E400CD4776 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7DCC5C09234AA7E400CD4776 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7DCC5C0B234AA7E700CD4776 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7DCC5C0E234AA7E700CD4776 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -74,7 +72,18 @@
 			children = (
 				7DCC5C02234AA7E400CD4776 /* AppDelegate.swift */,
 				7DCC5C04234AA7E400CD4776 /* SceneDelegate.swift */,
-				7DCC5C06234AA7E400CD4776 /* ViewController.swift */,
+				7DCC5C26234ABEFB00CD4776 /* Controllers */,
+				7DCC5C08234AA7E400CD4776 /* Main.storyboard */,
+				7DCC5C0B234AA7E700CD4776 /* Assets.xcassets */,
+				7DCC5C0D234AA7E700CD4776 /* LaunchScreen.storyboard */,
+				7DCC5C10234AA7E700CD4776 /* Info.plist */,
+			);
+			path = IphoneInventoryTracker;
+			sourceTree = "<group>";
+		};
+		7DCC5C26234ABEFB00CD4776 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
 				7DCC5C16234ABDBB00CD4776 /* NewOrder_TableViewController.swift */,
 				7DCC5C18234ABDFE00CD4776 /* NewStock_TableViewController.swift */,
 				7DCC5C1A234ABE2100CD4776 /* ParentSheetSize_TableViewController.swift */,
@@ -83,12 +92,8 @@
 				7DCC5C20234ABE5800CD4776 /* VenderContactInfo_TableViewController.swift */,
 				7DCC5C22234ABEA100CD4776 /* InventoryTracker_CollectionViewController.swift */,
 				7DCC5C24234ABECB00CD4776 /* InventoryDetailCell_CollectionViewCell.swift */,
-				7DCC5C08234AA7E400CD4776 /* Main.storyboard */,
-				7DCC5C0B234AA7E700CD4776 /* Assets.xcassets */,
-				7DCC5C0D234AA7E700CD4776 /* LaunchScreen.storyboard */,
-				7DCC5C10234AA7E700CD4776 /* Info.plist */,
 			);
-			path = IphoneInventoryTracker;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,7 +170,6 @@
 				7DCC5C23234ABEA100CD4776 /* InventoryTracker_CollectionViewController.swift in Sources */,
 				7DCC5C19234ABDFE00CD4776 /* NewStock_TableViewController.swift in Sources */,
 				7DCC5C21234ABE5800CD4776 /* VenderContactInfo_TableViewController.swift in Sources */,
-				7DCC5C07234AA7E400CD4776 /* ViewController.swift in Sources */,
 				7DCC5C17234ABDBB00CD4776 /* NewOrder_TableViewController.swift in Sources */,
 				7DCC5C03234AA7E400CD4776 /* AppDelegate.swift in Sources */,
 				7DCC5C1B234ABE2100CD4776 /* ParentSheetSize_TableViewController.swift in Sources */,
