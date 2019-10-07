@@ -20,6 +20,8 @@
 		7DCC5C21234ABE5800CD4776 /* VenderContactInfo_TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCC5C20234ABE5800CD4776 /* VenderContactInfo_TableViewController.swift */; };
 		7DCC5C23234ABEA100CD4776 /* InventoryTracker_CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCC5C22234ABEA100CD4776 /* InventoryTracker_CollectionViewController.swift */; };
 		7DCC5C25234ABECB00CD4776 /* InventoryDetailCell_CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCC5C24234ABECB00CD4776 /* InventoryDetailCell_CollectionViewCell.swift */; };
+		7DCC5C2B234ABF9D00CD4776 /* VenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCC5C2A234ABF9D00CD4776 /* VenderModel.swift */; };
+		7DCC5C2D234ABFEE00CD4776 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCC5C2C234ABFEE00CD4776 /* Stock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		7DCC5C20234ABE5800CD4776 /* VenderContactInfo_TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenderContactInfo_TableViewController.swift; sourceTree = "<group>"; };
 		7DCC5C22234ABEA100CD4776 /* InventoryTracker_CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryTracker_CollectionViewController.swift; sourceTree = "<group>"; };
 		7DCC5C24234ABECB00CD4776 /* InventoryDetailCell_CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryDetailCell_CollectionViewCell.swift; sourceTree = "<group>"; };
+		7DCC5C2A234ABF9D00CD4776 /* VenderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenderModel.swift; sourceTree = "<group>"; };
+		7DCC5C2C234ABFEE00CD4776 /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +112,8 @@
 		7DCC5C29234ABF6100CD4776 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				7DCC5C2A234ABF9D00CD4776 /* VenderModel.swift */,
+				7DCC5C2C234ABFEE00CD4776 /* Stock.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -183,7 +189,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DCC5C2B234ABF9D00CD4776 /* VenderModel.swift in Sources */,
 				7DCC5C23234ABEA100CD4776 /* InventoryTracker_CollectionViewController.swift in Sources */,
+				7DCC5C2D234ABFEE00CD4776 /* Stock.swift in Sources */,
 				7DCC5C19234ABDFE00CD4776 /* NewStock_TableViewController.swift in Sources */,
 				7DCC5C21234ABE5800CD4776 /* VenderContactInfo_TableViewController.swift in Sources */,
 				7DCC5C17234ABDBB00CD4776 /* NewOrder_TableViewController.swift in Sources */,
