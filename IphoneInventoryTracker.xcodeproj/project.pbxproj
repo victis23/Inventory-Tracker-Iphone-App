@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D1911BD234C0B3600D699FB /* CustomCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1911BC234C0B3600D699FB /* CustomCellTableViewCell.swift */; };
 		7DCC5C03234AA7E400CD4776 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCC5C02234AA7E400CD4776 /* AppDelegate.swift */; };
 		7DCC5C05234AA7E400CD4776 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCC5C04234AA7E400CD4776 /* SceneDelegate.swift */; };
 		7DCC5C0A234AA7E400CD4776 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DCC5C08234AA7E400CD4776 /* Main.storyboard */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7D1911BC234C0B3600D699FB /* CustomCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCellTableViewCell.swift; sourceTree = "<group>"; };
 		7DCC5BFF234AA7E400CD4776 /* IphoneInventoryTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IphoneInventoryTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DCC5C02234AA7E400CD4776 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7DCC5C04234AA7E400CD4776 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +61,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7D1911BB234C0AE000D699FB /* ParentSheetSizeController */ = {
+			isa = PBXGroup;
+			children = (
+				7DCC5C1A234ABE2100CD4776 /* ParentSheetSize_TableViewController.swift */,
+				7D1911BC234C0B3600D699FB /* CustomCellTableViewCell.swift */,
+			);
+			path = ParentSheetSizeController;
+			sourceTree = "<group>";
+		};
 		7DB454EF234BEECB00CACBCC /* MainInventoryController */ = {
 			isa = PBXGroup;
 			children = (
@@ -71,9 +82,9 @@
 		7DB454F0234BEEF800CACBCC /* AddStockController */ = {
 			isa = PBXGroup;
 			children = (
+				7D1911BB234C0AE000D699FB /* ParentSheetSizeController */,
 				7DCC5C1C234ABE3100CD4776 /* StockType_TableViewController.swift */,
 				7DCC5C18234ABDFE00CD4776 /* NewStock_TableViewController.swift */,
-				7DCC5C1A234ABE2100CD4776 /* ParentSheetSize_TableViewController.swift */,
 				7DCC5C1E234ABE4500CD4776 /* VenderList_TableViewController.swift */,
 				7DCC5C20234ABE5800CD4776 /* VenderContactInfo_TableViewController.swift */,
 			);
@@ -227,6 +238,7 @@
 				7DCC5C17234ABDBB00CD4776 /* NewOrder_TableViewController.swift in Sources */,
 				7DCC5C31234AC7D500CD4776 /* Sections_CollectionViewController.swift in Sources */,
 				7DCC5C03234AA7E400CD4776 /* AppDelegate.swift in Sources */,
+				7D1911BD234C0B3600D699FB /* CustomCellTableViewCell.swift in Sources */,
 				7DCC5C2F234AC73000CD4776 /* DataSource_InventoryTracker.swift in Sources */,
 				7DCC5C1B234ABE2100CD4776 /* ParentSheetSize_TableViewController.swift in Sources */,
 				7DCC5C1F234ABE4500CD4776 /* VenderList_TableViewController.swift in Sources */,

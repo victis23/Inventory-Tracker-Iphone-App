@@ -16,11 +16,11 @@ struct Order {
 
 struct Stock : Hashable {
 	var name :String
-	var parentSheetSize :ParentSize
-	var weight :Weight
-	var amount :Int
-	var recommendedAmount :Int
-	var vender : Vender
+	var parentSheetSize :ParentSize?
+	var weight :Weight?
+	var amount :Int?
+	var recommendedAmount :Int?
+	var vender : Vender?
 	var identifier = UUID()
 
 	static func ==(lhs :Stock, rhs :Stock) -> Bool{
@@ -31,6 +31,9 @@ struct Stock : Hashable {
 		hasher.combine(identifier)
 	}
 	
+	init(_ name :String) {
+		self.name = name
+	}
 }
 
 struct CurrentInventory {
@@ -48,8 +51,13 @@ enum Weight{
 	case test
 }
 
-enum ParentSize{
-	case test
+enum ParentSize :String, CaseIterable{
+	case letter = "8.5 x 11"
+	case legal = "8.5 x 14"
+	case tabloid = "11 x 17"
+	case oversized = "12 x 18"
+	case generic1 = "generic1"
+	case generic2 = "generic2"
 }
 
 enum Vender :String{
