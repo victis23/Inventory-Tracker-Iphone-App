@@ -1,0 +1,221 @@
+//
+//  StockType_TableViewController.swift
+//  IphoneInventoryTracker
+//
+//  Created by Scott Leonard on 10/6/19.
+//  Copyright © 2019 Scott Leonard. All rights reserved.
+//
+
+import UIKit
+
+class StockWeight_TableViewController: UITableViewController {
+	
+	private enum Section {
+		case bond
+		case cover
+		case text
+	}
+	
+	private struct SegueIdentifiers {
+		static var returnToNewStock = "weightToHome"
+	}
+	
+	fileprivate struct StockTypes : Hashable{
+		var defaultTextForBond :String?
+		var defaultTextForText :String?
+		var defaultTextForCover :String?
+		var bond :Stock?
+		var text :Stock?
+		var cover :Stock?
+		let identifier = UUID()
+		
+		func hash(into hasher: inout Hasher){
+			hasher.combine(identifier)
+		}
+		
+		init(textForBond :String) {
+			self.defaultTextForBond = textForBond
+		}
+		init(textForText :String) {
+			self.defaultTextForText = textForText
+		}
+		init(textForCover :String) {
+			self.defaultTextForCover = textForCover
+		}
+		init(bond:Stock) {
+			self.bond = bond
+		}
+		init(text:Stock) {
+			self.text = text
+		}
+		init(cover:Stock) {
+			self.cover = cover
+		}
+	}
+	
+	fileprivate var selectOption : [StockTypes] = [StockTypes(textForBond: "Select Option")]
+	fileprivate var selectOption2 : [StockTypes] = [StockTypes(textForText: "Select Option")]
+	fileprivate var selectOption3 : [StockTypes] = [StockTypes(textForCover: "Select Option")]
+	
+	fileprivate var defaultBond : [StockTypes] = [
+		StockTypes(bond: Stock(nil, nil, ._20Bond, nil, nil, nil)),
+		StockTypes(bond: Stock(nil, nil, ._60Bond, nil, nil, nil))
+	]
+	
+	fileprivate var defaultText : [StockTypes] = [
+		StockTypes(text: Stock(nil, nil, ._70Accent, nil, nil, nil)),
+		StockTypes(text: Stock(nil, nil, ._80Accent, nil, nil, nil)),
+		StockTypes(text: Stock(nil, nil, ._80GlossText, nil, nil, nil)),
+		StockTypes(text: Stock(nil, nil, ._100GlossText, nil, nil, nil)),
+	]
+	
+	fileprivate var defaultCover : [StockTypes] = [
+		StockTypes(cover: Stock(nil, nil, ._65Cover, nil, nil, nil)),
+		StockTypes(cover: Stock(nil, nil, ._80Cover, nil, nil, nil)),
+		StockTypes(cover: Stock(nil, nil, ._100Cover, nil, nil, nil)),
+		StockTypes(cover: Stock(nil, nil, ._80GlossCover, nil, nil, nil)),
+		StockTypes(cover: Stock(nil, nil, ._100GlossCover, nil, nil, nil)),
+		StockTypes(cover: Stock(nil, nil, ._12PtC2S, nil, nil, nil))
+	]
+	
+	private var dataSource : Datasource!
+	var userSelectedItem :String!
+	var userSelectedModel : Weight!
+	var selectedIndex : IndexPath!
+	
+    override func viewDidLoad() {
+        super.viewDidLoad()
+		setDataSource()
+		setSnapShot(selectOption, selectOption2, selectOption3, animated: true)
+    }
+	
+	private class Datasource : UITableViewDiffableDataSource<Section,StockTypes>{
+		
+	}
+}
+
+extension StockWeight_TableViewController {
+	
+	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		return 70
+	}
+	
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		let identifier = dataSource.itemIdentifier(for: indexPath)
+		let row = indexPath.row
+		guard let unWrappedIdentifier = identifier?.identifier else {return}
+		print("Identifier for selection: \(unWrappedIdentifier)")
+		
+		if identifier?.bond?.weight != nil {
+			print("Bond Not nil")
+			userSelectedModel = identifier?.bond?.weight
+			selectedIndex = indexPath
+			Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (timer) in
+				self.performSegue(withIdentifier: SegueIdentifiers.returnToNewStock, sender: self)
+			}
+		}else if identifier?.text?.weight != nil {
+			print("Text Not nil")
+			userSelectedModel = identifier?.text?.weight
+			Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (timer) in
+				self.performSegue(withIdentifier: SegueIdentifiers.returnToNewStock, sender: self)
+			}
+		}else if identifier?.cover?.weight != nil {
+			print("Cover Not nil")
+			userSelectedModel = identifier?.cover?.weight
+			Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (timer) in
+				self.performSegue(withIdentifier: SegueIdentifiers.returnToNewStock, sender: self)
+			}
+		}else{
+			switch unWrappedIdentifier {
+				case selectOption[row].identifier:
+					setSnapShot(defaultBond, selectOption2, selectOption3, animated: true)
+				print("Paper")
+				case selectOption2[row].identifier:
+					setSnapShot(selectOption, defaultText, selectOption3, animated: true)
+				print("Text")
+				case selectOption3[row].identifier:
+					setSnapShot(selectOption, selectOption2, defaultCover, animated: true)
+				print("Cover")
+				default:
+				break
+			}
+		}
+		tableView.deselectRow(at: indexPath, animated: true)
+	}
+	
+	fileprivate func setSnapShot(_ bond:[StockTypes],_ text:[StockTypes], _ cover:[StockTypes], animated:Bool){
+		
+		var snapShot :NSDiffableDataSourceSnapshot = NSDiffableDataSourceSnapshot<Section,StockTypes>()
+		
+		snapShot.appendSections([.bond,.text,.cover])
+		snapShot.appendItems(bond, toSection: .bond)
+		snapShot.appendItems(text, toSection: .text)
+		snapShot.appendItems(cover, toSection: .cover)
+		
+		UIView.animate(withDuration: 0.5) {
+			self.dataSource.apply(snapShot, animatingDifferences: animated, completion: nil)
+		}
+		
+	}
+	
+	func setDataSource(){
+		dataSource = Datasource(tableView: tableView, cellProvider: { (tableView, indexPath, model) -> UITableViewCell? in
+			
+			let section = indexPath.section
+			let row = indexPath.row
+			let currentModel = self.dataSource.itemIdentifier(for: indexPath)
+			let cell = tableView.dequeueReusableCell(withIdentifier: Keys.weight, for: indexPath) as! StockWeight_TableViewCell
+			
+			switch section {
+				case 0:
+					guard currentModel?.identifier == self.defaultBond[row].identifier else {
+						cell.weightLabel.text = model.defaultTextForBond
+						cell.weightLabel.textColor = .systemBlue
+						cell.accessoryType = .none
+						break
+					}
+					cell.weightLabel.text = model.bond?.weight?.rawValue
+					cell.weightLabel.textColor = .label
+					//cell.accessoryType = .checkmark
+					//guard model.bond?.weight != nil else {break}
+				case 1:
+					guard currentModel?.identifier == self.defaultText[row].identifier else {
+						cell.weightLabel.text = model.defaultTextForText
+						cell.weightLabel.textColor = .systemBlue
+						cell.accessoryType = .none
+						break
+					}
+					cell.weightLabel.text = model.text?.weight?.rawValue
+					cell.weightLabel.textColor = .label
+					
+				case 2:
+					guard currentModel?.identifier == self.defaultCover[row].identifier else {
+						cell.weightLabel.text = model.defaultTextForCover
+						cell.weightLabel.textColor = .systemBlue
+						cell.accessoryType = .none
+						break
+					}
+					cell.weightLabel.text = model.cover?.weight?.rawValue
+					cell.weightLabel.textColor = .label
+				default:
+					break
+				}
+			return cell
+		})
+	}
+}
+
+//MARK: Navigation
+extension StockWeight_TableViewController {
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == SegueIdentifiers.returnToNewStock {
+			let destinationController = segue.destination as! NewStock_TableViewController
+			
+			destinationController.stockWeightLabel.text = userSelectedModel.rawValue
+				let stockModel = Stock(nil, nil, userSelectedModel, nil, nil, nil)
+			destinationController.updateNewStock(stockModel)
+			
+		}
+	}
+}

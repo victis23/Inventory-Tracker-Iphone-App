@@ -16,7 +16,7 @@
 		7DCC5C17234ABDBB00CD4776 /* NewOrder_TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCC5C16234ABDBB00CD4776 /* NewOrder_TableViewController.swift */; };
 		7DCC5C19234ABDFE00CD4776 /* NewStock_TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCC5C18234ABDFE00CD4776 /* NewStock_TableViewController.swift */; };
 		7DCC5C1B234ABE2100CD4776 /* ParentSheetSize_TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCC5C1A234ABE2100CD4776 /* ParentSheetSize_TableViewController.swift */; };
-		7DCC5C1D234ABE3100CD4776 /* StockType_TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCC5C1C234ABE3100CD4776 /* StockType_TableViewController.swift */; };
+		7DCC5C1D234ABE3100CD4776 /* StockWeight_TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCC5C1C234ABE3100CD4776 /* StockWeight_TableViewController.swift */; };
 		7DCC5C1F234ABE4500CD4776 /* VenderList_TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCC5C1E234ABE4500CD4776 /* VenderList_TableViewController.swift */; };
 		7DCC5C21234ABE5800CD4776 /* VenderContactInfo_TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCC5C20234ABE5800CD4776 /* VenderContactInfo_TableViewController.swift */; };
 		7DCC5C23234ABEA100CD4776 /* InventoryTracker_CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCC5C22234ABEA100CD4776 /* InventoryTracker_CollectionViewController.swift */; };
@@ -26,6 +26,7 @@
 		7DCC5C2F234AC73000CD4776 /* DataSource_InventoryTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCC5C2E234AC73000CD4776 /* DataSource_InventoryTracker.swift */; };
 		7DCC5C31234AC7D500CD4776 /* Sections_CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCC5C30234AC7D400CD4776 /* Sections_CollectionViewController.swift */; };
 		7DE44526234DAC6B007D838B /* CellIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE44525234DAC6B007D838B /* CellIdentifiers.swift */; };
+		7DE44528234DB338007D838B /* StockWeight_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE44527234DB338007D838B /* StockWeight_TableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,7 +41,7 @@
 		7DCC5C16234ABDBB00CD4776 /* NewOrder_TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOrder_TableViewController.swift; sourceTree = "<group>"; };
 		7DCC5C18234ABDFE00CD4776 /* NewStock_TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewStock_TableViewController.swift; sourceTree = "<group>"; };
 		7DCC5C1A234ABE2100CD4776 /* ParentSheetSize_TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentSheetSize_TableViewController.swift; sourceTree = "<group>"; };
-		7DCC5C1C234ABE3100CD4776 /* StockType_TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockType_TableViewController.swift; sourceTree = "<group>"; };
+		7DCC5C1C234ABE3100CD4776 /* StockWeight_TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockWeight_TableViewController.swift; sourceTree = "<group>"; };
 		7DCC5C1E234ABE4500CD4776 /* VenderList_TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenderList_TableViewController.swift; sourceTree = "<group>"; };
 		7DCC5C20234ABE5800CD4776 /* VenderContactInfo_TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenderContactInfo_TableViewController.swift; sourceTree = "<group>"; };
 		7DCC5C22234ABEA100CD4776 /* InventoryTracker_CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryTracker_CollectionViewController.swift; sourceTree = "<group>"; };
@@ -50,6 +51,7 @@
 		7DCC5C2E234AC73000CD4776 /* DataSource_InventoryTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource_InventoryTracker.swift; sourceTree = "<group>"; };
 		7DCC5C30234AC7D400CD4776 /* Sections_CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sections_CollectionViewController.swift; sourceTree = "<group>"; };
 		7DE44525234DAC6B007D838B /* CellIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellIdentifiers.swift; sourceTree = "<group>"; };
+		7DE44527234DB338007D838B /* StockWeight_TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockWeight_TableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +88,7 @@
 			children = (
 				7DCC5C18234ABDFE00CD4776 /* NewStock_TableViewController.swift */,
 				7D1911BB234C0AE000D699FB /* ParentSheetSizeController */,
-				7DF27304234D9F1900FFC75A /* StockTypeController */,
+				7DF27304234D9F1900FFC75A /* StockWeightController */,
 				7DF27305234D9F5200FFC75A /* VenderListController */,
 			);
 			path = AddStockController;
@@ -161,12 +163,13 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		7DF27304234D9F1900FFC75A /* StockTypeController */ = {
+		7DF27304234D9F1900FFC75A /* StockWeightController */ = {
 			isa = PBXGroup;
 			children = (
-				7DCC5C1C234ABE3100CD4776 /* StockType_TableViewController.swift */,
+				7DCC5C1C234ABE3100CD4776 /* StockWeight_TableViewController.swift */,
+				7DE44527234DB338007D838B /* StockWeight_TableViewCell.swift */,
 			);
-			path = StockTypeController;
+			path = StockWeightController;
 			sourceTree = "<group>";
 		};
 		7DF27305234D9F5200FFC75A /* VenderListController */ = {
@@ -252,6 +255,7 @@
 				7DCC5C2B234ABF9D00CD4776 /* VenderModel.swift in Sources */,
 				7DCC5C23234ABEA100CD4776 /* InventoryTracker_CollectionViewController.swift in Sources */,
 				7DCC5C2D234ABFEE00CD4776 /* Stock.swift in Sources */,
+				7DE44528234DB338007D838B /* StockWeight_TableViewCell.swift in Sources */,
 				7DCC5C19234ABDFE00CD4776 /* NewStock_TableViewController.swift in Sources */,
 				7DCC5C21234ABE5800CD4776 /* VenderContactInfo_TableViewController.swift in Sources */,
 				7DCC5C17234ABDBB00CD4776 /* NewOrder_TableViewController.swift in Sources */,
@@ -264,7 +268,7 @@
 				7DCC5C1F234ABE4500CD4776 /* VenderList_TableViewController.swift in Sources */,
 				7DCC5C05234AA7E400CD4776 /* SceneDelegate.swift in Sources */,
 				7DCC5C25234ABECB00CD4776 /* InventoryDetailCell_CollectionViewCell.swift in Sources */,
-				7DCC5C1D234ABE3100CD4776 /* StockType_TableViewController.swift in Sources */,
+				7DCC5C1D234ABE3100CD4776 /* StockWeight_TableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

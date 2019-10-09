@@ -283,12 +283,12 @@
         <!--Stock Weight-->
         <scene sceneID="dic-e7-kM5">
             <objects>
-                <tableViewController id="COO-ev-0kB" customClass="StockType_TableViewController" customModule="IphoneInventoryTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="COO-ev-0kB" customClass="StockWeight_TableViewController" customModule="IphoneInventoryTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="RnA-qy-goX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="stockWeight" rowHeight="70" id="5pl-jz-DCe">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="stockWeight" rowHeight="70" id="5pl-jz-DCe" customClass="StockWeight_TableViewCell" customModule="IphoneInventoryTracker" customModuleProvider="target">
                                 <rect key="frame" x="20" y="55.5" width="374" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5pl-jz-DCe" id="Y3D-Su-ZO7">
@@ -309,6 +309,9 @@
                                         <constraint firstAttribute="bottom" secondItem="vRJ-Ix-r1B" secondAttribute="bottom" id="fzS-v2-dTo"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="weightLabel" destination="vRJ-Ix-r1B" id="fMI-xv-Tzo"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -318,8 +321,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Stock Weight" largeTitleDisplayMode="always" id="z1U-Ja-xsP"/>
+                    <connections>
+                        <segue destination="tlG-io-yPW" kind="unwind" identifier="weightToHome" unwindAction="unwindToNewStock:" id="Ncc-de-akd"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vcu-Ej-XXg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="tlG-io-yPW" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4243.4782608695659" y="-320.08928571428572"/>
         </scene>

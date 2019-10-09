@@ -22,6 +22,7 @@ struct Stock : Hashable {
 	var recommendedAmount :Int?
 	var vender : Vender?
 	var identifier = UUID()
+	var color : String?
 
 	static func ==(lhs :Stock, rhs :Stock) -> Bool{
 		return lhs.identifier == rhs.identifier
@@ -59,13 +60,15 @@ struct CurrentInventory {
 enum Weight:String, CaseIterable{
 	case _20Bond = "#20 Bond"
 	case _60Bond = "#60 Bond"
+	/* Text */
 	case _70Accent = "#70 Uncoated Text"
 	case _80Accent = "#80 Uncoated Text"
+	case _80GlossText = "#80 Gloss Text"
+	case _100GlossText = "#100 Gloss Text"
+	/* Cover */
 	case _65Cover = "#65 Uncoated Cover"
 	case _80Cover = "#80 Uncoated Cover"
 	case _100Cover = "#100 Uncoated Cover"
-	case _80GlossText = "#80 Gloss Text"
-	case _100GlossText = "#100 Gloss Text"
 	case _80GlossCover = "#80 Gloss Cover"
 	case _100GlossCover = "#100 Gloss Cover"
 	case _12PtC2S = "12pt C2S"
