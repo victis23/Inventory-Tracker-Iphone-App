@@ -15,3 +15,9 @@ struct VenderInfo {
 	var email :String
 	var website :URL
 }
+
+enum Vender :String{
+	case Case
+	case Veritiv
+	case MacPapers = "Mac Papers"
+}

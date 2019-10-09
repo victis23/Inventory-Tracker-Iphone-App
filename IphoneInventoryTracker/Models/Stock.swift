@@ -15,7 +15,7 @@ struct Order {
 }
 
 struct Stock : Hashable {
-	var name :String
+	var name :String?
 	var parentSheetSize :ParentSize?
 	var weight :Weight?
 	var amount :Int?
@@ -34,6 +34,15 @@ struct Stock : Hashable {
 	init(_ name :String) {
 		self.name = name
 	}
+	
+	init(_ name :String?, _ parentSheetSize:ParentSize?, _ weight:Weight?, _ amount:Int?, _ recommendedAmount:Int?, _ vender:Vender?) {
+		self.name = name
+		self.parentSheetSize = parentSheetSize
+		self.weight = weight
+		self.amount = amount
+		self.recommendedAmount = recommendedAmount
+		self.vender = vender
+	}
 }
 
 struct CurrentInventory {
@@ -47,8 +56,19 @@ struct CurrentInventory {
 	}
 }
 
-enum Weight{
-	case test
+enum Weight:String, CaseIterable{
+	case _20Bond = "#20 Bond"
+	case _60Bond = "#60 Bond"
+	case _70Accent = "#70 Uncoated Text"
+	case _80Accent = "#80 Uncoated Text"
+	case _65Cover = "#65 Uncoated Cover"
+	case _80Cover = "#80 Uncoated Cover"
+	case _100Cover = "#100 Uncoated Cover"
+	case _80GlossText = "#80 Gloss Text"
+	case _100GlossText = "#100 Gloss Text"
+	case _80GlossCover = "#80 Gloss Cover"
+	case _100GlossCover = "#100 Gloss Cover"
+	case _12PtC2S = "12pt C2S"
 }
 
 enum ParentSize :String, CaseIterable{
@@ -56,12 +76,8 @@ enum ParentSize :String, CaseIterable{
 	case legal = "8.5 x 14"
 	case tabloid = "11 x 17"
 	case oversized = "12 x 18"
-	case generic1 = "generic1"
-	case generic2 = "generic2"
+	case _9Envelope = "#9 Envelope"
+	case _10Envelope = "#10 Envelope"
 }
 
-enum Vender :String{
-	case Case
-	case Veritiv
-	case MacPapers = "Mac Papers"
-}
+
