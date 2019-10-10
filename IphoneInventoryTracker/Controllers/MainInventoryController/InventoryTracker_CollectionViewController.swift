@@ -25,16 +25,14 @@ class InventoryTracker_CollectionViewController: UIViewController {
 	//MARK: IBOutlets
 	@IBOutlet weak var inventoryDetailCollection :UICollectionView!
 	var dataSource :DataSource!
-	var stock : [Stock]?
+	var stock : [Stock]? = []
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 		let layOut = createLayout()
 		inventoryDetailCollection.collectionViewLayout = layOut
 		setupDataSource()
-		createSnapShot()
-		
-		
+		//createSnapShot(stock)
     }
 	
 	//MARK: IBAction
@@ -67,7 +65,7 @@ extension InventoryTracker_CollectionViewController {
 			let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifiers.collectionViewKey, for: indexPath) as! InventoryDetailCell_CollectionViewCell
 			
 			cell.selectedBackgroundView?.layer.backgroundColor = UIColor.systemBlue.cgColor
-			
+			print("Incoming Value was — \(self.stock!)")
 			return cell
 		})
 	}
@@ -86,12 +84,14 @@ extension InventoryTracker_CollectionViewController {
 		return layout
 	}
 	
-	func createSnapShot(){
+	func createSnapShot(_ model :[Stock]?){
 		var snapShot = NSDiffableDataSourceSnapshot<Sections,Stock>()
-		guard let currentStock = stock else {return}
-		snapShot.appendSections([.main])
-		snapShot.appendItems(currentStock)
-		dataSource.apply(snapShot)
+		guard let currentStock = model else {return}
+		
+		
+			snapShot.appendSections([.main])
+			snapShot.appendItems(currentStock, toSection: .main)
+			dataSource.apply(snapShot)
 	}
 }
 

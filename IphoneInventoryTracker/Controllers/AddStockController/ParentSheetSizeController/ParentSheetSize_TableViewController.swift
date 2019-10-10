@@ -95,6 +95,7 @@ class ParentSheetSize_TableViewController: UITableViewController {
         super.viewDidLoad()
 		setDataSource()
 		createSnapShot(selectPaper, selectEnvelope, animated: true)
+		
     }
 	
 	fileprivate func createSnapShot(_ stock : [StockGroupings], _ envelopes : [StockGroupings], animated: Bool){
@@ -102,6 +103,7 @@ class ParentSheetSize_TableViewController: UITableViewController {
 		snapShot.appendSections([.paper, .envelopes])
 		snapShot.appendItems(stock, toSection: .paper)
 		snapShot.appendItems(envelopes, toSection: .envelopes)
+		
 		UIView.animate(withDuration: 0.50) {
 			self.dataSource.apply(snapShot, animatingDifferences: animated, completion: nil)
 		}

@@ -28,8 +28,13 @@
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r36-PN-dbA">
                                                     <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="40"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next"/>
+                                                    <connections>
+                                                        <action selector="finishedTyping:" destination="xV4-q0-62g" eventType="primaryActionTriggered" id="Ybz-3a-dJz"/>
+                                                        <action selector="nameUpdate:" destination="xV4-q0-62g" eventType="editingChanged" id="TeC-gz-iyU"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -109,7 +114,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dpn-Db-GEF">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Vender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dpn-Db-GEF">
                                                     <rect key="frame" x="20" y="0.0" width="323" height="50"/>
                                                     <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="40"/>
                                                     <nil key="textColor"/>
@@ -140,8 +145,12 @@
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H0l-8d-19F">
                                                     <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="40"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="next"/>
+                                                    <connections>
+                                                        <action selector="nameUpdate:" destination="xV4-q0-62g" eventType="editingChanged" id="SdQ-Tu-o3W"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -165,8 +174,12 @@
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="om8-U6-hkT">
                                                     <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="40"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next"/>
+                                                    <connections>
+                                                        <action selector="nameUpdate:" destination="xV4-q0-62g" eventType="editingChanged" id="K2m-Bc-7gN"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -186,8 +199,12 @@
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hn0-D1-Wtz">
                                                     <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="40"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next"/>
+                                                    <connections>
+                                                        <action selector="nameUpdate:" destination="xV4-q0-62g" eventType="editingChanged" id="xlj-S8-G9K"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -211,8 +228,12 @@
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cf3-87-fAv">
                                                     <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="40"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
+                                                    <connections>
+                                                        <action selector="nameUpdate:" destination="xV4-q0-62g" eventType="editingChanged" id="Sjf-If-60V"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -237,9 +258,14 @@
                                 <segue destination="3et-SQ-I73" kind="unwind" identifier="cancel" unwindAction="unwindToMain:" id="dbJ-61-sTn"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="save" id="XpH-a3-dj4"/>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="save" id="XpH-a3-dj4">
+                            <connections>
+                                <segue destination="3et-SQ-I73" kind="unwind" identifier="done" unwindAction="unwindToMain:" id="rrw-1e-66a"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="colorTextField" destination="Cf3-87-fAv" id="yqi-zY-bjR"/>
                         <outlet property="costPer1000Sheets" destination="H0l-8d-19F" id="j4k-Ht-pXF"/>
                         <outlet property="initialAmount" destination="om8-U6-hkT" id="vCu-3E-kHV"/>
                         <outlet property="recommendedAmount" destination="Hn0-D1-Wtz" id="aYq-uA-PAJ"/>
@@ -441,10 +467,12 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Vender" id="ZP6-YF-cVy"/>
                     <connections>
-                        <segue destination="rN7-F5-XjV" kind="presentation" identifier="venderContactInfo" id="6Ts-vC-DNz"/>
+                        <segue destination="dYi-ys-LIh" kind="unwind" identifier="goHomeVender" unwindAction="unwindToNewStock:" id="uEc-xs-JSe"/>
+                        <segue destination="rN7-F5-XjV" kind="presentation" identifier="venderContactinfo" id="t9u-Fi-axH"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jbt-XJ-IEj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="dYi-ys-LIh" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4949.275362318841" y="-195.53571428571428"/>
         </scene>
@@ -465,6 +493,20 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pcF-WS-waX" id="Ut1-va-onx">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zS6-j7-VVM">
+                                                    <rect key="frame" x="20" y="11" width="374" height="48"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="40"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="zS6-j7-VVM" firstAttribute="leading" secondItem="Ut1-va-onx" secondAttribute="leadingMargin" id="RR3-Po-6g0"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="zS6-j7-VVM" secondAttribute="bottom" id="WKc-tg-VTG"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="zS6-j7-VVM" secondAttribute="trailing" id="qKF-CS-VLF"/>
+                                                <constraint firstItem="zS6-j7-VVM" firstAttribute="top" secondItem="Ut1-va-onx" secondAttribute="topMargin" id="y3p-ID-JLT"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -478,6 +520,9 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Ndf-xr-3bM"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="supplierName" destination="zS6-j7-VVM" id="D4O-TQ-TcS"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="feA-Ea-6xs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

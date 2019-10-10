@@ -18,6 +18,7 @@ class NewStock_TableViewController: UITableViewController {
 	@IBOutlet weak var initialAmount: UITextField!
 	@IBOutlet weak var recommendedAmount: UITextField!
 	@IBOutlet weak var saveButton: UIBarButtonItem!
+	@IBOutlet weak var colorTextField: UITextField!
 	
 	var newStock :Stock?
 	
@@ -25,8 +26,21 @@ class NewStock_TableViewController: UITableViewController {
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
-		newStock = Stock(nil, nil, nil, nil, nil, nil)
+		setEmptyModelValue()
+		setTextFieldTags()
     }
+	
+	func setEmptyModelValue(){
+		newStock = Stock(nil, nil, nil, nil, nil, nil)
+	}
+	
+	func setTextFieldTags(){
+		stockName.tag = 1
+		costPer1000Sheets.tag = 2
+		initialAmount.tag = 3
+		recommendedAmount.tag = 4
+		colorTextField.tag = 5
+	}
 	
 	func updateNewStock(_ incoming : Stock){
 		
@@ -54,7 +68,80 @@ class NewStock_TableViewController: UITableViewController {
 	//MARK: Navigation
 	
 	@IBAction func unwindToNewStock(_ unwindSegue: UIStoryboardSegue) {
-//		let sourceViewController = unwindSegue.source
-		// Use data from the view controller which initiated the unwind segue
+
+	}
+	
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		switch indexPath.section {
+			case 1:
+				stockName.resignFirstResponder()
+			case 2:
+				stockName.resignFirstResponder()
+			case 3:
+				stockName.resignFirstResponder()
+			default:
+			break
+		}
+	}
+	
+	
+	@IBAction func nameUpdate(_ sender: UITextField) {
+		
+		switch sender.tag {
+			case 1:
+			guard let stockName = stockName.text else {return}
+				let name = Stock(stockName)
+				updateNewStock(name)
+			case 2:
+				guard let costPer100 = costPer1000Sheets.text else {return}
+				newStock?.cost = costPer100
+				print(newStock ?? "nil")
+				
+			case 3:
+				guard let initialAmount = initialAmount.text, let amount = Int(initialAmount) else {return}
+				let startingAmount = Stock(nil, nil, nil, amount, nil, nil)
+				updateNewStock(startingAmount)
+			case 4:
+				guard let recommendedAmount = recommendedAmount.text, let amount = Int(recommendedAmount) else {return}
+				let recommended = Stock(nil, nil, nil, nil, amount, nil)
+				updateNewStock(recommended)
+			case 5:
+				guard let color = colorTextField.text else {return}
+				newStock?.color = color
+				print(newStock ?? "nil")
+				
+			default:
+			break
+		}
+		if newStock?.name != nil && newStock?.name != "" && newStock?.cost != nil && newStock?.amount != nil && newStock?.recommendedAmount != nil && newStock?.color != nil && newStock?.color != "" && newStock?.parentSheetSize != nil && newStock?.weight != nil && newStock?.vender != nil {
+			saveButton.isEnabled = true
+		}else{
+			saveButton.isEnabled = false
+		}
+	}
+	@IBAction func finishedTyping(_ sender: Any) {
+		guard let stockName = stockName.text else {return}
+		let name = Stock(stockName)
+		updateNewStock(name)
+		view.endEditing(true)
+	}
+}
+
+//MARK: Navigation
+extension NewStock_TableViewController {
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		let identifier = "done"
+		if segue.identifier == identifier {
+			print("Saving...")
+			let destination = segue.destination as! InventoryTracker_CollectionViewController
+			guard let stock = newStock else {return}
+			destination.stock?.append(stock)
+			destination.createSnapShot(destination.stock)
+			/*
+			var stockImport : [Stock] = []
+			stockImport.append(stock)
+			destination.createSnapShot(stockImport)
+			*/
+		}
 	}
 }

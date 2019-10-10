@@ -23,6 +23,7 @@ struct Stock : Hashable {
 	var vender : Vender?
 	var identifier = UUID()
 	var color : String?
+	var cost : String?
 
 	static func ==(lhs :Stock, rhs :Stock) -> Bool{
 		return lhs.identifier == rhs.identifier

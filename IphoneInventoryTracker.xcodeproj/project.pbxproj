@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7D1911BD234C0B3600D699FB /* CustomCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1911BC234C0B3600D699FB /* CustomCellTableViewCell.swift */; };
+		7DAECB78234FAC5B006153CA /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAECB77234FAC5B006153CA /* StringExtension.swift */; };
 		7DCC5C03234AA7E400CD4776 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCC5C02234AA7E400CD4776 /* AppDelegate.swift */; };
 		7DCC5C05234AA7E400CD4776 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCC5C04234AA7E400CD4776 /* SceneDelegate.swift */; };
 		7DCC5C0A234AA7E400CD4776 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DCC5C08234AA7E400CD4776 /* Main.storyboard */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		7D1911BC234C0B3600D699FB /* CustomCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCellTableViewCell.swift; sourceTree = "<group>"; };
+		7DAECB77234FAC5B006153CA /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		7DCC5BFF234AA7E400CD4776 /* IphoneInventoryTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IphoneInventoryTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DCC5C02234AA7E400CD4776 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7DCC5C04234AA7E400CD4776 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 		7DB454EF234BEECB00CACBCC /* MainInventoryController */ = {
 			isa = PBXGroup;
 			children = (
+				7DCC5C30234AC7D400CD4776 /* Sections_CollectionViewController.swift */,
 				7DCC5C22234ABEA100CD4776 /* InventoryTracker_CollectionViewController.swift */,
 				7DCC5C2E234AC73000CD4776 /* DataSource_InventoryTracker.swift */,
 			);
@@ -137,7 +140,6 @@
 		7DCC5C26234ABEFB00CD4776 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				7DCC5C30234AC7D400CD4776 /* Sections_CollectionViewController.swift */,
 				7DB454EF234BEECB00CACBCC /* MainInventoryController */,
 				7DB454F1234BEF8300CACBCC /* NewOrderController */,
 				7DB454F0234BEEF800CACBCC /* AddStockController */,
@@ -159,6 +161,7 @@
 				7DCC5C2A234ABF9D00CD4776 /* VenderModel.swift */,
 				7DCC5C2C234ABFEE00CD4776 /* Stock.swift */,
 				7DE44525234DAC6B007D838B /* CellIdentifiers.swift */,
+				7DAECB77234FAC5B006153CA /* StringExtension.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -175,8 +178,8 @@
 		7DF27305234D9F5200FFC75A /* VenderListController */ = {
 			isa = PBXGroup;
 			children = (
-				7DCC5C20234ABE5800CD4776 /* VenderContactInfo_TableViewController.swift */,
 				7DCC5C1E234ABE4500CD4776 /* VenderList_TableViewController.swift */,
+				7DCC5C20234ABE5800CD4776 /* VenderContactInfo_TableViewController.swift */,
 			);
 			path = VenderListController;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 				7DCC5C2F234AC73000CD4776 /* DataSource_InventoryTracker.swift in Sources */,
 				7DCC5C1B234ABE2100CD4776 /* ParentSheetSize_TableViewController.swift in Sources */,
 				7DCC5C1F234ABE4500CD4776 /* VenderList_TableViewController.swift in Sources */,
+				7DAECB78234FAC5B006153CA /* StringExtension.swift in Sources */,
 				7DCC5C05234AA7E400CD4776 /* SceneDelegate.swift in Sources */,
 				7DCC5C25234ABECB00CD4776 /* InventoryDetailCell_CollectionViewCell.swift in Sources */,
 				7DCC5C1D234ABE3100CD4776 /* StockWeight_TableViewController.swift in Sources */,

@@ -9,82 +9,86 @@
 import UIKit
 
 class VenderList_TableViewController: UITableViewController {
+	
+	fileprivate struct Keys {
+		static var returnHomeWithVender = "goHomeVender"
+		static var venderInfo = "venderContactinfo"
+	}
+	
+	fileprivate var selectedVender : Vender!
+	fileprivate var venderInformation : VenderInfo!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+	
+	func getVenderContactInfo(_ vender:Vender){
+		let alertViewController = UIAlertController(title: "Supplier Information", message: "Select GET INFO to view supplier information.", preferredStyle: .actionSheet)
+		let saveVenderSelection = UIAlertAction(title: "Save", style: .default) { (bool) in
+			self.selectedVender = vender
+			self.performSegue(withIdentifier: Keys.returnHomeWithVender, sender: self)
+		}
+		let cancel = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
+		let getInformation = UIAlertAction(title: "Get Info", style: .default) { (bool) in
+			self.performSegue(withIdentifier: Keys.venderInfo, sender: self)
+		}
+		
+		let options : [UIAlertAction] = [cancel, saveVenderSelection, getInformation]
+		options.forEach {alertViewController.addAction($0)}
+		present(alertViewController, animated: true, completion: nil)
+	}
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+      
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+   
+        return 3
     }
 
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		let selectedRow = indexPath.row
+		
+		switch selectedRow {
+			case 0:
+				let vender = Vender.Case
+				venderInformation = VenderInfo(name: Vender.Case, address: "Pending", phone: "Pending", email: "Pending", website: URL(string: "pending"))
+				getVenderContactInfo(vender)
+			case 1:
+				let vender = Vender.Veritiv
+				venderInformation = VenderInfo(name: Vender.Veritiv, address: "Pending", phone: "Pending", email: "Pending", website: URL(string: "pending"))
+				getVenderContactInfo(vender)
+			case 2:
+				let vender = Vender.MacPapers
+				venderInformation = VenderInfo(name: Vender.MacPapers, address: "Pending", phone: "Pending", email: "Pending", website: URL(string: "pending"))
+				getVenderContactInfo(vender)
+			default:
+			break
+		}
+	}
 }
+
+// MARK: Navigation
+
+extension VenderList_TableViewController {
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == Keys.returnHomeWithVender {
+			let destination = segue.destination as! NewStock_TableViewController
+			let model = Stock(nil, nil, nil, nil, nil, selectedVender)
+			destination.updateNewStock(model)
+			guard let vender = selectedVender else {return}
+			destination.venderLabel.text = vender.rawValue
+		}
+		
+		if segue.identifier == Keys.venderInfo {
+			let destination = segue.destination as! VenderContactInfo_TableViewController
+			destination.contactInformation = venderInformation
+		}
+	}
+}
+

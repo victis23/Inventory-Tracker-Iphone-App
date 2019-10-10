@@ -13,11 +13,11 @@ struct VenderInfo {
 	var address :String
 	var phone :String
 	var email :String
-	var website :URL
+	var website :URL?
 }
 
-enum Vender :String{
-	case Case
+enum Vender :String , CaseIterable{
+	case Case = "Case Papers"
 	case Veritiv
 	case MacPapers = "Mac Papers"
 }

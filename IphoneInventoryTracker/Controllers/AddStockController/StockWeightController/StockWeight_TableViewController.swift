@@ -91,6 +91,18 @@ class StockWeight_TableViewController: UITableViewController {
 	
 	private class Datasource : UITableViewDiffableDataSource<Section,StockTypes>{
 		
+		override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+			switch section {
+				case 0:
+				return "Bond Weight Stock"
+				case 1:
+				return "Text Weight Stock"
+				case 2:
+				return "Cover Weight Stock"
+				default:
+				return nil
+			}
+		}
 	}
 }
 
@@ -105,22 +117,25 @@ extension StockWeight_TableViewController {
 		let row = indexPath.row
 		guard let unWrappedIdentifier = identifier?.identifier else {return}
 		print("Identifier for selection: \(unWrappedIdentifier)")
+		userSelectedModel = Weight(rawValue: "")
 		
 		if identifier?.bond?.weight != nil {
 			print("Bond Not nil")
+			tableView.reloadData()
 			userSelectedModel = identifier?.bond?.weight
-			selectedIndex = indexPath
 			Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (timer) in
 				self.performSegue(withIdentifier: SegueIdentifiers.returnToNewStock, sender: self)
 			}
 		}else if identifier?.text?.weight != nil {
 			print("Text Not nil")
+			tableView.reloadData()
 			userSelectedModel = identifier?.text?.weight
 			Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (timer) in
 				self.performSegue(withIdentifier: SegueIdentifiers.returnToNewStock, sender: self)
 			}
 		}else if identifier?.cover?.weight != nil {
 			print("Cover Not nil")
+			tableView.reloadData()
 			userSelectedModel = identifier?.cover?.weight
 			Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (timer) in
 				self.performSegue(withIdentifier: SegueIdentifiers.returnToNewStock, sender: self)
@@ -165,7 +180,7 @@ extension StockWeight_TableViewController {
 			let row = indexPath.row
 			let currentModel = self.dataSource.itemIdentifier(for: indexPath)
 			let cell = tableView.dequeueReusableCell(withIdentifier: Keys.weight, for: indexPath) as! StockWeight_TableViewCell
-			
+			let userModel = self.userSelectedModel
 			switch section {
 				case 0:
 					guard currentModel?.identifier == self.defaultBond[row].identifier else {
@@ -176,8 +191,12 @@ extension StockWeight_TableViewController {
 					}
 					cell.weightLabel.text = model.bond?.weight?.rawValue
 					cell.weightLabel.textColor = .label
-					//cell.accessoryType = .checkmark
-					//guard model.bond?.weight != nil else {break}
+					guard model.bond?.weight?.rawValue != nil else {break}
+					if userModel?.rawValue == model.bond?.weight?.rawValue {
+					cell.accessoryType = .checkmark
+				}
+					
+					
 				case 1:
 					guard currentModel?.identifier == self.defaultText[row].identifier else {
 						cell.weightLabel.text = model.defaultTextForText
@@ -187,6 +206,9 @@ extension StockWeight_TableViewController {
 					}
 					cell.weightLabel.text = model.text?.weight?.rawValue
 					cell.weightLabel.textColor = .label
+				if userModel?.rawValue == model.text?.weight?.rawValue {
+					cell.accessoryType = .checkmark
+				}
 					
 				case 2:
 					guard currentModel?.identifier == self.defaultCover[row].identifier else {
@@ -197,6 +219,9 @@ extension StockWeight_TableViewController {
 					}
 					cell.weightLabel.text = model.cover?.weight?.rawValue
 					cell.weightLabel.textColor = .label
+				if userModel?.rawValue == model.cover?.weight?.rawValue {
+					cell.accessoryType = .checkmark
+				}
 				default:
 					break
 				}
