@@ -33,8 +33,7 @@ class VenderList_TableViewController: UITableViewController {
 		let getInformation = UIAlertAction(title: "Get Info", style: .default) { (bool) in
 			self.performSegue(withIdentifier: Keys.venderInfo, sender: self)
 		}
-		
-		let options : [UIAlertAction] = [cancel, saveVenderSelection, getInformation]
+		let options : [UIAlertAction] = [saveVenderSelection, getInformation, cancel]
 		options.forEach {alertViewController.addAction($0)}
 		present(alertViewController, animated: true, completion: nil)
 	}

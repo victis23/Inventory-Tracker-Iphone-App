@@ -16,7 +16,7 @@ struct VenderInfo {
 	var website :URL?
 }
 
-enum Vender :String , CaseIterable{
+enum Vender :String , CaseIterable, Codable{
 	case Case = "Case Papers"
 	case Veritiv
 	case MacPapers = "Mac Papers"

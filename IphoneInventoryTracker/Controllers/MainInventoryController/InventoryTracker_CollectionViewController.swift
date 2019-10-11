@@ -64,7 +64,24 @@ extension InventoryTracker_CollectionViewController {
 		dataSource = DataSource(collectionView: inventoryDetailCollection, cellProvider: { (collectionView, indexPath, items) -> UICollectionViewCell? in
 			let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifiers.collectionViewKey, for: indexPath) as! InventoryDetailCell_CollectionViewCell
 			
-			cell.selectedBackgroundView?.layer.backgroundColor = UIColor.systemBlue.cgColor
+			guard let amount = items.amount else {fatalError()}
+			guard let recommendedAmount = items.recommendedAmount else {fatalError()}
+			let remainingPercentage = Double(amount)/Double(recommendedAmount) * 100
+			
+			cell.amountLabel.text = String(amount)
+			cell.nameLabel.text = items.name
+			cell.stockWeightLabel.text = "Weight: \(items.weight!.rawValue)"
+			cell.stockSizeLabel.text = "Size: \(items.parentSheetSize!.rawValue)"
+			cell.stockColorLabel.text = "Color: \(items.color!)"
+			cell.percentageRemainingLabel.text = "\(Int(remainingPercentage))%"
+			
+			cell.contentView.layer.cornerRadius = 10
+			cell.contentView.layer.shadowOpacity = 1.0
+			cell.backGroundViewForCell.layer.shadowOpacity = 1
+			cell.backGroundViewForCell.layer.shadowRadius = 5
+			cell.contentView.layer.shadowRadius = 5
+			//UIVisualEffectView
+			cell.contentView.clipsToBounds = true
 			print("Incoming Value was — \(self.stock!)")
 			return cell
 		})
@@ -74,10 +91,14 @@ extension InventoryTracker_CollectionViewController {
     // MARK: UICollectionViewDelegate
 
 	func createLayout()->UICollectionViewCompositionalLayout{
-		let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+		let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(150))
+		let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.5))
 		
-		let item = NSCollectionLayoutItem(layoutSize: groupSize)
-		let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
+		let item = NSCollectionLayoutItem(layoutSize: itemSize)
+		item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20)
+		
+		let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: item, count: 2)
+		
 		let section = NSCollectionLayoutSection(group: group)
 		let layout = UICollectionViewCompositionalLayout(section: section)
 		

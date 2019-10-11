@@ -58,7 +58,7 @@ struct CurrentInventory {
 	}
 }
 
-enum Weight:String, CaseIterable{
+enum Weight:String, CaseIterable, Codable{
 	case _20Bond = "#20 Bond"
 	case _60Bond = "#60 Bond"
 	/* Text */
@@ -75,13 +75,36 @@ enum Weight:String, CaseIterable{
 	case _12PtC2S = "12pt C2S"
 }
 
-enum ParentSize :String, CaseIterable{
+enum ParentSize :String, CaseIterable, Codable{
 	case letter = "8.5 x 11"
 	case legal = "8.5 x 14"
 	case tabloid = "11 x 17"
 	case oversized = "12 x 18"
 	case _9Envelope = "#9 Envelope"
 	case _10Envelope = "#10 Envelope"
+}
+
+
+extension Stock : Codable {
+	
+	static func filePath()->URL{
+		let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+		let file = path.appendingPathComponent("savedModel").appendingPathExtension("json")
+		return file
+	}
+	
+	static func encode<T:Codable>(_ model : [T]){
+		let encoder = JSONEncoder()
+		guard let encodedData = try? encoder.encode(model) else {fatalError("Was unable to encode incoming data!")}
+		try? encodedData.write(to: filePath())
+	}
+	
+	static func decode<T:Decodable>()->[T]{
+		let decoder = JSONDecoder()
+		guard let rawData = try? Data(contentsOf: filePath()) else {fatalError("Unable to decode data stored at location on disk!")}
+		guard let decodedDataModel = try? decoder.decode([T].self, from: rawData) else {fatalError()}
+		return decodedDataModel
+	}
 }
 
 
