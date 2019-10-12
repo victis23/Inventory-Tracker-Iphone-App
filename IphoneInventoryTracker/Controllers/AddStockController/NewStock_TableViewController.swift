@@ -134,14 +134,11 @@ extension NewStock_TableViewController {
 		if segue.identifier == identifier {
 			print("Saving...")
 			let destination = segue.destination as! InventoryTracker_CollectionViewController
+			guard let amount = newStock?.amount, let recommendedAmount = newStock?.recommendedAmount else {return}
+			newStock?.percentRemaining = Double(amount / recommendedAmount)
 			guard let stock = newStock else {return}
 			destination.stock?.append(stock)
 			destination.createSnapShot(destination.stock)
-			/*
-			var stockImport : [Stock] = []
-			stockImport.append(stock)
-			destination.createSnapShot(stockImport)
-			*/
 		}
 	}
 }

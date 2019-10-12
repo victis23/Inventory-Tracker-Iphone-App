@@ -640,7 +640,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x7e-Uy-FFb">
-                                                            <rect key="frame" x="287.5" y="20" width="42.5" height="20.5"/>
+                                                            <rect key="frame" x="287.5" y="55" width="42.5" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -679,7 +679,7 @@
                                                         <constraint firstItem="qeO-fv-Uzq" firstAttribute="top" secondItem="UBY-iz-T5p" secondAttribute="top" constant="10" id="NyM-Ns-MFq"/>
                                                         <constraint firstAttribute="trailing" secondItem="x7e-Uy-FFb" secondAttribute="trailing" constant="20" id="Odo-fk-trl"/>
                                                         <constraint firstItem="6OZ-JO-4aj" firstAttribute="leading" relation="lessThanOrEqual" secondItem="UBY-iz-T5p" secondAttribute="leading" constant="222" id="UWP-SV-6Lo"/>
-                                                        <constraint firstItem="x7e-Uy-FFb" firstAttribute="top" secondItem="UBY-iz-T5p" secondAttribute="top" constant="20" id="Zb6-Iq-dl1"/>
+                                                        <constraint firstItem="x7e-Uy-FFb" firstAttribute="top" secondItem="UBY-iz-T5p" secondAttribute="top" constant="55" id="Zb6-Iq-dl1"/>
                                                         <constraint firstAttribute="trailing" secondItem="6OZ-JO-4aj" secondAttribute="trailing" constant="20" id="l78-cA-Isz"/>
                                                         <constraint firstItem="dEn-cZ-Vvz" firstAttribute="top" secondItem="qeO-fv-Uzq" secondAttribute="bottom" constant="10" id="pdI-JZ-2YN"/>
                                                     </constraints>

@@ -25,15 +25,29 @@ class InventoryTracker_CollectionViewController: UIViewController {
 	//MARK: IBOutlets
 	@IBOutlet weak var inventoryDetailCollection :UICollectionView!
 	var dataSource :DataSource!
-	var stock : [Stock]? = []
+	var stock : [Stock]? = [] {
+		didSet {
+			guard let stock = stock else {fatalError("Unable to perform unwrap!")}
+			Stock.encode(stock)
+			print("Updated list was saved!")
+		}
+	}
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 		let layOut = createLayout()
 		inventoryDetailCollection.collectionViewLayout = layOut
 		setupDataSource()
-		//createSnapShot(stock)
+		intialSetupOfExistingData()
     }
+	
+	func intialSetupOfExistingData(){
+		let model = Stock.decode() as [Stock]?
+		guard let unWrappedmodel = model else {return}
+		let decodedModel : [Stock] = unWrappedmodel
+		stock = decodedModel
+		createSnapShot(stock)
+	}
 	
 	//MARK: IBAction
     // MARK: - Navigation
@@ -64,11 +78,12 @@ extension InventoryTracker_CollectionViewController {
 		dataSource = DataSource(collectionView: inventoryDetailCollection, cellProvider: { (collectionView, indexPath, items) -> UICollectionViewCell? in
 			let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifiers.collectionViewKey, for: indexPath) as! InventoryDetailCell_CollectionViewCell
 			
+			// I decieded to convert the values of amount & recommended amount here instead of doing it in the model because of the simplicity of converting straight to Int without having to round up
 			guard let amount = items.amount else {fatalError()}
 			guard let recommendedAmount = items.recommendedAmount else {fatalError()}
 			let remainingPercentage = Double(amount)/Double(recommendedAmount) * 100
 			
-			cell.amountLabel.text = String(amount)
+			cell.amountLabel.text = String(items.amount!)
 			cell.nameLabel.text = items.name
 			cell.stockWeightLabel.text = "Weight: \(items.weight!.rawValue)"
 			cell.stockSizeLabel.text = "Size: \(items.parentSheetSize!.rawValue)"
@@ -80,7 +95,7 @@ extension InventoryTracker_CollectionViewController {
 			cell.backGroundViewForCell.layer.shadowOpacity = 1
 			cell.backGroundViewForCell.layer.shadowRadius = 5
 			cell.contentView.layer.shadowRadius = 5
-			//UIVisualEffectView
+			
 			cell.contentView.clipsToBounds = true
 			print("Incoming Value was — \(self.stock!)")
 			return cell
@@ -107,11 +122,12 @@ extension InventoryTracker_CollectionViewController {
 	
 	func createSnapShot(_ model :[Stock]?){
 		var snapShot = NSDiffableDataSourceSnapshot<Sections,Stock>()
-		guard let currentStock = model else {return}
 		
+		guard let currentStock = model else {return}
+		let object = currentStock.sorted {$0.percentRemaining! < $1.percentRemaining!}
 		
 			snapShot.appendSections([.main])
-			snapShot.appendItems(currentStock, toSection: .main)
+			snapShot.appendItems(object, toSection: .main)
 			dataSource.apply(snapShot)
 	}
 }

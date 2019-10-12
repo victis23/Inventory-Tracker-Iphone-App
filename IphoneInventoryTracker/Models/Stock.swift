@@ -14,7 +14,7 @@ struct Order {
 	var pieceSize :Float
 }
 
-struct Stock : Hashable {
+struct Stock : Hashable, Equatable {
 	var name :String?
 	var parentSheetSize :ParentSize?
 	var weight :Weight?
@@ -24,6 +24,7 @@ struct Stock : Hashable {
 	var identifier = UUID()
 	var color : String?
 	var cost : String?
+	var percentRemaining : Double?
 
 	static func ==(lhs :Stock, rhs :Stock) -> Bool{
 		return lhs.identifier == rhs.identifier
@@ -99,10 +100,10 @@ extension Stock : Codable {
 		try? encodedData.write(to: filePath())
 	}
 	
-	static func decode<T:Decodable>()->[T]{
+	static func decode<T :Decodable>()->[T]?{
 		let decoder = JSONDecoder()
-		guard let rawData = try? Data(contentsOf: filePath()) else {fatalError("Unable to decode data stored at location on disk!")}
-		guard let decodedDataModel = try? decoder.decode([T].self, from: rawData) else {fatalError()}
+		guard let rawData = try? Data(contentsOf: filePath()) else {return nil}
+		guard let decodedDataModel = try? decoder.decode([T].self, from: rawData) else {return nil}
 		return decodedDataModel
 	}
 }
