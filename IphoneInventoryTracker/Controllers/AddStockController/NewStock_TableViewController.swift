@@ -84,6 +84,28 @@ class NewStock_TableViewController: UITableViewController {
 		}
 	}
 	
+	@IBAction func moveToNextField(_ sender: UITextField){
+		let senderTag = sender.tag
+		switch senderTag {
+			case 1:
+				guard let stockName = stockName.text else {return}
+				let name = Stock(stockName)
+				updateNewStock(name)
+				costPer1000Sheets.becomeFirstResponder()
+			case 2:
+				initialAmount.becomeFirstResponder()
+			case 3:
+				recommendedAmount.becomeFirstResponder()
+			case 4:
+				colorTextField.becomeFirstResponder()
+			case 5:
+				colorTextField.resignFirstResponder()
+			default:
+			break
+		}
+		
+	}
+	
 	
 	@IBAction func nameUpdate(_ sender: UITextField) {
 		
@@ -119,12 +141,7 @@ class NewStock_TableViewController: UITableViewController {
 			saveButton.isEnabled = false
 		}
 	}
-	@IBAction func finishedTyping(_ sender: Any) {
-		guard let stockName = stockName.text else {return}
-		let name = Stock(stockName)
-		updateNewStock(name)
-		view.endEditing(true)
-	}
+
 }
 
 //MARK: Navigation

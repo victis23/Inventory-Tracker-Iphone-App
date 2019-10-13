@@ -9,7 +9,7 @@
 import UIKit
 
 
-class InventoryTracker_CollectionViewController: UIViewController {
+class InventoryTracker_CollectionViewController: UIViewController, UICollectionViewDelegate {
 	
 	private struct CellIdentifiers {
 		static var collectionViewKey = "cell"
@@ -18,6 +18,7 @@ class InventoryTracker_CollectionViewController: UIViewController {
 	fileprivate struct SegueIdentifiers {
 		static var cancel = "cancel"
 		static var addStock = "newStock"
+		static var newOrder = "newOrder"
 	}
 
 	
@@ -39,6 +40,7 @@ class InventoryTracker_CollectionViewController: UIViewController {
 		inventoryDetailCollection.collectionViewLayout = layOut
 		setupDataSource()
 		intialSetupOfExistingData()
+		inventoryDetailCollection.delegate = self
     }
 	
 	func intialSetupOfExistingData(){
@@ -49,8 +51,24 @@ class InventoryTracker_CollectionViewController: UIViewController {
 		createSnapShot(stock)
 	}
 	
-	//MARK: IBAction
+	//MARK: - CollectionView Delegate Methods
+	
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		let model = dataSource.itemIdentifier(for: indexPath)
+		performSegue(withIdentifier: SegueIdentifiers.newOrder, sender: model)
+	}
+	
+	
     // MARK: - Navigation
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == SegueIdentifiers.newOrder{
+			let destinationController = segue.destination as! UINavigationController
+			let controller = destinationController.topViewController as! NewOrder_TableViewController
+			guard let  model = sender as? Stock else {return}
+			controller.setAmountLabel(model)
+		}
+	}
 
 	@IBAction func unwindToMain(_ unwindSegue: UIStoryboardSegue) {
 		

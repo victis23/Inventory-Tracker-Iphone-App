@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bJ8-vG-Lbu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bJ8-vG-Lbu">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15508"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -32,7 +32,7 @@
                                                     <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="40"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next"/>
                                                     <connections>
-                                                        <action selector="finishedTyping:" destination="xV4-q0-62g" eventType="primaryActionTriggered" id="Ybz-3a-dJz"/>
+                                                        <action selector="moveToNextField:" destination="xV4-q0-62g" eventType="primaryActionTriggered" id="87N-yE-kcw"/>
                                                         <action selector="nameUpdate:" destination="xV4-q0-62g" eventType="editingChanged" id="TeC-gz-iyU"/>
                                                     </connections>
                                                 </textField>
@@ -149,6 +149,7 @@
                                                     <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="40"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="next"/>
                                                     <connections>
+                                                        <action selector="moveToNextField:" destination="xV4-q0-62g" eventType="primaryActionTriggered" id="Jec-lN-4yH"/>
                                                         <action selector="nameUpdate:" destination="xV4-q0-62g" eventType="editingChanged" id="SdQ-Tu-o3W"/>
                                                     </connections>
                                                 </textField>
@@ -178,6 +179,7 @@
                                                     <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="40"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next"/>
                                                     <connections>
+                                                        <action selector="moveToNextField:" destination="xV4-q0-62g" eventType="primaryActionTriggered" id="MSu-Ua-l6b"/>
                                                         <action selector="nameUpdate:" destination="xV4-q0-62g" eventType="editingChanged" id="K2m-Bc-7gN"/>
                                                     </connections>
                                                 </textField>
@@ -203,6 +205,7 @@
                                                     <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="40"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next"/>
                                                     <connections>
+                                                        <action selector="moveToNextField:" destination="xV4-q0-62g" eventType="primaryActionTriggered" id="Vid-XT-g0v"/>
                                                         <action selector="nameUpdate:" destination="xV4-q0-62g" eventType="editingChanged" id="xlj-S8-G9K"/>
                                                     </connections>
                                                 </textField>
@@ -232,6 +235,7 @@
                                                     <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="40"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
                                                     <connections>
+                                                        <action selector="moveToNextField:" destination="xV4-q0-62g" eventType="primaryActionTriggered" id="y8a-ig-jga"/>
                                                         <action selector="nameUpdate:" destination="xV4-q0-62g" eventType="editingChanged" id="Sjf-If-60V"/>
                                                     </connections>
                                                 </textField>
@@ -536,26 +540,56 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <sections>
-                            <tableViewSection headerTitle="Amount" id="PjQ-EZ-RR5">
+                            <tableViewSection id="PjQ-EZ-RR5">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="70" id="vry-aC-kTI">
-                                        <rect key="frame" x="20" y="55.5" width="374" height="70"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="150" id="vry-aC-kTI">
+                                        <rect key="frame" x="20" y="18" width="374" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vry-aC-kTI" id="fdv-aU-7qX">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="150"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I17-rk-o4j">
+                                                    <rect key="frame" x="20" y="11" width="334" height="128"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="100"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstItem="I17-rk-o4j" firstAttribute="top" secondItem="fdv-aU-7qX" secondAttribute="topMargin" id="eIk-Cu-SZs"/>
+                                                <constraint firstItem="I17-rk-o4j" firstAttribute="leading" secondItem="fdv-aU-7qX" secondAttribute="leadingMargin" id="gNo-Vc-b7L"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="I17-rk-o4j" secondAttribute="bottom" id="mCC-D2-b89"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="I17-rk-o4j" secondAttribute="trailing" id="x9J-dw-arV"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Amount" id="80o-ts-7AQ">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="70" id="AXj-qU-4Mu">
+                                        <rect key="frame" x="20" y="224" width="374" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AXj-qU-4Mu" id="D0W-TR-sI3">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GXZ-2U-wed">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gFX-si-eDi">
                                                     <rect key="frame" x="20" y="11" width="334" height="48"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                    <connections>
+                                                        <action selector="updatedAmount:" destination="R5t-WH-wEY" eventType="editingChanged" id="ejY-hU-NXL"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="GXZ-2U-wed" firstAttribute="leading" secondItem="fdv-aU-7qX" secondAttribute="leadingMargin" id="DQc-DB-TGc"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="GXZ-2U-wed" secondAttribute="bottom" id="MsP-uh-dOe"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="GXZ-2U-wed" secondAttribute="trailing" id="nHe-2k-wc0"/>
-                                                <constraint firstItem="GXZ-2U-wed" firstAttribute="top" secondItem="fdv-aU-7qX" secondAttribute="topMargin" id="nbE-Jp-RLX"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="gFX-si-eDi" secondAttribute="trailing" id="EdQ-3P-KUK"/>
+                                                <constraint firstItem="gFX-si-eDi" firstAttribute="leading" secondItem="D0W-TR-sI3" secondAttribute="leadingMargin" id="b9L-IN-zL6"/>
+                                                <constraint firstItem="gFX-si-eDi" firstAttribute="top" secondItem="D0W-TR-sI3" secondAttribute="topMargin" id="fZv-wj-i0y"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="gFX-si-eDi" secondAttribute="bottom" id="iyt-t9-clt"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -568,6 +602,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="New Order" id="Gv6-6M-RNR"/>
+                    <connections>
+                        <outlet property="currentAmount" destination="I17-rk-o4j" id="3ej-SF-QfC"/>
+                        <outlet property="needAmountLabel" destination="gFX-si-eDi" id="9E8-u9-Nmh"/>
+                        <outlet property="orderAmount" destination="AXj-qU-4Mu" id="rMP-No-Iap"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GDO-vR-wiK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -705,7 +744,6 @@
                                             <outlet property="stockColorLabel" destination="8Fc-fG-nF3" id="4Zr-49-6q4"/>
                                             <outlet property="stockSizeLabel" destination="AZp-pZ-vPl" id="Ffu-OD-xaI"/>
                                             <outlet property="stockWeightLabel" destination="M4y-3z-kzI" id="kVm-gy-oQG"/>
-                                            <segue destination="07h-5b-Kyc" kind="presentation" identifier="newOrder" id="tar-ew-TXt"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -729,6 +767,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="inventoryDetailCollection" destination="VpV-U4-trj" id="EUa-eY-r1o"/>
+                        <segue destination="07h-5b-Kyc" kind="presentation" identifier="newOrder" id="p6G-Cj-jMf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8zZ-dV-zxU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
