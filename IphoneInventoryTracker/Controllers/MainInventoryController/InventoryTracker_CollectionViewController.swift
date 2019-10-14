@@ -64,9 +64,9 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == SegueIdentifiers.newOrder{
 			let destinationController = segue.destination as! UINavigationController
-			let controller = destinationController.topViewController as! NewOrder_TableViewController
+			let controller = destinationController.topViewController as! ChoiceController_TableViewController
 			guard let  model = sender as? Stock else {return}
-			controller.setAmountLabel(model)
+			controller.stockObject = model
 		}
 	}
 
