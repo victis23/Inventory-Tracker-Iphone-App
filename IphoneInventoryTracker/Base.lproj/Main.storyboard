@@ -803,65 +803,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GDO-vR-wiK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1867" y="593"/>
-        </scene>
-        <!--Choice Controller Table View Controller-->
-        <scene sceneID="vp7-8c-MxZ">
-            <objects>
-                <tableViewController id="YXO-Fa-klk" customClass="ChoiceController_TableViewController" customModule="IphoneInventoryTracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="WN1-zR-t0B">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <sections>
-                            <tableViewSection id="kSU-7n-zHD">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="387" id="RdH-V0-gAs">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="387"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RdH-V0-gAs" id="SRb-7S-Lz3">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="387"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKp-Oj-Py8">
-                                                    <rect key="frame" x="152" y="178" width="110" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Add More Stock"/>
-                                                </button>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="387" id="qTf-yH-Ssl">
-                                        <rect key="frame" x="0.0" y="415" width="414" height="387"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qTf-yH-Ssl" id="l0Y-Bv-v8p">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="387"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a4u-1Q-l4W">
-                                                    <rect key="frame" x="170" y="178" width="75" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="New Order"/>
-                                                    <connections>
-                                                        <segue destination="R5t-WH-wEY" kind="presentation" identifier="itemNeeded" id="q1P-t4-D5P"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
-                        <connections>
-                            <outlet property="dataSource" destination="YXO-Fa-klk" id="67f-i3-BdT"/>
-                            <outlet property="delegate" destination="YXO-Fa-klk" id="y0n-Vj-nm6"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="ldz-at-Y8H"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uiB-xE-Uuc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="830" y="838"/>
+            <point key="canvasLocation" x="857.97101449275374" y="837.72321428571422"/>
         </scene>
         <!--Inventory List-->
         <scene sceneID="fYb-Jb-l4n">
@@ -1019,11 +961,20 @@
                     <connections>
                         <outlet property="inventoryDetailCollection" destination="VpV-U4-trj" id="EUa-eY-r1o"/>
                         <segue destination="07h-5b-Kyc" kind="presentation" identifier="newOrder" id="p6G-Cj-jMf"/>
+                        <segue destination="Eka-0f-vl5" kind="presentation" identifier="moreStock" id="BRr-yh-mHo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8zZ-dV-zxU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="857.97101449275374" y="114.50892857142857"/>
+        </scene>
+        <!--MoreStock_Storyboard-->
+        <scene sceneID="1ZB-WZ-keT">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MoreStock_Storyboard" id="Eka-0f-vl5" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tzo-CR-H8b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1649" y="425"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aDz-yE-eca">
@@ -1036,12 +987,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="YXO-Fa-klk" kind="relationship" relationship="rootViewController" id="Nzy-Xr-c4O"/>
+                        <segue destination="R5t-WH-wEY" kind="relationship" relationship="rootViewController" id="HIB-Fd-YdH"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PEZ-2y-aOM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-52" y="847"/>
+            <point key="canvasLocation" x="-52" y="839"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TsS-FY-BLe">

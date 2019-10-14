@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7D0349122354F84200BD1AAF /* ChoiceController_TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0349112354F84200BD1AAF /* ChoiceController_TableViewController.swift */; };
+		7D0349142354FE3000BD1AAF /* MoreStock_Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D0349132354FE3000BD1AAF /* MoreStock_Storyboard.storyboard */; };
 		7D1911BD234C0B3600D699FB /* CustomCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1911BC234C0B3600D699FB /* CustomCellTableViewCell.swift */; };
 		7DAECB78234FAC5B006153CA /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAECB77234FAC5B006153CA /* StringExtension.swift */; };
 		7DCC5C03234AA7E400CD4776 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCC5C02234AA7E400CD4776 /* AppDelegate.swift */; };
@@ -32,7 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7D0349112354F84200BD1AAF /* ChoiceController_TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceController_TableViewController.swift; sourceTree = "<group>"; };
+		7D0349132354FE3000BD1AAF /* MoreStock_Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MoreStock_Storyboard.storyboard; sourceTree = "<group>"; };
 		7D1911BC234C0B3600D699FB /* CustomCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCellTableViewCell.swift; sourceTree = "<group>"; };
 		7DAECB77234FAC5B006153CA /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		7DCC5BFF234AA7E400CD4776 /* IphoneInventoryTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IphoneInventoryTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,14 +69,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7D0349102354F7FA00BD1AAF /* ChoiceController */ = {
-			isa = PBXGroup;
-			children = (
-				7D0349112354F84200BD1AAF /* ChoiceController_TableViewController.swift */,
-			);
-			path = ChoiceController;
-			sourceTree = "<group>";
-		};
 		7D1911BB234C0AE000D699FB /* ParentSheetSizeController */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +131,7 @@
 				7DCC5C28234ABF4800CD4776 /* Views */,
 				7DCC5C26234ABEFB00CD4776 /* Controllers */,
 				7DCC5C08234AA7E400CD4776 /* Main.storyboard */,
+				7D0349132354FE3000BD1AAF /* MoreStock_Storyboard.storyboard */,
 				7DCC5C0B234AA7E700CD4776 /* Assets.xcassets */,
 				7DCC5C0D234AA7E700CD4776 /* LaunchScreen.storyboard */,
 				7DCC5C10234AA7E700CD4776 /* Info.plist */,
@@ -150,7 +143,6 @@
 			isa = PBXGroup;
 			children = (
 				7DCC5C30234AC7D400CD4776 /* Sections_CollectionViewController.swift */,
-				7D0349102354F7FA00BD1AAF /* ChoiceController */,
 				7DB454EF234BEECB00CACBCC /* MainInventoryController */,
 				7DB454F1234BEF8300CACBCC /* NewOrderController */,
 				7DB454F0234BEEF800CACBCC /* AddStockController */,
@@ -254,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7DCC5C0F234AA7E700CD4776 /* LaunchScreen.storyboard in Resources */,
+				7D0349142354FE3000BD1AAF /* MoreStock_Storyboard.storyboard in Resources */,
 				7DCC5C0C234AA7E700CD4776 /* Assets.xcassets in Resources */,
 				7DCC5C0A234AA7E400CD4776 /* Main.storyboard in Resources */,
 			);
@@ -274,7 +267,6 @@
 				7DCC5C21234ABE5800CD4776 /* VenderContactInfo_TableViewController.swift in Sources */,
 				7DCC5C17234ABDBB00CD4776 /* NewOrder_TableViewController.swift in Sources */,
 				7DE44526234DAC6B007D838B /* CellIdentifiers.swift in Sources */,
-				7D0349122354F84200BD1AAF /* ChoiceController_TableViewController.swift in Sources */,
 				7DCC5C31234AC7D500CD4776 /* Sections_CollectionViewController.swift in Sources */,
 				7DCC5C03234AA7E400CD4776 /* AppDelegate.swift in Sources */,
 				7D1911BD234C0B3600D699FB /* CustomCellTableViewCell.swift in Sources */,

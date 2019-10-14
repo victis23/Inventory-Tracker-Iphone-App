@@ -19,6 +19,7 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 		static var cancel = "cancel"
 		static var addStock = "newStock"
 		static var newOrder = "newOrder"
+		static var moreStock = "moreStock"
 	}
 
 	
@@ -55,7 +56,21 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 	
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		let model = dataSource.itemIdentifier(for: indexPath)
-		performSegue(withIdentifier: SegueIdentifiers.newOrder, sender: model)
+		
+		let alertController = UIAlertController(title: "Modify Existing Stock", message: "Please select how you'd like to update the stock amount.", preferredStyle: .alert)
+		let newOrder = UIAlertAction(title: "New Order", style: .default) { (action) in
+			self.performSegue(withIdentifier: SegueIdentifiers.newOrder, sender: model)
+		}
+		let addStock = UIAlertAction(title: "Update Stock Amount", style: .default) { (action) in
+			
+		}
+		let cancel = UIAlertAction(title: "Cancel", style: .destructive) { (action) in
+			self.dismiss(animated: true, completion: nil)
+		}
+		alertController.addAction(newOrder)
+		alertController.addAction(addStock)
+		alertController.addAction(cancel)
+		present(alertController, animated: true, completion: nil)
 	}
 	
 	
@@ -64,9 +79,9 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == SegueIdentifiers.newOrder{
 			let destinationController = segue.destination as! UINavigationController
-			let controller = destinationController.topViewController as! ChoiceController_TableViewController
+			let controller = destinationController.topViewController as! NewOrder_TableViewController
 			guard let  model = sender as? Stock else {return}
-			controller.stockObject = model
+			controller.setAmountLabel(model)
 		}
 	}
 
