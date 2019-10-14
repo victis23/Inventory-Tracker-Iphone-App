@@ -56,15 +56,15 @@ class VenderList_TableViewController: UITableViewController {
 		switch selectedRow {
 			case 0:
 				let vender = Vender.Case
-				venderInformation = VenderInfo(name: Vender.Case, address: "Pending", phone: "Pending", email: "Pending", website: URL(string: "pending"))
+				venderInformation = VenderInfo(name: Vender.Case, address: "3333 N.W. 116th Street, Miami, FL, 33167", phone: "305-681-2273", email: "jciavola@casepaper.com", website: URL(string: "http://www.casepaper.com"))
 				getVenderContactInfo(vender)
 			case 1:
 				let vender = Vender.Veritiv
-				venderInformation = VenderInfo(name: Vender.Veritiv, address: "Pending", phone: "Pending", email: "Pending", website: URL(string: "pending"))
+				venderInformation = VenderInfo(name: Vender.Veritiv, address: "3200 Mercy Dr, Orlando, FL, 32808", phone: "407-521-3090", email: "orlandoVE@veritivcorp.com", website: URL(string: "http://www.veritivcorp.com"))
 				getVenderContactInfo(vender)
 			case 2:
 				let vender = Vender.MacPapers
-				venderInformation = VenderInfo(name: Vender.MacPapers, address: "Pending", phone: "Pending", email: "Pending", website: URL(string: "pending"))
+				venderInformation = VenderInfo(name: Vender.MacPapers, address: "3300 Philips Highway, Jacksonville, FL, 32207", phone: "407-629-5354", email: "cyndy.rosato@macpapers.com", website: URL(string: "http://www.macpapers.com"))
 				getVenderContactInfo(vender)
 			default:
 			break
