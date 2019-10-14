@@ -147,7 +147,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                                                     <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="40"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="next"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                                     <connections>
                                                         <action selector="moveToNextField:" destination="xV4-q0-62g" eventType="primaryActionTriggered" id="Jec-lN-4yH"/>
                                                         <action selector="nameUpdate:" destination="xV4-q0-62g" eventType="editingChanged" id="SdQ-Tu-o3W"/>
@@ -567,7 +567,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Amount" id="80o-ts-7AQ">
+                            <tableViewSection headerTitle="Size" id="80o-ts-7AQ">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="70" id="AXj-qU-4Mu">
                                         <rect key="frame" x="20" y="224" width="374" height="70"/>
@@ -576,13 +576,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gFX-si-eDi">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Width" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gFX-si-eDi">
                                                     <rect key="frame" x="20" y="11" width="334" height="48"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                                    <connections>
-                                                        <action selector="updatedAmount:" destination="R5t-WH-wEY" eventType="editingChanged" id="ejY-hU-NXL"/>
-                                                    </connections>
+                                                    <textInputTraits key="textInputTraits" keyboardType="namePhonePad" enablesReturnKeyAutomatically="YES"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -590,6 +587,82 @@
                                                 <constraint firstItem="gFX-si-eDi" firstAttribute="leading" secondItem="D0W-TR-sI3" secondAttribute="leadingMargin" id="b9L-IN-zL6"/>
                                                 <constraint firstItem="gFX-si-eDi" firstAttribute="top" secondItem="D0W-TR-sI3" secondAttribute="topMargin" id="fZv-wj-i0y"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="gFX-si-eDi" secondAttribute="bottom" id="iyt-t9-clt"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="70" id="1N5-hO-RBi">
+                                        <rect key="frame" x="20" y="294" width="374" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1N5-hO-RBi" id="Uoy-bv-VRh">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="70"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Height" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gRu-JH-nMe">
+                                                    <rect key="frame" x="20" y="11" width="334" height="48"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="namePhonePad" enablesReturnKeyAutomatically="YES"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="gRu-JH-nMe" secondAttribute="bottom" id="cy0-nE-WEf"/>
+                                                <constraint firstItem="gRu-JH-nMe" firstAttribute="leading" secondItem="Uoy-bv-VRh" secondAttribute="leadingMargin" id="dpE-m8-m3C"/>
+                                                <constraint firstItem="gRu-JH-nMe" firstAttribute="top" secondItem="Uoy-bv-VRh" secondAttribute="topMargin" id="nWM-IN-2wC"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="gRu-JH-nMe" secondAttribute="trailing" id="y8V-me-u9I"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Amount" id="FUa-H8-LpR">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="70" id="LyK-fZ-gBJ">
+                                        <rect key="frame" x="20" y="420" width="374" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LyK-fZ-gBJ" id="Og3-Mp-IbQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="70"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2bz-xA-Kr5">
+                                                    <rect key="frame" x="20" y="11" width="334" height="48"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="namePhonePad" enablesReturnKeyAutomatically="YES"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="2bz-xA-Kr5" firstAttribute="top" secondItem="Og3-Mp-IbQ" secondAttribute="topMargin" id="4cM-hd-h8J"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="2bz-xA-Kr5" secondAttribute="bottom" id="ZmS-Dl-YjA"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="2bz-xA-Kr5" secondAttribute="trailing" id="hqc-3U-4yY"/>
+                                                <constraint firstItem="2bz-xA-Kr5" firstAttribute="leading" secondItem="Og3-Mp-IbQ" secondAttribute="leadingMargin" id="zEF-5C-qox"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="fe8-yZ-zx0">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="200" id="e3I-YF-XAE">
+                                        <rect key="frame" x="20" y="526" width="374" height="200"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="e3I-YF-XAE" id="3Rf-6j-Irc">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="200"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eyf-du-43S">
+                                                    <rect key="frame" x="44" y="4.5" width="286" height="191"/>
+                                                    <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="eyf-du-43S" secondAttribute="height" multiplier="3:2" id="Odm-gF-aDo"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="75"/>
+                                                    <state key="normal" title="  Submit  ">
+                                                        <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstItem="eyf-du-43S" firstAttribute="centerX" secondItem="3Rf-6j-Irc" secondAttribute="centerX" id="Igg-nP-0wY"/>
+                                                <constraint firstItem="eyf-du-43S" firstAttribute="centerY" secondItem="3Rf-6j-Irc" secondAttribute="centerY" id="zf4-yX-L8e"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -606,6 +679,7 @@
                         <outlet property="currentAmount" destination="I17-rk-o4j" id="3ej-SF-QfC"/>
                         <outlet property="needAmountLabel" destination="gFX-si-eDi" id="9E8-u9-Nmh"/>
                         <outlet property="orderAmount" destination="AXj-qU-4Mu" id="rMP-No-Iap"/>
+                        <outlet property="submitButton" destination="eyf-du-43S" id="7S3-9Q-njP"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GDO-vR-wiK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
