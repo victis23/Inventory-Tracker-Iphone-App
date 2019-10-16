@@ -62,13 +62,18 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 			self.performSegue(withIdentifier: SegueIdentifiers.newOrder, sender: model)
 		}
 		let addStock = UIAlertAction(title: "Update Stock Amount", style: .default) { (action) in
-			
+			self.performSegue(withIdentifier: SegueIdentifiers.moreStock, sender: model)
 		}
 		let cancel = UIAlertAction(title: "Cancel", style: .destructive) { (action) in
 			self.dismiss(animated: true, completion: nil)
 		}
+		let delete = UIAlertAction(title: "Delete", style: .destructive) { (item) in
+			self.stock?.remove(at: indexPath.item)
+			self.createSnapShot(self.stock)
+		}
 		alertController.addAction(newOrder)
 		alertController.addAction(addStock)
+		alertController.addAction(delete)
 		alertController.addAction(cancel)
 		present(alertController, animated: true, completion: nil)
 	}
@@ -81,7 +86,7 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 			let destinationController = segue.destination as! UINavigationController
 			let controller = destinationController.topViewController as! NewOrder_TableViewController
 			guard let  model = sender as? Stock else {return}
-			controller.setAmountLabel(model)
+			controller.setModelForController(model)
 		}
 	}
 

@@ -776,6 +776,9 @@
                                                     <state key="normal" title="  Submit  ">
                                                         <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="tappedSubmitButton:" destination="R5t-WH-wEY" eventType="touchUpInside" id="AAZ-x6-l1V"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -796,7 +799,7 @@
                     <navigationItem key="navigationItem" title="New Order" id="Gv6-6M-RNR"/>
                     <connections>
                         <outlet property="currentAmount" destination="I17-rk-o4j" id="3ej-SF-QfC"/>
-                        <outlet property="needAmountLabel" destination="gFX-si-eDi" id="9E8-u9-Nmh"/>
+                        <outlet property="neededAmountTextField" destination="2bz-xA-Kr5" id="3m2-1r-nzo"/>
                         <outlet property="orderAmount" destination="AXj-qU-4Mu" id="rMP-No-Iap"/>
                         <outlet property="submitButton" destination="eyf-du-43S" id="7S3-9Q-njP"/>
                     </connections>

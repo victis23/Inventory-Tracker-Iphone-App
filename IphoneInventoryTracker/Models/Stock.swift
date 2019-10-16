@@ -46,6 +46,31 @@ struct Stock : Hashable, Equatable {
 		self.recommendedAmount = recommendedAmount
 		self.vender = vender
 	}
+	mutating func performCalculations<T: Hashable>(_ incomingAmount : T, _ height : T, _ width : T){
+		guard let newValue = incomingAmount as? Int, let amount = amount else {return}
+		guard let height = height as? Double, let width = width as? Double else {return}
+		
+		let size = self.parentSheetSize
+		switch size {
+			case .letter:
+			print("Test")
+			case .legal:
+			print("Test")
+			case .tabloid:
+			print("Test")
+			case .oversized:
+			print("Test")
+			case ._9Envelope:
+			print("Test")
+			case ._10Envelope:
+			print("Test")
+			default:
+			break
+		}
+		
+		let newTotal = amount - newValue
+		self.amount = newTotal
+	}
 }
 
 struct CurrentInventory {
