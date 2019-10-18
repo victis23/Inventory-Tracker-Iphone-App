@@ -30,6 +30,10 @@ class NewStock_TableViewController: UITableViewController {
 		setTextFieldTags()
     }
 	
+	deinit {
+		print("View was deallocated from memory successfully!")
+	}
+	
 	func setEmptyModelValue(){
 		newStock = Stock(nil, nil, nil, nil, nil, nil)
 	}
@@ -152,10 +156,13 @@ extension NewStock_TableViewController {
 			print("Saving...")
 			let destination = segue.destination as! InventoryTracker_CollectionViewController
 			guard let amount = newStock?.amount, let recommendedAmount = newStock?.recommendedAmount else {return}
-			newStock?.percentRemaining = Double(amount / recommendedAmount)
+			
+			let percentObject = Stock(amount, recommendedAmount)
+			print("This is what remains \(percentObject.percentRemaining!)")
+			
+			newStock?.percentRemaining = percentObject.percentRemaining
 			guard let stock = newStock else {return}
 			destination.stock?.append(stock)
-			destination.createSnapShot(destination.stock)
 		}
 	}
 }

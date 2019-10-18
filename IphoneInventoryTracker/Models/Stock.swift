@@ -24,7 +24,7 @@ struct Stock : Hashable, Equatable {
 	var identifier = UUID()
 	var color : String?
 	var cost : String?
-	var percentRemaining : Double?
+	var percentRemaining : Int?
 
 	static func ==(lhs :Stock, rhs :Stock) -> Bool{
 		return lhs.identifier == rhs.identifier
@@ -46,30 +46,14 @@ struct Stock : Hashable, Equatable {
 		self.recommendedAmount = recommendedAmount
 		self.vender = vender
 	}
-	mutating func performCalculations<T: Hashable>(_ incomingAmount : T, _ height : T, _ width : T){
-		guard let newValue = incomingAmount as? Int, let amount = amount else {return}
-		guard let height = height as? Double, let width = width as? Double else {return}
+	
+	init(_ amount :Int?, _ recommendedAmount : Int?) {
+		guard let amount = amount, let recommendedAmount = recommendedAmount else {return}
+		let doubleAmount = Double(amount)
+		let doubleRecommendedAmount = Double(recommendedAmount)
+		let percent = doubleAmount / doubleRecommendedAmount * 100
 		
-		let size = self.parentSheetSize
-		switch size {
-			case .letter:
-			print("Test")
-			case .legal:
-			print("Test")
-			case .tabloid:
-			print("Test")
-			case .oversized:
-			print("Test")
-			case ._9Envelope:
-			print("Test")
-			case ._10Envelope:
-			print("Test")
-			default:
-			break
-		}
-		
-		let newTotal = amount - newValue
-		self.amount = newTotal
+		self.percentRemaining = Int(percent)
 	}
 }
 

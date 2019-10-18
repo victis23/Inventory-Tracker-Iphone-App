@@ -695,10 +695,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Width" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gFX-si-eDi">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Short side in inches" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gFX-si-eDi">
                                                     <rect key="frame" x="20" y="11" width="334" height="48"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="namePhonePad" enablesReturnKeyAutomatically="YES"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="decimalPad" enablesReturnKeyAutomatically="YES"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -716,10 +716,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Height" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gRu-JH-nMe">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Long side in inches" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gRu-JH-nMe">
                                                     <rect key="frame" x="20" y="11" width="334" height="48"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="namePhonePad" enablesReturnKeyAutomatically="YES"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="decimalPad" enablesReturnKeyAutomatically="YES"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -744,7 +744,7 @@
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2bz-xA-Kr5">
                                                     <rect key="frame" x="20" y="11" width="334" height="48"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="namePhonePad" enablesReturnKeyAutomatically="YES"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -799,12 +799,16 @@
                     <navigationItem key="navigationItem" title="New Order" id="Gv6-6M-RNR"/>
                     <connections>
                         <outlet property="currentAmount" destination="I17-rk-o4j" id="3ej-SF-QfC"/>
+                        <outlet property="longSide" destination="gRu-JH-nMe" id="dNr-bx-Rty"/>
                         <outlet property="neededAmountTextField" destination="2bz-xA-Kr5" id="3m2-1r-nzo"/>
                         <outlet property="orderAmount" destination="AXj-qU-4Mu" id="rMP-No-Iap"/>
+                        <outlet property="shortSide" destination="gFX-si-eDi" id="tdt-sR-7up"/>
                         <outlet property="submitButton" destination="eyf-du-43S" id="7S3-9Q-njP"/>
+                        <segue destination="mfR-Cf-Vnr" kind="unwind" identifier="newOrderToMain" unwindAction="unwindToMain:" id="23o-Hf-IKp"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GDO-vR-wiK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="mfR-Cf-Vnr" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="857.97101449275374" y="837.72321428571422"/>
         </scene>

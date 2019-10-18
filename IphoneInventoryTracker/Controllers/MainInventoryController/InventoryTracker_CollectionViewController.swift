@@ -22,14 +22,15 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 		static var moreStock = "moreStock"
 	}
 
-	
-	
 	//MARK: IBOutlets
 	@IBOutlet weak var inventoryDetailCollection :UICollectionView!
 	var dataSource :DataSource!
+	
 	var stock : [Stock]? = [] {
 		didSet {
 			guard let stock = stock else {fatalError("Unable to perform unwrap!")}
+			createSnapShot(stock)
+			print("Updated SnapShot")
 			Stock.encode(stock)
 			print("Updated list was saved!")
 		}
@@ -69,7 +70,6 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 		}
 		let delete = UIAlertAction(title: "Delete", style: .destructive) { (item) in
 			self.stock?.remove(at: indexPath.item)
-			self.createSnapShot(self.stock)
 		}
 		alertController.addAction(newOrder)
 		alertController.addAction(addStock)
@@ -133,7 +133,6 @@ extension InventoryTracker_CollectionViewController {
 			cell.backGroundViewForCell.layer.shadowOpacity = 1
 			cell.backGroundViewForCell.layer.shadowRadius = 5
 			cell.contentView.layer.shadowRadius = 5
-			
 			cell.contentView.clipsToBounds = true
 			print("Incoming Value was — \(self.stock!)")
 			return cell
@@ -160,13 +159,14 @@ extension InventoryTracker_CollectionViewController {
 	
 	func createSnapShot(_ model :[Stock]?){
 		var snapShot = NSDiffableDataSourceSnapshot<Sections,Stock>()
-		
 		guard let currentStock = model else {return}
 		let object = currentStock.sorted {$0.percentRemaining! < $1.percentRemaining!}
-		
+
 			snapShot.appendSections([.main])
 			snapShot.appendItems(object, toSection: .main)
-			dataSource.apply(snapShot)
+		dataSource.apply(snapShot, animatingDifferences: true) {
+			self.inventoryDetailCollection.reloadData()
+		}
 	}
 }
 
