@@ -116,25 +116,21 @@ extension StockWeight_TableViewController {
 		let identifier = dataSource.itemIdentifier(for: indexPath)
 		let row = indexPath.row
 		guard let unWrappedIdentifier = identifier?.identifier else {return}
-		print("Identifier for selection: \(unWrappedIdentifier)")
 		userSelectedModel = Weight(rawValue: "")
 		
 		if identifier?.bond?.weight != nil {
-			print("Bond Not nil")
 			tableView.reloadData()
 			userSelectedModel = identifier?.bond?.weight
 			Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (timer) in
 				self.performSegue(withIdentifier: SegueIdentifiers.returnToNewStock, sender: self)
 			}
 		}else if identifier?.text?.weight != nil {
-			print("Text Not nil")
 			tableView.reloadData()
 			userSelectedModel = identifier?.text?.weight
 			Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (timer) in
 				self.performSegue(withIdentifier: SegueIdentifiers.returnToNewStock, sender: self)
 			}
 		}else if identifier?.cover?.weight != nil {
-			print("Cover Not nil")
 			tableView.reloadData()
 			userSelectedModel = identifier?.cover?.weight
 			Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (timer) in
@@ -144,13 +140,10 @@ extension StockWeight_TableViewController {
 			switch unWrappedIdentifier {
 				case selectOption[row].identifier:
 					setSnapShot(defaultBond, selectOption2, selectOption3, animated: true)
-				print("Paper")
 				case selectOption2[row].identifier:
 					setSnapShot(selectOption, defaultText, selectOption3, animated: true)
-				print("Text")
 				case selectOption3[row].identifier:
 					setSnapShot(selectOption, selectOption2, defaultCover, animated: true)
-				print("Cover")
 				default:
 				break
 			}

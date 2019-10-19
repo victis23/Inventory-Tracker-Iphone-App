@@ -66,7 +66,6 @@ class NewStock_TableViewController: UITableViewController {
 		if incoming.vender != nil{
 			newStock?.vender = incoming.vender
 		}
-		print(newStock!)
 	}
 
 	//MARK: Navigation
@@ -121,7 +120,6 @@ class NewStock_TableViewController: UITableViewController {
 			case 2:
 				guard let costPer100 = costPer1000Sheets.text else {return}
 				newStock?.cost = costPer100
-				print(newStock ?? "nil")
 				
 			case 3:
 				guard let initialAmount = initialAmount.text, let amount = Int(initialAmount) else {return}
@@ -134,7 +132,6 @@ class NewStock_TableViewController: UITableViewController {
 			case 5:
 				guard let color = colorTextField.text else {return}
 				newStock?.color = color
-				print(newStock ?? "nil")
 				
 			default:
 			break
@@ -153,12 +150,10 @@ extension NewStock_TableViewController {
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		let identifier = "done"
 		if segue.identifier == identifier {
-			print("Saving...")
 			let destination = segue.destination as! InventoryTracker_CollectionViewController
 			guard let amount = newStock?.amount, let recommendedAmount = newStock?.recommendedAmount else {return}
 			
 			let percentObject = Stock(amount, recommendedAmount)
-			print("This is what remains \(percentObject.percentRemaining!)")
 			
 			newStock?.percentRemaining = percentObject.percentRemaining
 			guard let stock = newStock else {return}

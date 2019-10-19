@@ -74,6 +74,11 @@ extension Stock {
 			guard let doubleValue = Double(stringForIntegerValue) else {fatalError()}
 			return doubleValue
 		}
+	
+	mutating func setPercentageAmount(){
+		guard let amount = self.amount, let recommendedAmount = self.recommendedAmount else {return}
+		self.percentRemaining = Int(Double(amount) / Double(recommendedAmount) * 100)
+	}
 }
 	
 	

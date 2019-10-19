@@ -11,7 +11,6 @@
 		7D0349162354FF7F00BD1AAF /* MoreStock_TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0349152354FF7F00BD1AAF /* MoreStock_TableViewController.swift */; };
 		7D1911BD234C0B3600D699FB /* CustomCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1911BC234C0B3600D699FB /* CustomCellTableViewCell.swift */; };
 		7D51961723592D5700145076 /* calculationExtensionOnModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D51961623592D5700145076 /* calculationExtensionOnModel.swift */; };
-		7DAECB78234FAC5B006153CA /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAECB77234FAC5B006153CA /* StringExtension.swift */; };
 		7DCC5C03234AA7E400CD4776 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCC5C02234AA7E400CD4776 /* AppDelegate.swift */; };
 		7DCC5C05234AA7E400CD4776 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCC5C04234AA7E400CD4776 /* SceneDelegate.swift */; };
 		7DCC5C0A234AA7E400CD4776 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DCC5C08234AA7E400CD4776 /* Main.storyboard */; };
@@ -38,7 +37,6 @@
 		7D0349152354FF7F00BD1AAF /* MoreStock_TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreStock_TableViewController.swift; sourceTree = "<group>"; };
 		7D1911BC234C0B3600D699FB /* CustomCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCellTableViewCell.swift; sourceTree = "<group>"; };
 		7D51961623592D5700145076 /* calculationExtensionOnModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calculationExtensionOnModel.swift; sourceTree = "<group>"; };
-		7DAECB77234FAC5B006153CA /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		7DCC5BFF234AA7E400CD4776 /* IphoneInventoryTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IphoneInventoryTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DCC5C02234AA7E400CD4776 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7DCC5C04234AA7E400CD4776 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -178,7 +176,6 @@
 				7DCC5C2C234ABFEE00CD4776 /* Stock.swift */,
 				7D51961623592D5700145076 /* calculationExtensionOnModel.swift */,
 				7DE44525234DAC6B007D838B /* CellIdentifiers.swift */,
-				7DAECB77234FAC5B006153CA /* StringExtension.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -288,7 +285,6 @@
 				7DCC5C2F234AC73000CD4776 /* DataSource_InventoryTracker.swift in Sources */,
 				7DCC5C1B234ABE2100CD4776 /* ParentSheetSize_TableViewController.swift in Sources */,
 				7DCC5C1F234ABE4500CD4776 /* VenderList_TableViewController.swift in Sources */,
-				7DAECB78234FAC5B006153CA /* StringExtension.swift in Sources */,
 				7DCC5C05234AA7E400CD4776 /* SceneDelegate.swift in Sources */,
 				7DCC5C25234ABECB00CD4776 /* InventoryDetailCell_CollectionViewCell.swift in Sources */,
 				7D51961723592D5700145076 /* calculationExtensionOnModel.swift in Sources */,

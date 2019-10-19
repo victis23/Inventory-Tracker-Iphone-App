@@ -41,6 +41,11 @@ class NewOrder_TableViewController: UITableViewController, UITextFieldDelegate {
 	
 	func setupSubmitButtonAsthetics(){
 		submitButton.layer.cornerRadius = 10
+		shortSide.layer.cornerRadius = 10
+		longSide.layer.cornerRadius = 10
+		neededAmountTextField.layer.cornerRadius = 10
+		shortSide.placeholder = " Width"
+		longSide.placeholder = " Length"
 	}
 	
 	// Gets called from originating controller
@@ -63,6 +68,8 @@ class NewOrder_TableViewController: UITableViewController, UITextFieldDelegate {
 		stockObject.performCalculations(incomingAmount: neededAmountAsInteger, shortEdge: doubleShortEdge, longEdge: doubleLongEdge)
 		currentAmount.text = "\(stockObject.amount!)"
 		
+		stockObject.setPercentageAmount()
+		print("******Updated Model******* \(stockObject!)")
 		Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { (timer) in
 			self.performSegue(withIdentifier: SegueKeys.save, sender: sender)
 		}

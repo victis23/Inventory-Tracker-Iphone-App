@@ -80,10 +80,8 @@ class ParentSheetSize_TableViewController: UITableViewController {
 			switch item {
 				case object.envelopes:
 					self.envelopeIsHidden = true
-					print("Envelope")
 				case object.paper:
 					self.paperCellIsHidden = true
-					print("Paper")
 				default:
 				break
 			}

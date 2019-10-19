@@ -28,11 +28,13 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 	
 	var stock : [Stock]? = [] {
 		didSet {
-			guard let stock = stock else {fatalError("Unable to perform unwrap!")}
-			createSnapShot(stock)
-			print("Updated SnapShot")
-			Stock.encode(stock)
-			print("Updated list was saved!")
+			let sortedStock = stock?.sorted(by: { (first, second) -> Bool in
+				first.percentRemaining! < second.percentRemaining!
+			})
+			stock = sortedStock
+			guard let updatedStock = stock else {fatalError("Unable to perform unwrap!")}
+			createSnapShot(updatedStock)
+			Stock.encode(updatedStock)
 		}
 	}
 	
@@ -50,7 +52,6 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 		guard let unWrappedmodel = model else {return}
 		let decodedModel : [Stock] = unWrappedmodel
 		stock = decodedModel
-		createSnapShot(stock)
 	}
 	
 	//MARK: - CollectionView Delegate Methods
@@ -70,6 +71,7 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 		}
 		let delete = UIAlertAction(title: "Delete", style: .destructive) { (item) in
 			self.stock?.remove(at: indexPath.item)
+			
 		}
 		alertController.addAction(newOrder)
 		alertController.addAction(addStock)
@@ -88,22 +90,15 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 			guard let  model = sender as? Stock else {return}
 			controller.setModelForController(model)
 		}
-	}
-
-	@IBAction func unwindToMain(_ unwindSegue: UIStoryboardSegue) {
-		
-		let identifier = unwindSegue.identifier
-		
-		switch identifier {
-			case SegueIdentifiers.cancel:
-			print("View was dismissed without action.")
-			default:
-			break
+		if segue.identifier == SegueIdentifiers.moreStock{
+			let destinationController = segue.destination as! UINavigationController
+			let controller = destinationController.topViewController as! MoreStock_TableViewController
+			guard let model = sender as? Stock else {return}
+			controller.setModelForController(model)
 		}
-		
 	}
-	
 
+	@IBAction func unwindToMain(_ unwindSegue: UIStoryboardSegue) {}
 }
    
 
@@ -134,7 +129,6 @@ extension InventoryTracker_CollectionViewController {
 			cell.backGroundViewForCell.layer.shadowRadius = 5
 			cell.contentView.layer.shadowRadius = 5
 			cell.contentView.clipsToBounds = true
-			print("Incoming Value was — \(self.stock!)")
 			return cell
 		})
 	}
@@ -160,10 +154,8 @@ extension InventoryTracker_CollectionViewController {
 	func createSnapShot(_ model :[Stock]?){
 		var snapShot = NSDiffableDataSourceSnapshot<Sections,Stock>()
 		guard let currentStock = model else {return}
-		let object = currentStock.sorted {$0.percentRemaining! < $1.percentRemaining!}
-
 			snapShot.appendSections([.main])
-			snapShot.appendItems(object, toSection: .main)
+			snapShot.appendItems(currentStock, toSection: .main)
 		dataSource.apply(snapShot, animatingDifferences: true) {
 			self.inventoryDetailCollection.reloadData()
 		}
