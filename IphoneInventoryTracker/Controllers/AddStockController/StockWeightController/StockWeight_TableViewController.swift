@@ -114,28 +114,22 @@ extension StockWeight_TableViewController {
 	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let identifier = dataSource.itemIdentifier(for: indexPath)
-		let row = indexPath.row
+		let row = indexPath.row // being called within the unWrappedIdentifer Switch Statement
 		guard let unWrappedIdentifier = identifier?.identifier else {return}
 		userSelectedModel = Weight(rawValue: "")
 		
 		if identifier?.bond?.weight != nil {
 			tableView.reloadData()
 			userSelectedModel = identifier?.bond?.weight
-			Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (timer) in
-				self.performSegue(withIdentifier: SegueIdentifiers.returnToNewStock, sender: self)
-			}
+			returnToNewStock()
 		}else if identifier?.text?.weight != nil {
 			tableView.reloadData()
 			userSelectedModel = identifier?.text?.weight
-			Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (timer) in
-				self.performSegue(withIdentifier: SegueIdentifiers.returnToNewStock, sender: self)
-			}
+			returnToNewStock()
 		}else if identifier?.cover?.weight != nil {
 			tableView.reloadData()
 			userSelectedModel = identifier?.cover?.weight
-			Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (timer) in
-				self.performSegue(withIdentifier: SegueIdentifiers.returnToNewStock, sender: self)
-			}
+			returnToNewStock()
 		}else{
 			switch unWrappedIdentifier {
 				case selectOption[row].identifier:
@@ -174,6 +168,7 @@ extension StockWeight_TableViewController {
 			let currentModel = self.dataSource.itemIdentifier(for: indexPath)
 			let cell = tableView.dequeueReusableCell(withIdentifier: Keys.weight, for: indexPath) as! StockWeight_TableViewCell
 			let userModel = self.userSelectedModel
+			
 			switch section {
 				case 0:
 					guard currentModel?.identifier == self.defaultBond[row].identifier else {
@@ -188,8 +183,6 @@ extension StockWeight_TableViewController {
 					if userModel?.rawValue == model.bond?.weight?.rawValue {
 					cell.accessoryType = .checkmark
 				}
-					
-					
 				case 1:
 					guard currentModel?.identifier == self.defaultText[row].identifier else {
 						cell.weightLabel.text = model.defaultTextForText
@@ -202,7 +195,6 @@ extension StockWeight_TableViewController {
 				if userModel?.rawValue == model.text?.weight?.rawValue {
 					cell.accessoryType = .checkmark
 				}
-					
 				case 2:
 					guard currentModel?.identifier == self.defaultCover[row].identifier else {
 						cell.weightLabel.text = model.defaultTextForCover
@@ -220,6 +212,12 @@ extension StockWeight_TableViewController {
 				}
 			return cell
 		})
+	}
+	
+	func returnToNewStock(){
+		Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (timer) in
+			self.performSegue(withIdentifier: SegueIdentifiers.returnToNewStock, sender: self)
+		}
 	}
 }
 
