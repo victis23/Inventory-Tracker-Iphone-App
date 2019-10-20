@@ -773,13 +773,13 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eyf-du-43S">
                                                     <rect key="frame" x="44" y="5" width="286" height="128"/>
-                                                    <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" name="Color"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="eyf-du-43S" secondAttribute="height" multiplier="3:2" constant="94" id="Odm-gF-aDo"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="75"/>
                                                     <state key="normal" title="  Submit  ">
-                                                        <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="tappedSubmitButton:" destination="R5t-WH-wEY" eventType="touchUpInside" id="AAZ-x6-l1V"/>
