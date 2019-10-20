@@ -158,23 +158,15 @@ class ParentSheetSize_TableViewController: UITableViewController {
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
 		if paperCellIsHidden == false {
-			switch indexPath {
-				case IndexPath(row: 0, section: 0):
-					setValueLayout(defaultPaperStock, indexPath: indexPath)
-				case IndexPath(row: 1, section: 0):
-					setValueLayout(defaultPaperStock, indexPath: indexPath)
-				case IndexPath(row: 2, section: 0):
-					setValueLayout(defaultPaperStock, indexPath: indexPath)
-				case IndexPath(row: 3, section: 0):
+			switch indexPath.section {
+				case 0:
 					setValueLayout(defaultPaperStock, indexPath: indexPath)
 				default:
 					break
 			}
 		}else if envelopeIsHidden == false {
-			switch indexPath {
-				case IndexPath(row: 0, section: 1):
-					setValueLayout(defaultEnvelopes, indexPath: indexPath)
-				case IndexPath(row: 1, section: 1):
+			switch indexPath.section {
+				case 1:
 					setValueLayout(defaultEnvelopes, indexPath: indexPath)
 				default:
 					break
