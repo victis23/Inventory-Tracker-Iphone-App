@@ -12,7 +12,7 @@
         <!--New Stock-->
         <scene sceneID="iIo-lP-7qQ">
             <objects>
-                <tableViewController id="xV4-q0-62g" customClass="NewStock_TableViewController" customModule="IphoneInventoryTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="xV4-q0-62g" customClass="NewStock_TableViewController" customModule="Inventory_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="4B0-13-Ubx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -289,12 +289,12 @@
         <!--Parent Sheet Size-->
         <scene sceneID="zXt-8E-rmo">
             <objects>
-                <tableViewController id="GUN-nb-JOO" customClass="ParentSheetSize_TableViewController" customModule="IphoneInventoryTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="GUN-nb-JOO" customClass="ParentSheetSize_TableViewController" customModule="Inventory_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="XxM-1W-cLc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="paper" rowHeight="70" id="XsX-Ll-Z0F" customClass="CustomCellTableViewCell" customModule="IphoneInventoryTracker" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="paper" rowHeight="70" id="XsX-Ll-Z0F" customClass="CustomCellTableViewCell" customModule="Inventory_Tracker" customModuleProvider="target">
                                 <rect key="frame" x="20" y="55.5" width="374" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XsX-Ll-Z0F" id="IFI-Hq-lfB">
@@ -339,12 +339,12 @@
         <!--Stock Weight-->
         <scene sceneID="dic-e7-kM5">
             <objects>
-                <tableViewController id="COO-ev-0kB" customClass="StockWeight_TableViewController" customModule="IphoneInventoryTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="COO-ev-0kB" customClass="StockWeight_TableViewController" customModule="Inventory_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="RnA-qy-goX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="stockWeight" rowHeight="70" id="5pl-jz-DCe" customClass="StockWeight_TableViewCell" customModule="IphoneInventoryTracker" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="stockWeight" rowHeight="70" id="5pl-jz-DCe" customClass="StockWeight_TableViewCell" customModule="Inventory_Tracker" customModuleProvider="target">
                                 <rect key="frame" x="20" y="55.5" width="374" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5pl-jz-DCe" id="Y3D-Su-ZO7">
@@ -389,7 +389,7 @@
         <!--Vender-->
         <scene sceneID="hB2-XU-PPM">
             <objects>
-                <tableViewController id="vrV-It-WfX" customClass="VenderList_TableViewController" customModule="IphoneInventoryTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="vrV-It-WfX" customClass="VenderList_TableViewController" customModule="Inventory_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Wte-SR-DZF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -484,7 +484,7 @@
         <!--Vender Contact Info Table View Controller-->
         <scene sceneID="Jd5-xz-QEa">
             <objects>
-                <tableViewController id="rN7-F5-XjV" customClass="VenderContactInfo_TableViewController" customModule="IphoneInventoryTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="rN7-F5-XjV" customClass="VenderContactInfo_TableViewController" customModule="Inventory_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="4zT-ZM-xnH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -655,7 +655,7 @@
         <!--New Order-->
         <scene sceneID="Ude-SN-WDS">
             <objects>
-                <tableViewController id="R5t-WH-wEY" customClass="NewOrder_TableViewController" customModule="IphoneInventoryTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="R5t-WH-wEY" customClass="NewOrder_TableViewController" customModule="Inventory_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="5hk-B2-vDc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -821,7 +821,7 @@
         <!--Inventory List-->
         <scene sceneID="fYb-Jb-l4n">
             <objects>
-                <viewController id="bEE-wc-olj" customClass="InventoryTracker_CollectionViewController" customModule="IphoneInventoryTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="bEE-wc-olj" customClass="InventoryTracker_CollectionViewController" customModule="Inventory_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lyp-iw-BkI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -836,7 +836,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="cell" id="OUN-e2-Qkr" customClass="InventoryDetailCell_CollectionViewCell" customModule="IphoneInventoryTracker" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="cell" id="OUN-e2-Qkr" customClass="InventoryDetailCell_CollectionViewCell" customModule="Inventory_Tracker" customModuleProvider="target">
                                         <rect key="frame" x="32" y="0.0" width="350" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="agI-mm-Ehf">
