@@ -9,7 +9,7 @@
 import Foundation
 
 extension Stock {
-	mutating func performCalculations<T: Hashable>( incomingAmount : T, shortEdge : T, longEdge : T){
+	mutating func performCalculations<T: Hashable>( incomingAmount : T, shortEdge : T, longEdge : T) throws {
 		// converted incoming amout back into an integer from a double
 		guard let newValue = incomingAmount as? Double, let amount = self.amount else {return}
 		
@@ -24,23 +24,19 @@ extension Stock {
 			case .letter:
 				parentSheetShortEnd = 8.5
 				parentSheetLongEnd = 11
-				newtotal = sheetsOut(short, long, parentSheetShortEnd, parentSheetLongEnd)
-				self.amount = amount - (Int(newValue) / newtotal)
+				try verifyAmounts(parentSheetShortEnd, parentSheetLongEnd, newValue, short, long, amount)
 			case .legal:
 				parentSheetShortEnd = 8.5
 				parentSheetLongEnd = 14
-				newtotal = sheetsOut(short, long, parentSheetShortEnd, parentSheetLongEnd)
-				self.amount = amount - (Int(newValue) / newtotal)
+				try verifyAmounts(parentSheetShortEnd, parentSheetLongEnd, newValue, short, long, amount)
 			case .tabloid:
 				parentSheetShortEnd = 11
 				parentSheetLongEnd = 17
-				newtotal = sheetsOut(short, long, parentSheetShortEnd, parentSheetLongEnd)
-				self.amount = amount - (Int(newValue) / newtotal)
+				try verifyAmounts(parentSheetShortEnd, parentSheetLongEnd, newValue, short, long, amount)
 			case .oversized:
 				parentSheetShortEnd = 12
 				parentSheetLongEnd = 18
-				newtotal = sheetsOut(short, long, parentSheetShortEnd, parentSheetLongEnd)
-				self.amount = amount - (Int(newValue) / newtotal)
+				try verifyAmounts(parentSheetShortEnd, parentSheetLongEnd, newValue, short, long, amount)
 			case ._9Envelope:
 				newtotal = amount - Int(newValue)
 				self.amount = newtotal
@@ -52,13 +48,18 @@ extension Stock {
 		}
 	}
 	
-	private func sheetsOut(_ short : Double, _ long : Double, _ parentShort : Double, _ parentLong :Double) -> Int {
+	private func sheetsOut(_ short : Double, _ long : Double, _ parentShort : Double, _ parentLong :Double) throws -> Int {
 			let longGrainValue : Double
 			let shortGrainValue : Double
 			
 			longGrainValue = removeDecimalsAfterOperation(size: parentShort/short) * removeDecimalsAfterOperation(size: parentLong/long)
 				
 			shortGrainValue = removeDecimalsAfterOperation(size: parentShort/long) * removeDecimalsAfterOperation(size: parentLong/short)
+		
+		//Makes sure to throw an error if the size of the sheets is larger than the existing size!
+		if longGrainValue == 0 && shortGrainValue == 0 {
+			throw DivisionError.divisionByZero
+		}
 			
 			if longGrainValue > shortGrainValue {
 				return Int(longGrainValue)
@@ -79,6 +80,34 @@ extension Stock {
 		guard let amount = self.amount, let recommendedAmount = self.recommendedAmount else {return}
 		self.percentRemaining = Int(Double(amount) / Double(recommendedAmount) * 100)
 	}
+}
+
+
+
+extension Stock {
+
+
+	mutating func verifyAmounts(_ parentSheetShortEnd : Double, _ parentSheetLongEnd :Double, _ newValue :Double, _ short :Double, _ long : Double, _ amount : Int) throws {
+		var newtotal : Int = 0
+		
+		try newtotal = sheetsOut(short, long, parentSheetShortEnd, parentSheetLongEnd)
+		
+		// We have to make sure we exhaust the amount available from one sheet before moving on the sheet 2
+			let checkValueForLessThanZeroButNotZero = newValue / Double(newtotal)
+			if checkValueForLessThanZeroButNotZero > 0 && checkValueForLessThanZeroButNotZero < 1 && checkValueForLessThanZeroButNotZero < Double(newtotal) {
+				newtotal = 1
+				let value = 1
+				self.amount = amount - (value / newtotal)
+			}else{
+				self.amount = amount - (Int(newValue) / newtotal)
+			}
+		
+	}
+	
+}
+
+enum DivisionError : Error {
+	case divisionByZero
 }
 	
 	

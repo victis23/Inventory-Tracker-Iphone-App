@@ -61,17 +61,36 @@ class NewOrder_TableViewController: UITableViewController, UITextFieldDelegate {
 	//MARK: IBActions
 	
 	@IBAction func tappedSubmitButton(_ sender: UIButton){
-		// Temporary Value To Test Method —
+		var isError = false
+		
 		guard let neededAmountForNewOrder = neededAmountTextField.text, let neededAmountAsInteger = Double(neededAmountForNewOrder), let shortEdge = shortSide.text, let longEdge = longSide.text else {return}
 		guard let doubleShortEdge = Double(shortEdge), let doubleLongEdge = Double(longEdge) else {return}
 		
-		stockObject.performCalculations(incomingAmount: neededAmountAsInteger, shortEdge: doubleShortEdge, longEdge: doubleLongEdge)
-		currentAmount.text = "\(stockObject.amount!)"
+		// handles error that was thrown in the model method
+		do {
+			try stockObject.performCalculations(incomingAmount: neededAmountAsInteger, shortEdge: doubleShortEdge, longEdge: doubleLongEdge)
+		}catch DivisionError.divisionByZero {
+			isError = true
+		}catch{}
 		
-		stockObject.setPercentageAmount()
-		print("******Updated Model******* \(stockObject!)")
-		Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { (timer) in
-			self.performSegue(withIdentifier: SegueKeys.save, sender: sender)
+		if !isError  {
+			currentAmount.text = "\(stockObject.amount!)"
+			stockObject.setPercentageAmount()
+			print("******Updated Model******* \(stockObject!)")
+			Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { (timer) in
+				self.performSegue(withIdentifier: SegueKeys.save, sender: sender)
+			}
+		}else{
+			let errorAlert = UIAlertController(title: "Wrong Size!", message: "The size of the needed sheet must be smaller than or equal to the actual sheet", preferredStyle: .alert)
+			let okButton = UIAlertAction(title: "Ok", style: .default) { (alerthandler) in
+				self.shortSide.text = nil
+				self.shortSide.becomeFirstResponder()
+				self.longSide.text = nil
+				self.neededAmountTextField.text = nil
+			}
+			errorAlert.addAction(okButton)
+			present(errorAlert, animated: true) {
+			}
 		}
 	}
 	

@@ -21,9 +21,7 @@ class NewStock_TableViewController: UITableViewController {
 	@IBOutlet weak var colorTextField: UITextField!
 	
 	var newStock :Stock?
-	
-	
-	
+
 	override func viewDidLoad() {
         super.viewDidLoad()
 		setEmptyModelValue()
@@ -68,12 +66,6 @@ class NewStock_TableViewController: UITableViewController {
 		}
 	}
 
-	//MARK: Navigation
-	
-	@IBAction func unwindToNewStock(_ unwindSegue: UIStoryboardSegue) {
-
-	}
-	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		switch indexPath.section {
 			case 1:
@@ -159,5 +151,9 @@ extension NewStock_TableViewController {
 			guard let stock = newStock else {return}
 			destination.stock?.append(stock)
 		}
+	}
+	
+	@IBAction func unwindToNewStock(_ unwindSegue: UIStoryboardSegue) {
+
 	}
 }
