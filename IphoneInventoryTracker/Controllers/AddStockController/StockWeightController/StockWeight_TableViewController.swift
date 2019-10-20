@@ -116,7 +116,6 @@ extension StockWeight_TableViewController {
 		let identifier = dataSource.itemIdentifier(for: indexPath)
 		let row = indexPath.row // being called within the unWrappedIdentifer Switch Statement
 		guard let unWrappedIdentifier = identifier?.identifier else {return}
-		userSelectedModel = Weight(rawValue: "")
 		
 		if identifier?.bond?.weight != nil {
 			tableView.reloadData()
