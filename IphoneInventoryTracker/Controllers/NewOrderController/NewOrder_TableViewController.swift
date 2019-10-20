@@ -69,7 +69,7 @@ class NewOrder_TableViewController: UITableViewController, UITextFieldDelegate {
 		// handles error that was thrown in the model method
 		do {
 			try stockObject.performCalculations(incomingAmount: neededAmountAsInteger, shortEdge: doubleShortEdge, longEdge: doubleLongEdge)
-		}catch DivisionError.divisionByZero {
+		}catch DivisionError.noValueResultingInDivisionByZeroError {
 			isError = true
 		}catch{}
 		

@@ -966,7 +966,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Inventory List" largeTitleDisplayMode="always" id="odg-yf-ETa">
                         <barButtonItem key="rightBarButtonItem" title="Add Stock" id="R5l-st-hzf">
-                            <color key="tintColor" name="85cfcb"/>
+                            <color key="tintColor" name="219897"/>
                             <connections>
                                 <segue destination="xV4-q0-62g" kind="show" id="cbX-W6-HBS"/>
                             </connections>
@@ -1037,8 +1037,8 @@
         <namedColor name="219897">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
-        <namedColor name="85cfcb">
-            <color red="0.31000000238418579" green="0.50599998235702515" blue="0.77999997138977051" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="219897">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
         <namedColor name="Color">
             <color red="0.94099998474121094" green="0.84299999475479126" blue="0.61599999666213989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

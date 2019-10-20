@@ -14,6 +14,7 @@ extension InventoryTracker_CollectionViewController {
 		case main
 	}
 	
+	/*
 	struct Items :Hashable {
 		var inventory :Stock
 		
@@ -21,4 +22,6 @@ extension InventoryTracker_CollectionViewController {
 			self.inventory = inventory
 		}
 	}
+	*/
+	
 }
