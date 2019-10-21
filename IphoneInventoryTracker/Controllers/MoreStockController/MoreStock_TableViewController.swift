@@ -60,6 +60,11 @@ class MoreStock_TableViewController: UITableViewController {
 			self.performSegue(withIdentifier: SegueKeys.home, sender: self.incomingStock)
 		}
 	}
+	//MARK: TableView Delegate
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		view.endEditing(true)
+		tableView.deselectRow(at: indexPath, animated: true)
+	}
 	
 	//MARK: Navigation
 	

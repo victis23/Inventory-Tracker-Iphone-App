@@ -24,6 +24,7 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 
 	//MARK: IBOutlets
 	@IBOutlet weak var inventoryDetailCollection :UICollectionView!
+	@IBOutlet weak var rightSwipe : UISwipeGestureRecognizer!
 	var dataSource :DataSource!
 	
 	var stock : [Stock]? = [] {

@@ -915,6 +915,7 @@
                                                         </stackView>
                                                     </subviews>
                                                     <color key="backgroundColor" name="Color"/>
+                                                    <gestureRecognizers/>
                                                     <constraints>
                                                         <constraint firstItem="x7e-Uy-FFb" firstAttribute="leading" relation="lessThanOrEqual" secondItem="qeO-fv-Uzq" secondAttribute="trailing" constant="232" id="8Kr-Ej-YGf"/>
                                                         <constraint firstAttribute="bottom" secondItem="6OZ-JO-4aj" secondAttribute="bottom" constant="10" id="BwH-yg-EMo"/>
@@ -928,6 +929,9 @@
                                                         <constraint firstAttribute="trailing" secondItem="6OZ-JO-4aj" secondAttribute="trailing" constant="20" id="l78-cA-Isz"/>
                                                         <constraint firstItem="dEn-cZ-Vvz" firstAttribute="top" secondItem="qeO-fv-Uzq" secondAttribute="bottom" constant="10" id="pdI-JZ-2YN"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="7HR-vh-X1N" appends="YES" id="y0b-zk-Wi2"/>
+                                                    </connections>
                                                 </view>
                                             </subviews>
                                             <constraints>
@@ -966,7 +970,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Inventory List" largeTitleDisplayMode="always" id="odg-yf-ETa">
                         <barButtonItem key="rightBarButtonItem" title="Add Stock" id="R5l-st-hzf">
-                            <color key="tintColor" name="219897"/>
+                            <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                             <connections>
                                 <segue destination="xV4-q0-62g" kind="show" id="cbX-W6-HBS"/>
                             </connections>
@@ -974,11 +978,13 @@
                     </navigationItem>
                     <connections>
                         <outlet property="inventoryDetailCollection" destination="VpV-U4-trj" id="EUa-eY-r1o"/>
+                        <outlet property="rightSwipe" destination="7HR-vh-X1N" id="a4A-e1-QP5"/>
                         <segue destination="07h-5b-Kyc" kind="presentation" identifier="newOrder" id="p6G-Cj-jMf"/>
                         <segue destination="Eka-0f-vl5" kind="presentation" identifier="moreStock" id="BRr-yh-mHo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8zZ-dV-zxU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="7HR-vh-X1N"/>
             </objects>
             <point key="canvasLocation" x="857.97101449275374" y="114.50892857142857"/>
         </scene>
@@ -1017,10 +1023,10 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" name="219897"/>
+                            <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                         </textAttributes>
                         <textAttributes key="largeTitleTextAttributes">
-                            <color key="textColor" name="219897"/>
+                            <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1034,12 +1040,6 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="219897">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </namedColor>
-        <namedColor name="219897">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </namedColor>
         <namedColor name="Color">
             <color red="0.94099998474121094" green="0.84299999475479126" blue="0.61599999666213989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
