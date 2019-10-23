@@ -92,9 +92,13 @@ class ParentSheetSize_TableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		setDataSource()
-		createSnapShot(selectPaper, selectEnvelope, animated: true)
-		
     }
+	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		//Temporary fix until I figure out tableview.window != nil
+		createSnapShot(selectPaper, selectEnvelope, animated: true)
+	}
 	
 	fileprivate func createSnapShot(_ stock : [StockGroupings], _ envelopes : [StockGroupings], animated: Bool){
 		var snapShot = NSDiffableDataSourceSnapshot<Section,StockGroupings>()

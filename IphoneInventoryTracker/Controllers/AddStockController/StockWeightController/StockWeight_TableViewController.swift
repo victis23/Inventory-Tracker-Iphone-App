@@ -86,8 +86,19 @@ class StockWeight_TableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		setDataSource()
-		setSnapShot(selectOption, selectOption2, selectOption3, animated: true)
+		
+		/*
+		if tableView.window != nil {
+			self.setSnapShot(self.selectOption, self.selectOption2, self.selectOption3, animated: true)
+		}
+		*/
     }
+
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		//temporary fix. Moved here because of tableview.window nil error
+		self.setSnapShot(self.selectOption, self.selectOption2, self.selectOption3, animated: true)
+	}
 	
 	private class Datasource : UITableViewDiffableDataSource<Section,StockTypes>{
 		
@@ -113,16 +124,14 @@ extension StockWeight_TableViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		let row = indexPath.row
-		guard let identifier = dataSource.itemIdentifier(for: indexPath) else {return}
 		
+		guard let identifier = dataSource.itemIdentifier(for: indexPath) else {return}
 		if identifier.bond?.weight != nil || identifier.text?.weight != nil || identifier.cover?.weight != nil {
-			defer {
-				returnToNewStock()
-			}
-			tableView.reloadData()
+			defer {returnToNewStock()} // stay within scope of function until end before performing segue
+			tableView.reloadData() // tableview needs to reload in order for checkmarks to appear next to selected items
 			userSelectedModel = identifier.bond?.weight ?? identifier.text?.weight ?? identifier.cover?.weight
 		}else{
+			let row = indexPath.row
 			switch dataSource.itemIdentifier(for: indexPath)?.identifier {
 				case selectOption[row].identifier:
 					setSnapShot(defaultBond, selectOption2, selectOption3, animated: true)
