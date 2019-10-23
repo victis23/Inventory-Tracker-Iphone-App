@@ -80,7 +80,7 @@ class StockWeight_TableViewController: UITableViewController {
 	
 	private var dataSource : Datasource!
 	var userSelectedItem :String!
-	var userSelectedModel : Weight!
+	var userSelectedModel : Weight?
 	var selectedIndex : IndexPath!
 	
     override func viewDidLoad() {
@@ -113,24 +113,17 @@ extension StockWeight_TableViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		let identifier = dataSource.itemIdentifier(for: indexPath)
-		let row = indexPath.row // being called within the unWrappedIdentifer Switch Statement
-		guard let unWrappedIdentifier = identifier?.identifier else {return}
+		let row = indexPath.row
+		guard let identifier = dataSource.itemIdentifier(for: indexPath) else {return}
 		
-		if identifier?.bond?.weight != nil {
+		if identifier.bond?.weight != nil || identifier.text?.weight != nil || identifier.cover?.weight != nil {
+			defer {
+				returnToNewStock()
+			}
 			tableView.reloadData()
-			userSelectedModel = identifier?.bond?.weight
-			returnToNewStock()
-		}else if identifier?.text?.weight != nil {
-			tableView.reloadData()
-			userSelectedModel = identifier?.text?.weight
-			returnToNewStock()
-		}else if identifier?.cover?.weight != nil {
-			tableView.reloadData()
-			userSelectedModel = identifier?.cover?.weight
-			returnToNewStock()
+			userSelectedModel = identifier.bond?.weight ?? identifier.text?.weight ?? identifier.cover?.weight
 		}else{
-			switch unWrappedIdentifier {
+			switch dataSource.itemIdentifier(for: indexPath)?.identifier {
 				case selectOption[row].identifier:
 					setSnapShot(defaultBond, selectOption2, selectOption3, animated: true)
 				case selectOption2[row].identifier:
@@ -226,7 +219,7 @@ extension StockWeight_TableViewController {
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == SegueIdentifiers.returnToNewStock {
 			let destinationController = segue.destination as! NewStock_TableViewController
-			
+			guard let userSelectedModel = userSelectedModel else {return}
 			destinationController.stockWeightLabel.text = userSelectedModel.rawValue
 				let stockModel = Stock(nil, nil, userSelectedModel, nil, nil, nil)
 			destinationController.updateNewStock(stockModel)

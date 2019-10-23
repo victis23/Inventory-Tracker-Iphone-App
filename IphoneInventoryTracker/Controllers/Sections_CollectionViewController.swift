@@ -13,15 +13,4 @@ extension InventoryTracker_CollectionViewController {
 	enum Sections {
 		case main
 	}
-	
-	/*
-	struct Items :Hashable {
-		var inventory :Stock
-		
-		init(_ inventory :Stock) {
-			self.inventory = inventory
-		}
-	}
-	*/
-	
 }
