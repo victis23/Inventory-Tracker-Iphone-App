@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import WebKit
+import MessageUI
 
-class VenderContactInfo_TableViewController: UITableViewController {
+class VenderContactInfo_TableViewController: UITableViewController, MFMailComposeViewControllerDelegate, UINavigationControllerDelegate {
 	
 	@IBOutlet weak var supplierName :UILabel!
 	@IBOutlet weak var phoneNumberLabel : UILabel!
@@ -19,6 +21,10 @@ class VenderContactInfo_TableViewController: UITableViewController {
 	@IBOutlet weak var websiteLabel : UILabel!
 	
 	var contactInformation : VenderInfo!
+	//Index Paths
+	let phoneNumberIndexPath = IndexPath(row: 0, section: 1)
+	let emailIndexPath = IndexPath(item: 1, section: 1)
+	let websiteIndexPath = IndexPath(item: 3, section: 1)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +44,19 @@ class VenderContactInfo_TableViewController: UITableViewController {
 		physicalAddressLine1Label.text = String(address[0])
 		physicalAddressLine1Labe2.text = String(address[1])
 		physicalAddressLine1Labe3.text = "\(address[2]), \(address[3])"
+	}
+	
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		switch indexPath {
+			case phoneNumberIndexPath:
+			print("phone")
+			case emailIndexPath:
+			print("email")
+			case websiteIndexPath:
+			print("website")
+			default:
+			break
+		}
 	}
 	
 }

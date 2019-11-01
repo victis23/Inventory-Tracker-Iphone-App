@@ -11,6 +11,8 @@ import UIKit
 
 class InventoryTracker_CollectionViewController: UIViewController, UICollectionViewDelegate {
 	
+	@IBOutlet weak var searchField: UISearchBar!
+	
 	private struct CellIdentifiers {
 		static var collectionViewKey = "cell"
 	}
@@ -21,10 +23,9 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 		static var newOrder = "newOrder"
 		static var moreStock = "moreStock"
 	}
-
+	
 	//MARK: IBOutlets
 	@IBOutlet weak var inventoryDetailCollection :UICollectionView!
-	@IBOutlet weak var rightSwipe : UISwipeGestureRecognizer!
 	var dataSource :DataSource!
 	
 	var stock : [Stock]? = [] {
@@ -39,16 +40,17 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 		}
 	}
 	
-    override func viewDidLoad() {
-        super.viewDidLoad()
+	override func viewDidLoad() {
+		super.viewDidLoad()
 		let layOut = createLayout()
 		inventoryDetailCollection.collectionViewLayout = layOut
 		setupDataSource()
 		intialSetupOfExistingData()
 		inventoryDetailCollection.delegate = self
-    }
+	}
 	
 	func intialSetupOfExistingData(){
+		self.navigationController?.navigationBar.prefersLargeTitles = true
 		let model = Stock.decode() as [Stock]?
 		guard let unWrappedmodel = model else {return}
 		let decodedModel : [Stock] = unWrappedmodel
@@ -82,7 +84,7 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 	}
 	
 	
-    // MARK: - Navigation
+	// MARK: - Navigation
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == SegueIdentifiers.newOrder{
@@ -98,10 +100,10 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 			controller.setModelForController(model)
 		}
 	}
-
+	
 	@IBAction func unwindToMain(_ unwindSegue: UIStoryboardSegue) {}
 }
-   
+
 
 
 extension InventoryTracker_CollectionViewController {
@@ -130,13 +132,18 @@ extension InventoryTracker_CollectionViewController {
 			cell.backGroundViewForCell.layer.shadowRadius = 5
 			cell.contentView.layer.shadowRadius = 5
 			cell.contentView.clipsToBounds = true
+			cell.cartonStatus.alpha = 0.25
+			guard remainingPercentage <= 50 else {
+				cell.cartonStatus.image = UIImage(named: "Full")
+				return cell}
+			cell.cartonStatus.image = UIImage(named: "Empty")
 			return cell
 		})
 	}
-
-
-    // MARK: UICollectionViewDelegate
-
+	
+	
+	// MARK: UICollectionViewDelegate
+	
 	func createLayout()->UICollectionViewCompositionalLayout{
 		let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(150))
 		let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.5))
@@ -155,8 +162,8 @@ extension InventoryTracker_CollectionViewController {
 	func createSnapShot(_ model :[Stock]?){
 		var snapShot = NSDiffableDataSourceSnapshot<Sections,Stock>()
 		guard let currentStock = model else {return}
-			snapShot.appendSections([.main])
-			snapShot.appendItems(currentStock, toSection: .main)
+		snapShot.appendSections([.main])
+		snapShot.appendItems(currentStock, toSection: .main)
 		dataSource.apply(snapShot, animatingDifferences: true) {
 			self.inventoryDetailCollection.reloadData()
 		}
