@@ -10,6 +10,7 @@
 		7D0349142354FE3000BD1AAF /* MoreStock_Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D0349132354FE3000BD1AAF /* MoreStock_Storyboard.storyboard */; };
 		7D0349162354FF7F00BD1AAF /* MoreStock_TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0349152354FF7F00BD1AAF /* MoreStock_TableViewController.swift */; };
 		7D0F5589236C4D27001C6460 /* ExtensionInventoryTrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0F5588236C4D27001C6460 /* ExtensionInventoryTrackerViewController.swift */; };
+		7D118D5F236E2E4500203852 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D118D5E236E2E4500203852 /* WebViewController.swift */; };
 		7D1911BD234C0B3600D699FB /* CustomCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1911BC234C0B3600D699FB /* CustomCellTableViewCell.swift */; };
 		7D51961723592D5700145076 /* calculationExtensionOnModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D51961623592D5700145076 /* calculationExtensionOnModel.swift */; };
 		7D6FB459236AA27300082D4F /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6FB458236AA27300082D4F /* MainTabBarController.swift */; };
@@ -38,6 +39,7 @@
 		7D0349132354FE3000BD1AAF /* MoreStock_Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MoreStock_Storyboard.storyboard; sourceTree = "<group>"; };
 		7D0349152354FF7F00BD1AAF /* MoreStock_TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreStock_TableViewController.swift; sourceTree = "<group>"; };
 		7D0F5588236C4D27001C6460 /* ExtensionInventoryTrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionInventoryTrackerViewController.swift; sourceTree = "<group>"; };
+		7D118D5E236E2E4500203852 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		7D1911BC234C0B3600D699FB /* CustomCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCellTableViewCell.swift; sourceTree = "<group>"; };
 		7D51961623592D5700145076 /* calculationExtensionOnModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calculationExtensionOnModel.swift; sourceTree = "<group>"; };
 		7D69492A2369E8A4006443EB /* Inventory Tracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Inventory Tracker.entitlements"; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 			children = (
 				7DCC5C1E234ABE4500CD4776 /* VenderList_TableViewController.swift */,
 				7DCC5C20234ABE5800CD4776 /* VenderContactInfo_TableViewController.swift */,
+				7D118D5E236E2E4500203852 /* WebViewController.swift */,
 			);
 			path = VenderListController;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7DCC5C2B234ABF9D00CD4776 /* VenderModel.swift in Sources */,
+				7D118D5F236E2E4500203852 /* WebViewController.swift in Sources */,
 				7DCC5C23234ABEA100CD4776 /* InventoryTracker_CollectionViewController.swift in Sources */,
 				7D6FB459236AA27300082D4F /* MainTabBarController.swift in Sources */,
 				7DCC5C2D234ABFEE00CD4776 /* Stock.swift in Sources */,
