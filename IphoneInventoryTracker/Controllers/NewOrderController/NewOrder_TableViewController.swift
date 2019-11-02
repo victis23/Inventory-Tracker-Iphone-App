@@ -31,6 +31,7 @@ class NewOrder_TableViewController: UITableViewController, UITextFieldDelegate {
 		setControllerTitle()
 		setupSubmitButtonAsthetics()
 		amountLabelText(stockObject)
+		tableView.keyboardDismissMode = .interactive
 		
     }
 	

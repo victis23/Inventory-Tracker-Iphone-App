@@ -11,6 +11,5 @@ import UIKit
 extension InventoryTracker_CollectionViewController {
 
 	class DataSource : UICollectionViewDiffableDataSource<Sections,Stock> {
-
 	}
 }

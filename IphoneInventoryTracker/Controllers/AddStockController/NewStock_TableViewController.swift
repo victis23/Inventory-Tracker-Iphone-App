@@ -26,6 +26,7 @@ class NewStock_TableViewController: UITableViewController {
         super.viewDidLoad()
 		setEmptyModelValue()
 		setTextFieldTags()
+		tableView.keyboardDismissMode = .interactive
     }
 	
 	deinit {
@@ -95,6 +96,9 @@ class NewStock_TableViewController: UITableViewController {
 				colorTextField.becomeFirstResponder()
 			case 5:
 				colorTextField.resignFirstResponder()
+				if saveButton.isEnabled {
+					performSegue(withIdentifier: "done", sender: sender)
+			}
 			default:
 			break
 		}

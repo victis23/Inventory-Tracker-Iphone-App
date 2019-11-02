@@ -12,6 +12,7 @@ import UIKit
 class InventoryTracker_CollectionViewController: UIViewController, UICollectionViewDelegate {
 	
 	@IBOutlet weak var searchField: UISearchBar!
+
 	
 	private struct CellIdentifiers {
 		static var collectionViewKey = "cell"
@@ -47,6 +48,8 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 		setupDataSource()
 		intialSetupOfExistingData()
 		inventoryDetailCollection.delegate = self
+		searchField.delegate = self
+		inventoryDetailCollection.keyboardDismissMode = .onDrag
 	}
 	
 	func intialSetupOfExistingData(){
@@ -64,9 +67,11 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 		
 		let alertController = UIAlertController(title: "Modify Existing Stock", message: "Please select how you'd like to update the stock amount.", preferredStyle: .alert)
 		let newOrder = UIAlertAction(title: "New Order", style: .default) { (action) in
+			self.resetTableViewValuesAndClearSearchFields()
 			self.performSegue(withIdentifier: SegueIdentifiers.newOrder, sender: model)
 		}
 		let addStock = UIAlertAction(title: "Update Stock Amount", style: .default) { (action) in
+			self.resetTableViewValuesAndClearSearchFields()
 			self.performSegue(withIdentifier: SegueIdentifiers.moreStock, sender: model)
 		}
 		let cancel = UIAlertAction(title: "Cancel", style: .destructive) { (action) in
@@ -81,6 +86,12 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 		alertController.addAction(delete)
 		alertController.addAction(cancel)
 		present(alertController, animated: true, completion: nil)
+	}
+	func resetTableViewValuesAndClearSearchFields(){
+		self.searchField.text = ""
+		self.view.endEditing(true)
+		// We need to return back to the original snapshot inorder to avoid non-unique identifier error
+		self.createSnapShot(self.stock)
 	}
 	
 	
@@ -100,7 +111,8 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 			controller.setModelForController(model)
 		}
 	}
-	
+	//MARK: IBActions
+
 	@IBAction func unwindToMain(_ unwindSegue: UIStoryboardSegue) {}
 }
 
@@ -145,8 +157,8 @@ extension InventoryTracker_CollectionViewController {
 	// MARK: UICollectionViewDelegate
 	
 	func createLayout()->UICollectionViewCompositionalLayout{
-		let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(150))
-		let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.5))
+		let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(150))
+		let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.55))
 		
 		let item = NSCollectionLayoutItem(layoutSize: itemSize)
 		item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20)

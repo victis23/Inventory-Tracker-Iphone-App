@@ -18,13 +18,14 @@ class MoreStock_TableViewController: UITableViewController {
 	@IBOutlet weak var submitButton: UIButton!
 	@IBOutlet weak var newAmount: UITextField!
 	var incomingStock : Stock!
-	var indexPath : IndexPath!
+	var indexPath : IndexPath?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 		setAmountLabel()
 		setControllerTitle()
 		setButtonAesthetics()
+		tableView.keyboardDismissMode = .interactive
     }
 	
 	func setModelForController(_ incomingModel : Stock){
@@ -78,8 +79,10 @@ class MoreStock_TableViewController: UITableViewController {
 			guard let externalStock = homeController.stock else {return}
 			
 			localStocks = externalStock
-			localStocks.remove(at: indexPath.item)
-			localStocks.insert(incomingStock, at: indexPath.item)
+			if indexPath?.item != nil {
+				localStocks.remove(at: indexPath!.item)
+				localStocks.insert(incomingStock, at: indexPath!.item)
+			}
 			homeController.stock = localStocks
 		}
 	}
