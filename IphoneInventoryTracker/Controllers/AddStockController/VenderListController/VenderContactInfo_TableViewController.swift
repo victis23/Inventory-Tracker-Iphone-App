@@ -62,11 +62,11 @@ class VenderContactInfo_TableViewController: UITableViewController, MFMailCompos
 				sendEmail()
 			case websiteIndexPath:
 				/* Not In use because of current bug in iOS 13.2*/
-								loadWebView()
+//								loadWebView()
 				
-//				let safariViewer = SFSafariViewController(url: contactInformation.website!)
-//				safariViewer.modalPresentationStyle = .pageSheet
-//				present(safariViewer, animated: true, completion: nil)
+				let safariViewer = SFSafariViewController(url: contactInformation.website!)
+				safariViewer.modalPresentationStyle = .pageSheet
+				present(safariViewer, animated: true, completion: nil)
 			default:
 				break
 		}
