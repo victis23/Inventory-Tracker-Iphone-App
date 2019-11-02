@@ -7,10 +7,8 @@
 //
 
 import UIKit
-import WebKit
 import MessageUI
 import SafariServices
-import CoreTelephony
 
 class VenderContactInfo_TableViewController: UITableViewController, MFMailComposeViewControllerDelegate, UINavigationControllerDelegate, WebViewDelegate, SFSafariViewControllerDelegate {
 	
