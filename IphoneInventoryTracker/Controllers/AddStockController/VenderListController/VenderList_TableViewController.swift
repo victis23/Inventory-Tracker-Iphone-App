@@ -8,20 +8,83 @@
 
 import UIKit
 
+protocol VenderListDelegate {
+	var vender : Vender? {get set}
+}
+
 class VenderList_TableViewController: UITableViewController {
 	
 	fileprivate struct Keys {
 		static var returnHomeWithVender = "goHomeVender"
 		static var venderInfo = "venderContactinfo"
+		static var cellKey = "vender"
+	}
+	
+	enum Section {
+		case main
+	}
+	
+	//MARK: ... Variable Declarations
+	var listDelegate : VenderListDelegate?
+	var dataSource : Datasource!
+	
+	//Declare an empty Array of type Vender
+	var venders : [Vender] = [] {
+		didSet {
+			print("Updated Vender //// \(venders)")
+			snapShot(with: venders)
+		}
 	}
 	
 	fileprivate var selectedVender : Vender!
-	fileprivate var venderInformation : VenderInfo!
+//	fileprivate var venderInformation : Vender!
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		setDataSource()
+	}
+	
+	func updateVenderArray(){
+		guard let vender = listDelegate?.vender else {return}
+		venders.append(vender)
+	}
+	func snapShot(with venders: [Vender]){
+		var snapShot = NSDiffableDataSourceSnapshot<Section, Vender>()
+		snapShot.appendSections([.main])
+		snapShot.appendItems(venders, toSection: .main)
+		dataSource?.apply(snapShot, animatingDifferences: true)
+	}
+	
+	func setDataSource(){
+		dataSource = Datasource(tableView: tableView, cellProvider: { (tableView, indexPath, vender) -> UITableViewCell? in
+			
+			let cell = tableView.dequeueReusableCell(withIdentifier: Keys.cellKey, for: indexPath) as! VenderCell_TableViewCell
+			
+			switch indexPath.section {
+				case 0:
+				cell.companyName.text = vender.name
+				cell.companyName.tintColor = .systemRed
+				default:
+				break
+			}
+			return cell
+		})
+	}
+	
+	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		return 70
+	}
+	
+	class Datasource : UITableViewDiffableDataSource<Section, Vender> {
+	}
+	
+}
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
 
-    }
+
+extension VenderList_TableViewController {
+	
+	
 	
 	func getVenderContactInfo(_ vender:Vender){
 		let alertViewController = UIAlertController(title: "Supplier Information", message: "Select GET INFO to view supplier information.", preferredStyle: .actionSheet)
@@ -31,6 +94,7 @@ class VenderList_TableViewController: UITableViewController {
 		}
 		let cancel = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
 		let getInformation = UIAlertAction(title: "Get Info", style: .default) { (bool) in
+			self.selectedVender = vender
 			self.performSegue(withIdentifier: Keys.venderInfo, sender: self)
 		}
 		let options : [UIAlertAction] = [saveVenderSelection, getInformation, cancel]
@@ -38,39 +102,14 @@ class VenderList_TableViewController: UITableViewController {
 		alertViewController.preferredAction = saveVenderSelection
 		present(alertViewController, animated: true, completion: nil)
 	}
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-      
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-   
-        return 3
-    }
-
+	
+	// MARK: - Table view data source
+	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		let selectedRow = indexPath.row
-		
-		switch selectedRow {
-			case 0:
-				let vender = Vender.Case
-				venderInformation = VenderInfo(name: Vender.Case, address: "3333 N.W. 116th Street, Miami, FL, 33167", phone: "305-681-2273", email: "jciavola@casepaper.com", website: URL(string: "https://www.casepaper.com"))
-				getVenderContactInfo(vender)
-			case 1:
-				let vender = Vender.Veritiv
-				venderInformation = VenderInfo(name: Vender.Veritiv, address: "3200 Mercy Dr, Orlando, FL, 32808", phone: "407-521-3090", email: "orlandoVE@veritivcorp.com", website: URL(string: "https://www.veritivcorp.com"))
-				getVenderContactInfo(vender)
-			case 2:
-				let vender = Vender.MacPapers
-				venderInformation = VenderInfo(name: Vender.MacPapers, address: "3300 Philips Highway, Jacksonville, FL, 32207", phone: "407-629-5354", email: "cyndy.rosato@macpapers.com", website: URL(string: "https://www.macpapers.com"))
-				getVenderContactInfo(vender)
-			default:
-			break
-		}
+		guard let model = dataSource.itemIdentifier(for: indexPath) else {return}
+		getVenderContactInfo(model)
 	}
+
 }
 
 // MARK: Navigation
@@ -82,13 +121,13 @@ extension VenderList_TableViewController {
 			let model = Stock(nil, nil, nil, nil, nil, selectedVender)
 			destination.updateNewStock(model)
 			guard let vender = selectedVender else {return}
-			destination.venderLabel.text = vender.rawValue
+			destination.venderLabel.text = vender.name
 		}
 		
 		if segue.identifier == Keys.venderInfo {
 			let destination = segue.destination as! VenderContactInfo_TableViewController
-			destination.contactInformation = venderInformation
+			destination.contactInformation = selectedVender
 		}
 	}
+	
 }
-

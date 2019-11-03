@@ -8,16 +8,19 @@
 
 import Foundation
 
-struct VenderInfo {
-	var name: Vender
+struct Vender: Hashable, Codable, Equatable {
+	var name: String
 	var address :String
 	var phone :String
 	var email :String
 	var website :URL?
+	let identifier = UUID()
+	
+	func hash(into hasher : inout Hasher){
+		hasher.combine(identifier)
+	}
+	static func ==(lhs:Vender, rhs:Vender) -> Bool {
+		lhs.identifier == rhs.identifier
+	}
 }
 
-enum Vender :String , CaseIterable, Codable{
-	case Case = "Case Papers"
-	case Veritiv
-	case MacPapers = "Mac Papers"
-}

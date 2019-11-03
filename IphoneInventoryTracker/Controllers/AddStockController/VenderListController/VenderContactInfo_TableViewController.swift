@@ -23,7 +23,7 @@ class VenderContactInfo_TableViewController: UITableViewController, MFMailCompos
 	@IBOutlet weak var physicalAddressLine1Labe3 : UILabel!
 	@IBOutlet weak var websiteLabel : UILabel!
 	
-	var contactInformation : VenderInfo!
+	var contactInformation : Vender!
 	//Index Paths
 	let phoneNumberIndexPath = IndexPath(row: 0, section: 1)
 	let emailIndexPath = IndexPath(item: 1, section: 1)
@@ -36,7 +36,7 @@ class VenderContactInfo_TableViewController: UITableViewController, MFMailCompos
 	}
 	
 	func setvaluesForVender(){
-		supplierName.text = contactInformation.name.rawValue
+		supplierName.text = contactInformation.name
 		phoneNumberLabel.text = contactInformation.phone
 		emailAddressLabel.text = contactInformation.email
 		
