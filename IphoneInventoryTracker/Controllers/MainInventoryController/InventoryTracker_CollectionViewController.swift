@@ -66,19 +66,19 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 		let model = dataSource.itemIdentifier(for: indexPath)
 		
 		let alertController = UIAlertController(title: "Modify Existing Stock", message: "Please select how you'd like to update the stock amount.", preferredStyle: .alert)
-		let newOrder = UIAlertAction(title: "New Order", style: .default) { (action) in
-			self.resetTableViewValuesAndClearSearchFields()
-			self.performSegue(withIdentifier: SegueIdentifiers.newOrder, sender: model)
+		let newOrder = UIAlertAction(title: "New Order", style: .default) { [weak self](action) in
+			self?.resetTableViewValuesAndClearSearchFields()
+			self?.performSegue(withIdentifier: SegueIdentifiers.newOrder, sender: model)
 		}
-		let addStock = UIAlertAction(title: "Update Stock Amount", style: .default) { (action) in
-			self.resetTableViewValuesAndClearSearchFields()
-			self.performSegue(withIdentifier: SegueIdentifiers.moreStock, sender: model)
+		let addStock = UIAlertAction(title: "Update Stock Amount", style: .default) { [weak self](action) in
+			self?.resetTableViewValuesAndClearSearchFields()
+			self?.performSegue(withIdentifier: SegueIdentifiers.moreStock, sender: model)
 		}
-		let cancel = UIAlertAction(title: "Cancel", style: .destructive) { (action) in
-			self.dismiss(animated: true, completion: nil)
+		let cancel = UIAlertAction(title: "Cancel", style: .destructive) { [weak self](action) in
+			self?.dismiss(animated: true, completion: nil)
 		}
-		let delete = UIAlertAction(title: "Delete", style: .destructive) { (item) in
-			self.stock?.remove(at: indexPath.item)
+		let delete = UIAlertAction(title: "Delete", style: .destructive) { [weak self](item) in
+			self?.stock?.remove(at: indexPath.item)
 			
 		}
 		alertController.addAction(newOrder)

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LBf-ox-1Kl">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Venders-->
+        <scene sceneID="51o-rW-Slz">
+            <objects>
+                <tableViewController id="LBf-ox-1Kl" customClass="ViewVendersTableViewController" customModule="Inventory_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="q7o-B8-lVL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="venders" rowHeight="70" id="B4E-J6-k9a">
+                                <rect key="frame" x="20" y="55.5" width="374" height="70"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="B4E-J6-k9a" id="eHI-Xb-3pi">
+                                    <rect key="frame" x="0.0" y="0.0" width="330" height="70"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="LBf-ox-1Kl" id="FsV-wp-yKp"/>
+                            <outlet property="delegate" destination="LBf-ox-1Kl" id="1uW-Gf-ABm"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Venders" largeTitleDisplayMode="always" id="2Df-9b-p3D"/>
+                    <connections>
+                        <segue destination="pGY-Nh-DgA" kind="show" identifier="info" id="bUj-gY-Q8o"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dLN-mF-9bK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="818.84057971014499" y="75.669642857142847"/>
+        </scene>
+        <!--info-->
+        <scene sceneID="IQ0-y5-ZpD">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="info" storyboardName="Main" referencedIdentifier="info" id="pGY-Nh-DgA" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="uKE-ew-N9R"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MBO-Al-N1v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1766" y="-205"/>
+        </scene>
+    </scenes>
+</document>

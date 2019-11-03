@@ -6,11 +6,8 @@
 //  Copyright © 2019 Scott Leonard. All rights reserved.
 //
 
-import UIKit
 
-protocol VenderListDelegate {
-	var vender : Vender? {get set}
-}
+import UIKit
 
 class VenderList_TableViewController: UITableViewController {
 	
@@ -25,48 +22,44 @@ class VenderList_TableViewController: UITableViewController {
 	}
 	
 	//MARK: ... Variable Declarations
-	var listDelegate : VenderListDelegate?
-	var dataSource : Datasource!
 	
-	//Declare an empty Array of type Vender
-	var venders : [Vender] = [] {
+	private var dataSource : UITableViewDiffableDataSource<Section, Vendor>! = nil
+
+	var venders : [Vendor] = [] {
 		didSet {
-			print("Updated Vender //// \(venders)")
 			snapShot(with: venders)
 		}
 	}
 	
-	fileprivate var selectedVender : Vender!
-//	fileprivate var venderInformation : Vender!
+	fileprivate var selectedVender : Vendor!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setDataSource()
+		initialSetup()
 	}
-	
-	func updateVenderArray(){
-		guard let vender = listDelegate?.vender else {return}
-		venders.append(vender)
+	deinit {
+		print("Vender List Is Killed")
 	}
-	func snapShot(with venders: [Vender]){
-		var snapShot = NSDiffableDataSourceSnapshot<Section, Vender>()
+	func initialSetup(){
+		guard let stocks : [Stock] = Stock.decode() else {return}
+		var allVenders : [Vendor] = []
+		stocks.forEach({allVenders.append($0.vender!)})
+		venders = allVenders
+	}
+	func snapShot(with venders: [Vendor]){
+		var snapShot = NSDiffableDataSourceSnapshot<Section,Vendor>()
 		snapShot.appendSections([.main])
 		snapShot.appendItems(venders, toSection: .main)
 		dataSource?.apply(snapShot, animatingDifferences: true)
 	}
 	
 	func setDataSource(){
-		dataSource = Datasource(tableView: tableView, cellProvider: { (tableView, indexPath, vender) -> UITableViewCell? in
+		dataSource = UITableViewDiffableDataSource<Section,Vendor>(tableView: tableView, cellProvider: { (tableView, indexPath, vender) -> UITableViewCell? in
 			
 			let cell = tableView.dequeueReusableCell(withIdentifier: Keys.cellKey, for: indexPath) as! VenderCell_TableViewCell
 			
-			switch indexPath.section {
-				case 0:
-				cell.companyName.text = vender.name
-				cell.companyName.tintColor = .systemRed
-				default:
-				break
-			}
+			cell.companyName.text = vender.name
 			return cell
 		})
 	}
@@ -75,7 +68,12 @@ class VenderList_TableViewController: UITableViewController {
 		return 70
 	}
 	
-	class Datasource : UITableViewDiffableDataSource<Section, Vender> {
+//	private class Datasource : UITableViewDiffableDataSource<Section,Vender> {
+//	}
+	
+	@IBAction func unwindToVenders(_ unwindSegue: UIStoryboardSegue) {
+		guard let sourceViewController = unwindSegue.source as? AddVendersTableViewController else {return}
+		venders.append(sourceViewController.vender!)
 	}
 	
 }
@@ -86,7 +84,7 @@ extension VenderList_TableViewController {
 	
 	
 	
-	func getVenderContactInfo(_ vender:Vender){
+	func getVenderContactInfo(_ vender:Vendor){
 		let alertViewController = UIAlertController(title: "Supplier Information", message: "Select GET INFO to view supplier information.", preferredStyle: .actionSheet)
 		let saveVenderSelection = UIAlertAction(title: "Save", style: .default) { (bool) in
 			self.selectedVender = vender
@@ -108,6 +106,7 @@ extension VenderList_TableViewController {
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		guard let model = dataSource.itemIdentifier(for: indexPath) else {return}
 		getVenderContactInfo(model)
+		tableView.deselectRow(at: indexPath, animated: true)
 	}
 
 }
@@ -131,3 +130,4 @@ extension VenderList_TableViewController {
 	}
 	
 }
+

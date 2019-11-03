@@ -8,6 +8,7 @@
 
 // This controller is not conntected to anything!
 
+/*
 import UIKit
 
 class MainTabBarController: UITabBarController {
@@ -43,3 +44,5 @@ class MainTabBarController: UITabBarController {
 	*/
 	
 }
+
+*/

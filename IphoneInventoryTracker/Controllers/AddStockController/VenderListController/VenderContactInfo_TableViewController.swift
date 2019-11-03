@@ -10,10 +10,11 @@ import UIKit
 import MessageUI
 import SafariServices
 
+
+
 class VenderContactInfo_TableViewController: UITableViewController, MFMailComposeViewControllerDelegate, UINavigationControllerDelegate, WebViewDelegate, SFSafariViewControllerDelegate {
 	
 	var websiteURL: URL? = URL(string: "http://www.google.com")
-	
 	
 	@IBOutlet weak var supplierName :UILabel!
 	@IBOutlet weak var phoneNumberLabel : UILabel!
@@ -23,7 +24,8 @@ class VenderContactInfo_TableViewController: UITableViewController, MFMailCompos
 	@IBOutlet weak var physicalAddressLine1Labe3 : UILabel!
 	@IBOutlet weak var websiteLabel : UILabel!
 	
-	var contactInformation : Vender!
+	var contactInformation : Vendor!
+	
 	//Index Paths
 	let phoneNumberIndexPath = IndexPath(row: 0, section: 1)
 	let emailIndexPath = IndexPath(item: 1, section: 1)
@@ -31,11 +33,10 @@ class VenderContactInfo_TableViewController: UITableViewController, MFMailCompos
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		setvaluesForVender()
-		
+		setvaluesForVender(contactInformation)
 	}
 	
-	func setvaluesForVender(){
+	func setvaluesForVender(_ contactInformation : Vendor){
 		supplierName.text = contactInformation.name
 		phoneNumberLabel.text = contactInformation.phone
 		emailAddressLabel.text = contactInformation.email

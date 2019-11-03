@@ -20,7 +20,7 @@ struct Stock : Hashable, Equatable {
 	var weight :Weight?
 	var amount :Int?
 	var recommendedAmount :Int?
-	var vender : Vender?
+	var vender : Vendor?
 	var identifier = UUID()
 	var color : String?
 	var cost : String?
@@ -38,7 +38,7 @@ struct Stock : Hashable, Equatable {
 		self.name = name
 	}
 	
-	init(_ name :String?, _ parentSheetSize:ParentSize?, _ weight:Weight?, _ amount:Int?, _ recommendedAmount:Int?, _ vender:Vender?) {
+	init(_ name :String?, _ parentSheetSize:ParentSize?, _ weight:Weight?, _ amount:Int?, _ recommendedAmount:Int?, _ vender:Vendor?) {
 		self.name = name
 		self.parentSheetSize = parentSheetSize
 		self.weight = weight

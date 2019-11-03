@@ -3,12 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		7D0349142354FE3000BD1AAF /* MoreStock_Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D0349132354FE3000BD1AAF /* MoreStock_Storyboard.storyboard */; };
 		7D0349162354FF7F00BD1AAF /* MoreStock_TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0349152354FF7F00BD1AAF /* MoreStock_TableViewController.swift */; };
+		7D0E9D7E236F1DF500BE3DB7 /* ViewVenders.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D0E9D7D236F1DF500BE3DB7 /* ViewVenders.storyboard */; };
+		7D0E9D81236F1F1800BE3DB7 /* ViewVendersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E9D80236F1F1800BE3DB7 /* ViewVendersTableViewController.swift */; };
+		7D0E9D83236F631F00BE3DB7 /* VenderAddressLocation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D0E9D82236F631F00BE3DB7 /* VenderAddressLocation.storyboard */; };
+		7D0E9D86236F681600BE3DB7 /* VendorLocation_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E9D85236F681600BE3DB7 /* VendorLocation_ViewController.swift */; };
 		7D0F5589236C4D27001C6460 /* ExtensionInventoryTrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0F5588236C4D27001C6460 /* ExtensionInventoryTrackerViewController.swift */; };
 		7D118D5F236E2E4500203852 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D118D5E236E2E4500203852 /* WebViewController.swift */; };
 		7D118D61236E2F4F00203852 /* AddVender.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D118D60236E2F4F00203852 /* AddVender.storyboard */; };
@@ -17,6 +21,7 @@
 		7D1911BD234C0B3600D699FB /* CustomCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1911BC234C0B3600D699FB /* CustomCellTableViewCell.swift */; };
 		7D51961723592D5700145076 /* calculationExtensionOnModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D51961623592D5700145076 /* calculationExtensionOnModel.swift */; };
 		7D6FB459236AA27300082D4F /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6FB458236AA27300082D4F /* MainTabBarController.swift */; };
+		7D9F41DA236F9C46001C4F88 /* GoogleMapVenderLocation_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9F41D9236F9C46001C4F88 /* GoogleMapVenderLocation_ViewController.swift */; };
 		7DCC5C03234AA7E400CD4776 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCC5C02234AA7E400CD4776 /* AppDelegate.swift */; };
 		7DCC5C05234AA7E400CD4776 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCC5C04234AA7E400CD4776 /* SceneDelegate.swift */; };
 		7DCC5C0A234AA7E400CD4776 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DCC5C08234AA7E400CD4776 /* Main.storyboard */; };
@@ -36,11 +41,18 @@
 		7DCC5C31234AC7D500CD4776 /* Sections_CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCC5C30234AC7D400CD4776 /* Sections_CollectionViewController.swift */; };
 		7DE44526234DAC6B007D838B /* CellIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE44525234DAC6B007D838B /* CellIdentifiers.swift */; };
 		7DE44528234DB338007D838B /* StockWeight_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE44527234DB338007D838B /* StockWeight_TableViewCell.swift */; };
+		D2D8E66A8C7E9D3396862FAA /* libPods-IphoneInventoryTracker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A1CF363FEB38B3258AB0153 /* libPods-IphoneInventoryTracker.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0950D9DE3C7169D7DDC39D33 /* Pods-IphoneInventoryTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IphoneInventoryTracker.debug.xcconfig"; path = "Target Support Files/Pods-IphoneInventoryTracker/Pods-IphoneInventoryTracker.debug.xcconfig"; sourceTree = "<group>"; };
+		1A1CF363FEB38B3258AB0153 /* libPods-IphoneInventoryTracker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IphoneInventoryTracker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D0349132354FE3000BD1AAF /* MoreStock_Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MoreStock_Storyboard.storyboard; sourceTree = "<group>"; };
 		7D0349152354FF7F00BD1AAF /* MoreStock_TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreStock_TableViewController.swift; sourceTree = "<group>"; };
+		7D0E9D7D236F1DF500BE3DB7 /* ViewVenders.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ViewVenders.storyboard; sourceTree = "<group>"; };
+		7D0E9D80236F1F1800BE3DB7 /* ViewVendersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewVendersTableViewController.swift; sourceTree = "<group>"; };
+		7D0E9D82236F631F00BE3DB7 /* VenderAddressLocation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VenderAddressLocation.storyboard; sourceTree = "<group>"; };
+		7D0E9D85236F681600BE3DB7 /* VendorLocation_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorLocation_ViewController.swift; sourceTree = "<group>"; };
 		7D0F5588236C4D27001C6460 /* ExtensionInventoryTrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionInventoryTrackerViewController.swift; sourceTree = "<group>"; };
 		7D118D5E236E2E4500203852 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		7D118D60236E2F4F00203852 /* AddVender.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddVender.storyboard; sourceTree = "<group>"; };
@@ -50,6 +62,7 @@
 		7D51961623592D5700145076 /* calculationExtensionOnModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calculationExtensionOnModel.swift; sourceTree = "<group>"; };
 		7D69492A2369E8A4006443EB /* Inventory Tracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Inventory Tracker.entitlements"; sourceTree = "<group>"; };
 		7D6FB458236AA27300082D4F /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		7D9F41D9236F9C46001C4F88 /* GoogleMapVenderLocation_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapVenderLocation_ViewController.swift; sourceTree = "<group>"; };
 		7DCC5BFF234AA7E400CD4776 /* Inventory Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Inventory Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DCC5C02234AA7E400CD4776 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7DCC5C04234AA7E400CD4776 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +84,7 @@
 		7DCC5C30234AC7D400CD4776 /* Sections_CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sections_CollectionViewController.swift; sourceTree = "<group>"; };
 		7DE44525234DAC6B007D838B /* CellIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellIdentifiers.swift; sourceTree = "<group>"; };
 		7DE44527234DB338007D838B /* StockWeight_TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockWeight_TableViewCell.swift; sourceTree = "<group>"; };
+		86DB1B9356599CF44B452668 /* Pods-IphoneInventoryTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IphoneInventoryTracker.release.xcconfig"; path = "Target Support Files/Pods-IphoneInventoryTracker/Pods-IphoneInventoryTracker.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,18 +92,53 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2D8E66A8C7E9D3396862FAA /* libPods-IphoneInventoryTracker.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		439B167AC70F26928375AFCF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0950D9DE3C7169D7DDC39D33 /* Pods-IphoneInventoryTracker.debug.xcconfig */,
+				86DB1B9356599CF44B452668 /* Pods-IphoneInventoryTracker.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		711BC4EC768323C812AF08BC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1A1CF363FEB38B3258AB0153 /* libPods-IphoneInventoryTracker.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7D0349172354FF8700BD1AAF /* MoreStockController */ = {
 			isa = PBXGroup;
 			children = (
 				7D0349152354FF7F00BD1AAF /* MoreStock_TableViewController.swift */,
 			);
 			path = MoreStockController;
+			sourceTree = "<group>";
+		};
+		7D0E9D7F236F1EF400BE3DB7 /* ViewVenders */ = {
+			isa = PBXGroup;
+			children = (
+				7D0E9D80236F1F1800BE3DB7 /* ViewVendersTableViewController.swift */,
+			);
+			path = ViewVenders;
+			sourceTree = "<group>";
+		};
+		7D0E9D84236F67DC00BE3DB7 /* VendorLocationController */ = {
+			isa = PBXGroup;
+			children = (
+				7D0E9D85236F681600BE3DB7 /* VendorLocation_ViewController.swift */,
+				7D9F41D9236F9C46001C4F88 /* GoogleMapVenderLocation_ViewController.swift */,
+			);
+			path = VendorLocationController;
 			sourceTree = "<group>";
 		};
 		7D1911BB234C0AE000D699FB /* ParentSheetSizeController */ = {
@@ -125,6 +174,7 @@
 				7DCC5C18234ABDFE00CD4776 /* NewStock_TableViewController.swift */,
 				7D1911BB234C0AE000D699FB /* ParentSheetSizeController */,
 				7DF27304234D9F1900FFC75A /* StockWeightController */,
+				7D0E9D7F236F1EF400BE3DB7 /* ViewVenders */,
 				7DF27305234D9F5200FFC75A /* VenderListController */,
 			);
 			path = AddStockController;
@@ -143,6 +193,8 @@
 			children = (
 				7DCC5C01234AA7E400CD4776 /* IphoneInventoryTracker */,
 				7DCC5C00234AA7E400CD4776 /* Products */,
+				439B167AC70F26928375AFCF /* Pods */,
+				711BC4EC768323C812AF08BC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -164,8 +216,10 @@
 				7DCC5C28234ABF4800CD4776 /* Views */,
 				7DCC5C26234ABEFB00CD4776 /* Controllers */,
 				7DCC5C08234AA7E400CD4776 /* Main.storyboard */,
+				7D0E9D7D236F1DF500BE3DB7 /* ViewVenders.storyboard */,
 				7D118D60236E2F4F00203852 /* AddVender.storyboard */,
 				7D0349132354FE3000BD1AAF /* MoreStock_Storyboard.storyboard */,
+				7D0E9D82236F631F00BE3DB7 /* VenderAddressLocation.storyboard */,
 				7DCC5C0B234AA7E700CD4776 /* Assets.xcassets */,
 				7DCC5C0D234AA7E700CD4776 /* LaunchScreen.storyboard */,
 				7DCC5C10234AA7E700CD4776 /* Info.plist */,
@@ -181,6 +235,7 @@
 				7DB454EF234BEECB00CACBCC /* MainInventoryController */,
 				7DB454F1234BEF8300CACBCC /* NewOrderController */,
 				7DB454F0234BEEF800CACBCC /* AddStockController */,
+				7D0E9D84236F67DC00BE3DB7 /* VendorLocationController */,
 				7D0349172354FF8700BD1AAF /* MoreStockController */,
 			);
 			path = Controllers;
@@ -233,9 +288,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7DCC5C13234AA7E700CD4776 /* Build configuration list for PBXNativeTarget "IphoneInventoryTracker" */;
 			buildPhases = (
+				7FCE7B4E8B6ECAC3F5685D71 /* [CP] Check Pods Manifest.lock */,
 				7DCC5BFB234AA7E400CD4776 /* Sources */,
 				7DCC5BFC234AA7E400CD4776 /* Frameworks */,
 				7DCC5BFD234AA7E400CD4776 /* Resources */,
+				E19CCE4585A74CF4A85CA6F7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -289,10 +346,54 @@
 				7DCC5C0C234AA7E700CD4776 /* Assets.xcassets in Resources */,
 				7D118D61236E2F4F00203852 /* AddVender.storyboard in Resources */,
 				7DCC5C0A234AA7E400CD4776 /* Main.storyboard in Resources */,
+				7D0E9D7E236F1DF500BE3DB7 /* ViewVenders.storyboard in Resources */,
+				7D0E9D83236F631F00BE3DB7 /* VenderAddressLocation.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7FCE7B4E8B6ECAC3F5685D71 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-IphoneInventoryTracker-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E19CCE4585A74CF4A85CA6F7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IphoneInventoryTracker/Pods-IphoneInventoryTracker-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IphoneInventoryTracker/Pods-IphoneInventoryTracker-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IphoneInventoryTracker/Pods-IphoneInventoryTracker-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7DCC5BFB234AA7E400CD4776 /* Sources */ = {
@@ -308,12 +409,14 @@
 				7DE44528234DB338007D838B /* StockWeight_TableViewCell.swift in Sources */,
 				7DCC5C19234ABDFE00CD4776 /* NewStock_TableViewController.swift in Sources */,
 				7D0F5589236C4D27001C6460 /* ExtensionInventoryTrackerViewController.swift in Sources */,
+				7D0E9D86236F681600BE3DB7 /* VendorLocation_ViewController.swift in Sources */,
 				7DCC5C21234ABE5800CD4776 /* VenderContactInfo_TableViewController.swift in Sources */,
 				7DCC5C17234ABDBB00CD4776 /* NewOrder_TableViewController.swift in Sources */,
 				7DE44526234DAC6B007D838B /* CellIdentifiers.swift in Sources */,
 				7DCC5C31234AC7D500CD4776 /* Sections_CollectionViewController.swift in Sources */,
 				7DCC5C03234AA7E400CD4776 /* AppDelegate.swift in Sources */,
 				7D1911BD234C0B3600D699FB /* CustomCellTableViewCell.swift in Sources */,
+				7D0E9D81236F1F1800BE3DB7 /* ViewVendersTableViewController.swift in Sources */,
 				7D118D65236E45BC00203852 /* VenderCell_TableViewCell.swift in Sources */,
 				7D118D63236E34E800203852 /* AddVendersTableViewController.swift in Sources */,
 				7DCC5C2F234AC73000CD4776 /* DataSource_InventoryTracker.swift in Sources */,
@@ -321,6 +424,7 @@
 				7DCC5C1F234ABE4500CD4776 /* VenderList_TableViewController.swift in Sources */,
 				7DCC5C05234AA7E400CD4776 /* SceneDelegate.swift in Sources */,
 				7DCC5C25234ABECB00CD4776 /* InventoryDetailCell_CollectionViewCell.swift in Sources */,
+				7D9F41DA236F9C46001C4F88 /* GoogleMapVenderLocation_ViewController.swift in Sources */,
 				7D51961723592D5700145076 /* calculationExtensionOnModel.swift in Sources */,
 				7DCC5C1D234ABE3100CD4776 /* StockWeight_TableViewController.swift in Sources */,
 			);
@@ -464,12 +568,13 @@
 		};
 		7DCC5C14234AA7E700CD4776 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0950D9DE3C7169D7DDC39D33 /* Pods-IphoneInventoryTracker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "IphoneInventoryTracker/Inventory Tracker.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = 55P567K3FP;
 				INFOPLIST_FILE = IphoneInventoryTracker/Info.plist;
@@ -477,7 +582,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4.2;
+				MARKETING_VERSION = 2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.duhmarket.printerproinventorytracker23;
 				PRODUCT_NAME = "Inventory Tracker";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -489,12 +594,13 @@
 		};
 		7DCC5C15234AA7E700CD4776 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 86DB1B9356599CF44B452668 /* Pods-IphoneInventoryTracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "IphoneInventoryTracker/Inventory Tracker.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = 55P567K3FP;
 				INFOPLIST_FILE = IphoneInventoryTracker/Info.plist;
@@ -502,7 +608,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4.2;
+				MARKETING_VERSION = 2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.duhmarket.printerproinventorytracker23;
 				PRODUCT_NAME = "Inventory Tracker";
 				PROVISIONING_PROFILE_SPECIFIER = "";

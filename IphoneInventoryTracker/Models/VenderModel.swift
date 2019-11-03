@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Vender: Hashable, Codable, Equatable {
+struct Vendor: Hashable, Codable, Equatable {
 	var name: String
 	var address :String
 	var phone :String
@@ -19,7 +19,7 @@ struct Vender: Hashable, Codable, Equatable {
 	func hash(into hasher : inout Hasher){
 		hasher.combine(identifier)
 	}
-	static func ==(lhs:Vender, rhs:Vender) -> Bool {
+	static func ==(lhs:Vendor, rhs:Vendor) -> Bool {
 		lhs.identifier == rhs.identifier
 	}
 }

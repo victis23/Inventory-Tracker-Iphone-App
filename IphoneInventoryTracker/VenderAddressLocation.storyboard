@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8Xw-XE-2nM">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Vendor Location View Controller-->
+        <scene sceneID="YWM-0d-141">
+            <objects>
+                <viewController id="8Xw-XE-2nM" customClass="VendorLocation_ViewController" customModule="Inventory_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hd2-AX-Ir4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jeU-tk-GDO">
+                                <rect key="frame" x="0.0" y="118" width="414" height="778"/>
+                            </mapView>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="Knn-Va-rf1">
+                                <rect key="frame" x="0.0" y="64" width="414" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="XFQ-5r-qTq"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Knn-Va-rf1" firstAttribute="trailing" secondItem="jeU-tk-GDO" secondAttribute="trailing" id="2yI-VX-Jr1"/>
+                            <constraint firstItem="jeU-tk-GDO" firstAttribute="leading" secondItem="ifP-uB-5nC" secondAttribute="leading" id="7m8-mF-O0C"/>
+                            <constraint firstItem="jeU-tk-GDO" firstAttribute="top" secondItem="Knn-Va-rf1" secondAttribute="bottom" constant="10" id="AJV-ho-PSg"/>
+                            <constraint firstAttribute="bottom" secondItem="jeU-tk-GDO" secondAttribute="bottom" id="BLb-8p-4P0"/>
+                            <constraint firstItem="jeU-tk-GDO" firstAttribute="trailing" secondItem="ifP-uB-5nC" secondAttribute="trailing" id="g6A-qT-dD6"/>
+                            <constraint firstItem="Knn-Va-rf1" firstAttribute="leading" secondItem="jeU-tk-GDO" secondAttribute="leading" id="lhG-04-3nb"/>
+                            <constraint firstItem="Knn-Va-rf1" firstAttribute="top" secondItem="hd2-AX-Ir4" secondAttribute="topMargin" constant="20" id="zIG-qG-KWE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ifP-uB-5nC"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="jeU-tk-GDO" id="YxI-6v-Dgm"/>
+                        <outlet property="searchBar" destination="Knn-Va-rf1" id="iMb-u1-gOz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CXR-d7-fFR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-30.434782608695656" y="95.758928571428569"/>
+        </scene>
+    </scenes>
+</document>

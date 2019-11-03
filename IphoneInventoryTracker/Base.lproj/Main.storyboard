@@ -115,7 +115,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Vender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dpn-Db-GEF">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Vendor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dpn-Db-GEF">
                                                     <rect key="frame" x="20" y="0.0" width="323" height="50"/>
                                                     <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="40"/>
                                                     <nil key="textColor"/>
@@ -445,27 +445,39 @@
             </objects>
             <point key="canvasLocation" x="5859.420289855073" y="-195.53571428571428"/>
         </scene>
-        <!--Item-->
+        <!--Venders-->
         <scene sceneID="fjQ-Sa-A99">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DTh-ay-ZFd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController id="0Ef-1Y-Jf3" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="XQx-Lz-PUh"/>
+                    <tabBarItem key="tabBarItem" title="Venders" image="info.circle" catalog="system" id="XQx-Lz-PUh"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="9Ho-9C-tzb">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="vrV-It-WfX" kind="relationship" relationship="rootViewController" id="aYH-2N-sBo"/>
+                        <segue destination="UkY-bX-zKo" kind="relationship" relationship="rootViewController" id="8ig-mi-zSk"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DTh-ay-ZFd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4948" y="467"/>
+            <point key="canvasLocation" x="2006" y="934"/>
+        </scene>
+        <!--ViewVenders-->
+        <scene sceneID="eiJ-rN-jCe">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ViewVenders" id="UkY-bX-zKo" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="sXZ-uM-stx"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dzs-gI-l8V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3056" y="873"/>
         </scene>
         <!--AddVender-->
         <scene sceneID="0Me-jZ-c69">
             <objects>
-                <viewControllerPlaceholder storyboardName="AddVender" id="57i-ji-twV" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="AddVender" id="57i-ji-twV" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="kAa-Nj-gn1"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X5r-hY-ZTe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6406" y="-620"/>
@@ -473,7 +485,7 @@
         <!--Vender Contact Info Table View Controller-->
         <scene sceneID="Jd5-xz-QEa">
             <objects>
-                <tableViewController id="rN7-F5-XjV" customClass="VenderContactInfo_TableViewController" customModule="Inventory_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="info" id="rN7-F5-XjV" customClass="VenderContactInfo_TableViewController" customModule="Inventory_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="4zT-ZM-xnH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1064,7 +1076,4 @@
             <color red="0.94099998474121094" green="0.84299999475479126" blue="0.61599999666213989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="aYH-2N-sBo"/>
-    </inferredMetricsTieBreakers>
 </document>
