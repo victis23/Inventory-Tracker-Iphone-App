@@ -7,10 +7,17 @@
 //
 
 import UIKit
+import Combine
+
+protocol CompanyAddressDelegate {
+	func getCompanyAddress()->String
+}
 
 class AddVendersTableViewController: UITableViewController {
 	
-	//Conforming to VenderListDelegate protocol
+	var delegate : CompanyAddressDelegate? = nil
+	
+	//Variable that will be passed back over the unwind segue
 	var vender: Vendor?
 	
 	@IBOutlet weak var submitButton: UIButton!
@@ -20,7 +27,7 @@ class AddVendersTableViewController: UITableViewController {
 	@IBOutlet weak var website: UITextField!
 	@IBOutlet weak var address: UITableViewCell!
 	
-	// Create a local model that can be initialized with nil values
+	// Create a local model that can be initialized with nil values.
 	private struct LocalVender {
 		var name : String?
 		var address : String?
@@ -28,21 +35,22 @@ class AddVendersTableViewController: UITableViewController {
 		var email: String?
 		var website : URL?
 	}
-	//Declare local vender object
-	private var localVenderObject : LocalVender?
+	//We create the local vender object that will hold our temporary values.
+	private var localVenderObject : LocalVender? = LocalVender()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		tableView.keyboardDismissMode = .interactive
 		setupLayout()
-		localVenderObject = LocalVender() // Initialize local object
 		submitButton.isEnabled = false
 		submitButton.layer.backgroundColor = UIColor.systemGray.cgColor // temp color
 	}
+	
 	deinit {
 		print("\(self.title ?? "") Controller has been terminated")
 	}
 	
+	/// For loop that will be modifiying layer of each containing object.
 	func setupLayout(){
 		submitButton.layer.cornerRadius = 10
 		[name,phone,email,website, address].forEach({$0?.layer.cornerRadius = 5})
@@ -50,7 +58,8 @@ class AddVendersTableViewController: UITableViewController {
 	
 	//MARK: IBACTIONS
 	
-	// As user provides input add to nil object localVenderObject
+	// As user provides input add to nil object localVenderObject the specified value is updated.
+	//We are using the object names as identifiers here.
 	@IBAction func userInputValueChanged(_ sender: UITextField) {
 		switch sender {
 			case name:
@@ -70,15 +79,26 @@ class AddVendersTableViewController: UITableViewController {
 		}
 	}
 	
+	/// Checking for delegate
+	/// Determining whether each of the properties within our local vender object are not nil in order to activate our submit button.
 	func enabledStatusChecker(){
-		localVenderObject?.address = "1449 Portola Ave, Deltona, FL, 32725, USA"
 		
+			if delegate != nil {
+				guard let string = delegate?.getCompanyAddress() else {return}
+				let localString = string
+				localVenderObject?.address  = localString
+				print(localVenderObject ?? "this is not working")
+				print("\(self) — This is the current VC ")
+			}
+		
+		print(localVenderObject ?? "No Value in enabledStatus")
 		if localVenderObject?.name != nil && localVenderObject?.phone != nil && localVenderObject?.email != nil && localVenderObject?.website != nil && localVenderObject?.address != nil {
 			submitButton.isEnabled = true
 			submitButton.layer.backgroundColor = UIColor.systemBlue.cgColor // temp color
 		}
 	}
 	
+	// Creates a new vender object that will be passed through a unwind segue back to the originating viewcontroller.
 	@IBAction func userTappedSubmitButton(_ sender: UIButton) {
 		
 		
@@ -112,6 +132,11 @@ class AddVendersTableViewController: UITableViewController {
 		return 6
 	}
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		
+		if indexPath == IndexPath(item: 1, section: 0){
+			let googleController = GoogleMapVenderLocation_ViewController()
+			present(googleController, animated: true, completion: nil)
+		}
 		tableView.deselectRow(at: indexPath, animated: true)
 	}
 	

@@ -76,16 +76,16 @@ class ParentSheetSize_TableViewController: UITableViewController {
 		userSelectionItem = item?.parentSheetSize?.rawValue
 		selectedModel = item
 		tableView.reloadData()
-		Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (timer) in
+		Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { [weak self](timer) in
 			switch item {
 				case object.envelopes:
-					self.envelopeIsHidden = true
+					self?.envelopeIsHidden = true
 				case object.paper:
-					self.paperCellIsHidden = true
+					self?.paperCellIsHidden = true
 				default:
 				break
 			}
-			self.performSegue(withIdentifier: SegueIdentifiers.returnToNewStock, sender: self)
+			self?.performSegue(withIdentifier: SegueIdentifiers.returnToNewStock, sender: self)
 		}
 	}
 
@@ -106,20 +106,22 @@ class ParentSheetSize_TableViewController: UITableViewController {
 		snapShot.appendItems(stock, toSection: .paper)
 		snapShot.appendItems(envelopes, toSection: .envelopes)
 		
-		UIView.animate(withDuration: 0.50) {
-			self.dataSource.apply(snapShot, animatingDifferences: animated, completion: nil)
+		UIView.animate(withDuration: 0.50) { [weak self] in
+			self?.dataSource.apply(snapShot, animatingDifferences: animated, completion: nil)
 		}
 	}
 	
 	func setDataSource(){
-		dataSource = Datasource(tableView: tableView, cellProvider: { (tableView, indexPath, parentSizeObject) -> UITableViewCell? in
+		dataSource = Datasource(tableView: tableView, cellProvider: { [weak self] (tableView, indexPath, parentSizeObject) ->  UITableViewCell? in
 			
 			let section = indexPath.section
 			let cell = tableView.dequeueReusableCell(withIdentifier: Keys.paper, for: indexPath) as! CustomCellTableViewCell
 			
+			guard let paperCellIsHidden = self?.paperCellIsHidden, let envelopeIsHidden = self?.envelopeIsHidden else {fatalError()}
+			
 			switch section {
 				case 0:
-					if self.paperCellIsHidden {
+					if paperCellIsHidden {
 						cell.nameLabel.text = parentSizeObject.defaultTextForPaper
 						cell.nameLabel.textColor = .systemBlue
 						cell.accessoryType = .none
@@ -127,7 +129,7 @@ class ParentSheetSize_TableViewController: UITableViewController {
 					}else{
 						cell.nameLabel.text = parentSizeObject.paper?.parentSheetSize?.rawValue
 						cell.nameLabel.textColor = .label
-						if self.userSelectionItem == parentSizeObject.paper?.parentSheetSize?.rawValue {
+						if self?.userSelectionItem == parentSizeObject.paper?.parentSheetSize?.rawValue {
 							cell.accessoryType = .checkmark
 						}else{
 							cell.accessoryType = .none
@@ -135,14 +137,14 @@ class ParentSheetSize_TableViewController: UITableViewController {
 				}
 					
 				case 1:
-					if self.envelopeIsHidden {
+					if envelopeIsHidden {
 						cell.nameLabel.text = parentSizeObject.defaultTextForEnvelope
 						cell.nameLabel.textColor = .systemBlue
 						cell.accessoryType = .none
 					}else{
 						cell.nameLabel.text = parentSizeObject.envelopes?.parentSheetSize?.rawValue
 						cell.nameLabel.textColor = .label
-						if self.userSelectionItem == parentSizeObject.envelopes?.parentSheetSize?.rawValue {
+						if self?.userSelectionItem == parentSizeObject.envelopes?.parentSheetSize?.rawValue {
 							cell.accessoryType = .checkmark
 						}else{
 							cell.accessoryType = .none
@@ -187,7 +189,7 @@ class ParentSheetSize_TableViewController: UITableViewController {
 			case envelopeSection:
 				envelopeIsHidden = false
 				paperCellIsHidden = true
-				self.createSnapShot(self.selectPaper, self.defaultEnvelopes, animated: true)
+				createSnapShot(selectPaper, defaultEnvelopes, animated: true)
 			default:
 			break
 		}

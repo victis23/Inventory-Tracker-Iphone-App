@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import Combine
 
 
 
@@ -17,6 +18,7 @@ class VendorLocation_ViewController: UIViewController, CLLocationManagerDelegate
 	@IBOutlet weak var searchBar: UISearchBar!
 	let locationController = CLLocationManager()
 	var currentRegion : MKCoordinateRegion?
+	
 	
 	let activityIndicator : UIActivityIndicatorView = {
 			let activityIndicator = UIActivityIndicatorView()
@@ -120,6 +122,12 @@ class VendorLocation_ViewController: UIViewController, CLLocationManagerDelegate
 			self?.setAnnotation(with: newAnnonation, search: searchTerm)
 			
 		}
+	}
+	
+	
+	
+	@IBAction func googleMap(_ sender: Any) {
+		present(GoogleMapVenderLocation_ViewController(), animated: true, completion: nil)
 	}
 	
 }

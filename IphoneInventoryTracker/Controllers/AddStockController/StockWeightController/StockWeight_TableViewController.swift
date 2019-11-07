@@ -155,24 +155,24 @@ extension StockWeight_TableViewController {
 		snapShot.appendItems(text, toSection: .text)
 		snapShot.appendItems(cover, toSection: .cover)
 		
-		UIView.animate(withDuration: 0.5) {
-			self.dataSource.apply(snapShot, animatingDifferences: animated, completion: nil)
+		UIView.animate(withDuration: 0.5) { [weak self] in
+			self?.dataSource.apply(snapShot, animatingDifferences: animated, completion: nil)
 		}
 		
 	}
 	
 	func setDataSource(){
-		dataSource = Datasource(tableView: tableView, cellProvider: { (tableView, indexPath, model) -> UITableViewCell? in
+		dataSource = Datasource(tableView: tableView, cellProvider: { [weak self](tableView, indexPath, model) -> UITableViewCell? in
 			
 			let section = indexPath.section
 			let row = indexPath.row
-			let currentModel = self.dataSource.itemIdentifier(for: indexPath)
+			let currentModel = self?.dataSource.itemIdentifier(for: indexPath)
 			let cell = tableView.dequeueReusableCell(withIdentifier: Keys.weight, for: indexPath) as! StockWeight_TableViewCell
-			let userModel = self.userSelectedModel
+			let userModel = self?.userSelectedModel
 			
 			switch section {
 				case 0:
-					guard currentModel?.identifier == self.defaultBond[row].identifier else {
+					guard currentModel?.identifier == self?.defaultBond[row].identifier else {
 						cell.weightLabel.text = model.defaultTextForBond
 						cell.weightLabel.textColor = .systemBlue
 						cell.accessoryType = .none
@@ -185,7 +185,7 @@ extension StockWeight_TableViewController {
 					cell.accessoryType = .checkmark
 				}
 				case 1:
-					guard currentModel?.identifier == self.defaultText[row].identifier else {
+					guard currentModel?.identifier == self?.defaultText[row].identifier else {
 						cell.weightLabel.text = model.defaultTextForText
 						cell.weightLabel.textColor = .systemBlue
 						cell.accessoryType = .none
@@ -197,7 +197,7 @@ extension StockWeight_TableViewController {
 					cell.accessoryType = .checkmark
 				}
 				case 2:
-					guard currentModel?.identifier == self.defaultCover[row].identifier else {
+					guard currentModel?.identifier == self?.defaultCover[row].identifier else {
 						cell.weightLabel.text = model.defaultTextForCover
 						cell.weightLabel.textColor = .systemBlue
 						cell.accessoryType = .none
@@ -216,8 +216,8 @@ extension StockWeight_TableViewController {
 	}
 	
 	func returnToNewStock(){
-		Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (timer) in
-			self.performSegue(withIdentifier: SegueIdentifiers.returnToNewStock, sender: self)
+		Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { [weak self](timer) in
+			self?.performSegue(withIdentifier: SegueIdentifiers.returnToNewStock, sender: self)
 		}
 	}
 }
