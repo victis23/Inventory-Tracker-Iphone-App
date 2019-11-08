@@ -34,6 +34,7 @@ class VenderContactInfo_TableViewController: UITableViewController, MFMailCompos
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setvaluesForVender(contactInformation)
+		
 	}
 	
 	func setvaluesForVender(_ contactInformation : Vendor){
@@ -45,9 +46,25 @@ class VenderContactInfo_TableViewController: UITableViewController, MFMailCompos
 		websiteLabel.text = "\(website)"
 		
 		let address = contactInformation.address.split(separator: ",")
-		physicalAddressLine1Label.text = String(address[0])
-		physicalAddressLine1Labe2.text = String(address[1])
-		physicalAddressLine1Labe3.text = "\(address[2]), \(address[3])"
+		
+		switch address.count {
+			case 2:
+				physicalAddressLine1Label.text = String(address[0])
+				physicalAddressLine1Labe2.text = String(address[1])
+			case 3:
+				physicalAddressLine1Label.text = String(address[0])
+				physicalAddressLine1Labe2.text = String(address[1])
+				physicalAddressLine1Labe3.text = "\(address[2])"
+			case 4:
+				physicalAddressLine1Label.text = "\(address[0]) \(address[1])"
+				physicalAddressLine1Labe2.text = String(address[2])
+				physicalAddressLine1Labe3.text = String(address[3])
+			default:
+				physicalAddressLine1Label.text = String(address[0])
+				physicalAddressLine1Labe2.isHidden = true
+				physicalAddressLine1Labe3.isHidden = true
+				break
+		}
 	}
 	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -61,7 +78,7 @@ class VenderContactInfo_TableViewController: UITableViewController, MFMailCompos
 				sendEmail()
 			case websiteIndexPath:
 				/* Not In use because of current bug in iOS 13.2*/
-//								loadWebView()
+				//								loadWebView()
 				
 				let safariViewer = SFSafariViewController(url: contactInformation.website!)
 				safariViewer.modalPresentationStyle = .pageSheet

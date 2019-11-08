@@ -11,28 +11,35 @@ import GoogleMaps
 import GooglePlaces
 import Combine
 
+/// Captures string variable for location property that will be passed to delegate --> AddVenderTableViewController.swift.
+protocol CompanyAddressDelegate {
+	func getCompanyAddress(from location:String)
+}
 
-class GoogleMapVenderLocation_ViewController: UIViewController, CLLocationManagerDelegate, UISearchBarDelegate, ObservableObject {
-	
-	let locationManager = CLLocationManager()
-	var currentLocation : CLLocationCoordinate2D? = CLLocationCoordinate2D(latitude: -33.86, longitude: 151.20)
+class GoogleMapVenderLocation_ViewController: UIViewController, ObservableObject {
 	
 	let name = Notification.Name("LocationChanged")
+	// The delegate that will save information gathered in this viewController --> AddVenderTableViewController.swift.
+	//MARK: Class Properties
+	var delegate : CompanyAddressDelegate? = nil
+	// Instance of locationManager.
+	let locationManager = CLLocationManager()
+	// Users current location.
+	var currentLocation : CLLocationCoordinate2D? = CLLocationCoordinate2D() //= CLLocationCoordinate2D(latitude: -33.86, longitude: 151.20)
 	//Search query inputted by user.
 	var searchLocation : String = String()
-	// Returned list of locations resulting from query.
+	// Returned list of locations resulting from query that will be displayed in tableView.
 	var predictedLocations : [GMSPlace] = []
-	// Address that will be set as vender address
-	@Published var returnAddress : String = String()
-	
+	// Location selected by user from tableView.
 	var selectedCoordinates : CLLocationCoordinate2D?
-	var controller = AddVendersTableViewController()
-	 
+	// Address that will be set as vender address and returned to AddVendersTableViewController.swift.
+	var returnAddress : String = String()
 	// Creates map object.
 	let mapView : GMSMapView = {
 		let map = GMSMapView()
 		return map
 	}()
+	//MARK: ViewController Views
 	// Creates content spacing on main view.
 	let contentView : UIView = {
 		let view = UIView()
@@ -80,42 +87,63 @@ class GoogleMapVenderLocation_ViewController: UIViewController, CLLocationManage
 		button.layer.shadowRadius = 5
 		return button
 	}()
-	
+	let activityIndicator : UIActivityIndicatorView = {
+		let activityIndicator = UIActivityIndicatorView()
+		activityIndicator.style = .large
+		activityIndicator.color = .black
+		activityIndicator.hidesWhenStopped = true
+		return activityIndicator
+	}()
+	//MARK: Controller State
 	override func loadView() {
 		super.loadView()
 		guard let currentLocation = currentLocation else {return}
 		let camera = GMSCameraPosition.camera(withTarget: currentLocation, zoom: 6)
-		let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.size.height - 50)
+		let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
 		mapView.frame = frame
 		mapView.camera = camera
 		mapView.isMyLocationEnabled = true
-		
 	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		setLookOfView()
-		getUserAuthorizationToUseMaps()
-		view.addSubview(contentView)
-		contentView.addSubview(mapView)
-		view.addSubview(searchBar)
-		view.addSubview(submitButton)
-		setConstraintsForContentView()
 		searchBar.delegate = self
 		mapView.delegate = self
-		submitButton.isHidden = true
-		
-		
-		//MARK: Temp
-		controller.delegate = self
-		NotificationCenter.default.post(name: name, object: returnAddress) // Working on getting this to send notification correctly.
+		// Layers:
+		//4
+		view.addSubview(contentView)
+		//3
+		contentView.addSubview(mapView)
+		//2
+		view.addSubview(searchBar)
+		view.addSubview(submitButton)
+		view.addSubview(activityIndicator)
+		//1
+		setLookOfView()
+		setConstraintsForContentView()
+		getUserAuthorizationToUseMaps()
 	}
+	//MARK: Methods
+	func setLookOfView(){
+		view.backgroundColor = .white
+		submitButton.isHidden = true
+		contentView.layer.cornerRadius = 15
+	}
+	/// Setup Contraints for:
+	/// `contentView`
+	///	`searchBar`
+	///	`submitButton`
 	func setConstraintsForContentView(){
+		//Set position of activity indicator.
+		activityIndicator.center = view.center
 		NSLayoutConstraint.activate([
 			contentView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
 			contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-			contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),
+			contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
 			contentView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+			contentView.heightAnchor.constraint(equalToConstant: view.frame.height - 50),
+			contentView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+			contentView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 			
 			searchBar.topAnchor.constraint(equalTo: view.topAnchor, constant: 25),
 			searchBar.heightAnchor.constraint(equalToConstant: 70),
@@ -127,43 +155,72 @@ class GoogleMapVenderLocation_ViewController: UIViewController, CLLocationManage
 			submitButton.widthAnchor.constraint(equalToConstant: view.frame.width - 50),
 			submitButton.heightAnchor.constraint(equalToConstant: 70)
 		])
-	}
-	func setLookOfView(){
-		view.backgroundColor = .white
-	}
-	func getUserAuthorizationToUseMaps(){
-		locationManager.delegate = self
-		locationManager.requestWhenInUseAuthorization()
-		locationManager.requestLocation()
-	}
 	
-	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-		guard let updatedLocation = locations.last?.coordinate else {return}
-		currentLocation = updatedLocation
-		mapView.camera = GMSCameraPosition(latitude: updatedLocation.latitude, longitude: updatedLocation.longitude, zoom: 6)
 	}
-	
-	func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-		print(error.localizedDescription)
+	//MARK: Navigation
+	/// Pops current viewController, returning us to AddVendersTableViewController.swift.
+	@objc func returnToOriginatingController(){
+		delegate?.getCompanyAddress(from: returnAddress)
+		dismiss(animated: true) {}
+		submitButton.isHidden = true
 	}
-	
 }
-
-extension GoogleMapVenderLocation_ViewController {
+//MARK: SearchBar Extension
+extension GoogleMapVenderLocation_ViewController : UISearchBarDelegate {
 	
-	
+	/// Resets values for search query on every iteration.
+	/// Sets up user search and sends results to tableview.
+	/// - Parameter searchBar: Current SearchBar Object.
 	func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
 		submitButton.isHidden = true
 		guard let searchText = searchBar.text else {return}
 		searchLocation = searchText
-		predictedLocations.removeAll() // Removes results of previous query.
-		setupPlacesClient() // Runs query using search term
+		// Removes results of previous query.
+		predictedLocations.removeAll()
+		// Runs query using search term.
+		setupPlacesClient()
 		searchBar.resignFirstResponder()
-		setupTableView() // Presents TableView
+		// Presents TableView.
+		setupTableView()
 	}
 }
-
+//MARK: CoreLocation Manager Extension
+extension GoogleMapVenderLocation_ViewController : CLLocationManagerDelegate {
+	
+	/// Set Delegate Property on CLLocationManagerDelegate.
+	/// Request when in use authorization from user.
+	/// Request users current location.
+	func getUserAuthorizationToUseMaps(){
+		locationManager.delegate = self
+		locationManager.requestWhenInUseAuthorization()
+		activityIndicator.startAnimating()
+		locationManager.requestLocation()
+	}
+	/// This Method conforms to CLLocationManagerDelegate & updates GMS CameraPosition  to the users last location.
+	/// - Parameters:
+	///   - manager: Current CLLocationManager
+	///   - locations: Array of locations user has recently been to.
+	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+		guard let updatedLocation = locations.last?.coordinate else {return}
+		currentLocation = updatedLocation
+		mapView.camera = GMSCameraPosition(latitude: updatedLocation.latitude, longitude: updatedLocation.longitude, zoom: 6)
+		activityIndicator.stopAnimating()
+	}
+	/// Handles Erros
+	/// - Parameters:
+	///   - manager: Current CLLocationManager
+	///   - error: Incoming Error
+	func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+		print(error.localizedDescription)
+	}
+}
+//MARK: TableView Extension
 extension GoogleMapVenderLocation_ViewController : UITableViewDelegate, UITableViewDataSource {
+	
+	/// Counts the number of returned items from GMS Query.
+	/// - Parameters:
+	///   - tableView: Current tableview instance.
+	///   - section: Number of sections in view.
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return predictedLocations.count
 	}
@@ -172,11 +229,15 @@ extension GoogleMapVenderLocation_ViewController : UITableViewDelegate, UITableV
 	}
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! LocationCell
-		cell.companyName.text = predictedLocations[indexPath.row].name
-		cell.companyAddress.text = predictedLocations[indexPath.row].formattedAddress
+		let location = predictedLocations[indexPath.row]
+		cell.companyName.text = location.name
+		cell.companyAddress.text = location.formattedAddress
 		cell.addLabelToCell()
 		return cell
 	}
+	/// Sets up delegate & dataSource for tableview.
+	/// Registers Cell for usage in tableView.
+	/// Adds tableview to view as subview with contraints and 100 points reduced from size of view —>  `50 | TableView | 50`
 	func setupTableView(){
 		tableView.delegate = self
 		tableView.dataSource = self
@@ -191,50 +252,43 @@ extension GoogleMapVenderLocation_ViewController : UITableViewDelegate, UITableV
 		])
 	}
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		let queryLocation = predictedLocations[indexPath.row].coordinate
-		
+		activityIndicator.startAnimating()
+		let location = predictedLocations[indexPath.row]
+		let queryLocation = location.coordinate
 		tableView.deselectRow(at: indexPath, animated: true)
+		// Updates current mapView with a location indicator over selected user search result.
 		updateMapViewWithMarker(to: queryLocation, indexPath: indexPath)
+		//Sets controller property for user selected coordinates.
 		selectedCoordinates = queryLocation
-		returnAddress = predictedLocations[indexPath.row].formattedAddress!
-		//MARK: Temp Code Block
+		// Unwraps addres for location selected by user.
+		guard let address = location.formattedAddress else {return}
+		// Sets location to controller property that will be sent to delegate.
+		returnAddress = address
 		tableView.removeFromSuperview()
 		submitButton.isHidden = false
 	}
-	@objc func returnToOriginatingController(){
-		dismiss(animated: true) { [weak self] in
-			self?.controller.enabledStatusChecker()
-			print("This is the initiated view controller — \(String(describing: self?.controller))")
-		}
-		submitButton.isHidden = true
-	}
-	func updateMapViewWithMarker(to queryLocation :CLLocationCoordinate2D, indexPath : IndexPath){
-		mapView.camera = GMSCameraPosition(latitude: queryLocation.latitude, longitude: queryLocation.longitude, zoom: 15)
-		mapView.animate(toLocation: queryLocation)
-		// Creates a marker in the center of the map for selected address
-		let marker = GMSMarker()
-		marker.position = queryLocation
-		marker.title = predictedLocations[indexPath.row].name
-		marker.snippet = predictedLocations[indexPath.row].website?.absoluteString
-		marker.map = mapView
-	}
 }
-
+//MARK: Google Maps Services Extension
 extension GoogleMapVenderLocation_ViewController : GMSMapViewDelegate {
 	
-	
+	// Creates Computed Property {GET} for GMSPlaceClient Instance.
 	var googlePlacesClient :GMSPlacesClient {
 		get {
 			GMSPlacesClient()
 		}
 	}
 	
+	/// Performs Query using unique session token for user entered search term.
 	func setupPlacesClient(){
+		//Unique Session Token.
 		let token = GMSAutocompleteSessionToken.init()
 		let filter = GMSAutocompleteFilter()
+		//Narrow search results to only businesses.
 		filter.type = .establishment
+		// Switched to background queue to avoid locking UI.
 		DispatchQueue.global(qos: .background).async { [weak self] in
 			guard let self = self else {return}
+			// Performs query with users actual search term.
 			self.googlePlacesClient.findAutocompletePredictions(fromQuery: self.searchLocation,
 																bounds: nil,
 																boundsMode: GMSAutocompleteBoundsMode.bias,
@@ -247,30 +301,43 @@ extension GoogleMapVenderLocation_ViewController : GMSMapViewDelegate {
 																	}
 																	guard let predictions = predictions else {return}
 																	predictions.forEach({ (value) in
-																	
+																		/// Method used to search for our returned GMS placeIDs
+																		///This particular method returns all data for placeID vs. `GMSPlacesClient.shared().fetchPlace` which only returns certain values.
+																		
 																		GMSPlacesClient.shared().lookUpPlaceID(value.placeID) { (place, error) in
 																			if let error = error {
 																				print(error.localizedDescription)
 																			}
 																			guard let place = place else {return}
+																			// Adds GMS Place Data to our predicted locations array.
 																			self.predictedLocations.append(place)
+																			// Refreshes tableview with updated list of locations.
 																			self.tableView.reloadData()
 																		}
 																	})
 			}
-			
 		}
-		
 	}
-	
-	func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
-		print("didTapInfoWindowOf")
+	/// Updates the position of GMS MapView Camera utilizing location selected by user in tableview.
+	/// - Parameters:
+	///   - queryLocation: Coordinates of the search location selected by the user from the tableview.
+	///   - indexPath: Index path of last tableview selection.
+	func updateMapViewWithMarker(to queryLocation :CLLocationCoordinate2D, indexPath : IndexPath){
+		// Location selected from tableview.
+		let location = predictedLocations[indexPath.row]
+		// Zooms into selected location.
+		mapView.camera = GMSCameraPosition(latitude: queryLocation.latitude, longitude: queryLocation.longitude, zoom: 15)
+		//Creates Instance For Marker.
+		let marker = GMSMarker()
+		// Creates a marker in the center of the map for selected address.
+		marker.position = queryLocation
+		marker.title = location.name
+		marker.snippet = location.website?.absoluteString
+		marker.map = mapView
+		activityIndicator.stopAnimating()
 	}
 }
 
-extension GoogleMapVenderLocation_ViewController : CompanyAddressDelegate {
 
-	func getCompanyAddress() -> String {
-		return returnAddress
-	}
-}
+
+

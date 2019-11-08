@@ -9,24 +9,26 @@
 import UIKit
 import Combine
 
-protocol CompanyAddressDelegate {
-	func getCompanyAddress()->String
-}
 
-class AddVendersTableViewController: UITableViewController {
+
+class AddVendersTableViewController: UITableViewController, CompanyAddressDelegate  {
 	
-	var delegate : CompanyAddressDelegate? = nil
+	/// This function recieves the address that will be displayed in the contact window of VenderList_TableViewController.swift.
+	/// - Parameter location: Property recieved when GoogleMapVenderLocation_ViewController.swift is dismissed.
+	func getCompanyAddress(from location:String) {
+		addressText = location
+	}
 	
-	//Variable that will be passed back over the unwind segue
+	//MARK: Local Properties
+	
+	//Variable that will be passed back over the unwind segue.
 	var vender: Vendor?
-	
-	@IBOutlet weak var submitButton: UIButton!
-	@IBOutlet weak var name: UITextField!
-	@IBOutlet weak var phone: UITextField!
-	@IBOutlet weak var email: UITextField!
-	@IBOutlet weak var website: UITextField!
-	@IBOutlet weak var address: UITableViewCell!
-	
+	// Changes address property of temporaryVender when updated.
+	private var addressText : String = String(){
+		didSet{
+			temporaryVender?.address = addressText
+		}
+	}
 	// Create a local model that can be initialized with nil values.
 	private struct LocalVender {
 		var name : String?
@@ -36,77 +38,80 @@ class AddVendersTableViewController: UITableViewController {
 		var website : URL?
 	}
 	//We create the local vender object that will hold our temporary values.
-	private var localVenderObject : LocalVender? = LocalVender()
+	private var temporaryVender : LocalVender? = LocalVender(){
+		didSet {
+			print(addressText.description)
+			if temporaryVender?.address == nil {
+				print("Shit We're nil")
+			}
+		}
+	}
 	
+	//MARK: IBOutlet Properties
+	@IBOutlet weak var submitButton: UIButton!
+	@IBOutlet weak var name: UITextField!
+	@IBOutlet weak var phone: UITextField!
+	@IBOutlet weak var email: UITextField!
+	@IBOutlet weak var website: UITextField!
+	@IBOutlet weak var address: UILabel!
+	
+	
+	
+	//MARK: View State Methods
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		tableView.keyboardDismissMode = .interactive
 		setupLayout()
 		submitButton.isEnabled = false
-		submitButton.layer.backgroundColor = UIColor.systemGray.cgColor // temp color
+		
 	}
-	
 	deinit {
 		print("\(self.title ?? "") Controller has been terminated")
 	}
+	
+	//MARK: Aesthetics
 	
 	/// For loop that will be modifiying layer of each containing object.
 	func setupLayout(){
 		submitButton.layer.cornerRadius = 10
 		[name,phone,email,website, address].forEach({$0?.layer.cornerRadius = 5})
+		// Temporary Color For Inactive Submit Button.
+		submitButton.layer.backgroundColor = UIColor.systemGray.cgColor
 	}
 	
-	//MARK: IBACTIONS
+	//MARK: IBACTIONS Methods
 	
-	// As user provides input add to nil object localVenderObject the specified value is updated.
-	//We are using the object names as identifiers here.
+	/// Values are added to temporaryVender property accordingly, based off of incoming sender name identification.
+	/// - Parameter sender: IBOutlet Item For specific user action
 	@IBAction func userInputValueChanged(_ sender: UITextField) {
+		guard  sender.text != nil else {return}
 		switch sender {
 			case name:
-				localVenderObject?.name = sender.text
+				temporaryVender?.name = sender.text
 				enabledStatusChecker()
 			case phone:
-				localVenderObject?.phone = sender.text
+				temporaryVender?.phone = sender.text
 				enabledStatusChecker()
 			case email:
-				localVenderObject?.email = sender.text
+				temporaryVender?.email = sender.text
 				enabledStatusChecker()
 			case website:
-				localVenderObject?.website = URL(string: "https://www.\(sender.text!)")
+				temporaryVender?.website = URL(string: "https://www.\(sender.text!)")
 				enabledStatusChecker()
 			default:
 				break
 		}
 	}
-	
-	/// Checking for delegate
-	/// Determining whether each of the properties within our local vender object are not nil in order to activate our submit button.
-	func enabledStatusChecker(){
-		
-			if delegate != nil {
-				guard let string = delegate?.getCompanyAddress() else {return}
-				let localString = string
-				localVenderObject?.address  = localString
-				print(localVenderObject ?? "this is not working")
-				print("\(self) — This is the current VC ")
-			}
-		
-		print(localVenderObject ?? "No Value in enabledStatus")
-		if localVenderObject?.name != nil && localVenderObject?.phone != nil && localVenderObject?.email != nil && localVenderObject?.website != nil && localVenderObject?.address != nil {
-			submitButton.isEnabled = true
-			submitButton.layer.backgroundColor = UIColor.systemBlue.cgColor // temp color
-		}
-	}
-	
-	// Creates a new vender object that will be passed through a unwind segue back to the originating viewcontroller.
+
+	/// Assigns temporary values to a completed Vender Struct Object
+	/// Performs an UNWIND segue --> VenderList_TableViewController.swift.
+	/// - Parameter sender: IBOutlet Object Button — Not used in this Method.
 	@IBAction func userTappedSubmitButton(_ sender: UIButton) {
-		
-		
-		guard let name = localVenderObject?.name,
-			let phone = localVenderObject?.phone,
-			let email = localVenderObject?.email,
-			let website = localVenderObject?.website,
-			let address = localVenderObject?.address
+		guard let name = temporaryVender?.name,
+			let phone = temporaryVender?.phone,
+			let email = temporaryVender?.email,
+			let website = temporaryVender?.website,
+			let address = temporaryVender?.address
 			else
 		{
 			return
@@ -122,7 +127,20 @@ class AddVendersTableViewController: UITableViewController {
 		
 	}
 	
-	// MARK: - Table view data source
+	//MARK: Custom Methods
+	
+	/// Checking for delegate
+	/// Determining whether each of the properties within our local vender object are not nil in order to activate our submit button.
+	func enabledStatusChecker(){
+		if temporaryVender?.name != nil && temporaryVender?.phone != nil && temporaryVender?.email != nil && temporaryVender?.website != nil && temporaryVender?.address != nil {
+			submitButton.isEnabled = true
+			//Temporary Button Color For Active Button.
+			submitButton.layer.backgroundColor = UIColor.systemBlue.cgColor
+		}
+	}
+	
+	
+	// MARK: - DATASOURCE & DELEGATES For STATIC TABLEVIEW CONTROLLER
 	
 	override func numberOfSections(in tableView: UITableView) -> Int {
 		return 1
@@ -135,6 +153,7 @@ class AddVendersTableViewController: UITableViewController {
 		
 		if indexPath == IndexPath(item: 1, section: 0){
 			let googleController = GoogleMapVenderLocation_ViewController()
+			googleController.delegate = self
 			present(googleController, animated: true, completion: nil)
 		}
 		tableView.deselectRow(at: indexPath, animated: true)

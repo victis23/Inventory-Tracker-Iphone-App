@@ -193,7 +193,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Add Venders" id="h1O-nD-VdW"/>
                     <connections>
-                        <outlet property="address" destination="cSS-bu-hMz" id="VsZ-C3-bb1"/>
+                        <outlet property="address" destination="8zl-7r-fk2" id="WSa-Oy-uw0"/>
                         <outlet property="email" destination="JrH-Mt-Qtw" id="Xhp-Tg-DGg"/>
                         <outlet property="name" destination="qK9-01-HRJ" id="tEG-wC-42d"/>
                         <outlet property="phone" destination="Q66-6s-g78" id="hG0-Br-1m3"/>
