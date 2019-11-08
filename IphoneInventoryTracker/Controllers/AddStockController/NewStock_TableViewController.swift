@@ -9,7 +9,7 @@
 import UIKit
 
 class NewStock_TableViewController: UITableViewController {
-
+	//MARK: IBOutlets
 	@IBOutlet weak var stockName: UITextField!
 	@IBOutlet weak var sheetSizeLabel: UILabel!
 	@IBOutlet weak var stockWeightLabel: UILabel!
@@ -19,24 +19,23 @@ class NewStock_TableViewController: UITableViewController {
 	@IBOutlet weak var recommendedAmount: UITextField!
 	@IBOutlet weak var saveButton: UIBarButtonItem!
 	@IBOutlet weak var colorTextField: UITextField!
-	
+	//MARK: Properties
 	var newStock :Stock?
-
+	//MARK: State
 	override func viewDidLoad() {
-        super.viewDidLoad()
+		super.viewDidLoad()
 		setEmptyModelValue()
 		setTextFieldTags()
 		tableView.keyboardDismissMode = .interactive
-    }
-	
-	deinit {
-		print("View was deallocated from memory successfully!")
 	}
-	
+	//MARK: Methods
+	/// Initializes a `Stock` object that has every property set to nil.
+	/// - Note: This could have also just be simply initialized as `newStock = Stock()`
 	func setEmptyModelValue(){
 		newStock = Stock(nil, nil, nil, nil, nil, nil)
 	}
 	
+	/// Sets tags to be used as identifiers for the controller's `IBOutlets`
 	func setTextFieldTags(){
 		stockName.tag = 1
 		costPer1000Sheets.tag = 2
@@ -45,6 +44,10 @@ class NewStock_TableViewController: UITableViewController {
 		colorTextField.tag = 5
 	}
 	
+	/// Checks to see if specified property is `!=nil` if true the value input provided by the user is assigned to the property.
+	/// - Parameter incoming: Model to be evaluated.
+	/// - Note: This seems convoluted in execution.
+	/// - Important: This method is functioning as a secondary barrier before assigning values to our local `Stock` Object. The one that will actually be exported from this view. We could have assigned the values directly but did this to make sure each incoming value was valid.
 	func updateNewStock(_ incoming : Stock){
 		
 		if incoming.name != nil {
@@ -66,27 +69,17 @@ class NewStock_TableViewController: UITableViewController {
 			newStock?.vender = incoming.vender
 		}
 	}
-
+	// If any of the rows are selected the keyboard is dismissed along with first responder.
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		switch indexPath.section {
-			case 1:
-				stockName.resignFirstResponder()
-			case 2:
-				stockName.resignFirstResponder()
-			case 3:
-				stockName.resignFirstResponder()
-			default:
-			break
-		}
+		view.endEditing(true)
 	}
-	
+	/// Executes when the user uses a primary action. In this case that would be hitting `return`.
+	/// - Parameter sender: Originating textField
 	@IBAction func moveToNextField(_ sender: UITextField){
+
 		let senderTag = sender.tag
 		switch senderTag {
 			case 1:
-				guard let stockName = stockName.text else {return}
-				let name = Stock(stockName)
-				updateNewStock(name)
 				costPer1000Sheets.becomeFirstResponder()
 			case 2:
 				initialAmount.becomeFirstResponder()
@@ -100,45 +93,50 @@ class NewStock_TableViewController: UITableViewController {
 					performSegue(withIdentifier: "done", sender: sender)
 			}
 			default:
-			break
+				break
 		}
 		
 	}
-	
-	
+	/// Checks sender to determine what properties to update. This method
+	/// - Parameter sender: Tells the method which field the user is currently updating.
 	@IBAction func nameUpdate(_ sender: UITextField) {
 		
 		switch sender.tag {
 			case 1:
-			guard let stockName = stockName.text else {return}
+				guard let stockName = stockName.text else {return}
+				// Initialized with Stock(_ name:) Sorry, I see how not having an external parameter name here can be confusing in retrospect.
 				let name = Stock(stockName)
 				updateNewStock(name)
 			case 2:
 				guard let costPer100 = costPer1000Sheets.text else {return}
+				// Stock does not have initalizers for this property and that's why it was assigned directly to it like this. This should probably be revised so that the aforementioned protection method can recieve this value properly.
 				newStock?.cost = costPer100
-				
 			case 3:
 				guard let initialAmount = initialAmount.text, let amount = Int(initialAmount) else {return}
+				//TODO: Need to added external names for parameters.
 				let startingAmount = Stock(nil, nil, nil, amount, nil, nil)
 				updateNewStock(startingAmount)
 			case 4:
+				// Unwraps the text and converts it into an Int.
 				guard let recommendedAmount = recommendedAmount.text, let amount = Int(recommendedAmount) else {return}
 				let recommended = Stock(nil, nil, nil, nil, amount, nil)
 				updateNewStock(recommended)
 			case 5:
 				guard let color = colorTextField.text else {return}
+				//FIXME: This needs to be corrected and added to updateNewStock(_:)
 				newStock?.color = color
-				
+			
 			default:
-			break
+				break
 		}
+		// Verifies every property within our object before allowing user to submit their input.
 		if newStock?.name != nil && newStock?.name != "" && newStock?.cost != nil && newStock?.amount != nil && newStock?.recommendedAmount != nil && newStock?.color != nil && newStock?.color != "" && newStock?.parentSheetSize != nil && newStock?.weight != nil && newStock?.vender != nil {
 			saveButton.isEnabled = true
 		}else{
 			saveButton.isEnabled = false
 		}
 	}
-
+	
 }
 
 //MARK: Navigation
@@ -158,6 +156,6 @@ extension NewStock_TableViewController {
 	}
 	
 	@IBAction func unwindToNewStock(_ unwindSegue: UIStoryboardSegue) {
-
+		
 	}
 }

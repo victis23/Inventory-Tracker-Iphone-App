@@ -9,16 +9,17 @@
 import UIKit
 
 class ParentSheetSize_TableViewController: UITableViewController {
-	
+	//MARK: Keys
 	private struct SegueIdentifiers {
 		static var returnToNewStock = "unwindToNewStock"
 	}
-	
+	//MARK: Local data types
+	//Sections for tableview.
 	private enum Section {
 		case paper
 		case envelopes
 	}
-	
+	//Local Data type to be held by tableview using different initializers.
 	fileprivate struct StockGroupings :Hashable {
 		var paper : Stock?
 		var envelopes :Stock?
@@ -38,12 +39,13 @@ class ParentSheetSize_TableViewController: UITableViewController {
 			self.defaultTextForEnvelope = defaultTextForEnvelope
 		}
 	}
-	
+	//MARK: Privated class properties
+	private var dataSource :Datasource!
 	fileprivate var selectPaper = [StockGroupings(defaultTextForPaper: "Select Option")]
 	fileprivate var selectEnvelope = [StockGroupings(defaultTextForEnvelope: "Select Option")]
 	
 	fileprivate var defaultPaperStock :[StockGroupings] = [
-
+		
 		StockGroupings(paper: Stock(nil, ParentSize(rawValue: "8.5 x 11"), nil, nil, nil, nil)),
 		StockGroupings(paper: Stock(nil, ParentSize(rawValue: "8.5 x 14"), nil, nil, nil, nil)),
 		StockGroupings(paper: Stock(nil, ParentSize(rawValue: "11 x 17"), nil, nil, nil, nil)),
@@ -54,28 +56,40 @@ class ParentSheetSize_TableViewController: UITableViewController {
 		StockGroupings(envelopes: Stock(nil, ParentSize(rawValue: "#9 Envelope"), nil, nil, nil, nil)),
 		StockGroupings(envelopes: Stock(nil, ParentSize(rawValue: "#10 Envelope"), nil, nil, nil, nil))
 	]
-	
-	private var dataSource :Datasource!
+	//MARK: Class Properties
 	var paperCellIsHidden = true
 	var envelopeIsHidden = true
 	var userSelectionItem :String!
 	var selectedModel : Stock?
-
-	
+	//MARK: State
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		setDataSource()
+	}
+	// Avoid error for placing values onto a tableview that is not within the view hierachy.
+	// tableview.window != nil at this point in controller's life cycle.
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		createSnapShot(selectPaper, selectEnvelope, animated: true)
+	}
+	//MARK: Methods
 	fileprivate func setValueLayout(_ model:[StockGroupings], indexPath:IndexPath){
-
+		// This model object is originating from tableView(_:didSelectRowAt:)
 		let object = model[indexPath.row]
 		var item : Stock?
-		
+		// assigns the value of variable: item based on whether the incoming StockGroupings array contains a value for the given property. The default value in this case will always be paper.
 		if object.envelopes != nil {
 			item = object.envelopes
 		}else{
 			item = object.paper
 		}
-		
+		// We assign the string value of the enum type: parentSheetSize
 		userSelectionItem = item?.parentSheetSize?.rawValue
 		selectedModel = item
+		// We reload the data so that the checkmark appears next to the selected item. We could have used a delegate/protocol pattern here but did not out of laziness.
 		tableView.reloadData()
+		// This is the convoluted part and the reason why we took a different approach to get the same results in the StockWeight_TableViewController.swift.
+		//This is only being utilized in the code base to demonstrate the alternative to the approach in the aformentioned.
 		Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { [weak self](timer) in
 			switch item {
 				case object.envelopes:
@@ -83,23 +97,11 @@ class ParentSheetSize_TableViewController: UITableViewController {
 				case object.paper:
 					self?.paperCellIsHidden = true
 				default:
-				break
+					break
 			}
 			self?.performSegue(withIdentifier: SegueIdentifiers.returnToNewStock, sender: self)
 		}
 	}
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-		setDataSource()
-    }
-	
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(animated)
-		//Temporary fix until I figure out tableview.window != nil
-		createSnapShot(selectPaper, selectEnvelope, animated: true)
-	}
-	
 	fileprivate func createSnapShot(_ stock : [StockGroupings], _ envelopes : [StockGroupings], animated: Bool){
 		var snapShot = NSDiffableDataSourceSnapshot<Section,StockGroupings>()
 		snapShot.appendSections([.paper, .envelopes])
@@ -110,6 +112,34 @@ class ParentSheetSize_TableViewController: UITableViewController {
 			self?.dataSource.apply(snapShot, animatingDifferences: animated, completion: nil)
 		}
 	}
+	//MARK: Navigation
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == SegueIdentifiers.returnToNewStock {
+			let destination = segue.destination as! NewStock_TableViewController
+			destination.sheetSizeLabel.text = userSelectionItem
+			
+			guard let model = selectedModel else {return}
+			destination.updateNewStock(model)
+		}
+	}
+}
+//MARK: - TableView DataSource & Delegate Methods
+extension ParentSheetSize_TableViewController {
+	// Required class if you want to have multiple sections.
+	private class Datasource : UITableViewDiffableDataSource<Section,StockGroupings>{
+		// Sets title for each section.
+		override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+			switch section {
+				case 0:
+					return "Paper"
+				case 1:
+					return "Envelopes"
+				default:
+					return nil
+			}
+		}
+	}
 	
 	func setDataSource(){
 		dataSource = Datasource(tableView: tableView, cellProvider: { [weak self] (tableView, indexPath, parentSizeObject) ->  UITableViewCell? in
@@ -118,7 +148,7 @@ class ParentSheetSize_TableViewController: UITableViewController {
 			let cell = tableView.dequeueReusableCell(withIdentifier: Keys.paper, for: indexPath) as! CustomCellTableViewCell
 			
 			guard let paperCellIsHidden = self?.paperCellIsHidden, let envelopeIsHidden = self?.envelopeIsHidden else {fatalError()}
-			
+			// determines which section each value will be placed.
 			switch section {
 				case 0:
 					if paperCellIsHidden {
@@ -135,7 +165,7 @@ class ParentSheetSize_TableViewController: UITableViewController {
 							cell.accessoryType = .none
 						}
 				}
-					
+				
 				case 1:
 					if envelopeIsHidden {
 						cell.nameLabel.text = parentSizeObject.defaultTextForEnvelope
@@ -150,9 +180,9 @@ class ParentSheetSize_TableViewController: UITableViewController {
 							cell.accessoryType = .none
 						}
 				}
-					
+				
 				default:
-				break
+					break
 			}
 			return cell
 		})
@@ -161,8 +191,15 @@ class ParentSheetSize_TableViewController: UITableViewController {
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		return 70
 	}
+	// A more convoluted and badly written version of StockWeight_Tableview's equivalent method.
+	/// Controls which set of values the user sees when the tableview loads and once the first selection is made.
+	/// - Parameters:
+	///   - tableView: current tableview for controller.
+	///   - indexPath: index for item that user selected.
+	/// - important: The switch statement always evaluates first when the view has just loaded. This will control what prompts the user sees upon the view loading.
+	/// - note: This code is an alternative version to what can be found in `StockWeight_TableViewController`
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+		// Depending on which section was selected the first time snapshot is updated.
 		if paperCellIsHidden == false {
 			switch indexPath.section {
 				case 0:
@@ -180,7 +217,7 @@ class ParentSheetSize_TableViewController: UITableViewController {
 		}
 		let paperSection = IndexPath(row: 0, section: 0)
 		let envelopeSection = IndexPath(row: 0, section: 1)
-		
+		// Sets default values for the view.
 		switch indexPath {
 			case paperSection:
 				paperCellIsHidden = false
@@ -191,37 +228,10 @@ class ParentSheetSize_TableViewController: UITableViewController {
 				paperCellIsHidden = true
 				createSnapShot(selectPaper, defaultEnvelopes, animated: true)
 			default:
-			break
+				break
 		}
-
-		tableView.deselectRow(at: indexPath, animated: true)
-	}
-	
-	private class Datasource : UITableViewDiffableDataSource<Section,StockGroupings>{
 		
-		override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-			switch section {
-				case 0:
-				return "Paper"
-				case 1:
-				return "Envelopes"
-				default:
-				return nil
-			}
-		}
-	}
-	
-	
-	//MARK: Navigation
-	
-	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if segue.identifier == SegueIdentifiers.returnToNewStock {
-			let destination = segue.destination as! NewStock_TableViewController
-			destination.sheetSizeLabel.text = userSelectionItem
-			
-			guard let model = selectedModel else {return}
-			destination.updateNewStock(model)
-		}
+		tableView.deselectRow(at: indexPath, animated: true)
 	}
 	
 }
