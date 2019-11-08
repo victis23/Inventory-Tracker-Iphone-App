@@ -12,7 +12,6 @@
 		7D0E9D7E236F1DF500BE3DB7 /* ViewVenders.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D0E9D7D236F1DF500BE3DB7 /* ViewVenders.storyboard */; };
 		7D0E9D81236F1F1800BE3DB7 /* ViewVendersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E9D80236F1F1800BE3DB7 /* ViewVendersTableViewController.swift */; };
 		7D0E9D83236F631F00BE3DB7 /* VenderAddressLocation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D0E9D82236F631F00BE3DB7 /* VenderAddressLocation.storyboard */; };
-		7D0E9D86236F681600BE3DB7 /* VendorLocation_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E9D85236F681600BE3DB7 /* VendorLocation_ViewController.swift */; };
 		7D0F5589236C4D27001C6460 /* ExtensionInventoryTrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0F5588236C4D27001C6460 /* ExtensionInventoryTrackerViewController.swift */; };
 		7D118D5F236E2E4500203852 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D118D5E236E2E4500203852 /* WebViewController.swift */; };
 		7D118D61236E2F4F00203852 /* AddVender.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D118D60236E2F4F00203852 /* AddVender.storyboard */; };
@@ -53,7 +52,6 @@
 		7D0E9D7D236F1DF500BE3DB7 /* ViewVenders.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ViewVenders.storyboard; sourceTree = "<group>"; };
 		7D0E9D80236F1F1800BE3DB7 /* ViewVendersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewVendersTableViewController.swift; sourceTree = "<group>"; };
 		7D0E9D82236F631F00BE3DB7 /* VenderAddressLocation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VenderAddressLocation.storyboard; sourceTree = "<group>"; };
-		7D0E9D85236F681600BE3DB7 /* VendorLocation_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorLocation_ViewController.swift; sourceTree = "<group>"; };
 		7D0F5588236C4D27001C6460 /* ExtensionInventoryTrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionInventoryTrackerViewController.swift; sourceTree = "<group>"; };
 		7D118D5E236E2E4500203852 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		7D118D60236E2F4F00203852 /* AddVender.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddVender.storyboard; sourceTree = "<group>"; };
@@ -137,7 +135,6 @@
 		7D0E9D84236F67DC00BE3DB7 /* VendorLocationController */ = {
 			isa = PBXGroup;
 			children = (
-				7D0E9D85236F681600BE3DB7 /* VendorLocation_ViewController.swift */,
 				7D9F41D9236F9C46001C4F88 /* GoogleMapVenderLocation_ViewController.swift */,
 			);
 			path = VendorLocationController;
@@ -412,7 +409,6 @@
 				7DE44528234DB338007D838B /* StockWeight_TableViewCell.swift in Sources */,
 				7DCC5C19234ABDFE00CD4776 /* NewStock_TableViewController.swift in Sources */,
 				7D0F5589236C4D27001C6460 /* ExtensionInventoryTrackerViewController.swift in Sources */,
-				7D0E9D86236F681600BE3DB7 /* VendorLocation_ViewController.swift in Sources */,
 				7DCC5C21234ABE5800CD4776 /* VenderContactInfo_TableViewController.swift in Sources */,
 				7DCC5C17234ABDBB00CD4776 /* NewOrder_TableViewController.swift in Sources */,
 				7DE44526234DAC6B007D838B /* CellIdentifiers.swift in Sources */,

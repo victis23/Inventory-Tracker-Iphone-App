@@ -10,7 +10,7 @@ import UIKit
 import Combine
 
 class ViewVendersTableViewController: UITableViewController {
-	
+	//Sections
 	enum Sections {
 		case main
 	}
@@ -23,6 +23,7 @@ class ViewVendersTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+	// Placed here to avoid warning about placing content on tableview before it has been applie to UIWindow.
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		setDataSource()

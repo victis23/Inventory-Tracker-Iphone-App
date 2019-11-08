@@ -9,18 +9,15 @@
 import UIKit
 
 class CustomCellTableViewCell: UITableViewCell {
-	
+	// nameLabel property for cell that will display the name of each parent sheet size.
 	@IBOutlet weak var nameLabel :UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }
