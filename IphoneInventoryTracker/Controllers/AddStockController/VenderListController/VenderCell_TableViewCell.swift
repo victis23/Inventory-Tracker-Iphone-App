@@ -10,19 +10,16 @@ import UIKit
 
 class VenderCell_TableViewCell: UITableViewCell {
 	
-	
+	//Cell that displays on VenderList_TableViewController.swift
 	@IBOutlet weak var companyName: UILabel!
 	
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }
