@@ -24,7 +24,7 @@ class VenderList_TableViewController: UITableViewController {
 	//MARK: ... Variable Declarations
 	
 	private var dataSource : UITableViewDiffableDataSource<Section, Vendor>! = nil
-
+	
 	var venders : [Vendor] = [] {
 		didSet {
 			snapShot(with: venders)
@@ -35,6 +35,11 @@ class VenderList_TableViewController: UITableViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		//		setDataSource()
+		//		initialSetup()
+	}
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
 		setDataSource()
 		initialSetup()
 	}
@@ -68,8 +73,8 @@ class VenderList_TableViewController: UITableViewController {
 		return 70
 	}
 	
-//	private class Datasource : UITableViewDiffableDataSource<Section,Vender> {
-//	}
+	//	private class Datasource : UITableViewDiffableDataSource<Section,Vender> {
+	//	}
 	
 	@IBAction func unwindToVenders(_ unwindSegue: UIStoryboardSegue) {
 		guard let sourceViewController = unwindSegue.source as? AddVendersTableViewController else {return}
@@ -108,7 +113,7 @@ extension VenderList_TableViewController {
 		getVenderContactInfo(model)
 		tableView.deselectRow(at: indexPath, animated: true)
 	}
-
+	
 }
 
 // MARK: Navigation

@@ -20,11 +20,12 @@ class ViewVendersTableViewController: UITableViewController, ObservableObject {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		setDataSource()
-		getVenderList()
+//		setDataSource()
+//		getVenderList()
     }
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
+		setDataSource()
 		getVenderList()
 	}
 	
