@@ -11,6 +11,10 @@ import UIKit
 
 class InventoryTracker_CollectionViewController: UIViewController, UICollectionViewDelegate {
 	
+	enum Sections {
+		case main
+	}
+	
 	@IBOutlet weak var searchField: UISearchBar!
 
 	
@@ -179,6 +183,9 @@ extension InventoryTracker_CollectionViewController {
 		dataSource.apply(snapShot, animatingDifferences: true) {
 			self.inventoryDetailCollection.reloadData()
 		}
+	}
+	
+	class DataSource : UICollectionViewDiffableDataSource<Sections,Stock> {
 	}
 }
 
