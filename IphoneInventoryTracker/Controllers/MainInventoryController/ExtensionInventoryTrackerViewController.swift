@@ -11,14 +11,6 @@ import Combine
 
 extension InventoryTracker_CollectionViewController : UISearchBarDelegate {
 	
-//	func createObserver(with observerItem : NSObject){
-//		guard let object = observerItem as? UISearchBar else {return}
-//		let item = $searchResult.sink { (string) in
-//			print(string)
-//		}
-//		item.cancel()
-//	}
-	
 	func filteredStocks(with string: String)-> [Stock]{
 		
 		let privateStocks = stock?.filter({ (item) -> Bool in
