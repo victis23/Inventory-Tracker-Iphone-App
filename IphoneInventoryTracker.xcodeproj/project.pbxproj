@@ -594,7 +594,7 @@
 				CODE_SIGN_ENTITLEMENTS = "IphoneInventoryTracker/Inventory Tracker.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = 55P567K3FP;
 				INFOPLIST_FILE = IphoneInventoryTracker/Info.plist;
@@ -620,7 +620,7 @@
 				CODE_SIGN_ENTITLEMENTS = "IphoneInventoryTracker/Inventory Tracker.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = 55P567K3FP;
 				INFOPLIST_FILE = IphoneInventoryTracker/Info.plist;

@@ -30,7 +30,8 @@ class PaperCalculatorViewController: UITableViewController {
 	
 	//MARK: Properties
 	// Switch used to evaluate which view is currently being precented to user.
-	var resultsAreVisable = false
+	// ***** Value starts at as true because it is changed upon view did load to false!
+	var resultsAreVisable = true
 	// Holds the result of the finished cuts calculation.
 	var values : Calculations?
 	// Collection of textFields used to make changes to entire group faster.
@@ -74,6 +75,7 @@ class PaperCalculatorViewController: UITableViewController {
 			self?.resultsViewCenterXContraint.constant = -450
 			self?.submitButton.setTitle("Submit", for: .normal)
 			self?.isSubmitButtonActive(false)
+			self?.shortSideParentSheet.becomeFirstResponder()
 			self?.view.layoutIfNeeded()
 		}
 		resultsAreVisable = !resultsAreVisable
