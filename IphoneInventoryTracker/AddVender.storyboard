@@ -50,10 +50,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8zl-7r-fk2">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find Address" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="8zl-7r-fk2">
                                                     <rect key="frame" x="73.5" y="11" width="261.5" height="48"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="35"/>
-                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="34"/>
+                                                    <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mappin.and.ellipse" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="9fh-iA-O8L">
@@ -194,6 +194,7 @@
                     <navigationItem key="navigationItem" title="Add Venders" id="h1O-nD-VdW"/>
                     <connections>
                         <outlet property="address" destination="8zl-7r-fk2" id="WSa-Oy-uw0"/>
+                        <outlet property="addressCell" destination="cSS-bu-hMz" id="jLQ-Ev-K4l"/>
                         <outlet property="email" destination="JrH-Mt-Qtw" id="Xhp-Tg-DGg"/>
                         <outlet property="name" destination="qK9-01-HRJ" id="tEG-wC-42d"/>
                         <outlet property="phone" destination="Q66-6s-g78" id="hG0-Br-1m3"/>

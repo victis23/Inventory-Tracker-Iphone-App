@@ -14,6 +14,7 @@ import Combine
 /// Captures string variable for location property that will be passed to delegate --> AddVenderTableViewController.swift.
 protocol CompanyAddressDelegate {
 	func getCompanyAddress(from location:String)
+	func enabledStatusChecker()
 }
 
 class GoogleMapVenderLocation_ViewController: UIViewController, ObservableObject {
@@ -159,8 +160,10 @@ class GoogleMapVenderLocation_ViewController: UIViewController, ObservableObject
 	}
 	//MARK: Navigation
 	/// Pops current viewController, returning us to AddVendersTableViewController.swift.
+	/// - Calls Methods on delegate to set address and update text property on address label.
 	@objc func returnToOriginatingController(){
 		delegate?.getCompanyAddress(from: returnAddress)
+		delegate?.enabledStatusChecker()
 		dismiss(animated: true) {}
 		submitButton.isHidden = true
 	}

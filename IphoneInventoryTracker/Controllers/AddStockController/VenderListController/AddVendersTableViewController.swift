@@ -15,6 +15,7 @@ class AddVendersTableViewController: UITableViewController, CompanyAddressDelega
 	
 	/// This function recieves the address that will be displayed in the contact window of VenderList_TableViewController.swift.
 	/// - Parameter location: Property recieved when GoogleMapVenderLocation_ViewController.swift is dismissed.
+	/// - Note: This is a required Method.
 	func getCompanyAddress(from location:String) {
 		addressText = location
 	}
@@ -40,7 +41,6 @@ class AddVendersTableViewController: UITableViewController, CompanyAddressDelega
 	//We create the local vender object that will hold our temporary values.
 	private var temporaryVender : LocalVender? = LocalVender(){
 		didSet {
-			print(addressText.description)
 			if temporaryVender?.address == nil {
 				print("Shit We're nil")
 			}
@@ -54,6 +54,7 @@ class AddVendersTableViewController: UITableViewController, CompanyAddressDelega
 	@IBOutlet weak var email: UITextField!
 	@IBOutlet weak var website: UITextField!
 	@IBOutlet weak var address: UILabel!
+	@IBOutlet weak var addressCell: UITableViewCell!
 	
 	
 	
@@ -62,7 +63,7 @@ class AddVendersTableViewController: UITableViewController, CompanyAddressDelega
 		super.viewDidLoad()
 		tableView.keyboardDismissMode = .interactive
 		setupLayout()
-		submitButton.isEnabled = false
+		submitButton(isEnabled: false)
 		
 	}
 	deinit {
@@ -76,7 +77,6 @@ class AddVendersTableViewController: UITableViewController, CompanyAddressDelega
 		submitButton.layer.cornerRadius = 10
 		[name,phone,email,website, address].forEach({$0?.layer.cornerRadius = 5})
 		// Temporary Color For Inactive Submit Button.
-		submitButton.layer.backgroundColor = UIColor.systemGray.cgColor
 	}
 	
 	//MARK: IBACTIONS Methods
@@ -102,7 +102,7 @@ class AddVendersTableViewController: UITableViewController, CompanyAddressDelega
 				break
 		}
 	}
-
+	
 	/// Assigns temporary values to a completed Vender Struct Object
 	/// Performs an UNWIND segue --> VenderList_TableViewController.swift.
 	/// - Parameter sender: IBOutlet Object Button — Not used in this Method.
@@ -131,11 +131,43 @@ class AddVendersTableViewController: UITableViewController, CompanyAddressDelega
 	
 	/// Checking for delegate
 	/// Determining whether each of the properties within our local vender object are not nil in order to activate our submit button.
+	/// - Note: This is a required Method.
 	func enabledStatusChecker(){
-		if temporaryVender?.name != nil && temporaryVender?.phone != nil && temporaryVender?.email != nil && temporaryVender?.website != nil && temporaryVender?.address != nil {
-			submitButton.isEnabled = true
-			//Temporary Button Color For Active Button.
-			submitButton.layer.backgroundColor = UIColor.systemBlue.cgColor
+		if temporaryVender?.name != nil && temporaryVender?.phone != nil && temporaryVender?.email != nil && temporaryVender?.website != nil && temporaryVender?.address != nil && name.text != "" && phone.text != "" && email.text != "" && address.text != "" && website.text != "" {
+			// Protections after confirming that value is not nil, checks to make sure email contains required fields.
+			guard let emailValue = temporaryVender?.email, emailValue.contains("@") else {
+				//Makes temporaryVender.email == nil & email field becomes first responder.
+				temporaryVender?.email = nil
+				submitButton(isEnabled: false)
+				email.becomeFirstResponder()
+				return
+			}
+			submitButton(isEnabled: true)
+		}else{
+			// If anything changes that would invalidate the users input values — no button for you.
+			submitButton(isEnabled: false)
+		}
+		// If the address property on the temporaryVender has a value this updates the text property of the corresponding UILabel.
+		if temporaryVender?.address != nil {
+			address.textColor = .label
+			addressCell.accessoryType = .none
+			addressCell.isUserInteractionEnabled = false
+			guard let addressValue = temporaryVender?.address?.prefix(13) else {return}
+			address.text = "\(addressValue)..."
+		}
+	}
+	// FIXME: Temporary Colors.
+	//Controls the appearence of the submit button depending on isEnabled State.
+	func submitButton(isEnabled:Bool){
+		switch isEnabled {
+			case true:
+				submitButton.isEnabled = isEnabled
+				submitButton.layer.backgroundColor = UIColor.systemBlue.cgColor
+				submitButton.alpha = 1.0
+			default:
+				submitButton.isEnabled = isEnabled
+				submitButton.layer.backgroundColor = UIColor.systemGray.cgColor
+				submitButton.alpha = 0.4
 		}
 	}
 	
