@@ -23,21 +23,21 @@
                         <sections>
                             <tableViewSection id="JgQ-7j-yI6">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="800" id="hnc-nq-oiC">
-                                        <rect key="frame" x="0.0" y="18" width="414" height="800"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="500" id="hnc-nq-oiC">
+                                        <rect key="frame" x="0.0" y="18" width="414" height="500"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hnc-nq-oiC" id="FMg-7H-HjS">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="800"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="500"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paper Calculator" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R7f-p2-h5c">
-                                                    <rect key="frame" x="95" y="12.5" width="224.5" height="35"/>
+                                                    <rect key="frame" x="95" y="7.5" width="224.5" height="35"/>
                                                     <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="30"/>
                                                     <color key="textColor" name="textColorsForCalculator"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="85" translatesAutoresizingMaskIntoConstraints="NO" id="BYp-LO-WCs">
-                                                    <rect key="frame" x="69" y="157" width="276.5" height="399"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="48" translatesAutoresizingMaskIntoConstraints="NO" id="BYp-LO-WCs">
+                                                    <rect key="frame" x="69" y="69" width="276.5" height="362"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="QuS-3c-yb4">
                                                             <rect key="frame" x="0.0" y="0.0" width="276.5" height="157"/>
@@ -108,7 +108,7 @@
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ZjE-x1-ee3">
-                                                            <rect key="frame" x="0.0" y="242" width="276.5" height="157"/>
+                                                            <rect key="frame" x="0.0" y="205" width="276.5" height="157"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Piece Size" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4al-F5-l9z">
                                                                     <rect key="frame" x="0.0" y="0.0" width="276.5" height="26.5"/>
@@ -178,7 +178,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nFu-dC-At0">
-                                                    <rect key="frame" x="57" y="150" width="300" height="400"/>
+                                                    <rect key="frame" x="57" y="50" width="300" height="400"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pieces out on longside" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Wb-zm-mLt">
                                                             <rect key="frame" x="58.5" y="77.5" width="183.5" height="24"/>
@@ -220,7 +220,7 @@
                                                     </constraints>
                                                 </view>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RIj-Ys-94a">
-                                                    <rect key="frame" x="72" y="610" width="270" height="30"/>
+                                                    <rect key="frame" x="72" y="460" width="270" height="30"/>
                                                     <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="RIj-Ys-94a" secondAttribute="height" multiplier="9:1" id="ohN-wf-3VT"/>
@@ -237,12 +237,12 @@
                                             <constraints>
                                                 <constraint firstItem="nFu-dC-At0" firstAttribute="centerX" secondItem="FMg-7H-HjS" secondAttribute="centerX" id="3B6-Hc-aMI"/>
                                                 <constraint firstItem="RIj-Ys-94a" firstAttribute="centerY" secondItem="FMg-7H-HjS" secondAttribute="centerY" constant="225" id="ScH-VC-mVF"/>
-                                                <constraint firstItem="R7f-p2-h5c" firstAttribute="centerY" secondItem="FMg-7H-HjS" secondAttribute="centerY" constant="-370" id="a44-jD-HHR"/>
+                                                <constraint firstItem="R7f-p2-h5c" firstAttribute="centerY" secondItem="FMg-7H-HjS" secondAttribute="centerY" constant="-225" id="a44-jD-HHR"/>
                                                 <constraint firstItem="BYp-LO-WCs" firstAttribute="centerX" secondItem="FMg-7H-HjS" secondAttribute="centerX" id="aLr-wZ-v7e"/>
-                                                <constraint firstItem="nFu-dC-At0" firstAttribute="centerY" secondItem="FMg-7H-HjS" secondAttribute="centerY" constant="-50" id="kkm-1V-7Q9"/>
+                                                <constraint firstItem="nFu-dC-At0" firstAttribute="centerY" secondItem="FMg-7H-HjS" secondAttribute="centerY" id="kkm-1V-7Q9"/>
                                                 <constraint firstItem="RIj-Ys-94a" firstAttribute="centerX" secondItem="FMg-7H-HjS" secondAttribute="centerX" id="o0G-sD-91I"/>
                                                 <constraint firstItem="R7f-p2-h5c" firstAttribute="centerX" secondItem="FMg-7H-HjS" secondAttribute="centerX" id="ukE-1s-Qaa"/>
-                                                <constraint firstItem="BYp-LO-WCs" firstAttribute="centerY" secondItem="FMg-7H-HjS" secondAttribute="centerY" constant="-43.5" id="ycU-GN-8CL"/>
+                                                <constraint firstItem="BYp-LO-WCs" firstAttribute="centerY" secondItem="FMg-7H-HjS" secondAttribute="centerY" id="ycU-GN-8CL"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>

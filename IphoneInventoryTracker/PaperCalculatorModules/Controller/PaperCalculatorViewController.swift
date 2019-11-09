@@ -153,7 +153,7 @@ class PaperCalculatorViewController: UITableViewController {
 	/// - Parameter sender: Sender is a `UITextField` but it's values are not used in this method.
 	@IBAction func valueChanged(_ sender: Any) {
 		// Method breaks solid — Adjusts position of tableView cell as well as checks status of fields. Two birds with one stone?
-		tableView.contentOffset = CGPoint(x: 0, y: 215)
+//		tableView.contentOffset = CGPoint(x: 0, y: 215)
 		if shortSideParentSheet.text != "" && shortEndPieceSize.text != "" && longSideParentSheet.text != "" && longEndPieceSize.text != "" {
 			isSubmitButtonActive(true)
 		}else{
