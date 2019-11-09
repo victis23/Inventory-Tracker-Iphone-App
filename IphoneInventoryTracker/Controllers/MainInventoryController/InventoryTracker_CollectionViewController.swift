@@ -28,7 +28,7 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 	//MARK: IBOutlets
 	@IBOutlet weak var searchField: UISearchBar!
 	@IBOutlet weak var inventoryDetailCollection :UICollectionView!
-	//MARK: Class properties
+	//MARK: - Class properties
 	var dataSource :DataSource!
 	/// Description: Internal collection tasked with holding a list of inventory. In this case Paper stocks.
 	/// - The updated value is used to update the existing snapshot.
@@ -124,7 +124,10 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 		}
 	}
 	//MARK: IBActions
-	
+	// Returns user to LandingPageViewController.
+	@IBAction func homeButtonClicked(_ sender: Any) {
+		dismiss(animated: true, completion: nil)
+	}
 	@IBAction func unwindToMain(_ unwindSegue: UIStoryboardSegue) {}
 }
 
@@ -169,7 +172,7 @@ extension InventoryTracker_CollectionViewController {
 	// MARK: UICollectionViewDelegate
 	
 	func createLayout()->UICollectionViewCompositionalLayout{
-		let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(150))
+		let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
 		// Group size was originally Height 50%. However, because some of the labels did not have all required constraints the size needed to be increased to avoid clipping. Sorry I'm lazy.
 		let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.55))
 		let item = NSCollectionLayoutItem(layoutSize: itemSize)

@@ -21,8 +21,8 @@
 		7D32BBEC2373C8BD00C7E30E /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D32BBEB2373C8BD00C7E30E /* LocationCell.swift */; };
 		7D51961723592D5700145076 /* calculationExtensionOnModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D51961623592D5700145076 /* calculationExtensionOnModel.swift */; };
 		7D9F41DA236F9C46001C4F88 /* GoogleMapVenderLocation_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9F41D9236F9C46001C4F88 /* GoogleMapVenderLocation_ViewController.swift */; };
-		7DAA7600237646BB006584F2 /* LandingPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DAA75FF237646BB006584F2 /* LandingPage.storyboard */; };
 		7DAA760423764E7F006584F2 /* LandingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAA760323764E7F006584F2 /* LandingPageViewController.swift */; };
+		7DAA760623765E94006584F2 /* Pacifico-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7DAA760523765E94006584F2 /* Pacifico-Regular.ttf */; };
 		7DCC5C03234AA7E400CD4776 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCC5C02234AA7E400CD4776 /* AppDelegate.swift */; };
 		7DCC5C05234AA7E400CD4776 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCC5C04234AA7E400CD4776 /* SceneDelegate.swift */; };
 		7DCC5C0A234AA7E400CD4776 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DCC5C08234AA7E400CD4776 /* Main.storyboard */; };
@@ -61,8 +61,8 @@
 		7D51961623592D5700145076 /* calculationExtensionOnModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calculationExtensionOnModel.swift; sourceTree = "<group>"; };
 		7D69492A2369E8A4006443EB /* Inventory Tracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Inventory Tracker.entitlements"; sourceTree = "<group>"; };
 		7D9F41D9236F9C46001C4F88 /* GoogleMapVenderLocation_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapVenderLocation_ViewController.swift; sourceTree = "<group>"; };
-		7DAA75FF237646BB006584F2 /* LandingPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LandingPage.storyboard; sourceTree = "<group>"; };
 		7DAA760323764E7F006584F2 /* LandingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageViewController.swift; sourceTree = "<group>"; };
+		7DAA760523765E94006584F2 /* Pacifico-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pacifico-Regular.ttf"; sourceTree = "<group>"; };
 		7DCC5BFF234AA7E400CD4776 /* Inventory Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Inventory Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DCC5C02234AA7E400CD4776 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7DCC5C04234AA7E400CD4776 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -205,13 +205,13 @@
 				7DCC5C28234ABF4800CD4776 /* Views */,
 				7DCC5C26234ABEFB00CD4776 /* Controllers */,
 				7DCC5C08234AA7E400CD4776 /* Main.storyboard */,
-				7DAA75FF237646BB006584F2 /* LandingPage.storyboard */,
 				7D0E9D7D236F1DF500BE3DB7 /* ViewVenders.storyboard */,
 				7D118D60236E2F4F00203852 /* AddVender.storyboard */,
 				7D0349132354FE3000BD1AAF /* MoreStock_Storyboard.storyboard */,
 				7D0E9D82236F631F00BE3DB7 /* VenderAddressLocation.storyboard */,
 				7DCC5C0B234AA7E700CD4776 /* Assets.xcassets */,
 				7DCC5C0D234AA7E700CD4776 /* LaunchScreen.storyboard */,
+				7DAA760523765E94006584F2 /* Pacifico-Regular.ttf */,
 				7DCC5C10234AA7E700CD4776 /* Info.plist */,
 			);
 			path = IphoneInventoryTracker;
@@ -335,9 +335,9 @@
 				7DCC5C0C234AA7E700CD4776 /* Assets.xcassets in Resources */,
 				7D118D61236E2F4F00203852 /* AddVender.storyboard in Resources */,
 				7DCC5C0A234AA7E400CD4776 /* Main.storyboard in Resources */,
+				7DAA760623765E94006584F2 /* Pacifico-Regular.ttf in Resources */,
 				7D0E9D7E236F1DF500BE3DB7 /* ViewVenders.storyboard in Resources */,
 				7D0E9D83236F631F00BE3DB7 /* VenderAddressLocation.storyboard in Resources */,
-				7DAA7600237646BB006584F2 /* LandingPage.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -562,7 +562,7 @@
 				CODE_SIGN_ENTITLEMENTS = "IphoneInventoryTracker/Inventory Tracker.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = 55P567K3FP;
 				INFOPLIST_FILE = IphoneInventoryTracker/Info.plist;
@@ -588,7 +588,7 @@
 				CODE_SIGN_ENTITLEMENTS = "IphoneInventoryTracker/Inventory Tracker.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = 55P567K3FP;
 				INFOPLIST_FILE = IphoneInventoryTracker/Info.plist;
