@@ -20,6 +20,7 @@
 		7D1911BD234C0B3600D699FB /* CustomCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1911BC234C0B3600D699FB /* CustomCellTableViewCell.swift */; };
 		7D273B5E2376F10700D09C6E /* PaperCalculator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D273B5D2376F10700D09C6E /* PaperCalculator.storyboard */; };
 		7D273B642376F1FD00D09C6E /* PaperCalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D273B632376F1FD00D09C6E /* PaperCalculatorViewController.swift */; };
+		7D273B662377155300D09C6E /* Calculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D273B652377155300D09C6E /* Calculations.swift */; };
 		7D32BBEC2373C8BD00C7E30E /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D32BBEB2373C8BD00C7E30E /* LocationCell.swift */; };
 		7D51961723592D5700145076 /* calculationExtensionOnModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D51961623592D5700145076 /* calculationExtensionOnModel.swift */; };
 		7D9F41DA236F9C46001C4F88 /* GoogleMapVenderLocation_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9F41D9236F9C46001C4F88 /* GoogleMapVenderLocation_ViewController.swift */; };
@@ -61,6 +62,7 @@
 		7D1911BC234C0B3600D699FB /* CustomCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCellTableViewCell.swift; sourceTree = "<group>"; };
 		7D273B5D2376F10700D09C6E /* PaperCalculator.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PaperCalculator.storyboard; sourceTree = "<group>"; };
 		7D273B632376F1FD00D09C6E /* PaperCalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaperCalculatorViewController.swift; sourceTree = "<group>"; };
+		7D273B652377155300D09C6E /* Calculations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculations.swift; sourceTree = "<group>"; };
 		7D32BBEB2373C8BD00C7E30E /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		7D51961623592D5700145076 /* calculationExtensionOnModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calculationExtensionOnModel.swift; sourceTree = "<group>"; };
 		7D69492A2369E8A4006443EB /* Inventory Tracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Inventory Tracker.entitlements"; sourceTree = "<group>"; };
@@ -155,7 +157,6 @@
 			isa = PBXGroup;
 			children = (
 				7D273B602376F1BB00D09C6E /* Model */,
-				7D273B612376F1CD00D09C6E /* View */,
 				7D273B622376F1D700D09C6E /* Controller */,
 			);
 			path = PaperCalculatorModules;
@@ -164,15 +165,9 @@
 		7D273B602376F1BB00D09C6E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7D273B652377155300D09C6E /* Calculations.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		7D273B612376F1CD00D09C6E /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		7D273B622376F1D700D09C6E /* Controller */ = {
@@ -442,6 +437,7 @@
 				7DAA760423764E7F006584F2 /* LandingPageViewController.swift in Sources */,
 				7DE44526234DAC6B007D838B /* CellIdentifiers.swift in Sources */,
 				7DCC5C03234AA7E400CD4776 /* AppDelegate.swift in Sources */,
+				7D273B662377155300D09C6E /* Calculations.swift in Sources */,
 				7D273B642376F1FD00D09C6E /* PaperCalculatorViewController.swift in Sources */,
 				7D1911BD234C0B3600D699FB /* CustomCellTableViewCell.swift in Sources */,
 				7D0E9D81236F1F1800BE3DB7 /* ViewVendersTableViewController.swift in Sources */,
