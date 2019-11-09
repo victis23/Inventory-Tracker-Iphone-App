@@ -24,12 +24,14 @@ class AddVendersTableViewController: UITableViewController, CompanyAddressDelega
 	
 	//Variable that will be passed back over the unwind segue.
 	var vender: Vendor?
+	
 	// Changes address property of temporaryVender when updated.
 	private var addressText : String = String(){
 		didSet{
 			temporaryVender?.address = addressText
 		}
 	}
+	
 	// Create a local model that can be initialized with nil values.
 	private struct LocalVender {
 		var name : String?
@@ -38,6 +40,7 @@ class AddVendersTableViewController: UITableViewController, CompanyAddressDelega
 		var email: String?
 		var website : URL?
 	}
+	
 	//We create the local vender object that will hold our temporary values.
 	private var temporaryVender : LocalVender? = LocalVender(){
 		didSet {
@@ -65,9 +68,6 @@ class AddVendersTableViewController: UITableViewController, CompanyAddressDelega
 		setupLayout()
 		submitButton(isEnabled: false)
 		
-	}
-	deinit {
-		print("\(self.title ?? "") Controller has been terminated")
 	}
 	
 	//MARK: Aesthetics
@@ -156,6 +156,7 @@ class AddVendersTableViewController: UITableViewController, CompanyAddressDelega
 			address.text = "\(addressValue)..."
 		}
 	}
+	
 	// FIXME: Temporary Colors.
 	//Controls the appearence of the submit button depending on isEnabled State.
 	func submitButton(isEnabled:Bool){
