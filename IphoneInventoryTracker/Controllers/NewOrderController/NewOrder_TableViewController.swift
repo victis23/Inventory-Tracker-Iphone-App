@@ -9,10 +9,13 @@
 import UIKit
 
 class NewOrder_TableViewController: UITableViewController, UITextFieldDelegate {
+	
 	//MARK: Key
+	
 	private struct SegueKeys :Hashable {
 		static var save = "newOrderToMain"
 	}
+	
 	// MARK: IBOutlets
 	@IBOutlet weak var currentAmount: UILabel!
 	@IBOutlet weak var orderAmount: UITableViewCell!
@@ -20,18 +23,22 @@ class NewOrder_TableViewController: UITableViewController, UITextFieldDelegate {
 	@IBOutlet weak var submitButton :UIButton!
 	@IBOutlet weak var shortSide : UITextField!
 	@IBOutlet weak var longSide : UITextField!
+	
 	//MARK: Class Properties
+	
 	var stockObject : Stock!
 	var stockArray : [Stock] = []
 	var indexPath :IndexPath!
 	
 	//MARK: State
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupSubmitButtonAsthetics()
 		amountLabelText(stockObject)
 		tableView.keyboardDismissMode = .interactive
 	}
+	
 	/// Sets all of the Asthetics for the contoller's views.
 	func setupSubmitButtonAsthetics(){
 		guard let weight = stockObject.weight else {return}
@@ -55,6 +62,7 @@ class NewOrder_TableViewController: UITableViewController, UITextFieldDelegate {
 	func amountLabelText(_ model :Stock){
 		currentAmount.text = String(model.amount!)
 	}
+	
 	//MARK: IBActions
 	
 	@IBAction func tappedSubmitButton(_ sender: UIButton){
@@ -68,6 +76,7 @@ class NewOrder_TableViewController: UITableViewController, UITextFieldDelegate {
 		}catch DivisionError.noValueResultingInDivisionByZeroError {
 			isError = true
 		}catch{}
+		
 		// If there are no errors.
 		if !isError  {
 			currentAmount.text = "\(stockObject.amount!)"

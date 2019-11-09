@@ -9,16 +9,21 @@
 import UIKit
 
 class ParentSheetSize_TableViewController: UITableViewController {
+	
 	//MARK: Keys
+	
 	private struct SegueIdentifiers {
 		static var returnToNewStock = "unwindToNewStock"
 	}
+	
 	//MARK: Local data types
+	
 	//Sections for tableview.
 	private enum Section {
 		case paper
 		case envelopes
 	}
+	
 	//Local Data type to be held by tableview using different initializers.
 	fileprivate struct StockGroupings :Hashable {
 		var paper : Stock?
@@ -39,13 +44,13 @@ class ParentSheetSize_TableViewController: UITableViewController {
 			self.defaultTextForEnvelope = defaultTextForEnvelope
 		}
 	}
+	
 	//MARK: Privated class properties
 	private var dataSource :Datasource!
 	fileprivate var selectPaper = [StockGroupings(defaultTextForPaper: "Select Option")]
 	fileprivate var selectEnvelope = [StockGroupings(defaultTextForEnvelope: "Select Option")]
 	
 	fileprivate var defaultPaperStock :[StockGroupings] = [
-		
 		StockGroupings(paper: Stock(nil, ParentSize(rawValue: "8.5 x 11"), nil, nil, nil, nil)),
 		StockGroupings(paper: Stock(nil, ParentSize(rawValue: "8.5 x 14"), nil, nil, nil, nil)),
 		StockGroupings(paper: Stock(nil, ParentSize(rawValue: "11 x 17"), nil, nil, nil, nil)),
@@ -57,22 +62,28 @@ class ParentSheetSize_TableViewController: UITableViewController {
 		StockGroupings(envelopes: Stock(nil, ParentSize(rawValue: "#10 Envelope"), nil, nil, nil, nil))
 	]
 	//MARK: Class Properties
+	
 	var paperCellIsHidden = true
 	var envelopeIsHidden = true
 	var userSelectionItem :String!
 	var selectedModel : Stock?
+	
 	//MARK: State
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setDataSource()
 	}
+	
 	// Avoid error for placing values onto a tableview that is not within the view hierachy.
 	// tableview.window != nil at this point in controller's life cycle.
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		createSnapShot(selectPaper, selectEnvelope, animated: true)
 	}
+	
 	//MARK: Methods
+	
 	fileprivate func setValueLayout(_ model:[StockGroupings], indexPath:IndexPath){
 		// This model object is originating from tableView(_:didSelectRowAt:)
 		let object = model[indexPath.row]
@@ -102,6 +113,7 @@ class ParentSheetSize_TableViewController: UITableViewController {
 			self?.performSegue(withIdentifier: SegueIdentifiers.returnToNewStock, sender: self)
 		}
 	}
+	
 	fileprivate func createSnapShot(_ stock : [StockGroupings], _ envelopes : [StockGroupings], animated: Bool){
 		var snapShot = NSDiffableDataSourceSnapshot<Section,StockGroupings>()
 		snapShot.appendSections([.paper, .envelopes])
@@ -112,6 +124,7 @@ class ParentSheetSize_TableViewController: UITableViewController {
 			self?.dataSource.apply(snapShot, animatingDifferences: animated, completion: nil)
 		}
 	}
+	
 	//MARK: Navigation
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -124,6 +137,7 @@ class ParentSheetSize_TableViewController: UITableViewController {
 		}
 	}
 }
+
 //MARK: - TableView DataSource & Delegate Methods
 extension ParentSheetSize_TableViewController {
 	// Required class if you want to have multiple sections.
@@ -191,6 +205,7 @@ extension ParentSheetSize_TableViewController {
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		return 70
 	}
+	
 	// A more convoluted and badly written version of StockWeight_Tableview's equivalent method.
 	/// Controls which set of values the user sees when the tableview loads and once the first selection is made.
 	/// - Parameters:

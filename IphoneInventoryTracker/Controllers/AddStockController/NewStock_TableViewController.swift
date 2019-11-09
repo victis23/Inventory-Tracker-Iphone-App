@@ -9,7 +9,9 @@
 import UIKit
 
 class NewStock_TableViewController: UITableViewController {
+	
 	//MARK: IBOutlets
+	
 	@IBOutlet weak var stockName: UITextField!
 	@IBOutlet weak var sheetSizeLabel: UILabel!
 	@IBOutlet weak var stockWeightLabel: UILabel!
@@ -19,16 +21,22 @@ class NewStock_TableViewController: UITableViewController {
 	@IBOutlet weak var recommendedAmount: UITextField!
 	@IBOutlet weak var saveButton: UIBarButtonItem!
 	@IBOutlet weak var colorTextField: UITextField!
+	
 	//MARK: Properties
+	
 	var newStock :Stock?
+	
 	//MARK: State
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setEmptyModelValue()
 		setTextFieldTags()
 		tableView.keyboardDismissMode = .interactive
 	}
+	
 	//MARK: Methods
+	
 	/// Initializes a `Stock` object that has every property set to nil.
 	/// - Note: This could have also just be simply initialized as `newStock = Stock()`
 	func setEmptyModelValue(){
@@ -69,10 +77,12 @@ class NewStock_TableViewController: UITableViewController {
 			newStock?.vender = incoming.vender
 		}
 	}
+	
 	// If any of the rows are selected the keyboard is dismissed along with first responder.
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		view.endEditing(true)
 	}
+	
 	/// Executes when the user uses a primary action. In this case that would be hitting `return`.
 	/// - Parameter sender: Originating textField
 	@IBAction func moveToNextField(_ sender: UITextField){
@@ -97,6 +107,7 @@ class NewStock_TableViewController: UITableViewController {
 		}
 		
 	}
+	
 	/// Checks sender to determine what properties to update. This method
 	/// - Parameter sender: Tells the method which field the user is currently updating.
 	@IBAction func nameUpdate(_ sender: UITextField) {

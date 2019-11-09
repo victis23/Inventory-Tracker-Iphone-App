@@ -31,6 +31,7 @@ extension InventoryTracker_CollectionViewController : UISearchBarDelegate {
 		guard let stocks = privateStocks else {fatalError()}
 		return stocks
 	}
+	
 	// Updates snapshot with temporary value based on the users input.
 	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
 		
@@ -42,6 +43,7 @@ extension InventoryTracker_CollectionViewController : UISearchBarDelegate {
 				createSnapShot(filteredStocks(with: searchText))
 		}
 	}
+	
 	// Dismiss the keyboard when the user submits their query.
 	func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
 		searchField.resignFirstResponder()
