@@ -18,6 +18,8 @@
 		7D118D63236E34E800203852 /* AddVendersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D118D62236E34E800203852 /* AddVendersTableViewController.swift */; };
 		7D118D65236E45BC00203852 /* VenderCell_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D118D64236E45BC00203852 /* VenderCell_TableViewCell.swift */; };
 		7D1911BD234C0B3600D699FB /* CustomCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1911BC234C0B3600D699FB /* CustomCellTableViewCell.swift */; };
+		7D273B5E2376F10700D09C6E /* PaperCalculator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D273B5D2376F10700D09C6E /* PaperCalculator.storyboard */; };
+		7D273B642376F1FD00D09C6E /* PaperCalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D273B632376F1FD00D09C6E /* PaperCalculatorViewController.swift */; };
 		7D32BBEC2373C8BD00C7E30E /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D32BBEB2373C8BD00C7E30E /* LocationCell.swift */; };
 		7D51961723592D5700145076 /* calculationExtensionOnModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D51961623592D5700145076 /* calculationExtensionOnModel.swift */; };
 		7D9F41DA236F9C46001C4F88 /* GoogleMapVenderLocation_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9F41D9236F9C46001C4F88 /* GoogleMapVenderLocation_ViewController.swift */; };
@@ -57,6 +59,8 @@
 		7D118D62236E34E800203852 /* AddVendersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVendersTableViewController.swift; sourceTree = "<group>"; };
 		7D118D64236E45BC00203852 /* VenderCell_TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenderCell_TableViewCell.swift; sourceTree = "<group>"; };
 		7D1911BC234C0B3600D699FB /* CustomCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCellTableViewCell.swift; sourceTree = "<group>"; };
+		7D273B5D2376F10700D09C6E /* PaperCalculator.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PaperCalculator.storyboard; sourceTree = "<group>"; };
+		7D273B632376F1FD00D09C6E /* PaperCalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaperCalculatorViewController.swift; sourceTree = "<group>"; };
 		7D32BBEB2373C8BD00C7E30E /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		7D51961623592D5700145076 /* calculationExtensionOnModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calculationExtensionOnModel.swift; sourceTree = "<group>"; };
 		7D69492A2369E8A4006443EB /* Inventory Tracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Inventory Tracker.entitlements"; sourceTree = "<group>"; };
@@ -147,6 +151,38 @@
 			path = ParentSheetSizeController;
 			sourceTree = "<group>";
 		};
+		7D273B5F2376F19800D09C6E /* PaperCalculatorModules */ = {
+			isa = PBXGroup;
+			children = (
+				7D273B602376F1BB00D09C6E /* Model */,
+				7D273B612376F1CD00D09C6E /* View */,
+				7D273B622376F1D700D09C6E /* Controller */,
+			);
+			path = PaperCalculatorModules;
+			sourceTree = "<group>";
+		};
+		7D273B602376F1BB00D09C6E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7D273B612376F1CD00D09C6E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7D273B622376F1D700D09C6E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7D273B632376F1FD00D09C6E /* PaperCalculatorViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		7DB454EF234BEECB00CACBCC /* MainInventoryController */ = {
 			isa = PBXGroup;
 			children = (
@@ -204,11 +240,13 @@
 				7DCC5C29234ABF6100CD4776 /* Models */,
 				7DCC5C28234ABF4800CD4776 /* Views */,
 				7DCC5C26234ABEFB00CD4776 /* Controllers */,
+				7D273B5F2376F19800D09C6E /* PaperCalculatorModules */,
 				7DCC5C08234AA7E400CD4776 /* Main.storyboard */,
 				7D0E9D7D236F1DF500BE3DB7 /* ViewVenders.storyboard */,
 				7D118D60236E2F4F00203852 /* AddVender.storyboard */,
 				7D0349132354FE3000BD1AAF /* MoreStock_Storyboard.storyboard */,
 				7D0E9D82236F631F00BE3DB7 /* VenderAddressLocation.storyboard */,
+				7D273B5D2376F10700D09C6E /* PaperCalculator.storyboard */,
 				7DCC5C0B234AA7E700CD4776 /* Assets.xcassets */,
 				7DCC5C0D234AA7E700CD4776 /* LaunchScreen.storyboard */,
 				7DAA760523765E94006584F2 /* Pacifico-Regular.ttf */,
@@ -336,6 +374,7 @@
 				7D118D61236E2F4F00203852 /* AddVender.storyboard in Resources */,
 				7DCC5C0A234AA7E400CD4776 /* Main.storyboard in Resources */,
 				7DAA760623765E94006584F2 /* Pacifico-Regular.ttf in Resources */,
+				7D273B5E2376F10700D09C6E /* PaperCalculator.storyboard in Resources */,
 				7D0E9D7E236F1DF500BE3DB7 /* ViewVenders.storyboard in Resources */,
 				7D0E9D83236F631F00BE3DB7 /* VenderAddressLocation.storyboard in Resources */,
 			);
@@ -403,6 +442,7 @@
 				7DAA760423764E7F006584F2 /* LandingPageViewController.swift in Sources */,
 				7DE44526234DAC6B007D838B /* CellIdentifiers.swift in Sources */,
 				7DCC5C03234AA7E400CD4776 /* AppDelegate.swift in Sources */,
+				7D273B642376F1FD00D09C6E /* PaperCalculatorViewController.swift in Sources */,
 				7D1911BD234C0B3600D699FB /* CustomCellTableViewCell.swift in Sources */,
 				7D0E9D81236F1F1800BE3DB7 /* ViewVendersTableViewController.swift in Sources */,
 				7D118D65236E45BC00203852 /* VenderCell_TableViewCell.swift in Sources */,

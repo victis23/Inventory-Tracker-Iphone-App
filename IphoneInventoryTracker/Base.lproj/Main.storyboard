@@ -993,6 +993,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Inventory List" largeTitleDisplayMode="always" id="odg-yf-ETa">
                         <barButtonItem key="leftBarButtonItem" image="house" catalog="system" id="zjy-IS-4L5">
+                            <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                             <connections>
                                 <action selector="homeButtonClicked:" destination="bEE-wc-olj" id="S0M-sN-HeD"/>
                             </connections>
@@ -1086,6 +1087,16 @@
             </objects>
             <point key="canvasLocation" x="-52.173913043478265" y="114.50892857142857"/>
         </scene>
+        <!--Storyboard Reference-->
+        <scene sceneID="vAL-R0-ILW">
+            <objects>
+                <viewControllerPlaceholder id="Gvp-VI-fly" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="7Y3-dL-upJ"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xtz-Ne-w5o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2347" y="536"/>
+        </scene>
         <!--Landing Page View Controller-->
         <scene sceneID="Gaf-3A-yWI">
             <objects>
@@ -1122,7 +1133,10 @@
                                                     <constraint firstAttribute="height" constant="190" id="XYY-0H-XrV"/>
                                                     <constraint firstAttribute="width" secondItem="oaS-jC-sdf" secondAttribute="height" multiplier="1:1" id="ZgM-1z-NxP"/>
                                                 </constraints>
-                                                <state key="normal" title="Button"/>
+                                                <state key="normal" title="Paper Calculator"/>
+                                                <connections>
+                                                    <segue destination="Gvp-VI-fly" kind="show" id="rto-py-zAd"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
