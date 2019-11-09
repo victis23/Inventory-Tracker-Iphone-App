@@ -10,6 +10,7 @@
 import UIKit
 
 class VenderList_TableViewController: UITableViewController {
+	
 	//Internal Keys
 	fileprivate struct Keys {
 		//Segue
@@ -19,32 +20,40 @@ class VenderList_TableViewController: UITableViewController {
 		//TableView Cell
 		static var cellKey = "vender"
 	}
+	
 	// Section Selection For Tableview.
 	enum Section {
 		case main
 	}
+	
 	//MARK: Local Properties
+	
 	// Item selected from list to be transfered in unwind.
 	fileprivate var selectedVender : Vendor!
 	//DataSource Object — Intialized to Nil
 	private var dataSource : UITableViewDiffableDataSource<Section, Vendor>! = nil
 	//Used in tableView as source of data.
 	//Snapshop created on initialization everytime.
+	
 	var venders : [Vendor] = [] {
 		didSet {
 			snapShot(with: venders)
 		}
 	}
+	
 	//MARK: State
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 	}
+	
 	// Methods placed here to avoid running dataSource before tableview is set in UIWindow.
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		setDataSource()
 		initialSetup()
 	}
+	
 	//MARK: Methods
 	/// Checks disk for saved inventory.
 	/// If inventory list exists this method will decode the data and extract each inventory object's vendor object.
@@ -55,6 +64,7 @@ class VenderList_TableViewController: UITableViewController {
 		stocks.forEach({allVenders.append($0.vender!)})
 		venders = allVenders
 	}
+	
 	/// Creates the snapshot datasource for local tableview controller.
 	/// - Parameter venders: local list of vendors.
 	func snapShot(with venders: [Vendor]){
@@ -70,6 +80,7 @@ class VenderList_TableViewController: UITableViewController {
 		guard let sourceViewController = unwindSegue.source as? AddVendersTableViewController else {return}
 		venders.append(sourceViewController.vender!)
 	}
+	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == Keys.returnHomeWithVender {
 			let destination = segue.destination as! NewStock_TableViewController
@@ -116,8 +127,11 @@ extension VenderList_TableViewController {
 		present(alertViewController, animated: true, completion: nil)
 	}
 }
+
 //MARK: TableView DataSource & Delegate Methods.
+
 extension VenderList_TableViewController {
+	
 	/// Sets up tableView controller cell
 	func setDataSource(){
 		dataSource = UITableViewDiffableDataSource<Section,Vendor>(tableView: tableView, cellProvider: { (tableView, indexPath, vender) -> UITableViewCell? in
@@ -131,6 +145,7 @@ extension VenderList_TableViewController {
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		return 70
 	}
+	
 	// Presents options to user for selected vendor object and passes the object at index to be used as sender in whatever segue the user chooses.
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		guard let model = dataSource.itemIdentifier(for: indexPath) else {return}

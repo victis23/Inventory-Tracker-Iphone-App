@@ -10,26 +10,35 @@ import UIKit
 import Combine
 
 class ViewVendersTableViewController: UITableViewController {
+	
 	//Sections
 	enum Sections {
 		case main
 	}
+	
 	//MARK: Properties
+	
 	// Holds list of local vender objects.
 	var venders : [Vendor]? = []
+	
 	// Sets diffableDataSource property for controller.
 	var dataSource : UITableViewDiffableDataSource<Sections,Vendor>! = nil
+	
 	//MARK: State
+	
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+	
 	// Placed here to avoid warning about placing content on tableview before it has been applie to UIWindow.
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		setDataSource()
 		getVenderList()
 	}
+	
 	//MARK:  Methods
+	
 	/// Removes all existing vendors from venders array on every itirration.
 	/// - Important : `.removeAll()` is a must! Otherwise we get double items in list.
 	///	- Note: Only stocks from saved Stock objects will appear in the list. Our initial snapshot is based only on saved items.
@@ -44,6 +53,7 @@ class ViewVendersTableViewController: UITableViewController {
 		guard let venders = venders else {return}
 		setSnapShot(from: venders)
 	}
+	
 	// Local vendor object `venders` is only ever used for our variable in this method.
 	func setSnapShot(from localVenderList: [Vendor]){
 		var snapShot = NSDiffableDataSourceSnapshot<Sections, Vendor>()
@@ -51,6 +61,7 @@ class ViewVendersTableViewController: UITableViewController {
 		snapShot.appendItems(localVenderList, toSection: .main)
 		dataSource.apply(snapShot, animatingDifferences: false, completion: nil)
 	}
+	
 	//MARK: Navigation
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "info" {
@@ -59,6 +70,7 @@ class ViewVendersTableViewController: UITableViewController {
 		}
 	}
 }
+
 //MARK: - TableView DataSource & Delegates
 extension ViewVendersTableViewController {
 	
@@ -73,10 +85,12 @@ extension ViewVendersTableViewController {
 			
 		})
 	}
+	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		guard let object = dataSource.itemIdentifier(for: indexPath) else {return}
 		performSegue(withIdentifier: "info", sender: object)
 		}
+	
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		return 70
 	}

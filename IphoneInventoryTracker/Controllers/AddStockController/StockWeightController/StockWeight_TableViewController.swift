@@ -11,16 +11,20 @@ import UIKit
 class StockWeight_TableViewController: UITableViewController {
 	
 	//MARK: Keys
+	
 	private struct SegueIdentifiers {
 		static var returnToNewStock = "weightToHome"
 	}
+	
 	//MARK: Local Data types
+	
 	// Enum used to create tableview sections.
 	private enum Section {
 		case bond
 		case cover
 		case text
 	}
+	
 	// Local StockType Object that will hold the various items in our tableview. Can be initialized StockTypes().
 	fileprivate struct StockTypes : Hashable{
 		var defaultTextForBond :String?
@@ -54,7 +58,9 @@ class StockWeight_TableViewController: UITableViewController {
 			self.cover = cover
 		}
 	}
+	
 	//MARK: Private class properties
+	
 	fileprivate var selectOption : [StockTypes] = [StockTypes(textForBond: "Select Option")]
 	fileprivate var selectOption2 : [StockTypes] = [StockTypes(textForText: "Select Option")]
 	fileprivate var selectOption3 : [StockTypes] = [StockTypes(textForCover: "Select Option")]
@@ -83,14 +89,18 @@ class StockWeight_TableViewController: UITableViewController {
 	private var dataSource : Datasource!
 	
 	//MARK: Class Properties
+	
 	var userSelectedItem :String!
 	var userSelectedModel : Weight?
 	var selectedIndex : IndexPath!
+	
 	//MARK: State
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 		setDataSource()
     }
+	
 	//MARK: Class Methods
 	// Snapshot is set after view has appeared to avoid placing tableview into memory before it has been placed into the view hierarchy UIWindow.
 	override func viewDidAppear(_ animated: Bool) {
@@ -98,6 +108,7 @@ class StockWeight_TableViewController: UITableViewController {
 		// Bond , Text, Cover
 		self.setSnapShot(self.selectOption, self.selectOption2, self.selectOption3, animated: true)
 	}
+	
 	/// Takes the specified catagory of type StockTypes and places it within the corresponding section.
 	/// - Parameters:
 	///   - bond: Instance of StockTypes using `StockTypes(textForBond:)`
@@ -140,7 +151,9 @@ class StockWeight_TableViewController: UITableViewController {
 			self?.performSegue(withIdentifier: SegueIdentifiers.returnToNewStock, sender: self)
 		}
 	}
+	
 	//MARK: Navigation
+	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == SegueIdentifiers.returnToNewStock {
 			let destinationController = segue.destination as! NewStock_TableViewController

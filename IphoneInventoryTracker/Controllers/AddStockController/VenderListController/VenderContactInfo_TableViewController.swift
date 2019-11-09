@@ -15,13 +15,17 @@ import SafariServices
 class VenderContactInfo_TableViewController: UITableViewController {
 	
 	//MARK: Class Properties
+	
 	var websiteURL: URL? = URL(string: "http://www.google.com")
 	var contactInformation : Vendor!
+	
 	//Index Paths
 	let phoneNumberIndexPath = IndexPath(row: 0, section: 1)
 	let emailIndexPath = IndexPath(item: 1, section: 1)
 	let websiteIndexPath = IndexPath(item: 3, section: 1)
+	
 	//MARK: IBOutlets
+	
 	@IBOutlet weak var supplierName :UILabel!
 	@IBOutlet weak var phoneNumberLabel : UILabel!
 	@IBOutlet weak var emailAddressLabel : UILabel!
@@ -29,11 +33,14 @@ class VenderContactInfo_TableViewController: UITableViewController {
 	@IBOutlet weak var physicalAddressLine1Labe2 : UILabel!
 	@IBOutlet weak var physicalAddressLine1Labe3 : UILabel!
 	@IBOutlet weak var websiteLabel : UILabel!
+	
 	//MARK: ViewController State
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setvaluesForVender(contactInformation)
 	}
+	
 	//MARK: Methods
 	/// Assigns values to each of the label views in controller.
 	/// Depending on the amount of comma seperated lines splits and assigns each string to a particular label.
@@ -67,6 +74,7 @@ class VenderContactInfo_TableViewController: UITableViewController {
 				break
 		}
 	}
+	
 	//MARK: TableView Methods
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		switch indexPath {
@@ -83,15 +91,8 @@ class VenderContactInfo_TableViewController: UITableViewController {
 		}
 		
 	}
-	/*
-	func loadWebView(){
-	let webViewController = WebViewController()
-	webViewController.delegate = self
-	websiteURL = contactInformation.website
-	present(webViewController, animated: true, completion: nil)
-	}
-	*/
 }
+
 //MARK: Safari Services Methods
 extension VenderContactInfo_TableViewController : SFSafariViewControllerDelegate {
 	func getWebsite(){
@@ -100,6 +101,7 @@ extension VenderContactInfo_TableViewController : SFSafariViewControllerDelegate
 		present(safariViewer, animated: true, completion: nil)
 	}
 }
+
 //MARK: Mail Composer Controller Methods
 extension VenderContactInfo_TableViewController : MFMailComposeViewControllerDelegate, UINavigationControllerDelegate {
 	func sendEmail(){

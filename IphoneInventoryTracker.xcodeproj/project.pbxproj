@@ -13,7 +13,6 @@
 		7D0E9D81236F1F1800BE3DB7 /* ViewVendersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E9D80236F1F1800BE3DB7 /* ViewVendersTableViewController.swift */; };
 		7D0E9D83236F631F00BE3DB7 /* VenderAddressLocation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D0E9D82236F631F00BE3DB7 /* VenderAddressLocation.storyboard */; };
 		7D0F5589236C4D27001C6460 /* ExtensionInventoryTrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0F5588236C4D27001C6460 /* ExtensionInventoryTrackerViewController.swift */; };
-		7D118D5F236E2E4500203852 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D118D5E236E2E4500203852 /* WebViewController.swift */; };
 		7D118D61236E2F4F00203852 /* AddVender.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D118D60236E2F4F00203852 /* AddVender.storyboard */; };
 		7D118D63236E34E800203852 /* AddVendersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D118D62236E34E800203852 /* AddVendersTableViewController.swift */; };
 		7D118D65236E45BC00203852 /* VenderCell_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D118D64236E45BC00203852 /* VenderCell_TableViewCell.swift */; };
@@ -55,7 +54,6 @@
 		7D0E9D80236F1F1800BE3DB7 /* ViewVendersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewVendersTableViewController.swift; sourceTree = "<group>"; };
 		7D0E9D82236F631F00BE3DB7 /* VenderAddressLocation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VenderAddressLocation.storyboard; sourceTree = "<group>"; };
 		7D0F5588236C4D27001C6460 /* ExtensionInventoryTrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionInventoryTrackerViewController.swift; sourceTree = "<group>"; };
-		7D118D5E236E2E4500203852 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		7D118D60236E2F4F00203852 /* AddVender.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddVender.storyboard; sourceTree = "<group>"; };
 		7D118D62236E34E800203852 /* AddVendersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVendersTableViewController.swift; sourceTree = "<group>"; };
 		7D118D64236E45BC00203852 /* VenderCell_TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenderCell_TableViewCell.swift; sourceTree = "<group>"; };
@@ -297,7 +295,6 @@
 				7DCC5C1E234ABE4500CD4776 /* VenderList_TableViewController.swift */,
 				7D118D64236E45BC00203852 /* VenderCell_TableViewCell.swift */,
 				7DCC5C20234ABE5800CD4776 /* VenderContactInfo_TableViewController.swift */,
-				7D118D5E236E2E4500203852 /* WebViewController.swift */,
 				7D118D62236E34E800203852 /* AddVendersTableViewController.swift */,
 			);
 			path = VenderListController;
@@ -425,7 +422,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7DCC5C2B234ABF9D00CD4776 /* VenderModel.swift in Sources */,
-				7D118D5F236E2E4500203852 /* WebViewController.swift in Sources */,
 				7DCC5C23234ABEA100CD4776 /* InventoryTracker_CollectionViewController.swift in Sources */,
 				7DCC5C2D234ABFEE00CD4776 /* Stock.swift in Sources */,
 				7D0349162354FF7F00BD1AAF /* MoreStock_TableViewController.swift in Sources */,
