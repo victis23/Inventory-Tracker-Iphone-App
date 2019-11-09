@@ -24,6 +24,9 @@ class PaperCalculatorViewController: UITableViewController {
 	@IBOutlet weak var mainStackCenterXContraint: NSLayoutConstraint!
 	@IBOutlet weak var resultsView: UIView!
 	@IBOutlet weak var resultsViewCenterXContraint: NSLayoutConstraint!
+	@IBOutlet weak var longSideResultLabel: UILabel!
+	@IBOutlet weak var shortSideResultLabel: UILabel!
+	
 	
 	//MARK: Properties
 	var resultsAreVisable = false
@@ -33,12 +36,15 @@ class PaperCalculatorViewController: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupAesthetic()
+		setUpTextFields()
 	}
 	//MARK: Methods
 	/// Sets aesthetics that will be visable within the view controller.
+	/// Sets submit button to `DISABLED`
 	func setupAesthetic(){
 		tableView.keyboardDismissMode = .interactive
 		submitButton.layer.cornerRadius = 10
+		isSubmitButtonActive(false)
 		resultsView.layer.cornerRadius = 10
 		resultsViewCenterXContraint.constant = -450
 		submitButton.setTitle("Submit", for: .normal)
@@ -47,17 +53,11 @@ class PaperCalculatorViewController: UITableViewController {
 	/// Flips back and forth between the main stack and the results views.
 	func makeResultsVisable(){
 		UIView.animate(withDuration: 1.5) { [weak self] in
+			self?.view.endEditing(true)
 			self?.mainStackCenterXContraint.constant = 450
 			self?.resultsViewCenterXContraint.constant = 0
 			self?.submitButton.setTitle("Return", for: .normal)
 			self?.initalizeObject()
-			// Assigns each text field to the textField property.
-			// These need to be placed in the array in this particular order because initalizeObject() will be using them to create our model.
-			// 1. shortSideParentSheet
-			// 2. longSideParentSheet
-			// 3. shortEndPieceSize
-			// 4. longEndPieceSize
-			self?.textFields = [self?.shortSideParentSheet,self?.longSideParentSheet, self?.shortEndPieceSize, self?.longEndPieceSize]
 			//Clears values placed in field by user on each item.
 			self?.textFields.forEach({
 				$0?.text = ""
@@ -67,6 +67,20 @@ class PaperCalculatorViewController: UITableViewController {
 		resultsAreVisable = !resultsAreVisable
 	}
 	
+	func setUpTextFields(){
+		// Assigns each text field to the textField property.
+		// These need to be placed in the array in this particular order because initalizeObject() will be using them to create our model.
+		// 1. shortSideParentSheet
+		// 2. longSideParentSheet
+		// 3. shortEndPieceSize
+		// 4. longEndPieceSize
+		self.textFields = [self.shortSideParentSheet,self.longSideParentSheet, self.shortEndPieceSize, self.longEndPieceSize]
+		
+		textFields.forEach({
+			$0?.delegate = self
+		})
+	}
+	
 	/// Returns view to original view with results view moved off screen.
 	func makeViewOriginalView(){
 		
@@ -74,6 +88,7 @@ class PaperCalculatorViewController: UITableViewController {
 			self?.mainStackCenterXContraint.constant = 0
 			self?.resultsViewCenterXContraint.constant = -450
 			self?.submitButton.setTitle("Submit", for: .normal)
+			self?.isSubmitButtonActive(false)
 			self?.view.layoutIfNeeded()
 		}
 		resultsAreVisable = !resultsAreVisable
@@ -99,22 +114,54 @@ class PaperCalculatorViewController: UITableViewController {
 			calculationResults.shortSide = result.shortGrain
 		} catch (let error) {
 			print(error.localizedDescription)
+			makeViewOriginalView()
 		}
 		assignValuesToLabelsOnResultsView(long: calculationResults.longSide, short: calculationResults.shortSide)
 	}
 	
 	func assignValuesToLabelsOnResultsView(long:String, short:String){
-		
+		longSideResultLabel.text = long
+		shortSideResultLabel.text = short
+	}
+	
+	func isSubmitButtonActive(_ bool:Bool){
+		switch bool {
+			case true:
+				submitButton.alpha = 1.0
+			default:
+				submitButton.alpha = 0.3
+		}
+		submitButton.isEnabled = bool
 	}
 	
 	//MARK: IBACTIONS
+	
+	@IBAction func valueChanged(_ sender: Any) {
+		tableView.contentOffset = CGPoint(x: 0, y: 215)
+		if shortSideParentSheet.text != "" && shortEndPieceSize.text != "" && longSideParentSheet.text != "" && longEndPieceSize.text != "" {
+			isSubmitButtonActive(true)
+		}else{
+			isSubmitButtonActive(false)
+		}
+	}
+	
+	
 	@IBAction func tappedSubmitButton(_ sender: Any) {
-		// Evaluates bool for results view.
+		// Evaluates what is on the screen.
 		switch resultsAreVisable {
 			case true:
 				makeViewOriginalView()
+				isSubmitButtonActive(false)
 			default:
 				makeResultsVisable()
 		}
 	}
+}
+
+extension PaperCalculatorViewController : UITextFieldDelegate {
+	
+	func textFieldDidBeginEditing(_ textField: UITextField) {
+		
+	}
+	
 }

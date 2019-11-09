@@ -89,7 +89,7 @@
                                                     <rect key="frame" x="20" y="11" width="334" height="48"/>
                                                     <color key="backgroundColor" systemColor="tertiarySystemFillColor" red="0.46274509800000002" green="0.46274509800000002" blue="0.50196078430000002" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="30"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel"/>
                                                     <connections>
                                                         <action selector="userInputValueChanged:" destination="eql-HF-Q9U" eventType="editingChanged" id="N9q-hQ-kCd"/>
                                                     </connections>
@@ -114,7 +114,7 @@
                                                     <rect key="frame" x="20" y="11" width="334" height="48"/>
                                                     <color key="backgroundColor" systemColor="tertiarySystemFillColor" red="0.46274509800000002" green="0.46274509800000002" blue="0.50196078430000002" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="30"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                                                     <connections>
                                                         <action selector="userInputValueChanged:" destination="eql-HF-Q9U" eventType="editingChanged" id="qjG-Ri-hRk"/>
                                                     </connections>
@@ -139,7 +139,7 @@
                                                     <rect key="frame" x="20" y="11" width="334" height="48"/>
                                                     <color key="backgroundColor" systemColor="tertiarySystemFillColor" red="0.46274509800000002" green="0.46274509800000002" blue="0.50196078430000002" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="30"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="webSearch"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="webSearch" textContentType="url"/>
                                                     <connections>
                                                         <action selector="userInputValueChanged:" destination="eql-HF-Q9U" eventType="editingChanged" id="Huk-Gj-10T"/>
                                                     </connections>

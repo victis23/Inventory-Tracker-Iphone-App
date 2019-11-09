@@ -33,17 +33,25 @@ struct Calculations {
 		if longGrainValue == 0 && shortGrainValue == 0 {
 			throw DivisionError.noValueResultingInDivisionByZeroError
 		}
-		let longGrain = String(longGrainValue)
-		let shortGrain = String(shortGrainValue)
+		let longGrain = String(format: "%.0f", longGrainValue)
+		let shortGrain = String(format: "%.0f", shortGrainValue)
 		
 		return (longGrain, shortGrain)
 		
 	}
 	
-	func convertValuesIntoIntergersWithNoRemainder(with value:Double)->Double{
+	func convertValuesIntoIntergersWithNoRemainder(with
+		value:Double)->Double{
+		/*
 		let stringValue = String(format: "%.0f", value)
 		guard let newValue = Double(stringValue) else {fatalError()}
 		return newValue
+		*/
+		let valueAsString = String(value)
+		let valueWithoutDecimal = valueAsString.split(separator: ".")
+		let stringForIntegerValue = valueWithoutDecimal[0]
+		guard let doubleValue = Double(stringForIntegerValue) else {fatalError()}
+		return doubleValue
 	}
 }
 

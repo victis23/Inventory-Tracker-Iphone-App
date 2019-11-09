@@ -63,7 +63,7 @@ extension Stock {
 		}
 	}
 	
-	/// Takes an incoming double removes everything after the decimal point. It this this is equivalent. `String(format: "%.0f")`
+	/// Takes an incoming double removes everything after the decimal point. The result is NOT equivalent to --> . `String(format: "%.0f")`
 	/// - Parameter value: Double that will be rounded down.
 	/// - Returns: A double that will be used count needed sheets.
 	/// - Important: We always disgard the remainder because this is calculating a physical count where any remainder would constitute an imaginary quantity.

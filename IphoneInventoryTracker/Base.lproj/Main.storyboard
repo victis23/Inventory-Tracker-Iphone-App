@@ -1162,7 +1162,7 @@
                                                     <constraint firstAttribute="width" secondItem="bc0-rx-IHT" secondAttribute="height" multiplier="1:1" id="eGd-mm-t4f"/>
                                                     <constraint firstAttribute="height" constant="190" id="qOf-E9-fvL"/>
                                                 </constraints>
-                                                <state key="normal" title="Button"/>
+                                                <state key="normal" title="Expenses"/>
                                             </button>
                                         </subviews>
                                     </stackView>
