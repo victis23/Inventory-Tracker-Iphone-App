@@ -14,10 +14,12 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 	enum Sections {
 		case main
 	}
+	
 	// Unique Identifiers for cells.
 	private struct CellIdentifiers {
 		static var collectionViewKey = "cell"
 	}
+	
 	// Unique Identifiers for segues.
 	fileprivate struct SegueIdentifiers {
 		static var cancel = "cancel"
@@ -25,11 +27,15 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 		static var newOrder = "newOrder"
 		static var moreStock = "moreStock"
 	}
+	
 	//MARK: IBOutlets
 	@IBOutlet weak var searchField: UISearchBar!
 	@IBOutlet weak var inventoryDetailCollection :UICollectionView!
+	
 	//MARK: - Class properties
+	
 	var dataSource :DataSource!
+	
 	/// Description: Internal collection tasked with holding a list of inventory. In this case Paper stocks.
 	/// - The updated value is used to update the existing snapshot.
 	/// - Note: On change this collection is sorted from least to greatest. This is determined by the percentRemaining property on the corresponding `Stock` object.
@@ -45,7 +51,9 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 			Stock.encode(updatedStock)
 		}
 	}
+	
 	//MARK: State
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		let layOut = createLayout()
@@ -56,7 +64,9 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 		searchField.delegate = self
 		inventoryDetailCollection.keyboardDismissMode = .onDrag
 	}
+	
 	//MARK: Methods
+	
 	/// Decodes a collection from disk, and assigns the retrieved data to the local property `stock`.
 	/// - Important: This only runs upon `viewDidLoad()`.
 	func intialSetupOfExistingData(){
@@ -68,6 +78,7 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 		let decodedModel : [Stock] = unWrappedmodel
 		stock = decodedModel
 	}
+	
 	/// Clears user's search query and hides keyboard before updating the snapshot.
 	/// - Note: This only gets called when the user is going to modify properties on a selected object in the `stock` collection.
 	func resetTableViewValuesAndClearSearchFields(){
@@ -76,6 +87,7 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 		// We need to return back to the original snapshot inorder to avoid non-unique identifier error when making modifications to properties contained in the stock collection.
 		self.createSnapShot(self.stock)
 	}
+	
 	//MARK: - CollectionView Delegate Methods
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		let model = dataSource.itemIdentifier(for: indexPath)
@@ -123,12 +135,16 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 			controller.setModelForController(model)
 		}
 	}
+	
 	//MARK: IBActions
+	
 	// Returns user to LandingPageViewController.
 	@IBAction func homeButtonClicked(_ sender: Any) {
 		dismiss(animated: true, completion: nil)
 	}
+	
 	@IBAction func unwindToMain(_ unwindSegue: UIStoryboardSegue) {}
+	
 }
 
 

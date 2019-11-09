@@ -13,6 +13,7 @@ struct Order {
 	var orderAmount :Int
 	var pieceSize :Float
 }
+
 struct Stock : Hashable, Equatable {
 	var name :String?
 	var parentSheetSize :ParentSize?
@@ -24,17 +25,21 @@ struct Stock : Hashable, Equatable {
 	var color : String?
 	var cost : String?
 	var percentRemaining : Int?
+	
 	// Equatable — Not Required For Value Types; Just needed the practice writing it.
 	static func ==(lhs :Stock, rhs :Stock) -> Bool{
 		return lhs.identifier == rhs.identifier
 	}
+	
 	// Hashable — Not Required For Value Types with standard library items just needed the practice.
 	func hash(into hasher: inout Hasher) {
 		hasher.combine(identifier)
 	}
+	
 	init(_ name :String) {
 		self.name = name
 	}
+	
 	init(_ name :String?, _ parentSheetSize:ParentSize?, _ weight:Weight?, _ amount:Int?, _ recommendedAmount:Int?, _ vender:Vendor?) {
 		self.name = name
 		self.parentSheetSize = parentSheetSize
@@ -43,6 +48,7 @@ struct Stock : Hashable, Equatable {
 		self.recommendedAmount = recommendedAmount
 		self.vender = vender
 	}
+	
 	init(_ amount :Int?, _ recommendedAmount : Int?) {
 		guard let amount = amount, let recommendedAmount = recommendedAmount else {return}
 		let doubleAmount = Double(amount)
@@ -96,11 +102,13 @@ extension Stock : Codable {
 		let file = path.appendingPathComponent("savedModel").appendingPathExtension("json")
 		return file
 	}
+	
 	static func encode<T:Codable>(_ model : [T]){
 		let encoder = JSONEncoder()
 		guard let encodedData = try? encoder.encode(model) else {fatalError("Was unable to encode incoming data!")}
 		try? encodedData.write(to: filePath())
 	}
+	
 	static func decode<T :Decodable>()->[T]?{
 		let decoder = JSONDecoder()
 		guard let rawData = try? Data(contentsOf: filePath()) else {return nil}

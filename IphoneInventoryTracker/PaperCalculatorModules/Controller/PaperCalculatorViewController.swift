@@ -29,61 +29,46 @@ class PaperCalculatorViewController: UITableViewController {
 	
 	
 	//MARK: Properties
+	// Switch used to evaluate which view is currently being precented to user.
 	var resultsAreVisable = false
+	// Holds the result of the finished cuts calculation.
 	var values : Calculations?
+	// Collection of textFields used to make changes to entire group faster.
 	var textFields : [UITextField?] = []
+	
 	//MARK: State
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupAesthetic()
 		setUpTextFields()
+		isSubmitButtonActive(false)
 	}
+	
 	//MARK: Methods
 	/// Sets aesthetics that will be visable within the view controller.
 	/// Sets submit button to `DISABLED`
+	/// - Note: This is the default view.
 	func setupAesthetic(){
 		tableView.keyboardDismissMode = .interactive
 		submitButton.layer.cornerRadius = 10
-		isSubmitButtonActive(false)
 		resultsView.layer.cornerRadius = 10
-		resultsViewCenterXContraint.constant = -450
-		submitButton.setTitle("Submit", for: .normal)
+		makeViewOriginalView()
 	}
 	
-	/// Flips back and forth between the main stack and the results views.
-	func makeResultsVisable(){
-		UIView.animate(withDuration: 1.5) { [weak self] in
-			self?.view.endEditing(true)
-			self?.mainStackCenterXContraint.constant = 450
-			self?.resultsViewCenterXContraint.constant = 0
-			self?.submitButton.setTitle("Return", for: .normal)
-			self?.initalizeObject()
-			//Clears values placed in field by user on each item.
-			self?.textFields.forEach({
-				$0?.text = ""
-			})
-			self?.view.layoutIfNeeded()
-		}
-		resultsAreVisable = !resultsAreVisable
-	}
-	
+	/// Assigns `textfield` views to collection for easy manipulation.
+	///  - Important:
+	///  	- Assigns each text field to the textField property.
+	/// These need to be placed in the array in this particular order because `initalizeObject()` will be using them to create our model.
+	/// 1. `shortSideParentSheet`
+	/// 2. `longSideParentSheet`
+	/// 3. `shortEndPieceSize`
+	/// 4. `longEndPieceSize`
 	func setUpTextFields(){
-		// Assigns each text field to the textField property.
-		// These need to be placed in the array in this particular order because initalizeObject() will be using them to create our model.
-		// 1. shortSideParentSheet
-		// 2. longSideParentSheet
-		// 3. shortEndPieceSize
-		// 4. longEndPieceSize
 		self.textFields = [self.shortSideParentSheet,self.longSideParentSheet, self.shortEndPieceSize, self.longEndPieceSize]
-		
-		textFields.forEach({
-			$0?.delegate = self
-		})
 	}
 	
 	/// Returns view to original view with results view moved off screen.
 	func makeViewOriginalView(){
-		
 		UIView.animate(withDuration: 1.5) { [weak self] in
 			self?.mainStackCenterXContraint.constant = 0
 			self?.resultsViewCenterXContraint.constant = -450
@@ -94,8 +79,26 @@ class PaperCalculatorViewController: UITableViewController {
 		resultsAreVisable = !resultsAreVisable
 	}
 	
-	/// Creates an ordered collection that will be containing the text value of each UITextField.
-	/// Unwraps & converts the text value to a double & appends.
+	/// Presents pop-over view that contains labels that show the results.
+	func makeResultsVisable(){
+		UIView.animate(withDuration: 1.5) { [weak self] in
+			self?.view.endEditing(true)
+			self?.mainStackCenterXContraint.constant = 450
+			self?.resultsViewCenterXContraint.constant = 0
+			self?.submitButton.setTitle("Return", for: .normal)
+			self?.initalizeObject()
+			//Clears values placed in field by user on each item during transfer.
+			self?.textFields.forEach({
+				$0?.text = ""
+			})
+			self?.view.layoutIfNeeded()
+		}
+		// Changes boolean value of controller switch.
+		resultsAreVisable = !resultsAreVisable
+	}
+	
+	/// Unwraps & converts the text value of each UITextField `String --> Double` & appends to ordered collection of `userInputValues`.
+	/// - Note: This method is called from `makeResultsVisable` which in turn can only be called once all text fields are filled. This is done as a precautions because otherwise this method fails with an `index out of range` error.
 	func initalizeObject(){
 		var userInputValues : [Double] = []
 		textFields.forEach({
@@ -106,6 +109,10 @@ class PaperCalculatorViewController: UITableViewController {
 		getValuesForLabels()
 	}
 	
+	/// Calls object method that performs that calculations.
+	/// - Throws: This method catches an error from object if both calculations return 0. This would indicate that the user is trying to get a larger output than possible from the provided input.
+	/// - Important: This calculation deals with a physical item that can not be fractional. Any remainders are disgarded and the value is dropped down to the next integer value.
+	/// - Note: The object method returns a tuple of string type values `(longGrain:, shortGrain:)`
 	func getValuesForLabels(){
 		var calculationResults : (longSide:String,shortSide:String) = ("","")
 		do {
@@ -119,11 +126,17 @@ class PaperCalculatorViewController: UITableViewController {
 		assignValuesToLabelsOnResultsView(long: calculationResults.longSide, short: calculationResults.shortSide)
 	}
 	
+	/// Assigns tuple value retrieved in `getValueForLabels()`
+	/// - Parameters:
+	///   - long: Value for pieces out along the longer axis of the sheet.
+	///   - short: Value for pieces out along the shorter axis of the sheet.
 	func assignValuesToLabelsOnResultsView(long:String, short:String){
 		longSideResultLabel.text = long
 		shortSideResultLabel.text = short
 	}
 	
+	/// Controls the aesthetic of view for button depending on whether it is active.
+	/// - Parameter bool: State of button.
 	func isSubmitButtonActive(_ bool:Bool){
 		switch bool {
 			case true:
@@ -136,7 +149,10 @@ class PaperCalculatorViewController: UITableViewController {
 	
 	//MARK: IBACTIONS
 	
+	/// Verifies whether all fields hold values. If true — enables submit button.
+	/// - Parameter sender: Sender is a `UITextField` but it's values are not used in this method.
 	@IBAction func valueChanged(_ sender: Any) {
+		// Method breaks solid — Adjusts position of tableView cell as well as checks status of fields. Two birds with one stone?
 		tableView.contentOffset = CGPoint(x: 0, y: 215)
 		if shortSideParentSheet.text != "" && shortEndPieceSize.text != "" && longSideParentSheet.text != "" && longEndPieceSize.text != "" {
 			isSubmitButtonActive(true)
@@ -146,6 +162,8 @@ class PaperCalculatorViewController: UITableViewController {
 	}
 	
 	
+	/// Controls what view is presented to controller when user taps the submit button.
+	/// - Parameter sender: Sender is `UIButton` | value is not used.
 	@IBAction func tappedSubmitButton(_ sender: Any) {
 		// Evaluates what is on the screen.
 		switch resultsAreVisable {
@@ -156,12 +174,4 @@ class PaperCalculatorViewController: UITableViewController {
 				makeResultsVisable()
 		}
 	}
-}
-
-extension PaperCalculatorViewController : UITextFieldDelegate {
-	
-	func textFieldDidBeginEditing(_ textField: UITextField) {
-		
-	}
-	
 }
