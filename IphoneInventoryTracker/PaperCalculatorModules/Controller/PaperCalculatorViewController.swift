@@ -88,6 +88,23 @@ class PaperCalculatorViewController: UITableViewController {
 			userInputValues.append(numbericValue)
 		})
 		values = Calculations(sParent: userInputValues[0], lParent: userInputValues[1], sPiece: userInputValues[2], lPiece: userInputValues[3])
+		getValuesForLabels()
+	}
+	
+	func getValuesForLabels(){
+		var calculationResults : (longSide:String,shortSide:String) = ("","")
+		do {
+			guard let result = try values?.getCalculation() else {return}
+			calculationResults.longSide = result.longGrain
+			calculationResults.shortSide = result.shortGrain
+		} catch (let error) {
+			print(error.localizedDescription)
+		}
+		assignValuesToLabelsOnResultsView(long: calculationResults.longSide, short: calculationResults.shortSide)
+	}
+	
+	func assignValuesToLabelsOnResultsView(long:String, short:String){
+		
 	}
 	
 	//MARK: IBACTIONS

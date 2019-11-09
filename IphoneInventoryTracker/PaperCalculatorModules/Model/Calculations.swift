@@ -21,7 +21,30 @@ struct Calculations {
 		self.longEndOnPiece = lPiece
 	}
 	
-	func performCalculation(){
+	func getCalculation() throws ->(longGrain: String, shortGrain: String){
+		
+		let longGrainValue: Double
+		let shortGrainValue :Double
+		
+		longGrainValue = convertValuesIntoIntergersWithNoRemainder(with: shortEndOnParentSize/shortEndOnPiece) * convertValuesIntoIntergersWithNoRemainder(with: longEndOnParentSize/longEndOnPiece)
+		
+		shortGrainValue = convertValuesIntoIntergersWithNoRemainder(with: shortEndOnParentSize/longEndOnPiece) * convertValuesIntoIntergersWithNoRemainder(with: longEndOnParentSize/shortEndOnPiece)
+		
+		if longGrainValue == 0 && shortGrainValue == 0 {
+			throw DivisionError.noValueResultingInDivisionByZeroError
+		}
+		let longGrain = String(longGrainValue)
+		let shortGrain = String(shortGrainValue)
+		
+		return (longGrain, shortGrain)
 		
 	}
+	
+	func convertValuesIntoIntergersWithNoRemainder(with value:Double)->Double{
+		let stringValue = String(format: "%.0f", value)
+		guard let newValue = Double(stringValue) else {fatalError()}
+		return newValue
+	}
 }
+
+
