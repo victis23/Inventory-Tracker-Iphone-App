@@ -1087,10 +1087,10 @@
             </objects>
             <point key="canvasLocation" x="-52.173913043478265" y="114.50892857142857"/>
         </scene>
-        <!--Storyboard Reference-->
+        <!--PaperCalculator-->
         <scene sceneID="vAL-R0-ILW">
             <objects>
-                <viewControllerPlaceholder id="Gvp-VI-fly" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="PaperCalculator" id="Gvp-VI-fly" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="7Y3-dL-upJ"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xtz-Ne-w5o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
