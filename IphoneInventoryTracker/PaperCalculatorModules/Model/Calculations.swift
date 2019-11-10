@@ -6,6 +6,8 @@
 //  Copyright © 2019 Scott Leonard. All rights reserved.
 //
 
+/// Performs Calculations for  `CostOfSpentGoodsTableViewController.swift`.
+
 import Foundation
 
 struct Calculations {

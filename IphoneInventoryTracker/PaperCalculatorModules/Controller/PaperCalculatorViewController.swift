@@ -9,6 +9,7 @@
 import UIKit
 import Combine
 
+/// Displays amount of inventory user can obtain from raw values.
 class PaperCalculatorViewController: UITableViewController {
 	
 	//MARK: IBOUTLETS

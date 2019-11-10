@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Cell displayed on `CostOfSpentGoods`...
 class CostTableViewCell: UITableViewCell {
 	
 	@IBOutlet weak var nameLabel: UILabel!

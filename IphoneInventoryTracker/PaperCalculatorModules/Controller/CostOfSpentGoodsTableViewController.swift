@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Updates and displays the total cost of goods for each item in inventory.
 class CostOfSpentGoodsTableViewController: UITableViewController {
 	
 	//MARK: Local Data types

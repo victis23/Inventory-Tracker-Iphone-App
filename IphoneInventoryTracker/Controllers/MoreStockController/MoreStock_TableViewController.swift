@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Allows user to add more inventory to existing items.
 class MoreStock_TableViewController: UITableViewController {
 	
 	//MARK: Keys
