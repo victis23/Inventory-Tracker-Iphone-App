@@ -25,7 +25,7 @@ class CostOfSpentGoodsTableViewController: UITableViewController {
 	
 	//MARK: Class Properties
 	
-	var dataSource : UITableViewDiffableDataSource<Section,Stock>? = nil
+	var dataSource : DataSource!
 	var stock : [Stock]? = []
 	
 	//MARK: State
@@ -52,8 +52,8 @@ class CostOfSpentGoodsTableViewController: UITableViewController {
 	//MARK: - TableView DataSource & Delegate Methods.
 	
 	func setupDataSource(){
-		dataSource = UITableViewDiffableDataSource<Section,Stock>(tableView: tableView, cellProvider: { (tableView, indexPath, stock) -> UITableViewCell? in
 			
+			dataSource = DataSource(tableView: tableView, cellProvider: { (tableView, indexPath, stock) -> UITableViewCell? in
 			let cell = tableView.dequeueReusableCell(withIdentifier: Keys.uniqueCellIdentifer, for: indexPath) as! CostTableViewCell
 			
 			cell.nameLabel.text = stock.name
@@ -75,5 +75,14 @@ class CostOfSpentGoodsTableViewController: UITableViewController {
 	
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		return 90
+	}
+	
+	class DataSource : UITableViewDiffableDataSource<Section,Stock> {
+		override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+			switch section {
+				default:
+				return "Total Cost Of Item"
+			}
+		}
 	}
 }

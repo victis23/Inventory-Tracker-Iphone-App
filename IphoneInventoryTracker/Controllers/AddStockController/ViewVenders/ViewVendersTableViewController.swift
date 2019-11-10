@@ -51,8 +51,22 @@ class ViewVendersTableViewController: UITableViewController {
 			guard let vender = $0.vender else {return}
 			venders?.append(vender)
 		})
-		guard let venders = venders else {return}
-		setSnapShot(from: venders)
+
+		guard let vendors = venders else {return}
+		createUniqueList(with: vendors)
+	}
+	
+	/// Removes duplicates using domain & range mathematical principal.
+	/// - Note:
+	///	-	Domain = `Vendor.Name`
+	/// -	Range =  `Vendor`
+	func createUniqueList(with vendors: [Vendor]){
+		var list : [String:Vendor] = [:]
+		vendors.forEach({
+			list[$0.name] = $0
+		})
+		let uniqueVendors = list.map({$1})
+		setSnapShot(from: uniqueVendors)
 	}
 	
 	// Local vendor object `venders` is only ever used for our variable in this method.
