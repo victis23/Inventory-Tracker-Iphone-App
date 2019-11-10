@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Updates amount of inventory by subtracking based on amount submitted by user.
 class NewOrder_TableViewController: UITableViewController, UITextFieldDelegate {
 	
 	//MARK: Key

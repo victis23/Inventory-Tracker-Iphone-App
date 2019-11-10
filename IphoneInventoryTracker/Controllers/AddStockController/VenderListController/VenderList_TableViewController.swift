@@ -9,6 +9,7 @@
 
 import UIKit
 
+/// Performs the same function as `ViewVendersTableViewController.swift` however this controller is only accessable through the `NewStock` controller.
 class VenderList_TableViewController: UITableViewController {
 	
 	//Internal Keys

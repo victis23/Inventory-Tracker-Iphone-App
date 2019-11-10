@@ -8,6 +8,11 @@
 
 import UIKit
 
+/// Landing page for user that functions as a home page containing four options
+/// - Vendors : Contains list of venders where users can access contact info.
+/// - Inventory : List of inventory.
+/// - Paper Calculator : Calculates how many sheets a user can cut out from a parent sheet.
+/// - Expenses: Totals spent for each item in inventory.
 class LandingPageViewController: UIViewController {
 	//MARK: IBOutlets
 	@IBOutlet weak var logoImage: UIImageView!

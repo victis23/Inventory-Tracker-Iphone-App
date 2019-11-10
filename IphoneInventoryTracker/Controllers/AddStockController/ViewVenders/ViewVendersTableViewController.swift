@@ -7,8 +7,9 @@
 //
 
 import UIKit
-import Combine
 
+/// Displays list of vendors to user on a seperate page.
+/// - Important: This is the page that is displayed from the tab view.
 class ViewVendersTableViewController: UITableViewController {
 	
 	//Sections

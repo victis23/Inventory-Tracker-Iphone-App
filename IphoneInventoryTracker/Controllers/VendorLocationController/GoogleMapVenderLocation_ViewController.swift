@@ -17,6 +17,7 @@ protocol CompanyAddressDelegate {
 	func enabledStatusChecker()
 }
 
+/// Allows user to find the address of a given company using Google Map Services.
 class GoogleMapVenderLocation_ViewController: UIViewController, ObservableObject {
 	
 	let name = Notification.Name("LocationChanged")

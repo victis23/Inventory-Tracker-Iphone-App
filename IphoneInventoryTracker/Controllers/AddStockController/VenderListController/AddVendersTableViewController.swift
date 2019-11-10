@@ -10,7 +10,7 @@ import UIKit
 import Combine
 
 
-
+/// Adds new venders to vendor list.
 class AddVendersTableViewController: UITableViewController, CompanyAddressDelegate  {
 	
 	/// This function recieves the address that will be displayed in the contact window of VenderList_TableViewController.swift.

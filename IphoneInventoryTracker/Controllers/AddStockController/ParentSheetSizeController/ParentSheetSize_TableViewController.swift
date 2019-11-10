@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Allows user to select parent sheet size.
 class ParentSheetSize_TableViewController: UITableViewController {
 	
 	//MARK: Keys

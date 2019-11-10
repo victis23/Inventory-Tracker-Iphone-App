@@ -11,7 +11,10 @@ import MessageUI
 import SafariServices
 
 
-
+/// Displays contact information for venders.
+/// - Note: This is accessable from:
+/// - VenderList_TableViewController.swift
+/// - ViewVenderTableViewController.swift
 class VenderContactInfo_TableViewController: UITableViewController {
 	
 	//MARK: Class Properties

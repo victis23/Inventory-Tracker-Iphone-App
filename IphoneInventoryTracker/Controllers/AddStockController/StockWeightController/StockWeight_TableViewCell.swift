@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Cell that will be displayed in table view for StockWeight...
 class StockWeight_TableViewCell: UITableViewCell {
 	//Label property for tableview cell.
 	@IBOutlet weak var weightLabel :UILabel!

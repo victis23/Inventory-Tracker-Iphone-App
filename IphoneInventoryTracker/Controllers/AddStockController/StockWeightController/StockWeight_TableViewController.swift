@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Allows user to select stock weight.
 class StockWeight_TableViewController: UITableViewController {
 	
 	//MARK: Keys

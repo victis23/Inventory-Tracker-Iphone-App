@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Allows user to add a new item to the inventory list.
 class NewStock_TableViewController: UITableViewController {
 	
 	//MARK: IBOutlets

@@ -8,7 +8,7 @@
 
 import UIKit
 
-
+/// Displays the list of inventory items the user currently has.
 class InventoryTracker_CollectionViewController: UIViewController, UICollectionViewDelegate {
 	//MARK: Local data types
 	enum Sections {

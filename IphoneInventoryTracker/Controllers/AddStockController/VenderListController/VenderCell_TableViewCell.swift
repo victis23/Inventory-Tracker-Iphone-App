@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Custom cell that is displayed on `VenderList_TableViewController.swift`.
 class VenderCell_TableViewCell: UITableViewCell {
 	
 	//Cell that displays on VenderList_TableViewController.swift
