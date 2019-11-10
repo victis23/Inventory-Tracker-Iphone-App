@@ -78,6 +78,13 @@ class NewStock_TableViewController: UITableViewController {
 		}
 	}
 	
+	/// Returns the amount spent as a double for the quantity of initial stock.
+	func setSpentAmount()->Double?{
+		guard let amount = newStock?.amount, let costPer1000 = newStock?.cost else {return nil}
+		let costPerAmountPurchased = (Double(amount) / 1000) * costPer1000
+		return costPerAmountPurchased
+	}
+	
 	// If any of the rows are selected the keyboard is dismissed along with first responder.
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		view.endEditing(true)
@@ -121,7 +128,8 @@ class NewStock_TableViewController: UITableViewController {
 			case 2:
 				guard let costPer100 = costPer1000Sheets.text else {return}
 				// Stock does not have initalizers for this property and that's why it was assigned directly to it like this. This should probably be revised so that the aforementioned protection method can recieve this value properly.
-				newStock?.cost = costPer100
+				guard let cost = Double(costPer100) else {return}
+				newStock?.cost = cost
 			case 3:
 				guard let initialAmount = initialAmount.text, let amount = Int(initialAmount) else {return}
 				//TODO: Need to added external names for parameters.
@@ -159,7 +167,8 @@ extension NewStock_TableViewController {
 			guard let amount = newStock?.amount, let recommendedAmount = newStock?.recommendedAmount else {return}
 			
 			let percentObject = Stock(amount, recommendedAmount)
-			
+			// Sets the amount spent for the initial amount of good purchased.
+			newStock?.spent = setSpentAmount()
 			newStock?.percentRemaining = percentObject.percentRemaining
 			guard let stock = newStock else {return}
 			destination.stock?.append(stock)

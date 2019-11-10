@@ -26,7 +26,11 @@ class PaperCalculatorViewController: UITableViewController {
 	@IBOutlet weak var resultsViewCenterXContraint: NSLayoutConstraint!
 	@IBOutlet weak var longSideResultLabel: UILabel!
 	@IBOutlet weak var shortSideResultLabel: UILabel!
+	@IBOutlet weak var submitButtonYConstraint: NSLayoutConstraint!
+	@IBOutlet weak var staticCell: UITableViewCell!
+	@IBOutlet weak var titleYconstraint: NSLayoutConstraint!
 	
+	@IBOutlet weak var titleLabel: UILabel!
 	
 	//MARK: Properties
 	// Switch used to evaluate which view is currently being precented to user.
@@ -71,30 +75,35 @@ class PaperCalculatorViewController: UITableViewController {
 	/// Returns view to original view with results view moved off screen.
 	func makeViewOriginalView(){
 		UIView.animate(withDuration: 1.5) { [weak self] in
-			self?.mainStackCenterXContraint.constant = 0
-			self?.resultsViewCenterXContraint.constant = -450
+			self?.staticCell.frame.size.height = 500
+			self?.titleYconstraint.constant = -230
+			self?.titleLabel.transform = .identity
+			self?.mainStack.transform = .identity
+			self?.resultsView.transform = CGAffineTransform(translationX: -450, y: 0)
 			self?.submitButton.setTitle("Submit", for: .normal)
-			self?.isSubmitButtonActive(false)
-			self?.shortSideParentSheet.becomeFirstResponder()
+			self?.submitButtonYConstraint.constant = 225
 			self?.view.layoutIfNeeded()
 		}
+		isSubmitButtonActive(false)
+		shortSideParentSheet.becomeFirstResponder()
 		resultsAreVisable = !resultsAreVisable
 	}
 	
 	/// Presents pop-over view that contains labels that show the results.
 	func makeResultsVisable(){
+		view.endEditing(true)
 		UIView.animate(withDuration: 1.5) { [weak self] in
-			self?.view.endEditing(true)
-			self?.mainStackCenterXContraint.constant = 450
-			self?.resultsViewCenterXContraint.constant = 0
+			self?.staticCell.frame.size.height = 900
+			self?.titleYconstraint.constant = -400
+			self?.titleLabel.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+			self?.mainStack.transform = CGAffineTransform(translationX: 450, y: 0)
+			self?.resultsView.transform = CGAffineTransform(translationX: 0, y: -65)
 			self?.submitButton.setTitle("Return", for: .normal)
-			self?.initalizeObject()
-			//Clears values placed in field by user on each item during transfer.
-			self?.textFields.forEach({
-				$0?.text = ""
-			})
 			self?.view.layoutIfNeeded()
 		}
+		initalizeObject()
+		//Clears values placed in field by user on each item during transfer.
+		textFields.forEach({$0?.text = ""})
 		// Changes boolean value of controller switch.
 		resultsAreVisable = !resultsAreVisable
 	}
@@ -155,7 +164,7 @@ class PaperCalculatorViewController: UITableViewController {
 	/// - Parameter sender: Sender is a `UITextField` but it's values are not used in this method.
 	@IBAction func valueChanged(_ sender: Any) {
 		// Method breaks solid — Adjusts position of tableView cell as well as checks status of fields. Two birds with one stone?
-//		tableView.contentOffset = CGPoint(x: 0, y: 215)
+		//		tableView.contentOffset = CGPoint(x: 0, y: 215)
 		if shortSideParentSheet.text != "" && shortEndPieceSize.text != "" && longSideParentSheet.text != "" && longEndPieceSize.text != "" {
 			isSubmitButtonActive(true)
 		}else{

@@ -45,6 +45,15 @@ class MoreStock_TableViewController: UITableViewController {
 		newAmount.placeholder = " Amount Added"
 	}
 	
+	/// Takes in the new amount of stock being added to inventory and calculates the cost per 1000 pieces.
+	/// - Returns: This is the integer total of new stock being added to inventory.
+	func updateSpentAmount(with stockAmount: Int)->Double {
+		guard let cost = incomingStock.cost else {return 0}
+		let pricePerNewAmount = Double(stockAmount) / 1000
+		let costToAdd = pricePerNewAmount * cost
+		return costToAdd
+	}
+	
 	
 	//MARK: IBActions
 	
@@ -54,9 +63,11 @@ class MoreStock_TableViewController: UITableViewController {
 		incomingStock?.amount = newAmount + oldAmount
 		view.endEditing(true)
 		
-		guard let amount = incomingStock?.amount else {return}
+		guard let amount = incomingStock?.amount, let spentTotal = incomingStock.spent else {return}
 		amountLabel.text = String(amount)
 		incomingStock?.setPercentageAmount()
+		// Updates the total amount spent by adding to the original amount.
+		incomingStock.spent = updateSpentAmount(with: amount) + spentTotal
 		Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { (timer) in
 			self.performSegue(withIdentifier: SegueKeys.home, sender: self.incomingStock)
 		}

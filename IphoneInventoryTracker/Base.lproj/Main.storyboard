@@ -993,13 +993,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Inventory List" largeTitleDisplayMode="always" id="odg-yf-ETa">
                         <barButtonItem key="leftBarButtonItem" image="house" catalog="system" id="zjy-IS-4L5">
-                            <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="tintColor" name="NavigationControllerColors"/>
                             <connections>
                                 <action selector="homeButtonClicked:" destination="bEE-wc-olj" id="S0M-sN-HeD"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Add Stock" id="R5l-st-hzf">
-                            <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="tintColor" name="NavigationControllerColors"/>
                             <connections>
                                 <segue destination="xV4-q0-62g" kind="show" id="cbX-W6-HBS"/>
                             </connections>
@@ -1052,10 +1052,10 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="textColor" name="NavigationControllerColors"/>
                         </textAttributes>
                         <textAttributes key="largeTitleTextAttributes">
-                            <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="textColor" name="NavigationControllerColors"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1265,6 +1265,12 @@
         <image name="plus.circle" catalog="system" width="64" height="60"/>
         <namedColor name="Color">
             <color red="0.94099998474121094" green="0.84299999475479126" blue="0.61599999666213989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="NavigationControllerColors">
+            <color red="0.0" green="0.0" blue="0.0" alpha="0.65220421552658081" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="NavigationControllerColors">
+            <color red="0.95686274509803915" green="0.44313725490196076" blue="0.54117647058823526" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>

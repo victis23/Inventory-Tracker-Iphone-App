@@ -23,8 +23,9 @@ struct Stock : Hashable, Equatable {
 	var vender : Vendor?
 	var identifier = UUID()
 	var color : String?
-	var cost : String?
+	var cost : Double?
 	var percentRemaining : Int?
+	var spent : Double?
 	
 	// Equatable — Not Required For Value Types; Just needed the practice writing it.
 	static func ==(lhs :Stock, rhs :Stock) -> Bool{
@@ -57,17 +58,7 @@ struct Stock : Hashable, Equatable {
 		self.percentRemaining = Int(percent)
 	}
 }
-/*
-struct CurrentInventory {
-	var currentStocks : [Stock : Int]
-	var currentPapers : [Stock] {
-		return currentStocks.map {$0.key}
-	}
-	init(_ currentStocks :[Stock : Int]) {
-		self.currentStocks = currentStocks
-	}
-}
-*/
+
 enum Weight:String, CaseIterable, Codable{
 	case _20Bond = "#20 Bond"
 	case _60Bond = "#60 Bond"
