@@ -31,7 +31,10 @@ struct Stock : Hashable, Equatable {
 	static func ==(lhs :Stock, rhs :Stock) -> Bool{
 		return lhs.identifier == rhs.identifier
 	}
-	
+	// Initializes Struct with nil values.
+	init(){
+		
+	}
 	// Hashable — Not Required For Value Types with standard library items just needed the practice.
 	func hash(into hasher: inout Hasher) {
 		hasher.combine(identifier)

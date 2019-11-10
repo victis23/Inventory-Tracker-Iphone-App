@@ -1163,6 +1163,9 @@
                                                     <constraint firstAttribute="height" constant="190" id="qOf-E9-fvL"/>
                                                 </constraints>
                                                 <state key="normal" title="Expenses"/>
+                                                <connections>
+                                                    <segue destination="64D-Xx-JK9" kind="show" id="n4m-9Y-Rfw"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -1253,6 +1256,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="owu-4p-Dsr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1552.1739130434785" y="304.6875"/>
+        </scene>
+        <!--CostOfSpentGoods-->
+        <scene sceneID="4kg-R3-Z8R">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CostOfSpentGoods" id="64D-Xx-JK9" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="rez-Zt-JA1"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G6u-Xf-CTl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-973" y="490"/>
         </scene>
     </scenes>
     <resources>

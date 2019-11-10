@@ -78,11 +78,12 @@ class NewStock_TableViewController: UITableViewController {
 		}
 	}
 	
-	/// Returns the amount spent as a double for the quantity of initial stock.
-	func setSpentAmount()->Double?{
-		guard let amount = newStock?.amount, let costPer1000 = newStock?.cost else {return nil}
+	/// Sets amount spent based on the original amount set by user and the cost per 1000
+	func setSpentAmount(){
+		guard let amount = newStock?.amount else {return}
+		guard let costPer1000 = newStock?.cost else {return}
 		let costPerAmountPurchased = (Double(amount) / 1000) * costPer1000
-		return costPerAmountPurchased
+		newStock?.spent = costPerAmountPurchased
 	}
 	
 	// If any of the rows are selected the keyboard is dismissed along with first responder.
@@ -93,7 +94,7 @@ class NewStock_TableViewController: UITableViewController {
 	/// Executes when the user uses a primary action. In this case that would be hitting `return`.
 	/// - Parameter sender: Originating textField
 	@IBAction func moveToNextField(_ sender: UITextField){
-
+		
 		let senderTag = sender.tag
 		switch senderTag {
 			case 1:
@@ -150,6 +151,7 @@ class NewStock_TableViewController: UITableViewController {
 		}
 		// Verifies every property within our object before allowing user to submit their input.
 		if newStock?.name != nil && newStock?.name != "" && newStock?.cost != nil && newStock?.amount != nil && newStock?.recommendedAmount != nil && newStock?.color != nil && newStock?.color != "" && newStock?.parentSheetSize != nil && newStock?.weight != nil && newStock?.vender != nil {
+			setSpentAmount()
 			saveButton.isEnabled = true
 		}else{
 			saveButton.isEnabled = false
@@ -168,7 +170,6 @@ extension NewStock_TableViewController {
 			
 			let percentObject = Stock(amount, recommendedAmount)
 			// Sets the amount spent for the initial amount of good purchased.
-			newStock?.spent = setSpentAmount()
 			newStock?.percentRemaining = percentObject.percentRemaining
 			guard let stock = newStock else {return}
 			destination.stock?.append(stock)

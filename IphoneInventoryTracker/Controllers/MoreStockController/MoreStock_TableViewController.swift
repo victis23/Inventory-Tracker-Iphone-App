@@ -57,7 +57,6 @@ class MoreStock_TableViewController: UITableViewController {
 	
 	//MARK: IBActions
 	
-
 	@IBAction func submitButtonTapped(_ sender: Any) {
 		guard let amount2 = newAmount.text, let newAmount = Int(amount2), let oldAmount = incomingStock.amount else {return}
 		incomingStock?.amount = newAmount + oldAmount
