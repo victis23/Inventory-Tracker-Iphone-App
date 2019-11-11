@@ -26,6 +26,7 @@ struct Stock : Hashable, Equatable {
 	var cost : Double?
 	var percentRemaining : Int?
 	var spent : Double?
+	var errorMessage: String = "You have not added any stock to your inventory!"
 	
 	// Equatable — Not Required For Value Types; Just needed the practice writing it.
 	static func ==(lhs :Stock, rhs :Stock) -> Bool{

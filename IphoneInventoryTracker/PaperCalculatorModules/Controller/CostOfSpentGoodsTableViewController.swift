@@ -21,12 +21,14 @@ class CostOfSpentGoodsTableViewController: UITableViewController {
 	//KEYS
 	struct Keys {
 		static var uniqueCellIdentifer = "cell"
+		static var segueKey = "addStock"
 	}
 	
 	//MARK: Class Properties
 	
 	var dataSource : DataSource!
-	var stock : [Stock]? = []
+	var localStockArray : [Stock]? = []
+	var inventoryIsEmpty: Bool = false
 	
 	//MARK: State
 	
@@ -46,15 +48,30 @@ class CostOfSpentGoodsTableViewController: UITableViewController {
 	/// - Note: Object method returns a generic  <T: Hashable>.
 	func retrieveInventoryListFromFile(){
 		// Method returns a generic that needs to be specified.
-		stock = Stock.decode() as [Stock]?
+		localStockArray = Stock.decode() as [Stock]?
+		// If the user has not added inventory to their list yet a default Stock value is assigned to tableview.
+		if localStockArray == nil {
+			let nilStock = Stock()
+			localStockArray = [nilStock]
+			inventoryIsEmpty = true
+		}
 	}
 	
 	//MARK: - TableView DataSource & Delegate Methods.
 	
 	func setupDataSource(){
-			
-			dataSource = DataSource(tableView: tableView, cellProvider: { (tableView, indexPath, stock) -> UITableViewCell? in
+		
+		dataSource = DataSource(tableView: tableView, cellProvider: { (tableView, indexPath, stock) -> UITableViewCell? in
 			let cell = tableView.dequeueReusableCell(withIdentifier: Keys.uniqueCellIdentifer, for: indexPath) as! CostTableViewCell
+			
+			// This is executed if user has not added any inventory to their list.
+			guard stock.name != nil else {
+				cell.nameLabel.text = stock.errorMessage
+				cell.costLabel.text = "ADD"
+				cell.costLabel.textColor = .systemBlue
+				return cell
+			}
+			
 			
 			cell.nameLabel.text = stock.name
 			guard let spent = stock.spent else {fatalError()}
@@ -66,7 +83,7 @@ class CostOfSpentGoodsTableViewController: UITableViewController {
 	}
 	
 	func createSnapShot(){
-		guard let stock = stock else {return}
+		guard let stock = localStockArray else {return}
 		var snapShot = NSDiffableDataSourceSnapshot<Section,Stock>()
 		snapShot.appendSections([.main])
 		snapShot.appendItems(stock, toSection: .main)
@@ -81,8 +98,30 @@ class CostOfSpentGoodsTableViewController: UITableViewController {
 		override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 			switch section {
 				default:
-				return "Total Cost Of Item"
+					return "Total Cost Of Item"
 			}
 		}
 	}
+	
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		switch inventoryIsEmpty {
+			case true:
+				performSegue(withIdentifier: Keys.segueKey, sender: nil)
+						default:
+				break
+		}
+	}
+}
+
+extension CostOfSpentGoodsTableViewController {
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == Keys.segueKey {
+			let navigationController = segue.destination as! UINavigationController
+			
+			let controller = navigationController.topViewController as! InventoryTracker_CollectionViewController
+			controller.passthroughSegue()
+		}
+	}
+	
 }

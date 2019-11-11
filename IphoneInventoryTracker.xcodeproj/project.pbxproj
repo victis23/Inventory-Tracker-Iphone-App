@@ -614,8 +614,7 @@
 				CODE_SIGN_ENTITLEMENTS = "IphoneInventoryTracker/Inventory Tracker.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
-				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = 55P567K3FP;
 				INFOPLIST_FILE = IphoneInventoryTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -626,9 +625,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.duhmarket.printerproinventorytracker23;
 				PRODUCT_NAME = "Inventory Tracker";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -640,8 +639,7 @@
 				CODE_SIGN_ENTITLEMENTS = "IphoneInventoryTracker/Inventory Tracker.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
-				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = 55P567K3FP;
 				INFOPLIST_FILE = IphoneInventoryTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -652,9 +650,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.duhmarket.printerproinventorytracker23;
 				PRODUCT_NAME = "Inventory Tracker";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

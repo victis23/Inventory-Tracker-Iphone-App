@@ -32,6 +32,7 @@
                     <navigationItem key="navigationItem" title="Venders" largeTitleDisplayMode="always" id="2Df-9b-p3D"/>
                     <connections>
                         <segue destination="pGY-Nh-DgA" kind="show" identifier="info" id="bUj-gY-Q8o"/>
+                        <segue destination="wbJ-Ng-arf" kind="show" identifier="addStock" id="qQh-GY-I3R"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dLN-mF-9bK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -47,6 +48,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MBO-Al-N1v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1766" y="-205"/>
+        </scene>
+        <!--newStock-->
+        <scene sceneID="eK5-GJ-yAJ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="newStock" id="wbJ-Ng-arf" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="PMH-9U-h1b"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IgV-D0-JCG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1816" y="147"/>
         </scene>
     </scenes>
 </document>

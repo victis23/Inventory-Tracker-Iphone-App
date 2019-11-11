@@ -15,6 +15,9 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 		case main
 	}
 	
+	//If the user has no inventory and enters their cost list this variable will be used to determine if they are to be sent to the add new stock page.
+	var inventoryListIsEmpty = false
+	
 	// Unique Identifiers for cells.
 	private struct CellIdentifiers {
 		static var collectionViewKey = "cell"
@@ -63,9 +66,20 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 		inventoryDetailCollection.delegate = self
 		searchField.delegate = self
 		inventoryDetailCollection.keyboardDismissMode = .onDrag
+		listIsEmptyWasTrue()
+		
+		
 	}
 	
 	//MARK: Methods
+	
+	/// If the user has no items in list and accesses their expense tab this method is evaluated.
+	func listIsEmptyWasTrue(){
+		if inventoryListIsEmpty == true {
+			inventoryListIsEmpty = false
+			performSegue(withIdentifier: SegueIdentifiers.addStock, sender: nil)
+		}
+	}
 	
 	/// Decodes a collection from disk, and assigns the retrieved data to the local property `stock`.
 	/// - Important: This only runs upon `viewDidLoad()`.
@@ -135,6 +149,10 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 			controller.setModelForController(model)
 		}
 	}
+	// This method is called from CostOfSpendingGoodsTableViewController when the user has not added inventory to the list yet.
+	@objc func passthroughSegue(){
+		inventoryListIsEmpty = true
+			}
 	
 	//MARK: IBActions
 	
