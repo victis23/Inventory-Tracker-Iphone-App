@@ -31,6 +31,7 @@
                                                     <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="30"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                                     <connections>
+                                                        <action selector="returnKeyPressed:" destination="eql-HF-Q9U" eventType="primaryActionTriggered" id="KSv-e0-IBh"/>
                                                         <action selector="userInputValueChanged:" destination="eql-HF-Q9U" eventType="editingChanged" id="ETu-jj-brT"/>
                                                     </connections>
                                                 </textField>
@@ -91,6 +92,7 @@
                                                     <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="30"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel"/>
                                                     <connections>
+                                                        <action selector="returnKeyPressed:" destination="eql-HF-Q9U" eventType="primaryActionTriggered" id="6Uv-ec-xkY"/>
                                                         <action selector="userInputValueChanged:" destination="eql-HF-Q9U" eventType="editingChanged" id="N9q-hQ-kCd"/>
                                                     </connections>
                                                 </textField>
@@ -116,6 +118,7 @@
                                                     <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="30"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                                                     <connections>
+                                                        <action selector="returnKeyPressed:" destination="eql-HF-Q9U" eventType="primaryActionTriggered" id="VB0-V6-h4I"/>
                                                         <action selector="userInputValueChanged:" destination="eql-HF-Q9U" eventType="editingChanged" id="qjG-Ri-hRk"/>
                                                     </connections>
                                                 </textField>
@@ -141,6 +144,7 @@
                                                     <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="30"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="webSearch" textContentType="url"/>
                                                     <connections>
+                                                        <action selector="returnKeyPressed:" destination="eql-HF-Q9U" eventType="primaryActionTriggered" id="q3v-jR-MkO"/>
                                                         <action selector="userInputValueChanged:" destination="eql-HF-Q9U" eventType="editingChanged" id="Huk-Gj-10T"/>
                                                     </connections>
                                                 </textField>

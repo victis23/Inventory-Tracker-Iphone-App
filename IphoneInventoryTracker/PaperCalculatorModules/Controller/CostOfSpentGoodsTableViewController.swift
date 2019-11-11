@@ -9,7 +9,7 @@
 import UIKit
 
 /// Updates and displays the total cost of goods for each item in inventory.
-class CostOfSpentGoodsTableViewController: UITableViewController {
+class CostOfSpentGoodsTableViewController: UITableViewController, CostTrackerDelegate {
 	
 	//MARK: Local Data types
 	
@@ -27,15 +27,19 @@ class CostOfSpentGoodsTableViewController: UITableViewController {
 	//MARK: Class Properties
 	
 	var dataSource : DataSource!
-	var localStockArray : [Stock]? = []
+	var localStockArray : [Stock]? = [] {
+		didSet {
+			createSnapShot()
+		}
+	}
 	var inventoryIsEmpty: Bool = false
 	
 	//MARK: State
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		retrieveInventoryListFromFile()
 		setupDataSource()
+		retrieveCostInformation()
 	}
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
@@ -46,7 +50,7 @@ class CostOfSpentGoodsTableViewController: UITableViewController {
 	
 	/// Decodes list of stocks from disk and assigns to local collection.
 	/// - Note: Object method returns a generic  <T: Hashable>.
-	func retrieveInventoryListFromFile(){
+	func retrieveCostInformation(){
 		// Method returns a generic that needs to be specified.
 		localStockArray = Stock.decode() as [Stock]?
 		// If the user has not added inventory to their list yet a default Stock value is assigned to tableview.
@@ -107,7 +111,7 @@ class CostOfSpentGoodsTableViewController: UITableViewController {
 		switch inventoryIsEmpty {
 			case true:
 				performSegue(withIdentifier: Keys.segueKey, sender: nil)
-						default:
+			default:
 				break
 		}
 	}
@@ -120,6 +124,7 @@ extension CostOfSpentGoodsTableViewController {
 			let navigationController = segue.destination as! UINavigationController
 			
 			let controller = navigationController.topViewController as! InventoryTracker_CollectionViewController
+			controller.costDelegate = self
 			controller.passthroughSegue()
 		}
 	}

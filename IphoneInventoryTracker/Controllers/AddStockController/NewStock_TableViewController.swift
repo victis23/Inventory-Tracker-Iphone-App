@@ -90,6 +90,15 @@ class NewStock_TableViewController: UITableViewController {
 	// If any of the rows are selected the keyboard is dismissed along with first responder.
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		view.endEditing(true)
+		
+		// Dismiss Keyboard after selection is changed
+		if indexPath != IndexPath(row: 0, section: 0){
+			switch indexPath {
+				default:
+				stockName.resignFirstResponder()
+			}
+		}
+		
 	}
 	
 	/// Executes when the user uses a primary action. In this case that would be hitting `return`.

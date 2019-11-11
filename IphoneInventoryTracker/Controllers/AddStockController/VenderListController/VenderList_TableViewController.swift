@@ -35,10 +35,14 @@ class VenderList_TableViewController: UITableViewController {
 	private var dataSource : UITableViewDiffableDataSource<Section, Vendor>! = nil
 	//Used in tableView as source of data.
 	//Snapshop created on initialization everytime.
+	private var changesCount = 0
 	
+	//FIXME: Vendor list is displaying duplicates remember to resolve.
 	var venders : [Vendor] = [] {
 		didSet {
+			removeDuplicates(with: &venders)
 			snapShot(with: venders)
+			changesCount += 1
 		}
 	}
 	
@@ -66,6 +70,21 @@ class VenderList_TableViewController: UITableViewController {
 		venders = allVenders
 	}
 	
+	func reminder(){
+		let newValue = UIAlertController(title: "Remember", message: "Tap On Vendor In List To Save.", preferredStyle: .alert)
+		let acknowledge = UIAlertAction(title: "Ok", style: .default, handler: nil)
+		newValue.addAction(acknowledge)
+		present(newValue, animated: true, completion: nil)
+	}
+	
+	func removeDuplicates(with value :inout [Vendor]){
+		var dictionaryOfNames : [String:Vendor] = [:]
+		value.forEach({
+			dictionaryOfNames[$0.name] = $0
+		})
+		value = dictionaryOfNames.map({$1})
+	}
+	
 	/// Creates the snapshot datasource for local tableview controller.
 	/// - Parameter venders: local list of vendors.
 	func snapShot(with venders: [Vendor]){
@@ -73,6 +92,11 @@ class VenderList_TableViewController: UITableViewController {
 		snapShot.appendSections([.main])
 		snapShot.appendItems(venders, toSection: .main)
 		dataSource?.apply(snapShot, animatingDifferences: true)
+		dataSource.apply(snapShot, animatingDifferences: true) {[weak self] in
+			if self?.changesCount != 0 {
+				self?.reminder()
+			}
+		}
 	}
 	
 	//MARK: Navigation

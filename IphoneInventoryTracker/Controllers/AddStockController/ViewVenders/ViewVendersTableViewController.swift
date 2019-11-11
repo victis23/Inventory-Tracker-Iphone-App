@@ -10,7 +10,7 @@ import UIKit
 
 /// Displays list of vendors to user on a seperate page.
 /// - Important: This is the page that is displayed from the tab view.
-class ViewVendersTableViewController: UITableViewController {
+class ViewVendersTableViewController: UITableViewController, InventoryTrackerDelegate {
 	
 	//Sections
 	enum Sections {
@@ -35,7 +35,7 @@ class ViewVendersTableViewController: UITableViewController {
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		setDataSource()
-		getVenderList()
+		getList()
 	}
 	
 	//MARK:  Methods
@@ -43,7 +43,7 @@ class ViewVendersTableViewController: UITableViewController {
 	/// Removes all existing vendors from venders array on every itirration.
 	/// - Important : `.removeAll()` is a must! Otherwise we get double items in list.
 	///	- Note: Only stocks from saved Stock objects will appear in the list. Our initial snapshot is based only on saved items.
-	func getVenderList(){
+	func getList(){
 		venders?.removeAll()
 		guard let stocks : [Stock] = Stock.decode() else {
 			presentAlert()
@@ -104,6 +104,7 @@ class ViewVendersTableViewController: UITableViewController {
 			let navigationController = segue.destination as! UINavigationController
 			
 			let controller = navigationController.topViewController as! InventoryTracker_CollectionViewController
+			controller.delegate = self
 			controller.passthroughSegue()
 		}
 	}

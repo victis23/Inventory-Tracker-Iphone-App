@@ -103,6 +103,12 @@ class AddVendersTableViewController: UITableViewController, CompanyAddressDelega
 		}
 	}
 	
+	// Hitting Return hides keyboard.
+	@IBAction func returnKeyPressed(_ sender: Any) {
+		view.endEditing(true)
+	}
+	
+	
 	/// Assigns temporary values to a completed Vender Struct Object
 	/// Performs an UNWIND segue --> VenderList_TableViewController.swift.
 	/// - Parameter sender: IBOutlet Object Button — Not used in this Method.

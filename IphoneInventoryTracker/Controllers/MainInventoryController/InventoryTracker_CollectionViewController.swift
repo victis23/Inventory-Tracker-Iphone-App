@@ -8,6 +8,13 @@
 
 import UIKit
 
+protocol InventoryTrackerDelegate {
+	func getList()
+}
+protocol CostTrackerDelegate {
+	func retrieveCostInformation()
+}
+
 /// Displays the list of inventory items the user currently has.
 class InventoryTracker_CollectionViewController: UIViewController, UICollectionViewDelegate {
 	//MARK: Local data types
@@ -38,6 +45,8 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 	//MARK: - Class properties
 	
 	var dataSource :DataSource!
+	var delegate : InventoryTrackerDelegate?
+	var costDelegate : CostTrackerDelegate?
 	
 	/// Description: Internal collection tasked with holding a list of inventory. In this case Paper stocks.
 	/// - The updated value is used to update the existing snapshot.
@@ -52,6 +61,7 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 			guard let updatedStock = stock else {fatalError("Unable to perform unwrap!")}
 			createSnapShot(updatedStock)
 			Stock.encode(updatedStock)
+			deleteSavedFile()
 		}
 	}
 	
@@ -93,6 +103,17 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 		stock = decodedModel
 	}
 	
+	/// Checks collection and if there are no values removes file from disk.
+	/// - Note: This method is required in order to update the following two screens.
+	/// 	- `vendors`
+	/// 	- `expenses`
+	func deleteSavedFile(){
+		guard let count = stock?.count else {return}
+		if count < 1 {
+			try? FileManager.default.removeItem(at: Stock.filePath())
+		}
+	}
+	
 	/// Clears user's search query and hides keyboard before updating the snapshot.
 	/// - Note: This only gets called when the user is going to modify properties on a selected object in the `stock` collection.
 	func resetTableViewValuesAndClearSearchFields(){
@@ -123,8 +144,8 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 		//Allows user the ability to remove an item from collectionView.
 		let delete = UIAlertAction(title: "Delete", style: .destructive) { [weak self](item) in
 			self?.stock?.remove(at: indexPath.item)
-			
 		}
+		
 		alertController.addAction(newOrder)
 		alertController.addAction(addStock)
 		alertController.addAction(delete)
@@ -152,7 +173,7 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 	// This method is called from CostOfSpendingGoodsTableViewController when the user has not added inventory to the list yet.
 	@objc func passthroughSegue(){
 		inventoryListIsEmpty = true
-			}
+	}
 	
 	//MARK: IBActions
 	
@@ -161,7 +182,10 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 		dismiss(animated: true, completion: nil)
 	}
 	
-	@IBAction func unwindToMain(_ unwindSegue: UIStoryboardSegue) {}
+	@IBAction func unwindToMain(_ unwindSegue: UIStoryboardSegue) {
+		delegate?.getList()
+		costDelegate?.retrieveCostInformation()
+	}
 	
 }
 
