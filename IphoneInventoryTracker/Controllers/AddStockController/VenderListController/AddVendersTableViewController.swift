@@ -24,6 +24,7 @@ class AddVendersTableViewController: UITableViewController, CompanyAddressDelega
 	
 	/// Method assigns values taken from delegator and assigns them to local data type `temporaryVender`
 	/// - Parameter place: Google Maps Services Place location containing information for place selected by user.
+	/// - Important: Values must be assigned to local type property and not directly to text properties of specified views; otherwise, `enableStatusChecker()` does not activate `submit` button.
 	/// - Note: This is a required Method.
 	func getlocationDetails(at place: GMSPlace){
 		
