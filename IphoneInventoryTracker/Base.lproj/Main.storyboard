@@ -678,18 +678,26 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="I17-rk-o4j">
-                                                    <rect key="frame" x="20" y="11" width="334" height="128"/>
+                                                    <rect key="frame" x="20" y="11" width="334" height="119.5"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="100"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Size:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fTr-ce-6Qj">
+                                                    <rect key="frame" x="168.5" y="110" width="37" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                             <constraints>
-                                                <constraint firstItem="I17-rk-o4j" firstAttribute="top" secondItem="fdv-aU-7qX" secondAttribute="topMargin" id="eIk-Cu-SZs"/>
-                                                <constraint firstItem="I17-rk-o4j" firstAttribute="leading" secondItem="fdv-aU-7qX" secondAttribute="leadingMargin" id="gNo-Vc-b7L"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="I17-rk-o4j" secondAttribute="bottom" id="mCC-D2-b89"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="I17-rk-o4j" secondAttribute="trailing" id="x9J-dw-arV"/>
+                                                <constraint firstItem="I17-rk-o4j" firstAttribute="trailing" secondItem="fdv-aU-7qX" secondAttribute="trailingMargin" id="3ua-Ql-FDM"/>
+                                                <constraint firstItem="fTr-ce-6Qj" firstAttribute="centerX" secondItem="fdv-aU-7qX" secondAttribute="centerX" id="GS2-X8-VKW"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="fTr-ce-6Qj" secondAttribute="bottom" constant="8" id="Wkx-fI-pu0"/>
+                                                <constraint firstItem="I17-rk-o4j" firstAttribute="top" secondItem="fdv-aU-7qX" secondAttribute="topMargin" id="XCW-7I-j2A"/>
+                                                <constraint firstItem="fTr-ce-6Qj" firstAttribute="centerY" secondItem="fdv-aU-7qX" secondAttribute="centerY" constant="45.5" id="ojk-cd-lug"/>
+                                                <constraint firstItem="I17-rk-o4j" firstAttribute="leading" secondItem="fdv-aU-7qX" secondAttribute="leadingMargin" id="pdc-hE-ksR"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -816,6 +824,7 @@
                         <outlet property="neededAmountTextField" destination="2bz-xA-Kr5" id="3m2-1r-nzo"/>
                         <outlet property="orderAmount" destination="AXj-qU-4Mu" id="rMP-No-Iap"/>
                         <outlet property="shortSide" destination="gFX-si-eDi" id="tdt-sR-7up"/>
+                        <outlet property="size" destination="fTr-ce-6Qj" id="3Ez-iZ-NDU"/>
                         <outlet property="submitButton" destination="eyf-du-43S" id="7S3-9Q-njP"/>
                         <segue destination="mfR-Cf-Vnr" kind="unwind" identifier="newOrderToMain" unwindAction="unwindToMain:" id="23o-Hf-IKp"/>
                     </connections>

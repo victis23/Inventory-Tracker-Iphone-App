@@ -248,7 +248,7 @@ extension InventoryTracker_CollectionViewController {
 		snapShot.appendSections([.main])
 		snapShot.appendItems(currentStock, toSection: .main)
 		dataSource.apply(snapShot, animatingDifferences: true) {
-			//The reload is required...
+			//The reload is required or when the amount of inventory is changed nothing will happen until the view is loaded again.
 			self.inventoryDetailCollection.reloadData()
 		}
 	}

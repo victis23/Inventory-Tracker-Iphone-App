@@ -24,6 +24,7 @@ class NewOrder_TableViewController: UITableViewController, UITextFieldDelegate {
 	@IBOutlet weak var submitButton :UIButton!
 	@IBOutlet weak var shortSide : UITextField!
 	@IBOutlet weak var longSide : UITextField!
+	@IBOutlet weak var size: UILabel!
 	
 	//MARK: Class Properties
 	
@@ -62,6 +63,13 @@ class NewOrder_TableViewController: UITableViewController, UITextFieldDelegate {
 	/// - Important: The reason why this method is seperate from the aforementioned is because we cannot assign a value to the labels before they are loaded into memory. The aforementioned is called prior to the view being loaded into memory.
 	func amountLabelText(_ model :Stock){
 		currentAmount.text = String(model.amount!)
+		guard let parentSheetData = model.parentSheetSize else {return}
+		setSizeLabel(with: parentSheetData)
+	}
+	
+	/// Sets text property of size label with current parent size for sheet.
+	func setSizeLabel(with dimensions : ParentSize){
+		size.text = "Parent Sheet Size: \(dimensions.rawValue)"
 	}
 	
 	//MARK: IBActions
