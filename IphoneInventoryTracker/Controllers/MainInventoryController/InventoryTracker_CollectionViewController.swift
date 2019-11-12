@@ -96,11 +96,13 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 	func intialSetupOfExistingData(){
 		//Breaks SOLID but I am too lazy to fix this...
 		self.navigationController?.navigationBar.prefersLargeTitles = true
-		//Decoding begins.
-		let model = Stock.decode() as [Stock]?
-		guard let unWrappedmodel = model else {return}
-		let decodedModel : [Stock] = unWrappedmodel
-		stock = decodedModel
+		//Decoding begins - Placed on background queue hoping to reduce latency issue.
+		DispatchQueue.global(qos: .background).async { [weak self] in
+			let model = Stock.decode() as [Stock]?
+			guard let unWrappedmodel = model else {return}
+			let decodedModel : [Stock] = unWrappedmodel
+			self?.stock = decodedModel
+		}
 	}
 	
 	/// Checks collection and if there are no values removes file from disk.
@@ -138,9 +140,8 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 			self?.resetTableViewValuesAndClearSearchFields()
 			self?.performSegue(withIdentifier: SegueIdentifiers.moreStock, sender: model)
 		}
-		let cancel = UIAlertAction(title: "Cancel", style: .destructive) { [weak self](action) in
-			self?.dismiss(animated: true, completion: nil)
-		}
+		let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+		
 		//Allows user the ability to remove an item from collectionView.
 		let delete = UIAlertAction(title: "Delete", style: .destructive) { [weak self](item) in
 			self?.stock?.remove(at: indexPath.item)

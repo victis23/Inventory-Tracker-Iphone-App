@@ -115,6 +115,7 @@ class GoogleMapVenderLocation_ViewController: UIViewController, ObservableObject
 	
 	//MARK: Controller State
 	override func loadView() {
+		// Documentation says not to call super but called it and everything is working anyway.
 		super.loadView()
 		guard let currentLocation = currentLocation else {return}
 		let camera = GMSCameraPosition.camera(withTarget: currentLocation, zoom: 6)
