@@ -211,6 +211,7 @@ extension InventoryTracker_CollectionViewController {
 			cell.stockSizeLabel.text = "Size: \(items.parentSheetSize!.rawValue)"
 			cell.stockColorLabel.text = "Color: \(items.color!)"
 			cell.percentageRemainingLabel.text = "\(Int(remainingPercentage))%"
+			cell.vendorLabel.text = "\(items.vender!.name.prefix(20))..."
 			
 			cell.contentView.layer.cornerRadius = 10
 			cell.contentView.layer.shadowOpacity = 1.0

@@ -909,8 +909,8 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="dEn-cZ-Vvz">
-                                                            <rect key="frame" x="20" y="50" width="42" height="71.5"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dEn-cZ-Vvz">
+                                                            <rect key="frame" x="20" y="42" width="42" height="82"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M4y-3z-kzI">
                                                                     <rect key="frame" x="0.0" y="0.0" width="42" height="20.5"/>
@@ -919,13 +919,19 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AZp-pZ-vPl">
-                                                                    <rect key="frame" x="0.0" y="25.5" width="42" height="20.5"/>
+                                                                    <rect key="frame" x="0.0" y="20.5" width="42" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Fc-fG-nF3">
-                                                                    <rect key="frame" x="0.0" y="51" width="42" height="20.5"/>
+                                                                    <rect key="frame" x="0.0" y="41" width="42" height="20.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ilx-I3-Z2z">
+                                                                    <rect key="frame" x="0.0" y="61.5" width="42" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -954,7 +960,7 @@
                                                         <constraint firstItem="x7e-Uy-FFb" firstAttribute="top" secondItem="UBY-iz-T5p" secondAttribute="top" constant="55" id="Zb6-Iq-dl1"/>
                                                         <constraint firstAttribute="trailing" secondItem="6OZ-JO-4aj" secondAttribute="trailing" constant="20" id="l78-cA-Isz"/>
                                                         <constraint firstAttribute="trailing" secondItem="JXm-RF-dHb" secondAttribute="trailing" id="pP4-rM-j8y"/>
-                                                        <constraint firstItem="dEn-cZ-Vvz" firstAttribute="top" secondItem="qeO-fv-Uzq" secondAttribute="bottom" constant="10" id="pdI-JZ-2YN"/>
+                                                        <constraint firstItem="dEn-cZ-Vvz" firstAttribute="top" secondItem="qeO-fv-Uzq" secondAttribute="bottom" constant="2" id="pdI-JZ-2YN"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -979,6 +985,7 @@
                                             <outlet property="stockColorLabel" destination="8Fc-fG-nF3" id="4Zr-49-6q4"/>
                                             <outlet property="stockSizeLabel" destination="AZp-pZ-vPl" id="Ffu-OD-xaI"/>
                                             <outlet property="stockWeightLabel" destination="M4y-3z-kzI" id="kVm-gy-oQG"/>
+                                            <outlet property="vendorLabel" destination="Ilx-I3-Z2z" id="nSl-kV-qPq"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

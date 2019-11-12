@@ -18,5 +18,6 @@ class InventoryDetailCell_CollectionViewCell: UICollectionViewCell {
 	@IBOutlet weak var stockSizeLabel: UILabel!
 	@IBOutlet weak var stockColorLabel: UILabel!
 	@IBOutlet weak var cartonStatus: UIImageView!
+	@IBOutlet weak var vendorLabel: UILabel!
 	
 }
