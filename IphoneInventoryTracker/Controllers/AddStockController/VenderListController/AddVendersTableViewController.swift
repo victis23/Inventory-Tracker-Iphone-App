@@ -8,6 +8,7 @@
 
 import UIKit
 import Combine
+import GooglePlaces
 
 
 /// Adds new venders to vendor list.
@@ -16,8 +17,31 @@ class AddVendersTableViewController: UITableViewController, CompanyAddressDelega
 	/// This function recieves the address that will be displayed in the contact window of VenderList_TableViewController.swift.
 	/// - Parameter location: Property recieved when GoogleMapVenderLocation_ViewController.swift is dismissed.
 	/// - Note: This is a required Method.
+	/// - Important: This method could be removed and replaced with `getlocationDetails(at:)` if wanted.
 	func getCompanyAddress(from location:String) {
 		addressText = location
+	}
+	
+	/// Method assigns values taken from delegator and assigns them to local data type `temporaryVender`
+	/// - Parameter place: Google Maps Services Place location containing information for place selected by user.
+	/// - Note: This is a required Method.
+	func getlocationDetails(at place: GMSPlace){
+		
+		if let phoneNumber = place.phoneNumber {
+			temporaryVender?.phone = phoneNumber
+			phone.text = temporaryVender?.phone
+		}
+		if let websiteAddress = place.website {
+			temporaryVender?.website = websiteAddress
+			if let unWrappedWebAddress = temporaryVender?.website {
+				website.text = "\(unWrappedWebAddress)"
+			}
+		}
+		if let locationName = place.name {
+			temporaryVender?.name = locationName
+			name.text = temporaryVender?.name
+		}
+		enabledStatusChecker()
 	}
 	
 	//MARK: Local Properties
@@ -42,13 +66,7 @@ class AddVendersTableViewController: UITableViewController, CompanyAddressDelega
 	}
 	
 	//We create the local vender object that will hold our temporary values.
-	private var temporaryVender : LocalVender? = LocalVender(){
-		didSet {
-			if temporaryVender?.address == nil {
-				print("Shit We're nil")
-			}
-		}
-	}
+	private var temporaryVender : LocalVender? = LocalVender()
 	
 	//MARK: IBOutlet Properties
 	@IBOutlet weak var submitButton: UIButton!
@@ -139,7 +157,7 @@ class AddVendersTableViewController: UITableViewController, CompanyAddressDelega
 	/// Determining whether each of the properties within our local vender object are not nil in order to activate our submit button.
 	/// - Note: This is a required Method.
 	func enabledStatusChecker(){
-		if temporaryVender?.name != nil && temporaryVender?.phone != nil && temporaryVender?.email != nil && temporaryVender?.website != nil && temporaryVender?.address != nil && name.text != "" && phone.text != "" && email.text != "" && address.text != "" && website.text != "" {
+		if temporaryVender?.name != nil && temporaryVender?.phone != nil && temporaryVender?.email != nil && temporaryVender?.website != nil && temporaryVender?.address != nil /*&& name.text != "" && phone.text != "" && email.text != "" && address.text != "" && website.text != "" */ {
 			// Protections after confirming that value is not nil, checks to make sure email contains required fields.
 			guard let emailValue = temporaryVender?.email, emailValue.contains("@") else {
 				//Makes temporaryVender.email == nil & email field becomes first responder.
@@ -190,7 +208,7 @@ class AddVendersTableViewController: UITableViewController, CompanyAddressDelega
 	}
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		
-		if indexPath == IndexPath(item: 1, section: 0){
+		if indexPath == IndexPath(item: 0, section: 0){
 			let googleController = GoogleMapVenderLocation_ViewController()
 			googleController.delegate = self
 			present(googleController, animated: true, completion: nil)

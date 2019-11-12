@@ -14,6 +14,7 @@ import Combine
 /// Captures string variable for location property that will be passed to delegate --> AddVenderTableViewController.swift.
 protocol CompanyAddressDelegate {
 	func getCompanyAddress(from location:String)
+	func getlocationDetails(at place: GMSPlace)
 	func enabledStatusChecker()
 }
 
@@ -147,6 +148,12 @@ class GoogleMapVenderLocation_ViewController: UIViewController, ObservableObject
 		view.backgroundColor = .white
 		submitButton.isHidden = true
 		contentView.layer.cornerRadius = 15
+	}
+	
+	/// Captures users selected location and passes it over to the delegate so it can be used to fill text fields.
+	/// - Parameter place: Captured location data.
+	func gmsSelectedPlace(is place: GMSPlace){
+		delegate?.getlocationDetails(at: place)
 	}
 	
 	/// Setup Contraints for:
@@ -290,6 +297,7 @@ extension GoogleMapVenderLocation_ViewController : UITableViewDelegate, UITableV
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		activityIndicator.startAnimating()
 		let location = predictedLocations[indexPath.row]
+		gmsSelectedPlace(is: location)
 		let queryLocation = location.coordinate
 		tableView.deselectRow(at: indexPath, animated: true)
 		// Updates current mapView with a location indicator over selected user search result.
