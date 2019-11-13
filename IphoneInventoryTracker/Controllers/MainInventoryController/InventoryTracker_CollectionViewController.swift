@@ -77,8 +77,6 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 		searchField.delegate = self
 		inventoryDetailCollection.keyboardDismissMode = .onDrag
 		listIsEmptyWasTrue()
-		
-		
 	}
 	
 	//MARK: Methods

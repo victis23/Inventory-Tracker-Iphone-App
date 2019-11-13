@@ -69,6 +69,7 @@
 		7D273B6C2377C28800D09C6E /* CostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostTableViewCell.swift; sourceTree = "<group>"; };
 		7D32BBEB2373C8BD00C7E30E /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		7D51961623592D5700145076 /* calculationExtensionOnModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calculationExtensionOnModel.swift; sourceTree = "<group>"; };
+		7D6880EC237C2D31005FA27E /* InventoryTrackerListTestClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryTrackerListTestClass.swift; sourceTree = "<group>"; };
 		7D69492A2369E8A4006443EB /* Inventory Tracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Inventory Tracker.entitlements"; sourceTree = "<group>"; };
 		7D9F41D9236F9C46001C4F88 /* GoogleMapVenderLocation_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapVenderLocation_ViewController.swift; sourceTree = "<group>"; };
 		7DAA760323764E7F006584F2 /* LandingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageViewController.swift; sourceTree = "<group>"; };
@@ -192,6 +193,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		7D6880EB237C2D01005FA27E /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				7D6880EC237C2D31005FA27E /* InventoryTrackerListTestClass.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
 		7DB454EF234BEECB00CACBCC /* MainInventoryController */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				7DCC5C01234AA7E400CD4776 /* IphoneInventoryTracker */,
+				7D6880EB237C2D01005FA27E /* Tests */,
 				7DCC5C00234AA7E400CD4776 /* Products */,
 				439B167AC70F26928375AFCF /* Pods */,
 				711BC4EC768323C812AF08BC /* Frameworks */,
