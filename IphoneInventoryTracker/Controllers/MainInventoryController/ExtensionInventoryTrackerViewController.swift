@@ -47,4 +47,37 @@ extension InventoryTracker_CollectionViewController : UISearchBarDelegate {
 	func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
 		searchField.resignFirstResponder()
 	}
+	
+	func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+		
+		let hide = UIResponder.keyboardDidHideNotification
+		let show = UIResponder.keyboardDidShowNotification
+		
+		NotificationCenter.default.addObserver(self, selector: #selector(setNewViewHeight(with:)), name: hide, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(setNewViewHeight(with:)), name: show, object: nil)
+	}
+	
+	
+	@objc func setNewViewHeight(with notification : Notification){
+		guard let originalFrame = viewFrameHeight else {return}
+		
+		let keyboardData = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
+		let keyboardFrame = keyboardData?.cgRectValue
+		guard let keyboardHeight = keyboardFrame?.height else {return}
+		
+		
+		switch notification.name {
+			case UIResponder.keyboardDidShowNotification:
+				print("Show")
+				//			view.frame.size.height = originalFrame - keyboardHeight
+				
+				inventoryDetailCollection.frame.size.height = originalFrame - keyboardHeight
+				inventoryDetailCollection.contentSize.height = originalFrame
+			default:
+				print("Hide")
+				inventoryDetailCollection.frame.size.height = originalFrame
+//				inventoryDetailCollection.contentSize.height = originalFrame
+		}
+	}
 }
+

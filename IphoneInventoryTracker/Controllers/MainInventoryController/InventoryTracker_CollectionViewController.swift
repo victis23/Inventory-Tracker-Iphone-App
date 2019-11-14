@@ -47,6 +47,7 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 	var dataSource :DataSource!
 	var delegate : InventoryTrackerDelegate?
 	var costDelegate : CostTrackerDelegate?
+	var viewFrameHeight: CGFloat?
 	
 	/// Description: Internal collection tasked with holding a list of inventory. In this case Paper stocks.
 	/// - The updated value is used to update the existing snapshot.
@@ -69,6 +70,7 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		viewFrameHeight = view.frame.height
 		let layOut = createLayout()
 		inventoryDetailCollection.collectionViewLayout = layOut
 		setupDataSource()
