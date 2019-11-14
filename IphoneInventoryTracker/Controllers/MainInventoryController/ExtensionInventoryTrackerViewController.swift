@@ -48,17 +48,17 @@ extension InventoryTracker_CollectionViewController : UISearchBarDelegate {
 		searchField.resignFirstResponder()
 	}
 	
+	
 	func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
 		
-		let hide = UIResponder.keyboardDidHideNotification
-		let show = UIResponder.keyboardDidShowNotification
-		
+		// Notifies observer that keyboard is now visable on screen.
 		NotificationCenter.default.addObserver(self, selector: #selector(setNewViewHeight(with:)), name: hide, object: nil)
 		NotificationCenter.default.addObserver(self, selector: #selector(setNewViewHeight(with:)), name: show, object: nil)
 	}
 	
 	
 	@objc func setNewViewHeight(with notification : Notification){
+		
 		guard let originalFrame = viewFrameHeight else {return}
 		
 		let keyboardData = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
@@ -68,16 +68,19 @@ extension InventoryTracker_CollectionViewController : UISearchBarDelegate {
 		
 		switch notification.name {
 			case UIResponder.keyboardDidShowNotification:
-				print("Show")
-				//			view.frame.size.height = originalFrame - keyboardHeight
-				
-				inventoryDetailCollection.frame.size.height = originalFrame - keyboardHeight
-				inventoryDetailCollection.contentSize.height = originalFrame
+				// Contracts scroll view frame to size of view minus keyboard and then sets content size to size of main view.
+				scrollView.frame.size.height = originalFrame - keyboardHeight
+				scrollView.contentSize.height = originalFrame
 			default:
-				print("Hide")
-				inventoryDetailCollection.frame.size.height = originalFrame
-//				inventoryDetailCollection.contentSize.height = originalFrame
+				
+				//Returns Views To default size.
+				scrollView.frame.size.height = originalFrame
+				scrollView.contentSize.height = originalFrame
 		}
+		// Stops observing...
+		NotificationCenter.default.removeObserver(self, name: hide, object: nil)
+		NotificationCenter.default.removeObserver(self, name: show, object: nil)
 	}
+	
 }
 

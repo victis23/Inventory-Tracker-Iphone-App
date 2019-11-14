@@ -41,6 +41,7 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 	//MARK: IBOutlets
 	@IBOutlet weak var searchField: UISearchBar!
 	@IBOutlet weak var inventoryDetailCollection :UICollectionView!
+	@IBOutlet weak var scrollView: UIScrollView!
 	
 	//MARK: - Class properties
 	
@@ -48,6 +49,8 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 	var delegate : InventoryTrackerDelegate?
 	var costDelegate : CostTrackerDelegate?
 	var viewFrameHeight: CGFloat?
+	let hide = UIResponder.keyboardDidHideNotification
+	let show = UIResponder.keyboardDidShowNotification
 	
 	/// Description: Internal collection tasked with holding a list of inventory. In this case Paper stocks.
 	/// - The updated value is used to update the existing snapshot.
@@ -77,7 +80,9 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 		intialSetupOfExistingData()
 		inventoryDetailCollection.delegate = self
 		searchField.delegate = self
-		inventoryDetailCollection.keyboardDismissMode = .onDrag
+		// Set background color of searchField to same color as background.
+		searchField.backgroundColor = .systemBackground
+		scrollView.contentSize.height = viewFrameHeight!
 		listIsEmptyWasTrue()
 	}
 	
@@ -234,7 +239,7 @@ extension InventoryTracker_CollectionViewController {
 	func createLayout()->UICollectionViewCompositionalLayout{
 		let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
 		// Group size was originally Height 50%. However, because some of the labels did not have all required constraints the size needed to be increased to avoid clipping. Sorry I'm lazy.
-		let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.55))
+		let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(300)) // .fractionalHeight(0.55))
 		let item = NSCollectionLayoutItem(layoutSize: itemSize)
 		item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20)
 		let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: item, count: 2)
