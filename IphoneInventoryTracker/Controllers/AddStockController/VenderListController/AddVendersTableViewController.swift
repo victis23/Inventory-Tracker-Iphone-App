@@ -29,7 +29,15 @@ class AddVendersTableViewController: UITableViewController, CompanyAddressDelega
 	func getlocationDetails(at place: GMSPlace){
 		
 		if let phoneNumber = place.phoneNumber {
-			temporaryVender?.phone = phoneNumber
+			var newPhone = phoneNumber
+			// List the characters we want to remove in a set.
+			let removableCharacters :Set<Character> = ["+","-"]
+			// Remove the characters from string.
+			newPhone.removeAll(where: {removableCharacters.contains($0)})
+			// Remove the blank spaces from string.
+			newPhone.removeAll {$0 == " "}
+			// Assign modified string to .phone property on object.
+			temporaryVender?.phone = newPhone
 			phone.text = temporaryVender?.phone
 		}
 		if let websiteAddress = place.website {
