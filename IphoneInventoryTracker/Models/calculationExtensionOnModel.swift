@@ -33,16 +33,23 @@ extension Stock {
 				parentSheetShortEnd = 12
 				parentSheetLongEnd = 18
 			case ._9Envelope:
+				parentSheetShortEnd = 3.75
+				parentSheetLongEnd = 8.625
 				newtotal = amount - Int(newValue)
 				self.amount = newtotal
 			case ._10Envelope:
+				parentSheetShortEnd = 4.125
+				parentSheetLongEnd = 9.5
 				newtotal = amount - Int(newValue)
 				self.amount = newtotal
 			default:
 				break
 		}
-		// If there are any errors they get thrown up the chain.
-		try verifyAmounts(parentSheetShortEnd, parentSheetLongEnd, newValue, short, long, amount)
+		
+		if self.parentSheetSize != ParentSize._9Envelope || size != ParentSize._10Envelope {
+			// If there are any errors they get thrown up the chain.
+			try verifyAmounts(parentSheetShortEnd, parentSheetLongEnd, newValue, short, long, amount)
+		}
 	}
 	
 	private func sheetsOut(_ short : Double, _ long : Double, _ parentShort : Double, _ parentLong :Double) throws -> Int {
