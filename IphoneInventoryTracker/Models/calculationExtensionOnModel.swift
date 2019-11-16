@@ -23,15 +23,19 @@ extension Stock {
 			case .letter:
 				parentSheetShortEnd = 8.5
 				parentSheetLongEnd = 11
+			try verifyAmounts(parentSheetShortEnd, parentSheetLongEnd, newValue, short, long, amount)
 			case .legal:
 				parentSheetShortEnd = 8.5
 				parentSheetLongEnd = 14
+			try verifyAmounts(parentSheetShortEnd, parentSheetLongEnd, newValue, short, long, amount)
 			case .tabloid:
 				parentSheetShortEnd = 11
 				parentSheetLongEnd = 17
+			try verifyAmounts(parentSheetShortEnd, parentSheetLongEnd, newValue, short, long, amount)
 			case .oversized:
 				parentSheetShortEnd = 12
 				parentSheetLongEnd = 18
+			try verifyAmounts(parentSheetShortEnd, parentSheetLongEnd, newValue, short, long, amount)
 			case ._9Envelope:
 				parentSheetShortEnd = 3.75
 				parentSheetLongEnd = 8.625
@@ -45,11 +49,27 @@ extension Stock {
 			default:
 				break
 		}
+	}
+}
+
+extension Stock {
+	
+	// Changes value of Amount Property.
+	mutating func verifyAmounts(_ parentSheetShortEnd : Double, _ parentSheetLongEnd :Double, _ newValue :Double, _ short :Double, _ long : Double, _ amount : Int) throws {
+		var newtotal : Int = 0
 		
-		if self.parentSheetSize != ParentSize._9Envelope || size != ParentSize._10Envelope {
-			// If there are any errors they get thrown up the chain.
-			try verifyAmounts(parentSheetShortEnd, parentSheetLongEnd, newValue, short, long, amount)
+		try newtotal = sheetsOut(short, long, parentSheetShortEnd, parentSheetLongEnd)
+		
+		// We have to make sure we exhaust the amount available from one sheet before moving on the sheet 2
+		let checkValueForLessThanZeroButNotZero = newValue / Double(newtotal)
+		if checkValueForLessThanZeroButNotZero > 0 && checkValueForLessThanZeroButNotZero < 1 && checkValueForLessThanZeroButNotZero < Double(newtotal) {
+			newtotal = 1
+			let value = 1 // * (Int(newValue) / newtotal + 1)
+			self.amount = amount - (value / newtotal)
+		}else{
+			self.amount = amount - (Int(newValue) / newtotal)
 		}
+		
 	}
 	
 	private func sheetsOut(_ short : Double, _ long : Double, _ parentShort : Double, _ parentLong :Double) throws -> Int {
@@ -88,27 +108,8 @@ extension Stock {
 	}
 }
 
-extension Stock {
-	
-	// Changes value of Amount Property.
-	mutating func verifyAmounts(_ parentSheetShortEnd : Double, _ parentSheetLongEnd :Double, _ newValue :Double, _ short :Double, _ long : Double, _ amount : Int) throws {
-		var newtotal : Int = 0
-		
-		try newtotal = sheetsOut(short, long, parentSheetShortEnd, parentSheetLongEnd)
-		
-		// We have to make sure we exhaust the amount available from one sheet before moving on the sheet 2
-		let checkValueForLessThanZeroButNotZero = newValue / Double(newtotal)
-		if checkValueForLessThanZeroButNotZero > 0 && checkValueForLessThanZeroButNotZero < 1 && checkValueForLessThanZeroButNotZero < Double(newtotal) {
-			newtotal = 1
-			let value = 1 // * (Int(newValue) / newtotal + 1)
-			self.amount = amount - (value / newtotal)
-		}else{
-			self.amount = amount - (Int(newValue) / newtotal)
-		}
-		
-	}
-	
-}
+
+
 // Creating Error Case For Division by Zero
 enum DivisionError : Error {
 	case noValueResultingInDivisionByZeroError

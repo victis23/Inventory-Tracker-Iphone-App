@@ -26,6 +26,7 @@ class NewOrder_TableViewController: UITableViewController, UITextFieldDelegate {
 	@IBOutlet weak var longSide : UITextField!
 	@IBOutlet weak var size: UILabel!
 	
+	
 	//MARK: Class Properties
 	
 	var stockObject : Stock!
@@ -39,6 +40,7 @@ class NewOrder_TableViewController: UITableViewController, UITextFieldDelegate {
 		setupSubmitButtonAsthetics()
 		amountLabelText(stockObject)
 		tableView.keyboardDismissMode = .interactive
+		checkTypeOfStock()
 	}
 	
 	/// Sets all of the Asthetics for the contoller's views.
@@ -70,6 +72,31 @@ class NewOrder_TableViewController: UITableViewController, UITextFieldDelegate {
 	/// Sets text property of size label with current parent size for sheet.
 	func setSizeLabel(with dimensions : ParentSize){
 		size.text = "Parent Sheet Size: \(dimensions.rawValue)"
+	}
+	
+	/// Checks stock object's to verify if it's an envelope or not.
+	/// If `parentSheetSize` is an envelope size than text fields are disabled.
+	func checkTypeOfStock(){
+		
+		guard let stockType = stockObject.parentSheetSize else {return}
+		
+		if stockType == ._10Envelope || stockType == ._9Envelope {
+			
+			switch stockType {
+			case ._9Envelope:
+				shortSide.text = "3.875"
+				longSide.text = "8.875"
+			default:
+				shortSide.text = "4.125"
+				longSide.text = "9.500"
+			}
+			// loops through the existing text fields and lowers their opacity along with disabling the fields for user input.
+			[shortSide,longSide].forEach({
+				$0?.textColor = .label
+				$0?.isEnabled = false
+				$0?.alpha = 0.2
+			})
+		}
 	}
 	
 	//MARK: IBActions
@@ -113,6 +140,7 @@ class NewOrder_TableViewController: UITableViewController, UITextFieldDelegate {
 		view.endEditing(true)
 		tableView.deselectRow(at: indexPath, animated: true)
 	}
+	
 	
 	
 	//MARK: Navigation
