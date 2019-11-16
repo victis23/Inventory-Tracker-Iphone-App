@@ -23,6 +23,7 @@
 		7D273B682377B89900D09C6E /* CostOfSpentGoods.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D273B672377B89900D09C6E /* CostOfSpentGoods.storyboard */; };
 		7D273B6A2377B8D800D09C6E /* CostOfSpentGoodsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D273B692377B8D800D09C6E /* CostOfSpentGoodsTableViewController.swift */; };
 		7D273B6D2377C28800D09C6E /* CostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D273B6C2377C28800D09C6E /* CostTableViewCell.swift */; };
+		7D278B7823809BB900433A7C /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D278B7723809BB900433A7C /* Tests.swift */; };
 		7D32BBEC2373C8BD00C7E30E /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D32BBEB2373C8BD00C7E30E /* LocationCell.swift */; };
 		7D51961723592D5700145076 /* calculationExtensionOnModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D51961623592D5700145076 /* calculationExtensionOnModel.swift */; };
 		7D9F41DA236F9C46001C4F88 /* GoogleMapVenderLocation_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9F41D9236F9C46001C4F88 /* GoogleMapVenderLocation_ViewController.swift */; };
@@ -48,6 +49,16 @@
 		D2D8E66A8C7E9D3396862FAA /* libPods-IphoneInventoryTracker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A1CF363FEB38B3258AB0153 /* libPods-IphoneInventoryTracker.a */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		7D278B7A23809BB900433A7C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7DCC5BF7234AA7E400CD4776 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7DCC5BFE234AA7E400CD4776;
+			remoteInfo = IphoneInventoryTracker;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		0950D9DE3C7169D7DDC39D33 /* Pods-IphoneInventoryTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IphoneInventoryTracker.debug.xcconfig"; path = "Target Support Files/Pods-IphoneInventoryTracker/Pods-IphoneInventoryTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		1A1CF363FEB38B3258AB0153 /* libPods-IphoneInventoryTracker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IphoneInventoryTracker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,6 +78,9 @@
 		7D273B672377B89900D09C6E /* CostOfSpentGoods.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CostOfSpentGoods.storyboard; sourceTree = "<group>"; };
 		7D273B692377B8D800D09C6E /* CostOfSpentGoodsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostOfSpentGoodsTableViewController.swift; sourceTree = "<group>"; };
 		7D273B6C2377C28800D09C6E /* CostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostTableViewCell.swift; sourceTree = "<group>"; };
+		7D278B7523809BB900433A7C /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D278B7723809BB900433A7C /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		7D278B7923809BB900433A7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7D32BBEB2373C8BD00C7E30E /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		7D51961623592D5700145076 /* calculationExtensionOnModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calculationExtensionOnModel.swift; sourceTree = "<group>"; };
 		7D69492A2369E8A4006443EB /* Inventory Tracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Inventory Tracker.entitlements"; sourceTree = "<group>"; };
@@ -96,6 +110,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		7D278B7223809BB900433A7C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7DCC5BFC234AA7E400CD4776 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -192,6 +213,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		7D278B7623809BB900433A7C /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				7D278B7723809BB900433A7C /* Tests.swift */,
+				7D278B7923809BB900433A7C /* Info.plist */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
 		7DB454EF234BEECB00CACBCC /* MainInventoryController */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,6 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				7DCC5C01234AA7E400CD4776 /* IphoneInventoryTracker */,
+				7D278B7623809BB900433A7C /* Tests */,
 				7DCC5C00234AA7E400CD4776 /* Products */,
 				439B167AC70F26928375AFCF /* Pods */,
 				711BC4EC768323C812AF08BC /* Frameworks */,
@@ -236,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				7DCC5BFF234AA7E400CD4776 /* Inventory Tracker.app */,
+				7D278B7523809BB900433A7C /* Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -320,6 +352,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		7D278B7423809BB900433A7C /* Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7D278B7E23809BB900433A7C /* Build configuration list for PBXNativeTarget "Tests" */;
+			buildPhases = (
+				7D278B7123809BB900433A7C /* Sources */,
+				7D278B7223809BB900433A7C /* Frameworks */,
+				7D278B7323809BB900433A7C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7D278B7B23809BB900433A7C /* PBXTargetDependency */,
+			);
+			name = Tests;
+			productName = Tests;
+			productReference = 7D278B7523809BB900433A7C /* Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		7DCC5BFE234AA7E400CD4776 /* IphoneInventoryTracker */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7DCC5C13234AA7E700CD4776 /* Build configuration list for PBXNativeTarget "IphoneInventoryTracker" */;
@@ -345,10 +395,14 @@
 		7DCC5BF7234AA7E400CD4776 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1110;
+				LastSwiftUpdateCheck = 1120;
 				LastUpgradeCheck = 1110;
 				ORGANIZATIONNAME = "Scott Leonard";
 				TargetAttributes = {
+					7D278B7423809BB900433A7C = {
+						CreatedOnToolsVersion = 11.2.1;
+						TestTargetID = 7DCC5BFE234AA7E400CD4776;
+					};
 					7DCC5BFE234AA7E400CD4776 = {
 						CreatedOnToolsVersion = 11.1;
 					};
@@ -368,11 +422,19 @@
 			projectRoot = "";
 			targets = (
 				7DCC5BFE234AA7E400CD4776 /* IphoneInventoryTracker */,
+				7D278B7423809BB900433A7C /* Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		7D278B7323809BB900433A7C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7DCC5BFD234AA7E400CD4776 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -435,6 +497,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		7D278B7123809BB900433A7C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7D278B7823809BB900433A7C /* Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7DCC5BFB234AA7E400CD4776 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -472,6 +542,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		7D278B7B23809BB900433A7C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7DCC5BFE234AA7E400CD4776 /* IphoneInventoryTracker */;
+			targetProxy = 7D278B7A23809BB900433A7C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		7DCC5C08234AA7E400CD4776 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -492,6 +570,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		7D278B7C23809BB900433A7C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 55P567K3FP;
+				INFOPLIST_FILE = Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.duhmarket.Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Inventory Tracker.app/Inventory Tracker";
+			};
+			name = Debug;
+		};
+		7D278B7D23809BB900433A7C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 55P567K3FP;
+				INFOPLIST_FILE = Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.duhmarket.Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Inventory Tracker.app/Inventory Tracker";
+			};
+			name = Release;
+		};
 		7DCC5C11234AA7E700CD4776 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -659,6 +779,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		7D278B7E23809BB900433A7C /* Build configuration list for PBXNativeTarget "Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7D278B7C23809BB900433A7C /* Debug */,
+				7D278B7D23809BB900433A7C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		7DCC5BFA234AA7E400CD4776 /* Build configuration list for PBXProject "IphoneInventoryTracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
