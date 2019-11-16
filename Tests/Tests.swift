@@ -21,9 +21,7 @@ class Tests: XCTestCase {
 	}
 	
 	func testListIsEmpty(){
-		
-		XCTAssertNotNil(vc.costDelegate)
-		
+		XCTAssertNil(vc.costDelegate)
 	}
 	
 	
