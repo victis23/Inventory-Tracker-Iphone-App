@@ -21,7 +21,7 @@ class Tests: XCTestCase {
 	}
 	
 	func testListIsEmpty(){
-		vc.inventoryListIsEmpty = false
+		vc.inventoryListIsEmpty = true
 		
 	}
 	
