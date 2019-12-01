@@ -4,6 +4,18 @@
 # Print Plus Inventory Tracker
 Designed & Developed By: Scott Leonard aka Michael Wells
 
+Do you work in an office that is constantly using and purchasing paper? Do you have trouble keeping track of how much inventory you have remaining, how much you've spent on a certain item, or when you'll need to purchase more? Well, if this sounds like you, then you're in luck! Inventory Tracker is a robust tracking app that allows you the piece-of-mind of no longer having to struggle keeping track of paper inventory. 
+
+### What It Does
+
+1. Keeps a sorted list of your current inventory where the amounts that need re-purchasing automatically rise to the top of the list based on parameters that you've set up.
+
+2. Puts contact information for each of you suppliers at your fingertips. No more having to google for their phone numbers or address.
+
+3. Provides a built-in paper cut calculator. No more guessing about how many items you can fit on a sheet. Simply type in the size of the raw material and the size of the product and instantly know how much material you'll need to order.
+
+4. Keep track of your spending. Do you want to know how much you've spent on a particular project. Well, you'll no longer need to go rummaging through paperwork. The answer is just a click away!
+
 ## What inspired me to create this app.
 
 >The best projects are those rooted in neccesity. 
