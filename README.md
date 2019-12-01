@@ -26,7 +26,7 @@ Well, wrong. That's what the 99% would do. I'm trying to be an exceptional perso
 
 This is my very first project and I am proud of what I've managed to accomplish with no prior iOS developement experience. All of the artwork, UI, and UX I designed myself using Adobe Illustrator. 
 
-* [duhmarket.com](http://www.duhmarket.com) - If you'd like to see more of my artwork, marketing packages, or photography.
+* [www.duhmarket.com](http://www.duhmarket.com) - If you'd like to see more of my artwork, marketing packages, or photography.
 
 ### Main Frameworks & APIs used in this project:
 
