@@ -28,7 +28,8 @@ This is my very first project and I am proud of what I've managed to accomplish 
 
 If you have any questions feel free to reach out to me, and if you're interested in checking out any of my marketing projects you can find them at: 
 
-* [www.duhmarket.com](http://www.duhmarket.com) - *Artwork, marketing packages, & photography.*
+* [www.duhmarket.com](http://www.duhmarket.com) - *Artwork, marketing packages*
+* [www.scott-leonard.net](http://www.scott-leonard.net) - *Photography*
 
 ### IDE
 This project was designed completely in **xCode** using Swift. However, I am also planning on eventually venturing into other environments such as **Flutter**. 
