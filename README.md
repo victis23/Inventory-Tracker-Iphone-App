@@ -19,5 +19,5 @@ UICollectionViewDiffableDataSource \
 UICollectionViewCompositionalLayout \
 CoreLocation 
 
-![][Check Out My App On The App Store](https://apps.apple.com/us/app/print-plus-inventory-tracker/id1484276877)
+[![](https://user-images.githubusercontent.com/49104738/69907513-559ae400-13a4-11ea-9e0e-e4caf6db1692.jpg)](https://apps.apple.com/us/app/print-plus-inventory-tracker/id1484276877)
 
