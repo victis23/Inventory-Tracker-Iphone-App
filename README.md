@@ -1,5 +1,5 @@
 
-<img src="https://user-images.githubusercontent.com/49104738/69907336-6c8c0700-13a1-11ea-8f48-c92151d7c9a1.jpg">
+![](https://user-images.githubusercontent.com/49104738/69907336-6c8c0700-13a1-11ea-8f48-c92151d7c9a1.jpg)
 
 # Print Plus Inventory Tracker
 Designed & Developed By: Scott Leonard aka Michael Wells
