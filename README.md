@@ -24,7 +24,7 @@ I never knew I wanted to become a programmer until I ran into a brick wall at wo
 This situation pushed me to seek out a solution. Now, I know what you're thinking; I could have just downloaded an app for inventory management or persuaded my employeers to purchase one, right? \
 Well, wrong! That's what the 99% would do. I'm trying to be an exceptional person and so I set out on the task of learning to program.
 
-This is my very first project and I am proud of what I've managed to accomplish with no prior iOS developement experience and not following any tutorials. Additionally, I was able to put my designing skills to work. All of the artwork, UI, and UX I designed myself using Adobe Illustrator & XD. 
+This is my very first public app and I am proud of what I've managed to accomplish with no prior iOS developement experience; not following any tutorials. Additionally, I was able to put my designing skills to work. All of the artwork, UI, and UX I designed myself using Adobe Illustrator & XD. 
 
 If you have any questions feel free to reach out to me, and if you're interested in checking out any of my marketing projects you can find them at: 
 
