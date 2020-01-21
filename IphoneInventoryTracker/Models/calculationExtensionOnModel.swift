@@ -10,9 +10,9 @@ import Foundation
 
 extension Stock {
 	// We throw the error up the hierarchy
-	mutating func performCalculations<T: Hashable>( incomingAmount : T, shortEdge : T, longEdge : T) throws {
+	mutating func performCalculations<T: Hashable>( amountOfPiecesNeededForOrder : T, shortEdge : T, longEdge : T) throws {
 		// Converted incoming amout back into an integer from a double.
-		guard let newValue = incomingAmount as? Double, let amount = self.amount else {return}
+		guard let newValue = amountOfPiecesNeededForOrder as? Double, let amount = self.amount else {return}
 		guard let short = shortEdge as? Double, let long = longEdge as? Double else {return}
 		let size = self.parentSheetSize
 		var parentSheetShortEnd : Double = Double()
