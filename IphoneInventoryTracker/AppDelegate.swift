@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		
-		
+		// Key is now hidden from github
 		GMSServices.provideAPIKey(GooglePlacesAPIKey.apiKey.rawValue)
 		
 		GMSPlacesClient.provideAPIKey(GooglePlacesAPIKey.apiKey.rawValue)
