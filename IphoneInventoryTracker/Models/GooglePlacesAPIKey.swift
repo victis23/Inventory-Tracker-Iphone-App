@@ -9,5 +9,6 @@
 import Foundation
 
 enum GooglePlacesAPIKey : String{
+	
 	case apiKey = "AIzaSyBl6VYW1Vh32RDdZ8DUtnmIAvsCw1Icunw"
 }
