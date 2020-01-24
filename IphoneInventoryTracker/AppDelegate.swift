@@ -19,7 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		// Key is now hidden from github and in private file. 
 		GMSServices.provideAPIKey(GooglePlacesAPIKey.apiKey.rawValue)
-		
 		GMSPlacesClient.provideAPIKey(GooglePlacesAPIKey.apiKey.rawValue)
 		
 		// Override point for customization after application launch.
