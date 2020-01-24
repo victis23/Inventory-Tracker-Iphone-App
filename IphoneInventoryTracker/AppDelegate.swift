@@ -17,12 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		
-		struct Keys {
-			static var googleAPI = "AIzaSyBl6VYW1Vh32RDdZ8DUtnmIAvsCw1Icunw"
-		}
 		
-		GMSServices.provideAPIKey(Keys.googleAPI)
-		GMSPlacesClient.provideAPIKey(Keys.googleAPI)
+		GMSServices.provideAPIKey(GooglePlacesAPIKey.apiKey.rawValue)
+		
+		GMSPlacesClient.provideAPIKey(GooglePlacesAPIKey.apiKey.rawValue)
 		
 		// Override point for customization after application launch.
 		return true

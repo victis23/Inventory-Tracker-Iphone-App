@@ -108,7 +108,7 @@ class NewOrder_TableViewController: UITableViewController, UITextFieldDelegate {
 		guard let doubleShortEdge = Double(shortEdge), let doubleLongEdge = Double(longEdge) else {return}
 		// Handles error that was thrown in the model method.
 		do {
-			try stockObject.performCalculations(incomingAmount: neededAmountAsInteger, shortEdge: doubleShortEdge, longEdge: doubleLongEdge)
+			try stockObject.performCalculations(amountOfPiecesNeededForOrder: neededAmountAsInteger, shortEdge: doubleShortEdge, longEdge: doubleLongEdge)
 		}catch DivisionError.noValueResultingInDivisionByZeroError {
 			isError = true
 		}catch{}
