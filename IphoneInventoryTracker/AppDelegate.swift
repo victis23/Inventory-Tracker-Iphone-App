@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		GMSServices.provideAPIKey(GooglePlacesAPIKey.apiKey.rawValue)
 		GMSPlacesClient.provideAPIKey(GooglePlacesAPIKey.apiKey.rawValue)
 		
+		
 		// Override point for customization after application launch.
 		return true
 	}
