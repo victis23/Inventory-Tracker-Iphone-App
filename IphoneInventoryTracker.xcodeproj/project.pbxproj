@@ -13,6 +13,7 @@
 		7D0E9D81236F1F1800BE3DB7 /* ViewVendersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E9D80236F1F1800BE3DB7 /* ViewVendersTableViewController.swift */; };
 		7D0E9D83236F631F00BE3DB7 /* VenderAddressLocation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D0E9D82236F631F00BE3DB7 /* VenderAddressLocation.storyboard */; };
 		7D0F5589236C4D27001C6460 /* ExtensionInventoryTrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0F5588236C4D27001C6460 /* ExtensionInventoryTrackerViewController.swift */; };
+		7D118C5823DBA22F0028B5DC /* GooglePlacesAPIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D118C5723DBA22F0028B5DC /* GooglePlacesAPIKey.swift */; };
 		7D118D61236E2F4F00203852 /* AddVender.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D118D60236E2F4F00203852 /* AddVender.storyboard */; };
 		7D118D63236E34E800203852 /* AddVendersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D118D62236E34E800203852 /* AddVendersTableViewController.swift */; };
 		7D118D65236E45BC00203852 /* VenderCell_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D118D64236E45BC00203852 /* VenderCell_TableViewCell.swift */; };
@@ -26,7 +27,6 @@
 		7D278B7823809BB900433A7C /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D278B7723809BB900433A7C /* Tests.swift */; };
 		7D32BBEC2373C8BD00C7E30E /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D32BBEB2373C8BD00C7E30E /* LocationCell.swift */; };
 		7D51961723592D5700145076 /* calculationExtensionOnModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D51961623592D5700145076 /* calculationExtensionOnModel.swift */; };
-		7D5230C223DB93D300A0D10D /* GooglePlacesAPIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5230C123DB93D300A0D10D /* GooglePlacesAPIKey.swift */; };
 		7D9F41DA236F9C46001C4F88 /* GoogleMapVenderLocation_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9F41D9236F9C46001C4F88 /* GoogleMapVenderLocation_ViewController.swift */; };
 		7DAA760423764E7F006584F2 /* LandingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAA760323764E7F006584F2 /* LandingPageViewController.swift */; };
 		7DAA760623765E94006584F2 /* Pacifico-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7DAA760523765E94006584F2 /* Pacifico-Regular.ttf */; };
@@ -69,6 +69,7 @@
 		7D0E9D80236F1F1800BE3DB7 /* ViewVendersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewVendersTableViewController.swift; sourceTree = "<group>"; };
 		7D0E9D82236F631F00BE3DB7 /* VenderAddressLocation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VenderAddressLocation.storyboard; sourceTree = "<group>"; };
 		7D0F5588236C4D27001C6460 /* ExtensionInventoryTrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionInventoryTrackerViewController.swift; sourceTree = "<group>"; };
+		7D118C5723DBA22F0028B5DC /* GooglePlacesAPIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePlacesAPIKey.swift; sourceTree = "<group>"; };
 		7D118D60236E2F4F00203852 /* AddVender.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddVender.storyboard; sourceTree = "<group>"; };
 		7D118D62236E34E800203852 /* AddVendersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVendersTableViewController.swift; sourceTree = "<group>"; };
 		7D118D64236E45BC00203852 /* VenderCell_TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenderCell_TableViewCell.swift; sourceTree = "<group>"; };
@@ -84,7 +85,6 @@
 		7D278B7923809BB900433A7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7D32BBEB2373C8BD00C7E30E /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		7D51961623592D5700145076 /* calculationExtensionOnModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calculationExtensionOnModel.swift; sourceTree = "<group>"; };
-		7D5230C123DB93D300A0D10D /* GooglePlacesAPIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePlacesAPIKey.swift; sourceTree = "<group>"; };
 		7D69492A2369E8A4006443EB /* Inventory Tracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Inventory Tracker.entitlements"; sourceTree = "<group>"; };
 		7D9F41D9236F9C46001C4F88 /* GoogleMapVenderLocation_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapVenderLocation_ViewController.swift; sourceTree = "<group>"; };
 		7DAA760323764E7F006584F2 /* LandingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageViewController.swift; sourceTree = "<group>"; };
@@ -327,7 +327,7 @@
 				7DCC5C2C234ABFEE00CD4776 /* Stock.swift */,
 				7D51961623592D5700145076 /* calculationExtensionOnModel.swift */,
 				7DE44525234DAC6B007D838B /* CellIdentifiers.swift */,
-				7D5230C123DB93D300A0D10D /* GooglePlacesAPIKey.swift */,
+				7D118C5723DBA22F0028B5DC /* GooglePlacesAPIKey.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -520,6 +520,7 @@
 				7DCC5C19234ABDFE00CD4776 /* NewStock_TableViewController.swift in Sources */,
 				7D0F5589236C4D27001C6460 /* ExtensionInventoryTrackerViewController.swift in Sources */,
 				7DCC5C21234ABE5800CD4776 /* VenderContactInfo_TableViewController.swift in Sources */,
+				7D118C5823DBA22F0028B5DC /* GooglePlacesAPIKey.swift in Sources */,
 				7DCC5C17234ABDBB00CD4776 /* NewOrder_TableViewController.swift in Sources */,
 				7DAA760423764E7F006584F2 /* LandingPageViewController.swift in Sources */,
 				7DE44526234DAC6B007D838B /* CellIdentifiers.swift in Sources */,
@@ -533,7 +534,6 @@
 				7D32BBEC2373C8BD00C7E30E /* LocationCell.swift in Sources */,
 				7D273B6A2377B8D800D09C6E /* CostOfSpentGoodsTableViewController.swift in Sources */,
 				7D118D63236E34E800203852 /* AddVendersTableViewController.swift in Sources */,
-				7D5230C223DB93D300A0D10D /* GooglePlacesAPIKey.swift in Sources */,
 				7DCC5C1B234ABE2100CD4776 /* ParentSheetSize_TableViewController.swift in Sources */,
 				7DCC5C1F234ABE4500CD4776 /* VenderList_TableViewController.swift in Sources */,
 				7DCC5C05234AA7E400CD4776 /* SceneDelegate.swift in Sources */,
