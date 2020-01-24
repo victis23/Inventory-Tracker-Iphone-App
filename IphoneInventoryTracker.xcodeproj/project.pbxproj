@@ -26,6 +26,7 @@
 		7D278B7823809BB900433A7C /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D278B7723809BB900433A7C /* Tests.swift */; };
 		7D32BBEC2373C8BD00C7E30E /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D32BBEB2373C8BD00C7E30E /* LocationCell.swift */; };
 		7D51961723592D5700145076 /* calculationExtensionOnModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D51961623592D5700145076 /* calculationExtensionOnModel.swift */; };
+		7D5230C223DB93D300A0D10D /* GooglePlacesAPIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5230C123DB93D300A0D10D /* GooglePlacesAPIKey.swift */; };
 		7D9F41DA236F9C46001C4F88 /* GoogleMapVenderLocation_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9F41D9236F9C46001C4F88 /* GoogleMapVenderLocation_ViewController.swift */; };
 		7DAA760423764E7F006584F2 /* LandingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAA760323764E7F006584F2 /* LandingPageViewController.swift */; };
 		7DAA760623765E94006584F2 /* Pacifico-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7DAA760523765E94006584F2 /* Pacifico-Regular.ttf */; };
@@ -83,6 +84,7 @@
 		7D278B7923809BB900433A7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7D32BBEB2373C8BD00C7E30E /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		7D51961623592D5700145076 /* calculationExtensionOnModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calculationExtensionOnModel.swift; sourceTree = "<group>"; };
+		7D5230C123DB93D300A0D10D /* GooglePlacesAPIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePlacesAPIKey.swift; sourceTree = "<group>"; };
 		7D69492A2369E8A4006443EB /* Inventory Tracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Inventory Tracker.entitlements"; sourceTree = "<group>"; };
 		7D9F41D9236F9C46001C4F88 /* GoogleMapVenderLocation_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapVenderLocation_ViewController.swift; sourceTree = "<group>"; };
 		7DAA760323764E7F006584F2 /* LandingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageViewController.swift; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 				7DCC5C2C234ABFEE00CD4776 /* Stock.swift */,
 				7D51961623592D5700145076 /* calculationExtensionOnModel.swift */,
 				7DE44525234DAC6B007D838B /* CellIdentifiers.swift */,
+				7D5230C123DB93D300A0D10D /* GooglePlacesAPIKey.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -530,6 +533,7 @@
 				7D32BBEC2373C8BD00C7E30E /* LocationCell.swift in Sources */,
 				7D273B6A2377B8D800D09C6E /* CostOfSpentGoodsTableViewController.swift in Sources */,
 				7D118D63236E34E800203852 /* AddVendersTableViewController.swift in Sources */,
+				7D5230C223DB93D300A0D10D /* GooglePlacesAPIKey.swift in Sources */,
 				7DCC5C1B234ABE2100CD4776 /* ParentSheetSize_TableViewController.swift in Sources */,
 				7DCC5C1F234ABE4500CD4776 /* VenderList_TableViewController.swift in Sources */,
 				7DCC5C05234AA7E400CD4776 /* SceneDelegate.swift in Sources */,
