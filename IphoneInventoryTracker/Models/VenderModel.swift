@@ -10,16 +10,16 @@ import Foundation
 
 struct Vendor: Hashable, Codable, Equatable {
 	var name: String
-	var address :String
-	var phone :String
-	var email :String
-	var website :URL?
+	var address: String
+	var phone: String
+	var email: String
+	var website: URL?
 	var identifier = UUID()
 	
-	func hash(into hasher : inout Hasher){
+	func hash(into hasher: inout Hasher) {
 		hasher.combine(identifier)
 	}
-	static func ==(lhs:Vendor, rhs:Vendor) -> Bool {
+	static func ==(lhs: Vendor, rhs: Vendor) -> Bool {
 		lhs.identifier == rhs.identifier
 	}
 }

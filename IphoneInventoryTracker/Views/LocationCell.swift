@@ -8,8 +8,8 @@
 
 import UIKit
 
-class LocationCell : UITableViewCell {
-	let companyName :UILabel = {
+class LocationCell: UITableViewCell {
+	let companyName: UILabel = {
 		let label = UILabel()
 		label.adjustsFontSizeToFitWidth = true
 		label.lineBreakMode = .byWordWrapping
@@ -19,7 +19,8 @@ class LocationCell : UITableViewCell {
 		label.font = .systemFont(ofSize: 15, weight: .bold)
 		return label
 	}()
-	let companyAddress :UILabel = {
+	
+	let companyAddress: UILabel = {
 		let label = UILabel()
 		label.adjustsFontSizeToFitWidth = true
 		label.lineBreakMode = .byWordWrapping
@@ -30,13 +31,13 @@ class LocationCell : UITableViewCell {
 		return label
 	}()
 	
-	func addLabelToCell(){
+	func addLabelToCell() {
 		contentView.addSubview(companyName)
 		contentView.addSubview(companyAddress)
 		addLabelConstraints()
 	}
-	func addLabelConstraints(){
-		
+	
+	func addLabelConstraints() {
 		companyName.translatesAutoresizingMaskIntoConstraints = false
 		companyAddress.translatesAutoresizingMaskIntoConstraints = false
 		

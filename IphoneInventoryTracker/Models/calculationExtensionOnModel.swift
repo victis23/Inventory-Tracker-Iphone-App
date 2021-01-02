@@ -81,10 +81,12 @@ extension Stock {
 		// Values all need to be converted into doubles in order to get the correct % returned once the value is converted back into an integer.
 		longGrainValue = removeDecimalsAfterOperation(size: parentShort/short) * removeDecimalsAfterOperation(size: parentLong/long)
 		shortGrainValue = removeDecimalsAfterOperation(size: parentShort/long) * removeDecimalsAfterOperation(size: parentLong/short)
+		
 		//Throws an error if the size of the sheet is larger than the parent size
 		if longGrainValue == 0 && shortGrainValue == 0 {
 			throw DivisionError.noValueResultingInDivisionByZeroError
 		}
+		
 		// For calculating the amount of sheets will be used this actually doesnt matter. However if this code is being used to create an amount-out calculator this information matters.
 		if longGrainValue > shortGrainValue {
 			return Int(longGrainValue)
@@ -97,16 +99,16 @@ extension Stock {
 	/// - Parameter value: Double that will be rounded down.
 	/// - Returns: A double that will be used count needed sheets.
 	/// - Important: We always disgard the remainder because this is calculating a physical count where any remainder would constitute an imaginary quantity.
-	private func removeDecimalsAfterOperation(size value:Double)->Double {
+	private func removeDecimalsAfterOperation(size value: Double) -> Double {
 		let valueAsString = String(value)
 		let valueWithoutDecimal = valueAsString.split(separator: ".")
 		let stringForIntegerValue = valueWithoutDecimal[0]
-		guard let doubleValue = Double(stringForIntegerValue) else {fatalError()}
+		guard let doubleValue = Double(stringForIntegerValue) else { fatalError() }
 		return doubleValue
 	}
 	// Changes value of PercentRemaining Property.
-	mutating func setPercentageAmount(){
-		guard let amount = self.amount, let recommendedAmount = self.recommendedAmount else {return}
+	mutating func setPercentageAmount() {
+		guard let amount = self.amount, let recommendedAmount = self.recommendedAmount else { return }
 		self.percentRemaining = Int(Double(amount) / Double(recommendedAmount) * 100)
 	}
 }

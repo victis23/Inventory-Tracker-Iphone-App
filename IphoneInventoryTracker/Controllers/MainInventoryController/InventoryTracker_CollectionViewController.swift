@@ -40,14 +40,14 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 	
 	//MARK: IBOutlets
 	@IBOutlet weak var searchField: UISearchBar!
-	@IBOutlet weak var inventoryDetailCollection :UICollectionView!
+	@IBOutlet weak var inventoryDetailCollection: UICollectionView!
 	@IBOutlet weak var scrollView: UIScrollView!
 	
 	//MARK: - Class properties
 	
-	var dataSource :DataSource!
-	var delegate : InventoryTrackerDelegate?
-	var costDelegate : CostTrackerDelegate?
+	var dataSource: DataSource!
+	var delegate: InventoryTrackerDelegate?
+	var costDelegate: CostTrackerDelegate?
 	var viewFrameHeight: CGFloat?
 	let hide = UIResponder.keyboardDidHideNotification
 	let show = UIResponder.keyboardDidShowNotification
@@ -58,7 +58,7 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 	/// - Important: `stock` is encoded and saved upon `write`.
 	var stock : [Stock]? = [] {
 		didSet {
-			let sortedStock = stock?.sorted(by: { (first, second) -> Bool in
+			let sortedStock = stock?.sorted(by: { (first, second)  ->  Bool in
 				first.percentRemaining! < second.percentRemaining!
 			})
 			stock = sortedStock
@@ -89,7 +89,7 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 	//MARK: Methods
 	
 	/// If the user has no items in list and accesses their expense tab this method is evaluated.
-	func listIsEmptyWasTrue(){
+	func listIsEmptyWasTrue() {
 		if inventoryListIsEmpty == true {
 			inventoryListIsEmpty = false
 			performSegue(withIdentifier: SegueIdentifiers.addStock, sender: nil)
@@ -98,7 +98,7 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 	
 	/// Decodes a collection from disk, and assigns the retrieved data to the local property `stock`.
 	/// - Important: This only runs upon `viewDidLoad()`.
-	func intialSetupOfExistingData(){
+	func intialSetupOfExistingData() {
 		//Breaks SOLID but I am too lazy to fix this...
 		self.navigationController?.navigationBar.prefersLargeTitles = true
 		//Decoding begins - Placed on background queue hoping to reduce latency issue.
@@ -114,7 +114,7 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 	/// - Note: This method is required in order to update the following two screens.
 	/// 	- `vendors`
 	/// 	- `expenses`
-	func deleteSavedFile(){
+	func deleteSavedFile() {
 		guard let count = stock?.count else {return}
 		if count < 1 {
 			try? FileManager.default.removeItem(at: Stock.filePath())
@@ -123,7 +123,7 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 	
 	/// Clears user's search query and hides keyboard before updating the snapshot.
 	/// - Note: This only gets called when the user is going to modify properties on a selected object in the `stock` collection.
-	func resetTableViewValuesAndClearSearchFields(){
+	func resetTableViewValuesAndClearSearchFields() {
 		self.searchField.text = ""
 		self.view.endEditing(true)
 		// We need to return back to the original snapshot inorder to avoid non-unique identifier error when making modifications to properties contained in the stock collection.
@@ -163,13 +163,13 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 	// MARK: - Navigation
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if segue.identifier == SegueIdentifiers.newOrder{
+		if segue.identifier == SegueIdentifiers.newOrder {
 			let destinationController = segue.destination as! UINavigationController
 			let controller = destinationController.topViewController as! NewOrder_TableViewController
 			guard let  model = sender as? Stock else {return}
 			controller.setModelForController(model)
 		}
-		if segue.identifier == SegueIdentifiers.moreStock{
+		if segue.identifier == SegueIdentifiers.moreStock {
 			let destinationController = segue.destination as! UINavigationController
 			let controller = destinationController.topViewController as! MoreStock_TableViewController
 			guard let model = sender as? Stock else {return}
@@ -177,7 +177,7 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 		}
 	}
 	// This method is called from CostOfSpendingGoodsTableViewController when the user has not added inventory to the list yet.
-	@objc func passthroughSegue(){
+	@objc func passthroughSegue() {
 		inventoryListIsEmpty = true
 	}
 	
@@ -201,8 +201,8 @@ extension InventoryTracker_CollectionViewController {
 	
 	//MARK: UICollectionViewDataSourceMethods
 	
-	func setupDataSource(){
-		dataSource = DataSource(collectionView: inventoryDetailCollection, cellProvider: { (collectionView, indexPath, items) -> UICollectionViewCell? in
+	func setupDataSource() {
+		dataSource = DataSource(collectionView: inventoryDetailCollection, cellProvider: { (collectionView, indexPath, items)  ->  UICollectionViewCell? in
 			let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifiers.collectionViewKey, for: indexPath) as! InventoryDetailCell_CollectionViewCell
 			
 			// I decieded to convert the values of amount & recommended amount here instead of doing it in the model because of the simplicity of converting straight to Int without having to round up
@@ -236,7 +236,7 @@ extension InventoryTracker_CollectionViewController {
 	
 	// MARK: UICollectionViewDelegate
 	
-	func createLayout()->UICollectionViewCompositionalLayout{
+	func createLayout() -> UICollectionViewCompositionalLayout {
 		let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
 		// Group size was originally Height 50%. However, because some of the labels did not have all required constraints the size needed to be increased to avoid clipping. Sorry I'm lazy.
 		let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(300)) // .fractionalHeight(0.55))
@@ -248,7 +248,7 @@ extension InventoryTracker_CollectionViewController {
 		return layout
 	}
 	
-	func createSnapShot(_ model :[Stock]?){
+	func createSnapShot(_ model :[Stock]?) {
 		var snapShot = NSDiffableDataSourceSnapshot<Sections,Stock>()
 		guard let currentStock = model else {return}
 		snapShot.appendSections([.main])
