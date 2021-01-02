@@ -14,7 +14,7 @@ struct Vendor: Hashable, Codable, Equatable {
 	var phone :String
 	var email :String
 	var website :URL?
-	let identifier = UUID()
+	var identifier = UUID()
 	
 	func hash(into hasher : inout Hasher){
 		hasher.combine(identifier)

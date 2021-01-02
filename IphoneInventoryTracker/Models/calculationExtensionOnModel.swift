@@ -10,14 +10,16 @@ import Foundation
 
 extension Stock {
 	// We throw the error up the hierarchy
-	mutating func performCalculations<T: Hashable>( amountOfPiecesNeededForOrder : T, shortEdge : T, longEdge : T) throws {
+	mutating func performCalculations<T: Hashable>(amountOfPiecesNeededForOrder: T, shortEdge: T, longEdge: T) throws {
 		// Converted incoming amout back into an integer from a double.
-		guard let newValue = amountOfPiecesNeededForOrder as? Double, let amount = self.amount else {return}
-		guard let short = shortEdge as? Double, let long = longEdge as? Double else {return}
+		guard let newValue = amountOfPiecesNeededForOrder as? Double, let amount = self.amount else { return }
+		guard let short = shortEdge as? Double, let long = longEdge as? Double else { return }
+		
 		let size = self.parentSheetSize
-		var parentSheetShortEnd : Double = Double()
-		var parentSheetLongEnd : Double = Double()
-		var newtotal : Int = Int()
+		var parentSheetShortEnd: Double = Double()
+		var parentSheetLongEnd: Double = Double()
+		var newtotal: Int = Int()
+		
 		// Predetermined sizes this is where any additional sizes would be added.
 		switch size {
 			case .letter:
@@ -55,8 +57,8 @@ extension Stock {
 extension Stock {
 	
 	// Changes value of Amount Property.
-	mutating func verifyAmounts(_ parentSheetShortEnd : Double, _ parentSheetLongEnd :Double, _ newValue :Double, _ short :Double, _ long : Double, _ amount : Int) throws {
-		var newtotal : Int = 0
+	mutating func verifyAmounts(_ parentSheetShortEnd: Double, _ parentSheetLongEnd: Double, _ newValue: Double, _ short: Double, _ long: Double, _ amount: Int) throws {
+		var newtotal: Int = 0
 		
 		try newtotal = sheetsOut(short, long, parentSheetShortEnd, parentSheetLongEnd)
 		
@@ -72,9 +74,10 @@ extension Stock {
 		
 	}
 	
-	private func sheetsOut(_ short : Double, _ long : Double, _ parentShort : Double, _ parentLong :Double) throws -> Int {
+	private func sheetsOut(_ short: Double, _ long: Double, _ parentShort: Double, _ parentLong: Double) throws -> Int {
 		let longGrainValue : Double
 		let shortGrainValue : Double
+		
 		// Values all need to be converted into doubles in order to get the correct % returned once the value is converted back into an integer.
 		longGrainValue = removeDecimalsAfterOperation(size: parentShort/short) * removeDecimalsAfterOperation(size: parentLong/long)
 		shortGrainValue = removeDecimalsAfterOperation(size: parentShort/long) * removeDecimalsAfterOperation(size: parentLong/short)

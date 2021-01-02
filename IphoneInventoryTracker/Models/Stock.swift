@@ -9,23 +9,23 @@
 import Foundation
 
 struct Order {
-	var stock :Stock
-	var orderAmount :Int
-	var pieceSize :Float
+	var stock: Stock
+	var orderAmount: Int
+	var pieceSize: Float
 }
 
-struct Stock : Hashable, Equatable {
-	var name :String?
-	var parentSheetSize :ParentSize?
-	var weight :Weight?
-	var amount :Int?
-	var recommendedAmount :Int?
-	var vender : Vendor?
+struct Stock: Hashable, Equatable {
+	var name: String?
+	var parentSheetSize: ParentSize?
+	var weight: Weight?
+	var amount: Int?
+	var recommendedAmount: Int?
+	var vender: Vendor?
 	var identifier = UUID()
-	var color : String?
-	var cost : Double?
-	var percentRemaining : Int?
-	var spent : Double?
+	var color: String?
+	var cost: Double?
+	var percentRemaining: Int?
+	var spent: Double?
 	var errorMessage: String = "You do not have any inventory!"
 	
 	// Equatable — Not Required For Value Types; Just needed the practice writing it.
@@ -41,11 +41,11 @@ struct Stock : Hashable, Equatable {
 		hasher.combine(identifier)
 	}
 	
-	init(_ name :String) {
+	init(_ name: String) {
 		self.name = name
 	}
 	
-	init(_ name :String?, _ parentSheetSize:ParentSize?, _ weight:Weight?, _ amount:Int?, _ recommendedAmount:Int?, _ vender:Vendor?) {
+	init(_ name: String?, _ parentSheetSize: ParentSize?, _ weight: Weight?, _ amount: Int?, _ recommendedAmount: Int?, _ vender:Vendor?) {
 		self.name = name
 		self.parentSheetSize = parentSheetSize
 		self.weight = weight
@@ -54,8 +54,8 @@ struct Stock : Hashable, Equatable {
 		self.vender = vender
 	}
 	
-	init(_ amount :Int?, _ recommendedAmount : Int?) {
-		guard let amount = amount, let recommendedAmount = recommendedAmount else {return}
+	init(_ amount: Int?, _ recommendedAmount: Int?) {
+		guard let amount = amount, let recommendedAmount = recommendedAmount else { return }
 		let doubleAmount = Double(amount)
 		let doubleRecommendedAmount = Double(recommendedAmount)
 		let percent = doubleAmount / doubleRecommendedAmount * 100
@@ -63,7 +63,7 @@ struct Stock : Hashable, Equatable {
 	}
 }
 
-enum Weight:String, CaseIterable, Codable{
+enum Weight: String, CaseIterable, Codable {
 	case _20Bond = "#20 Bond"
 	case _60Bond = "#60 Bond"
 	/* Text */
@@ -80,7 +80,7 @@ enum Weight:String, CaseIterable, Codable{
 	case _12PtC2S = "12pt C2S"
 }
 
-enum ParentSize :String, CaseIterable, Codable{
+enum ParentSize: String, CaseIterable, Codable {
 	case letter = "8.5 x 11"
 	case legal = "8.5 x 14"
 	case tabloid = "11 x 17"
@@ -90,24 +90,25 @@ enum ParentSize :String, CaseIterable, Codable{
 }
 
 
-extension Stock : Codable {
+extension Stock: Codable {
 	
-	static func filePath()->URL{
+	static func filePath() -> URL {
 		let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
 		let file = path.appendingPathComponent("savedModel").appendingPathExtension("json")
 		return file
 	}
 	
-	static func encode<T:Codable>(_ model : [T]){
+	static func encode<T: Codable>(_ model: [T]) {
 		let encoder = JSONEncoder()
 		guard let encodedData = try? encoder.encode(model) else {fatalError("Was unable to encode incoming data!")}
 		try? encodedData.write(to: filePath())
 	}
 	
-	static func decode<T :Decodable>()->[T]?{
+	static func decode<T: Decodable>()->[T]? {
 		let decoder = JSONDecoder()
-		guard let rawData = try? Data(contentsOf: filePath()) else {return nil}
-		guard let decodedDataModel = try? decoder.decode([T].self, from: rawData) else {return nil}
+		guard let rawData = try? Data(contentsOf: filePath()) else { return nil }
+		guard let decodedDataModel = try? decoder.decode([T].self, from: rawData) else { return nil }
+		
 		return decodedDataModel
 	}
 }
