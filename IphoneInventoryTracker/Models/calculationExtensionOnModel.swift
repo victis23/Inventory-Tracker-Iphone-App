@@ -75,8 +75,8 @@ extension Stock {
 	}
 	
 	private func sheetsOut(_ short: Double, _ long: Double, _ parentShort: Double, _ parentLong: Double) throws -> Int {
-		let longGrainValue : Double
-		let shortGrainValue : Double
+		let longGrainValue: Double
+		let shortGrainValue: Double
 		
 		// Values all need to be converted into doubles in order to get the correct % returned once the value is converted back into an integer.
 		longGrainValue = removeDecimalsAfterOperation(size: parentShort/short) * removeDecimalsAfterOperation(size: parentLong/long)

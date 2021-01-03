@@ -329,15 +329,15 @@ extension GoogleMapVenderLocation_ViewController : GMSMapViewDelegate {
 		//Unique Session Token.
 		let token = GMSAutocompleteSessionToken.init()
 		let filter = GMSAutocompleteFilter()
+		
 		//Narrow search results to only businesses.
 		filter.type = .establishment
 		// Switched to background queue to avoid locking UI.
 		DispatchQueue.global(qos: .background).async { [weak self] in
 			guard let self = self else {return}
+			
 			// Performs query with users actual search term.
 			self.googlePlacesClient.findAutocompletePredictions(fromQuery: self.searchLocation,
-																bounds: nil,
-																boundsMode: GMSAutocompleteBoundsMode.bias,
 																filter: filter,
 																sessionToken: token) { (predictions, error) in
 																	

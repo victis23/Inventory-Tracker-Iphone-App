@@ -8,22 +8,22 @@
 
 import UIKit
 
-extension InventoryTracker_CollectionViewController : UISearchBarDelegate {
+extension InventoryTracker_CollectionViewController: UISearchBarDelegate {
 	
-	/// - Description: Sorts values in `stock` collection and creates a temporary array of stock objects that are used in `createSnapShot(_:)` when called by `searchBar(_:textDidChange:)` This method is not case sensative.
+	/// - Description: Sorts values in `stock` collection and creates a temporary array of stock objects that are used in `createSnapShot(_: )` when called by `searchBar(_: textDidChange: )` This method is not case sensative.
 	/// - Parameter string: Search term entered by user into `searchField`
 	/// - Important: This method sorts based on the following value properties:
 	/// 	- name
 	///		- weight
 	///		- color
 	///		- parentSheetSize
-	func filteredStocks(with string: String)-> [Stock]{
-		let privateStocks = stock?.filter({ (item) -> Bool in
+	func filteredStocks(with string: String) -> [Stock] {
+		let privateStocks = stock?.filter( { (item) -> Bool in
 			if (item.name?.lowercased().contains(string.lowercased()))! || item.weight!.rawValue.lowercased().contains(string.lowercased()) ||
 				item.color!.lowercased().contains(string.lowercased()) ||
-				item.parentSheetSize!.rawValue.lowercased().contains(string.lowercased()){
+				item.parentSheetSize!.rawValue.lowercased().contains(string.lowercased()) {
 				return true
-			}else{
+			}else {
 				return false
 			}
 		})
@@ -52,12 +52,12 @@ extension InventoryTracker_CollectionViewController : UISearchBarDelegate {
 	func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
 		
 		// Notifies observer that keyboard is now visable on screen.
-		NotificationCenter.default.addObserver(self, selector: #selector(setNewViewHeight(with:)), name: hide, object: nil)
-		NotificationCenter.default.addObserver(self, selector: #selector(setNewViewHeight(with:)), name: show, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(setNewViewHeight(with: )), name: hide, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(setNewViewHeight(with: )), name: show, object: nil)
 	}
 	
 	
-	@objc func setNewViewHeight(with notification : Notification){
+	@objc func setNewViewHeight(with notification: Notification) {
 		
 		guard let originalFrame = viewFrameHeight else {return}
 		

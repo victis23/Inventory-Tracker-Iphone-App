@@ -56,9 +56,9 @@ class InventoryTracker_CollectionViewController: UIViewController, UICollectionV
 	/// - The updated value is used to update the existing snapshot.
 	/// - Note: On change this collection is sorted from least to greatest. This is determined by the percentRemaining property on the corresponding `Stock` object.
 	/// - Important: `stock` is encoded and saved upon `write`.
-	var stock : [Stock]? = [] {
+	var stock: [Stock]? = [] {
 		didSet {
-			let sortedStock = stock?.sorted(by: { (first, second)  ->  Bool in
+			let sortedStock = stock?.sorted(by: { (first, second) -> Bool in
 				first.percentRemaining! < second.percentRemaining!
 			})
 			stock = sortedStock

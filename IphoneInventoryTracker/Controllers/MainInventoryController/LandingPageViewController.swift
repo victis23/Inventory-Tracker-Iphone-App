@@ -29,7 +29,7 @@ class LandingPageViewController: UIViewController {
 	}
 	
 	/// Sets visable aesthetics for viewcontroller.
-	func setAesthetics(){
+	func setAesthetics() {
 		//Buttons in temporary collection get properties set.
 		[vendorButton,buttomLeftButton,buttomRightButton,inventoryButton].forEach({
 			$0?.layer.cornerRadius = 15
